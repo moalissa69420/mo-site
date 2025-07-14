@@ -1,0 +1,540 @@
+body {
+  margin: 0;
+  padding: 1.5em 10px 0 10px;
+  max-width: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 13px;
+  line-height: 1;
+  color: #000;
+  text-align: left;
+  letter-spacing: 0em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  overflow-y: scroll;
+  min-height: 100%;
+  -webkit-text-size-adjust: none;
+  overflow-x: hidden !important;
+}
+
+.list-block, .nav-block, .last-updated, body > div {
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  color: #000;
+  line-height: 1;
+  font-size: 13px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+p, div {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.subtitle, .bio {
+  margin: 0;
+  font-size: 13px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+}
+
+.site-title {
+  font-size: 13px;
+  margin-bottom: 0.3em;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 13px;
+  margin-bottom: 0.3em;
+}
+
+.bio {
+  font-size: 13px;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  max-width: 700px;
+}
+
+.site-title, .subtitle {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.list-block {
+  font-size: 13px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.4;
+}
+
+.nav-block {
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.nav-block a {
+  display: block;
+  margin-bottom: 0.4em;
+  text-decoration: none;
+  color: #000;
+}
+
+.last-updated {
+  font-size: 11px;
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .list-block > *, .nav-block > * {
+    font-size: 15px;
+    margin: 0 0 15px 0;
+  }
+}
+
+.upload-panel {
+  margin-top: 1em;
+  border: 1px solid #ddd;
+  background: #faf9f6;
+  padding: 1em;
+  max-width: 400px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+  color: #111;
+}
+
+.upload-area {
+  border: 1px dashed #bbb;
+  border-radius: 4px;
+  padding: 1.5em 1em;
+  text-align: center;
+  color: #888;
+  cursor: pointer;
+  margin-bottom: 1em;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+.upload-area.dragover {
+  border-color: #111;
+  color: #111;
+}
+.upload-browse {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #111;
+}
+.preview-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 0.5em;
+}
+.preview-area img,
+.preview-area video {
+  max-width: 120px;
+  max-height: 90px;
+  border: 1px solid #eee;
+  background: #fff;
+}
+
+.recently-visited-hover {
+  position: relative;
+  display: block;
+}
+
+.hover-image {
+  display: none;
+  position: absolute;
+  left: 250px;
+  top: 0;
+  width: 200px;
+  border: 1px solid #ccc;
+  background: #fff;
+  z-index: 10;
+}
+
+.recently-visited-hover:hover .hover-image,
+.scale-hover:hover .hover-image,
+.direction-hover:hover .hover-image {
+  display: block;
+}
+
+.scale-hover {
+  position: relative;
+  display: block;
+}
+
+.direction-hover {
+  position: relative;
+  display: block;
+}
+
+.studio-hover, .interface-hover, .recently-been-hover, .recently-found-hover {
+  position: relative;
+  display: block;
+}
+
+.studio-hover:hover .hover-image,
+.interface-hover:hover .hover-image,
+.recently-been-hover:hover .hover-image,
+.recently-found-hover:hover .hover-image,
+.recently-visited-hover:hover .hover-image,
+.scale-hover:hover .hover-image,
+.direction-hover:hover .hover-image {
+  display: block;
+}
+
+.studio-hover .hover-image {
+  width: 300px;
+  height: auto;
+  position: absolute;
+  left: 250px;
+  top: 0;
+  z-index: 10;
+}
+
+.recently-visited-hover .hover-image {
+  width: 400px;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  position: absolute;
+  left: 250px;
+  top: 0;
+  z-index: 10;
+}
+
+.studio-caption {
+  display: none;
+  position: absolute;
+  left: 250px;
+  top: calc(0px + 300px + 8px); /* 0px is the top offset, 300px is the gif height, 8px is spacing */
+  width: 300px;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #222;
+  padding: 0.4em 0.7em;
+  text-align: left;
+  z-index: 11;
+  box-sizing: border-box;
+  font-style: italic;
+}
+
+.studio-hover:hover .studio-caption {
+  display: block;
+}
+
+.recently-visited-hover .experiments-caption {
+  display: none;
+  position: absolute;
+  left: 250px;
+  top: 0; /* Will be set dynamically by JS */
+  width: 400px;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #222;
+  padding: 0.4em 0.7em;
+  text-align: left;
+  z-index: 11;
+  box-sizing: border-box;
+  font-style: italic;
+  transition: top 0.2s;
+}
+
+.recently-visited-hover:hover .experiments-caption {
+  display: block;
+}
+
+.direction-hover .hover-image {
+  width: 500px;
+  height: auto;
+  position: absolute;
+  left: 250px;
+  top: 0;
+  z-index: 10;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.direction-hover .direction-caption {
+  display: none;
+  position: absolute;
+  left: 250px;
+  top: 0; /* Will be set dynamically by JS */
+  width: 500px;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #222;
+  padding: 0.4em 0.7em;
+  text-align: left;
+  z-index: 11;
+  box-sizing: border-box;
+  font-style: italic;
+  transition: top 0.2s;
+}
+
+.direction-hover:hover .direction-caption {
+  display: block;
+}
+
+.contact-hover {
+  position: relative;
+  display: block;
+}
+
+.contact-hover .contact-nav {
+  display: none;
+  position: absolute;
+  left: 250px;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  min-width: 150px;
+}
+
+.contact-hover:hover .contact-nav {
+  display: block;
+}
+
+.contact-nav {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 1em;
+  max-width: 300px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 13px;
+}
+
+.contact-nav a {
+  display: block;
+  margin-bottom: 0.8em;
+  text-decoration: none;
+  color: #000;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.contact-nav a:last-child {
+  margin-bottom: 0;
+}
+
+.contact-nav a:hover {
+  text-decoration: underline;
+}
+
+.contact-content {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.scale-hover .scale-caption {
+  display: none;
+  position: absolute;
+  left: 250px;
+  top: 0; /* Will be set dynamically by JS */
+  width: 200px;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #222;
+  padding: 0.4em 0.7em;
+  text-align: left;
+  z-index: 11;
+  box-sizing: border-box;
+  font-style: italic;
+  transition: top 0.2s;
+}
+
+.scale-hover:hover .scale-caption {
+  display: block;
+}
+
+.interface-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5em 2em;
+  margin: 2.5em 0 0 0;
+  max-width: 900px;
+  background: #fff;
+}
+
+.interface-step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  background: #fff;
+  border: none;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 13px;
+  color: #000;
+}
+
+.step-thumb {
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin-bottom: 0.7em;
+}
+
+.step-title {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 0.2em;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.step-desc {
+  font-size: 12px;
+  color: #444;
+  font-style: italic;
+  margin-bottom: 0.2em;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  padding: 1.5em 1.5em 1em 1.5em;
+  border-radius: 6px;
+  min-width: 340px;
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.7em;
+  right: 1em;
+  font-size: 2em;
+  color: #888;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+  z-index: 10;
+}
+
+.modal-media img, .modal-media video {
+  max-width: 60vw;
+  max-height: 60vh;
+  border: 1px solid #ccc;
+  background: #fff;
+  display: block;
+  margin-bottom: 0.7em;
+}
+
+.modal-caption {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #222;
+  padding: 0.4em 0.7em;
+  text-align: left;
+  box-sizing: border-box;
+  font-style: italic;
+  margin-top: 0.2em;
+  border-radius: 3px;
+}
+
+@media (max-width: 900px) {
+  .interface-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2em 1em;
+  }
+  .step-thumb {
+    width: 110px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .interface-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2em 0.5em;
+  }
+  .step-thumb {
+    width: 90vw;
+    height: 30vw;
+    max-width: 320px;
+    max-height: 120px;
+  }
+  .modal-media img, .modal-media video {
+    max-width: 90vw;
+    max-height: 40vh;
+  }
+}
+
+.interface-hover {
+  cursor: pointer;
+}
+
+.recently-been-img-wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.recently-been-caption {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #222;
+  padding: 0.4em 0.7em;
+  text-align: left;
+  z-index: 11;
+  box-sizing: border-box;
+  font-style: italic;
+  margin-top: 0.5em;
+  margin-bottom: 1.2em;
+  display: none;
+  transition: none;
+}
+
+.recently-been-img-wrap:hover .recently-been-caption {
+  display: block;
+}
