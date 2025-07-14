@@ -169,5 +169,44 @@
         });
       });
     </script>
+    <script>
+      function isMobile() {
+        return window.matchMedia('(max-width: 700px)').matches;
+      }
+      function hideAllPreviews() {
+        document.querySelectorAll('.hover-image, .scale-caption, .direction-caption, .experiments-caption, .studio-caption, .recently-been-caption').forEach(function(el) {
+          el.style.display = 'none';
+        });
+      }
+      function setupMobileNavPreviews() {
+        if (!isMobile()) return;
+        // Hide all previews by default
+        hideAllPreviews();
+        // Add tap-to-show for each nav section
+        document.querySelectorAll('.recently-visited-hover, .scale-hover, .direction-hover, .studio-hover, .interface-hover, .recently-been-hover, .recently-found-hover').forEach(function(block) {
+          block.addEventListener('click', function(e) {
+            // Hide all others
+            hideAllPreviews();
+            // Show this block's preview(s)
+            block.querySelectorAll('.hover-image, .scale-caption, .direction-caption, .experiments-caption, .studio-caption, .recently-been-caption').forEach(function(el) {
+              el.style.display = 'block';
+            });
+            e.stopPropagation();
+          });
+        });
+        // Hide previews if clicking outside
+        document.body.addEventListener('click', function(e) {
+          if (!e.target.closest('.recently-visited-hover, .scale-hover, .direction-hover, .studio-hover, .interface-hover, .recently-been-hover, .recently-found-hover')) {
+            hideAllPreviews();
+          }
+        });
+      }
+      document.addEventListener('DOMContentLoaded', function() {
+        setupMobileNavPreviews();
+        window.addEventListener('resize', function() {
+          setupMobileNavPreviews();
+        });
+      });
+    </script>
   </body>
 </html>
