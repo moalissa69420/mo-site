@@ -543,23 +543,17 @@ p, div {
   body {
     padding: 1em 0.5em 0 0.5em;
     font-size: 15px;
+    line-height: 1.3;
   }
   .site-title, .subtitle, .bio, .list-block, .nav-block, .last-updated {
     font-size: 15px;
-    line-height: 1.4;
+    line-height: 1.3;
     padding-left: 0.2em;
     padding-right: 0.2em;
   }
   .list-block > *, .nav-block > * {
     font-size: 15px;
     margin: 0 0 10px 0;
-  }
-  .list-block {
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-  .nav-block {
-    margin-bottom: 1.5em;
   }
   .hover-image {
     position: static !important;
@@ -570,22 +564,26 @@ p, div {
     top: 0 !important;
     margin-bottom: 0.5em;
     border: 1px solid #ccc;
-    z-index: 1;
+    z-index: 10;
   }
-  .recently-been-img-wrap, .recently-found-hover, .recently-been-hover {
+  .recently-been-img-wrap, .recently-found-hover, .studio-hover, .interface-hover, .direction-hover, .scale-hover, .recently-visited-hover {
     display: block;
+    position: static;
     width: 100%;
     margin-bottom: 1.2em;
   }
-  .recently-been-caption {
+  .recently-been-caption, .scale-caption, .direction-caption, .experiments-caption, .studio-caption {
     position: static !important;
     width: 100vw !important;
     max-width: 100vw !important;
-    margin-top: 0.2em;
+    margin-top: 0.3em;
     margin-bottom: 1em;
     display: block !important;
     left: 0 !important;
     top: unset !important;
+    font-size: 13px;
+    padding: 0.4em 0.7em;
+    box-sizing: border-box;
   }
   .interface-grid {
     grid-template-columns: 1fr !important;
@@ -595,17 +593,13 @@ p, div {
   }
   .step-thumb {
     width: 95vw !important;
-    height: auto !important;
+    height: 30vw !important;
     max-width: 320px;
     max-height: 120px;
   }
-  .modal-media img, .modal-media video {
-    max-width: 95vw !important;
-    max-height: 40vh !important;
-  }
   .project-preview img {
-    max-width: 98vw !important;
-    width: 98vw !important;
+    max-width: 100vw !important;
+    width: 100vw !important;
   }
   .selected-projects-container {
     padding: 0 0.5em !important;
@@ -617,32 +611,6 @@ p, div {
   .back-link {
     margin-right: 0.5em !important;
   }
-  .list-block > div .hover-image,
-  .list-block > div .scale-caption,
-  .list-block > div .direction-caption,
-  .list-block > div .studio-caption,
-  .list-block > div .experiments-caption,
-  .list-block > div .recently-been-caption {
-    display: none !important;
-  }
-  .list-block > div.mobile-open .hover-image,
-  .list-block > div.mobile-open .scale-caption,
-  .list-block > div.mobile-open .direction-caption,
-  .list-block > div.mobile-open .studio-caption,
-  .list-block > div.mobile-open .experiments-caption,
-  .list-block > div.mobile-open .recently-been-caption {
-    display: block !important;
-  }
-  .list-block > div .hover-image {
-    width: 90vw !important;
-    max-width: 90vw !important;
-    height: auto !important;
-    max-height: 180px !important;
-    margin-bottom: 0.5em !important;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    object-fit: unset !important;
-  }
 }
 
 @media (max-width: 500px) {
@@ -652,11 +620,13 @@ p, div {
     padding-right: 0.1em;
   }
   .step-thumb {
-    max-width: 98vw !important;
-    height: auto !important;
+    width: 98vw !important;
+    height: 32vw !important;
+    max-width: 98vw;
+    max-height: 120px;
   }
   .project-preview img {
-    max-width: 99vw !important;
-    width: 99vw !important;
+    max-width: 98vw !important;
+    width: 98vw !important;
   }
 }
