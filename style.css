@@ -617,6 +617,32 @@ p, div {
   .back-link {
     margin-right: 0.5em !important;
   }
+  .list-block > div .hover-image,
+  .list-block > div .scale-caption,
+  .list-block > div .direction-caption,
+  .list-block > div .studio-caption,
+  .list-block > div .experiments-caption,
+  .list-block > div .recently-been-caption {
+    display: none !important;
+  }
+  .list-block > div.mobile-open .hover-image,
+  .list-block > div.mobile-open .scale-caption,
+  .list-block > div.mobile-open .direction-caption,
+  .list-block > div.mobile-open .studio-caption,
+  .list-block > div.mobile-open .experiments-caption,
+  .list-block > div.mobile-open .recently-been-caption {
+    display: block !important;
+  }
+  .list-block > div .hover-image {
+    width: 90vw !important;
+    max-width: 90vw !important;
+    height: auto !important;
+    max-height: 180px !important;
+    margin-bottom: 0.5em !important;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    object-fit: unset !important;
+  }
 }
 
 @media (max-width: 500px) {
