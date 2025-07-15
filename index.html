@@ -10,6 +10,105 @@
     <div class="site-title">MO ALISSA</div>
     <div class="subtitle">Product Architecture and Creative Systems, HQ TORONTO</div>
     <div class="bio">Operating at the intersection of retention, resonance, and revenue.</div>
+    <!-- Mobile slider wrapper -->
+    <div class="mobile-slider" style="display:none;">
+      <div class="mobile-slide">
+        <div class="slide-header">
+          <div class="slide-title">Experiments</div>
+          <div class="slide-counter">1/7</div>
+        </div>
+        <video class="slide-media" src="images/experiments.mp4" muted loop playsinline preload="auto" autoplay></video>
+        <div class="slide-caption">Simulated depth, observed from the eye’s position.<br>A study in dimensional perception using MODU’s single-image reconstruction.</div>
+      </div>
+      <div class="mobile-slide">
+        <div class="slide-header">
+          <div class="slide-title">Scale</div>
+          <div class="slide-counter">2/7</div>
+        </div>
+        <img src="images/scale.jpg" class="slide-media" alt="Scale preview" />
+        <div class="slide-caption">Drove $70K+ in monthly sales (+338% MoM)<br>via Meta Ads, Klaviyo flows, web optimization & Figma-crafted ad creatives</div>
+      </div>
+      <div class="mobile-slide">
+        <div class="slide-header">
+          <div class="slide-title">Direction</div>
+          <div class="slide-counter">3/7</div>
+        </div>
+        <img src="images/direction.gif" class="slide-media" alt="Direction preview" />
+        <div class="slide-caption">Crafting Bagel Room’s universe—logo, deck, and interior in concert.<br>An immersive narrative woven through visuals and space. Crafted by me.</div>
+      </div>
+      <div class="mobile-slide">
+        <div class="slide-header">
+          <div class="slide-title">Studio</div>
+          <div class="slide-counter">4/7</div>
+        </div>
+        <img src="images/studio.gif" class="slide-media" alt="Studio preview" />
+        <div class="slide-caption">The studio is where ideas start—sometimes with a book, a photograph, or a brush.</div>
+      </div>
+      <div class="mobile-slide">
+        <div class="slide-header">
+          <div class="slide-title">Interface</div>
+          <div class="slide-counter">5/7</div>
+        </div>
+        <div class="slide-caption" style="font-weight:700;">MY PROCESS: BUNKER STUDIO WEBSITES</div>
+        <div class="slide-caption">Click any stage below to watch the walkthrough.</div>
+        <div class="interface-grid-mobile">
+          <div class="interface-step-mobile" data-media="videos/finding-the-rack.mp4" data-caption="Finding the Rack. Triggering the idea.">
+            <img src="images/findingtherack.jpg" class="step-thumb-mobile" alt="Finding the Rack" />
+            <div class="step-title-mobile">Finding the Rack</div>
+            <div class="step-desc-mobile">Triggering the idea</div>
+          </div>
+          <div class="interface-step-mobile" data-media="videos/page-walkthrough.mp4" data-caption="Building out the Pages interactions based on the rack. Walkthrough video explaining the pages.">
+            <img src="images/pageinteraction.jpg" class="step-thumb-mobile" alt="Page Interactions" />
+            <div class="step-title-mobile">Page Interactions</div>
+            <div class="step-desc-mobile">Walkthrough of page logic</div>
+          </div>
+          <div class="interface-step-mobile" data-media="videos/codeforwireframe.mp4" data-caption="Abdou building out the code from its first wireframe.">
+            <img src="images/codeforwireframe.jpg" class="step-thumb-mobile" alt="Code from Wireframe" />
+            <div class="step-title-mobile">Code from Wireframe</div>
+            <div class="step-desc-mobile">First dev pass</div>
+          </div>
+          <div class="interface-step-mobile" data-media="videos/logohangershape.mp4" data-caption="Logo as Hanger Shape. Inspiration from the logo, making it the actual shape of the hangers.">
+            <img src="images/logohangershape.jpg" class="step-thumb-mobile" alt="Logo as Hanger Shape" />
+            <div class="step-title-mobile">Logo as Hanger Shape</div>
+            <div class="step-desc-mobile">Logo-inspired design</div>
+          </div>
+          <div class="interface-step-mobile" data-media="videos/videogame.mp4" data-caption="Trying on the pieces and layering in AR/XR gestures and button-driven controls.">
+            <img src="images/videogame.jpg" class="step-thumb-mobile" alt="Trying out the clothes." />
+            <div class="step-title-mobile">Trying out the clothes.</div>
+            <div class="step-desc-mobile">Inspired me to gamify the website more</div>
+          </div>
+          <div class="interface-step-mobile" data-media="videos/finalprototype.mp4" data-caption="Final Prototype.">
+            <img src="images/finalprototype.jpg" class="step-thumb-mobile" alt="Final Prototype" />
+            <div class="step-title-mobile">Final Prototype</div>
+            <div class="step-desc-mobile">The finished product</div>
+          </div>
+        </div>
+        <!-- Modal for mobile interface videos -->
+        <div id="modal-overlay-mobile" class="modal-overlay" style="display:none;">
+          <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-media"></div>
+            <div class="modal-caption"></div>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-slide">
+        <div class="slide-header">
+          <div class="slide-title">Recently been to</div>
+          <div class="slide-counter">6/7</div>
+        </div>
+        <img src="images/recently-been.jpg" class="slide-media" alt="Recently been to preview" />
+        <div class="slide-caption">80 K · 3 700 m D+ · Charlevoix → Mont-Sainte-Anne</div>
+      </div>
+      <div class="mobile-slide">
+        <div class="slide-header">
+          <div class="slide-title">Currently reading</div>
+          <div class="slide-counter">7/7</div>
+        </div>
+        <img src="images/currently-reading.jpg" class="slide-media" alt="Currently reading preview" />
+      </div>
+    </div>
+    <!-- Desktop layout remains unchanged -->
     <div class="list-block">
       <div class="recently-visited-hover">
         Experiments
@@ -34,7 +133,7 @@
       <div class="interface-hover" tabindex="0">
         Interface
         <div class="interface-panel" style="display:none;">
-          <div class="site-title" style="font-size:13px; font-weight:700; margin-bottom:0.5em;">BUNKER STUDIO DESIGN PROCESS</div>
+          <div class="site-title" style="font-size:13px; font-weight:700; margin-bottom:0.5em;">MY PROCESS: BUNKER STUDIO WEBSITES</div>
           <div class="subtitle" style="font-size:13px; margin-bottom:1em;">Click any stage below to watch the walkthrough.</div>
           <div class="interface-grid">
             <div class="interface-step" data-media="videos/finding-the-rack.mp4" data-type="video" data-caption="Finding the Rack. Triggering the idea.">
@@ -207,6 +306,107 @@
           setupMobileNavPreviews();
         });
       });
+    </script>
+    <script>
+      // Mobile slider logic
+      function initMobileSlider() {
+        const slider = document.querySelector('.mobile-slider');
+        if (!slider) return;
+        const slides = Array.from(slider.querySelectorAll('.mobile-slide'));
+        let current = 0;
+        let startX = null;
+        let isTouching = false;
+        const total = slides.length;
+
+        function updateSlides() {
+          slides.forEach((slide, i) => {
+            slide.style.display = i === current ? 'flex' : 'none';
+            // Update counter text
+            const counter = slide.querySelector('.slide-counter');
+            if (counter) counter.textContent = `${i+1}/${total}`;
+          });
+        }
+        function goToSlide(idx) {
+          current = (idx + slides.length) % slides.length;
+          updateSlides();
+        }
+        // Touch events for swipe
+        slider.addEventListener('touchstart', e => {
+          if (e.touches.length === 1) {
+            startX = e.touches[0].clientX;
+            isTouching = true;
+          }
+        });
+        slider.addEventListener('touchmove', e => {
+          if (!isTouching || e.touches.length !== 1) return;
+          const dx = e.touches[0].clientX - startX;
+          if (Math.abs(dx) > 50) {
+            if (dx < 0) goToSlide(current + 1);
+            else goToSlide(current - 1);
+            isTouching = false;
+          }
+        });
+        slider.addEventListener('touchend', () => {
+          isTouching = false;
+        });
+        // Keyboard navigation (optional)
+        window.addEventListener('keydown', e => {
+          if (window.innerWidth > 700) return;
+          if (e.key === 'ArrowLeft') goToSlide(current - 1);
+          if (e.key === 'ArrowRight') goToSlide(current + 1);
+        });
+        // Show first slide
+        updateSlides();
+      }
+      // Only run on mobile
+      function checkMobileSlider() {
+        if (window.innerWidth <= 700) {
+          document.querySelector('.mobile-slider').style.display = 'block';
+          initMobileSlider();
+        } else {
+          document.querySelector('.mobile-slider').style.display = 'none';
+        }
+      }
+      window.addEventListener('DOMContentLoaded', checkMobileSlider);
+      window.addEventListener('resize', checkMobileSlider);
+    </script>
+    <script>
+      // Mobile interface modal logic
+      function initMobileInterfaceModal() {
+        const steps = document.querySelectorAll('.interface-step-mobile');
+        const modal = document.getElementById('modal-overlay-mobile');
+        const modalMedia = modal?.querySelector('.modal-media');
+        const modalCaption = modal?.querySelector('.modal-caption');
+        const modalClose = modal?.querySelector('.modal-close');
+        if (!steps.length || !modal) return;
+        steps.forEach(step => {
+          step.addEventListener('click', function() {
+            const videoSrc = this.getAttribute('data-media');
+            const caption = this.getAttribute('data-caption');
+            if (modalMedia) {
+              modalMedia.innerHTML = `<video src="${videoSrc}" controls autoplay style="width:100%;max-width:100%;height:auto;"></video>`;
+            }
+            if (modalCaption) {
+              modalCaption.textContent = caption || '';
+            }
+            modal.style.display = 'flex';
+          });
+        });
+        if (modalClose) {
+          modalClose.addEventListener('click', function() {
+            modal.style.display = 'none';
+            if (modalMedia) modalMedia.innerHTML = '';
+          });
+        }
+        // Close modal on overlay click (not on content)
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+            if (modalMedia) modalMedia.innerHTML = '';
+          }
+        });
+      }
+      window.addEventListener('DOMContentLoaded', initMobileInterfaceModal);
     </script>
   </body>
 </html>
