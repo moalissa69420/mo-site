@@ -360,26 +360,29 @@
       });
     </script>
     <script>
-      // Mobile slider logic
+      // Move current outside so it persists
+      let mobileSliderCurrent = 0;
+      let mobileSliderInitialized = false;
+      let wasMobile = window.innerWidth <= 700;
+
       function initMobileSlider() {
         const slider = document.querySelector('.mobile-slider');
         if (!slider) return;
         const slides = Array.from(slider.querySelectorAll('.mobile-slide'));
-        let current = 0;
         let startX = null;
         let isTouching = false;
         const total = slides.length;
 
         function updateSlides() {
           slides.forEach((slide, i) => {
-            slide.style.display = i === current ? 'flex' : 'none';
+            slide.style.display = i === mobileSliderCurrent ? 'flex' : 'none';
             // Update counter text
             const counter = slide.querySelector('.slide-counter');
             if (counter) counter.textContent = `${i+1}/${total}`;
           });
         }
         function goToSlide(idx) {
-          current = (idx + slides.length) % slides.length;
+          mobileSliderCurrent = (idx + slides.length) % slides.length;
           updateSlides();
         }
         // Touch events for swipe
@@ -393,8 +396,8 @@
           if (!isTouching || e.touches.length !== 1) return;
           const dx = e.touches[0].clientX - startX;
           if (Math.abs(dx) > 50) {
-            if (dx < 0) goToSlide(current + 1);
-            else goToSlide(current - 1);
+            if (dx < 0) goToSlide(mobileSliderCurrent + 1);
+            else goToSlide(mobileSliderCurrent - 1);
             isTouching = false;
           }
         });
@@ -404,20 +407,24 @@
         // Keyboard navigation (optional)
         window.addEventListener('keydown', e => {
           if (window.innerWidth > 700) return;
-          if (e.key === 'ArrowLeft') goToSlide(current - 1);
-          if (e.key === 'ArrowRight') goToSlide(current + 1);
+          if (e.key === 'ArrowLeft') goToSlide(mobileSliderCurrent - 1);
+          if (e.key === 'ArrowRight') goToSlide(mobileSliderCurrent + 1);
         });
-        // Show first slide
+        // Show current slide
         updateSlides();
+        mobileSliderInitialized = true;
       }
-      // Only run on mobile
+
       function checkMobileSlider() {
-        if (window.innerWidth <= 700) {
+        const isNowMobile = window.innerWidth <= 700;
+        if (isNowMobile && !mobileSliderInitialized) {
           document.querySelector('.mobile-slider').style.display = 'block';
           initMobileSlider();
-        } else {
+        } else if (!isNowMobile && mobileSliderInitialized) {
           document.querySelector('.mobile-slider').style.display = 'none';
+          mobileSliderInitialized = false;
         }
+        wasMobile = isNowMobile;
       }
       window.addEventListener('DOMContentLoaded', checkMobileSlider);
       window.addEventListener('resize', checkMobileSlider);
