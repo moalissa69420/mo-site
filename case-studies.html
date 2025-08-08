@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Studies</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body { margin: 0; padding: 1.5em 10px; font-family: 'Times New Roman', Times, serif; }
+      .page { max-width: 840px; }
+      h1 { font-size: 0.95rem; margin: 0 0 0.5rem 0; }
+      ul { list-style: none; padding: 0; margin: 0; }
+      li { margin: 0.3rem 0; }
+      a { color: #000; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .meta { font-size: 0.75rem; color: #444; margin-bottom: 0.75rem; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1>Case Studies</h1>
+      <div class="meta">Private case studies. Access requires a password.</div>
+      <ul>
+        <li>
+          <a href="#" id="bello-link">Bello Water Growth Playbook</a>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      (function() {
+        const ACCESS_KEY = 'cs_access_bello';
+        const PASSWORD = '100K';
+        const DEST = 'bello-growth-template.html';
+
+        function haveAccess() {
+          try { return sessionStorage.getItem(ACCESS_KEY) === 'true'; } catch(e) { return false; }
+        }
+        function grantAccess() {
+          try { sessionStorage.setItem(ACCESS_KEY, 'true'); } catch(e) {}
+        }
+
+        document.getElementById('bello-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          if (haveAccess()) { window.location.href = DEST; return; }
+          const input = prompt('Enter password to view:');
+          if (input && input.trim() === PASSWORD) {
+            grantAccess();
+            window.location.href = DEST;
+          } else if (input !== null) {
+            alert('Incorrect password');
+          }
+        });
+      })();
+    </script>
+  </body>
+  </html>

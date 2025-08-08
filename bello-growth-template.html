@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bello Growth Case Study — Template Test</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --index-width: 270px;
+      /* Wider right column to avoid cramped copy */
+      --content-max: 56rem;
+      /* Asset sizing */
+      --asset-max-width: 600px;
+      --asset-max-height: 460px;
+      /* Slider controls */
+      --nav-offset: 16px;
+      --nav-size: 32px;
+      --gutter: 1rem;
+      --muted: #666;
+      --accent: #0064E1;
+      --border: #DBDCE0;
+      --fontSize-default: 14.5px;
+      --lineHeight-default: 1.65;
+    }
+
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size: var(--fontSize-default); line-height: var(--lineHeight-default); }
+    /* Override global site CSS that targets body > div and collapses type */
+    body.cs-template > .cs-wrapper { font-size: var(--fontSize-default) !important; line-height: var(--lineHeight-default) !important; letter-spacing: 0 !important; }
+
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+
+    /* Left index */
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; }
+    .cs-index-title {
+      font-size: 0.8125rem; margin-bottom: 0.25rem;
+    }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
+    .cs-index a .num { color: #333; width: 2.8rem; display: inline-block; text-align: right; }
+    .cs-index a.active { color: var(--accent); }
+
+    /* Sections */
+    .cs-sections { padding: 0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width: min(100%, var(--content-max)); min-height:auto; display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; align-content:start; padding:0.35rem 0; border-bottom:0; }
+    .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; font-weight:400; letter-spacing:0; }
+    .cs-content { width:100%; max-width: var(--content-max); }
+    .cs-meta { color:var(--muted); font-size:0.8125rem; margin:0.1rem 0 0.4rem 0; }
+    .cs-content h1 { font-size:1.0625rem; margin:0 0 0.25rem 0; font-weight:700; letter-spacing: 0; }
+    .cs-content h2 { font-size:0.95rem; margin:0.75rem 0 0.3rem 0; font-weight:700; }
+    .cs-content h3 { font-size:0.9rem; margin:0.5rem 0 0.2rem 0; font-weight:700; }
+    .cs-content p, .cs-content li { font-size:0.9375rem; line-height:1.5; margin:0 0 0.35rem 0; word-break: normal; hyphens: manual; }
+    .cs-content ul { margin:0.25rem 0 0.5rem 1rem; }
+
+    /* Meta header row (Project / Publication) */
+    .meta-row { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; align-items:start; margin:0 0 0.5rem 0; }
+    .meta-col .heading { font-size:0.875rem; font-weight:700; margin:0 0 0.2rem 0; }
+    .meta-col .submeta { color:var(--muted); font-size:0.8125rem; line-height:1.3; }
+
+    /* Single-image slider inside black frame */
+    .frame { width:100%; max-width: calc(var(--asset-max-width) + 2 * (var(--nav-offset) + var(--nav-size))); position:relative; background:#000; padding: 1rem calc(var(--nav-offset) + var(--nav-size)); display:flex; justify-content:center; align-items:center; border: 1px solid #e9e9ec; margin-left: 0.75rem; overflow: visible; box-sizing: border-box; }
+    .frame img.slide { display:none; width:auto; max-width: min(100%, var(--asset-max-width)); max-height: var(--asset-max-height); height:auto; background:#fff; border:1px solid #cfcfd4; box-shadow: 0 0 0 0 transparent; object-fit: contain; }
+    .frame img.slide.active { display:block; }
+    .frame .nav { position:absolute; top:50%; transform:translateY(-50%); width: var(--nav-size); height: var(--nav-size); border-radius: calc(var(--nav-size) / 2); border:1px solid #999; background:rgba(255,255,255,0.9); color:#000; font-size:18px; line-height: calc(var(--nav-size) - 2px); text-align:center; cursor:pointer; z-index:2; }
+    .frame .nav.prev { left: var(--nav-offset); }
+    .frame .nav.next { right: var(--nav-offset); }
+    .frame-caption { font-size:0.75rem; color:#666; margin-top:0.2rem; }
+
+    /* 12-column row layout to mirror reference template */
+    .row { width:100%; display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 1.1rem; row-gap: 0; }
+    .row + .row { margin-top: 0.2rem; }
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .span-5 { grid-column: span 5; }
+    .span-9 { grid-column: span 9; }
+    .grey-caption { color:#777; font-size:0.8125rem; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      :root { --index-width: 11rem; --content-max: 40rem; }
+    }
+    @media (min-width: 1100px) {
+      /* Keep copy from collapsing into a narrow column on wide screens */
+      .cs-content { min-width: 40rem; }
+    }
+    @media (max-width: 700px) {
+      .cs-wrapper { grid-template-columns: 1fr; }
+      .cs-index { position: relative; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+      .cs-sections { padding: 0 0.75rem; }
+      section.cs-page { grid-template-columns: 3rem 1fr; padding: 0.25rem 0; }
+      :root { --nav-offset: 12px; --nav-size: 28px; }
+      .frame { padding: 0.75rem calc(var(--nav-offset) + var(--nav-size)); margin-left: 0; max-width: 96vw; }
+      .frame img.slide { max-width: 92vw; max-height: 56vh; }
+      .cs-content h1 { font-size: 1rem; }
+      .cs-content h2 { font-size: 0.9rem; }
+      .cs-content h3 { font-size: 0.875rem; }
+      .cs-content p, .cs-content li { font-size: 0.8125rem; }
+    }
+  </style>
+</head>
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#info"><span class="num">00.</span> Information</a></li>
+        <li><a href="#ux"><span class="num">01.</span> UX Overhaul</a></li>
+        <li><a href="#email"><span class="num">02.</span> Email Automation</a></li>
+        <li><a href="#quick"><span class="num">03.</span> Capsule Sale</a></li>
+        <li><a href="#ads"><span class="num">04.</span> Meta Ads</a></li>
+        <li><a href="#impact"><span class="num">05.</span> Impact</a></li>
+      </ol>
+    </aside>
+
+    <main class="cs-sections">
+      <!-- 00. Information -->
+      <section id="info" class="cs-page">
+        <div class="cs-num">00.</div>
+        <div class="cs-content">
+          <div class="row" style="margin-bottom:0.25rem;">
+            <div class="span-3"></div>
+            <div class="span-4">Bello Growth<br><span class="grey-caption"><br>Case Study</span></div>
+            <div class="span-5"><span class="grey-caption">Notes / Overview</span></div>
+          </div>
+          <div class="row">
+            <div class="span-3"></div>
+            <div class="span-9">
+              <h1>Bello Growth Case Study: From Startup to Standout</h1>
+              <p class="cs-meta">October 25 – December 31, 2024 · Industry: Water Filtration · Montreal</p>
+              <p>When I joined Bello Water, the brand felt like a bootstrapped startup—$4K–$7K monthly revenue and a disjointed digital presence. In six weeks we rebuilt the growth engine through a UX overhaul, Klaviyo automations, Meta Ads, and a focused capsule sale—driving <strong>$160K in incremental Q4 sales</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 01. UX Overhaul -->
+      <section id="ux" class="cs-page">
+        <div class="cs-num">01.</div>
+        <div class="cs-content">
+          <div class="row">
+            <div class="span-3"></div>
+            <div class="span-9">
+              <h1>UX Overhaul: From Clunky to Compelling</h1>
+              <div class="meta-row" style="margin-top:0.15rem;">
+                <div class="meta-col">
+                  UX Overhaul<br>
+                  <span class="grey-caption"><br>Design / English<br>2024</span>
+                </div>
+                <div class="meta-col">
+                  <span class="grey-caption">Website redesign<br>Case study notes</span>
+                </div>
+              </div>
+              <h3>Challenge</h3>
+              <p>65% bounce, 50s sessions, and a 1.15% conversion rate held back growth.</p>
+              <h3>Action</h3>
+              <ul>
+                <li>Simplified navigation and information architecture.</li>
+                <li>Replaced static banner with a 10s product demo video.</li>
+                <li>Introduced two-column blocks, bold CTAs, and social proof.</li>
+              </ul>
+              <h3>Result</h3>
+              <ul>
+                <li>Bounce ↓ 25%</li>
+                <li>Session ↑ 30%</li>
+                <li>CR ↑ to 3.2% (~$8K Q4)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span-3"></div>
+            <div class="span-9">
+              <div class="frame slider" data-autoplay="true" data-caption-base="UX visuals" aria-label="UX Visuals">
+                <button class="nav prev" aria-label="Previous">‹</button>
+                <img class="slide active" src="assets/UX_rewrite.png" alt="UX Wireframes & IA" />
+                <img class="slide" src="assets/homepage.png" alt="New Homepage design" />
+                <button class="nav next" aria-label="Next">›</button>
+              </div>
+              <div class="frame-caption">1/2 UX visuals</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02. Email Automation -->
+      <section id="email" class="cs-page">
+        <div class="cs-num">02.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+          <h1>Email Automation: Crafting a Polished Customer Journey</h1>
+          <div class="meta-row" style="margin-top:0.15rem;">
+            <div class="meta-col">
+              Email Automation<br>
+              <span class="grey-caption"><br>Klaviyo / English<br>2024</span>
+            </div>
+            <div class="meta-col">
+              <span class="grey-caption">Flows library<br>Case study notes</span>
+            </div>
+          </div>
+          <h3>Challenge</h3>
+          <p>70% cart abandonment and silent lapsed users.</p>
+          <h3>Action</h3>
+          <ul>
+            <li>Abandoned Checkout, Added to Cart, Browse Abandon flows.</li>
+            <li>Post-Purchase with referrals; Replenishment and Win‑Back.</li>
+            <li>Welcome flow with brand video and first‑purchase incentive.</li>
+          </ul>
+          <h3>Result</h3>
+          <ul>
+            <li>Flows = 18% of revenue (~$10K Q4)</li>
+            <li>3.5× ROI on Klaviyo spend</li>
+          </ul>
+          </div></div>
+          <div class="row"><div class="span-3"></div><div class="span-9">
+          <div class="frame slider" data-autoplay="true" data-caption-base="Email flow visuals" aria-label="Email Flow Visuals">
+            <button class="nav prev" aria-label="Previous">‹</button>
+            <img class="slide active" src="assets/Flows_PostPurchase.png" alt="Post‑Purchase flow" />
+            <img class="slide" src="assets/Flows_AddedCart.png" alt="Added to cart flow" />
+            <img class="slide" src="assets/Flows_ViewedProduct.png" alt="Viewed product hint" />
+            <img class="slide" src="assets/Flows_PlacedOrder.png" alt="Placed order flow" />
+            <img class="slide" src="assets/Flows_fullfilledOrder.png" alt="Order fulfilled flow" />
+            <button class="nav next" aria-label="Next">›</button>
+          </div>
+          <div class="frame-caption">1/5 Email flow visuals</div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 03. Capsule Sale -->
+      <section id="quick" class="cs-page">
+        <div class="cs-num">03.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+          <h1>Quick Win: Capsule Sale</h1>
+          <div class="meta-row" style="margin-top:0.15rem;">
+            <div class="meta-col">
+              Capsule Sale<br>
+              <span class="grey-caption"><br>Campaign / English<br>2024</span>
+            </div>
+            <div class="meta-col">
+              <span class="grey-caption">Campaign recap<br>Case study notes</span>
+            </div>
+          </div>
+          <h3>Challenge</h3>
+          <p>Needed immediate revenue lift for a capsule drop.</p>
+          <h3>Action</h3>
+          <ul>
+            <li>VIP email to top 10% LTV.</li>
+            <li>Sticky banner with live countdown.</li>
+            <li>Fast‑turn social posts.</li>
+          </ul>
+          <h3>Result</h3>
+          <ul>
+            <li>$10K in two days.</li>
+          </ul>
+          </div></div>
+          <div class="row"><div class="span-3"></div><div class="span-9">
+          <div class="frame slider" data-autoplay="true" data-caption-base="Capsule sale visuals" aria-label="Capsule Sale Visuals">
+            <button class="nav prev" aria-label="Previous">‹</button>
+            <img class="slide active" src="assets/10K.png" alt="10K revenue screenshot" />
+            <img class="slide" src="assets/clement.png" alt="Co‑founder testimonial" />
+            <img class="slide" src="assets/beeping.png" alt="Sales spike graph" />
+            <button class="nav next" aria-label="Next">›</button>
+          </div>
+          <div class="frame-caption">1/3 Capsule sale visuals</div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 04. Meta Ads -->
+      <section id="ads" class="cs-page">
+        <div class="cs-num">04.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+          <h1>Meta Ads: Recycling with a Sexy, Professional Edge</h1>
+          <div class="meta-row" style="margin-top:0.15rem;">
+            <div class="meta-col">
+              Meta Ads<br>
+              <span class="grey-caption"><br>Acquisition / English<br>2024</span>
+            </div>
+            <div class="meta-col">
+              <span class="grey-caption">Campaign structure<br>Case study notes</span>
+            </div>
+          </div>
+          <h3>Challenge</h3>
+          <p>Legacy Kickstarter assets; ROAS 1.5×; conversion 1.15%.</p>
+          <h3>Action</h3>
+          <ul>
+            <li>Re‑edited video and static assets with consistent branding.</li>
+            <li>Installed and QA’d Meta Pixel; built 1% LAL from top LTV.</li>
+            <li>Split Prospecting vs Retargeting funnels.</li>
+          </ul>
+          <h3>Result</h3>
+          <ul>
+            <li>ROAS ↑ to 2.8×</li>
+            <li>CPA ↓ 35% ($35 → $23)</li>
+            <li>Conversions ↑ 22% (~$52K Q4)</li>
+          </ul>
+          </div></div>
+          <div class="row"><div class="span-3"></div><div class="span-9">
+          <div class="frame slider" data-autoplay="true" data-caption-base="Meta ads visuals" aria-label="Meta Ads Visuals">
+            <button class="nav prev" aria-label="Previous">‹</button>
+            <img class="slide active" src="assets/growth.PNG" alt="Meta campaign overview" />
+            <img class="slide" src="assets/PNG%20image%202.png" alt="Pixel integration" />
+            <img class="slide" src="assets/PNG%20image%205.png" alt="Lookalike setup" />
+            <button class="nav next" aria-label="Next">›</button>
+          </div>
+          <div class="frame-caption">1/3 Meta ads visuals</div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 05. Impact -->
+      <section id="impact" class="cs-page">
+        <div class="cs-num">05.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Impact</h1>
+            <ul>
+              <li>Monthly revenue lifted to $160K in Q4.</li>
+              <li>Conversion rate 3.2% (from 1.15%).</li>
+              <li>Flows contributed 18% of revenue with 3.5× ROI.</li>
+              <li>Meta Ads ROAS 2.8×, +22% conversions.</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Simple client-side guard: check for session access set by case-studies.html
+    (function() {
+      try {
+        const ok = sessionStorage.getItem('cs_access_bello') === 'true';
+        if (!ok) {
+          const input = prompt('Enter password to view:');
+          if (!(input && input.trim() === '100K')) {
+            alert('Incorrect password');
+            window.location.href = 'case-studies.html';
+          } else {
+            sessionStorage.setItem('cs_access_bello', 'true');
+          }
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+  <script>
+    // Highlight active index link while scrolling
+    (function() {
+      const sections = [...document.querySelectorAll('section.cs-page')];
+      const links = [...document.querySelectorAll('.cs-index a')];
+      const map = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
+      const io = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const id = visible.target.id;
+        links.forEach(l => l.classList.toggle('active', l === map[id]));
+      }, { rootMargin: '-40% 0px -50% 0px', threshold: [0.1, 0.25, 0.6] });
+      sections.forEach(s => io.observe(s));
+    })();
+
+    // Single-image slider with buttons + optional autoplay + swipe
+    (function() {
+      const sliders = document.querySelectorAll('.frame.slider');
+      sliders.forEach(slider => {
+        const slides = Array.from(slider.querySelectorAll('img.slide'));
+        const prev = slider.querySelector('.nav.prev');
+        const next = slider.querySelector('.nav.next');
+        let idx = slides.findIndex(s => s.classList.contains('active'));
+        if (idx < 0) idx = 0, slides[0].classList.add('active');
+        let timer = null;
+
+        function show(i) {
+          slides[idx].classList.remove('active');
+          idx = (i + slides.length) % slides.length;
+          slides[idx].classList.add('active');
+          const cap = slider.parentElement.querySelector('.frame-caption');
+          if (cap) cap.textContent = `${idx+1}/${slides.length} ` + cap.textContent.replace(/^\d+\/\d+\s/, '');
+        }
+        prev.addEventListener('click', () => show(idx - 1));
+        next.addEventListener('click', () => show(idx + 1));
+
+        // autoplay
+        if (slider.dataset.autoplay === 'true') {
+          timer = setInterval(() => show(idx + 1), 3500);
+          slider.addEventListener('pointerdown', () => { if (timer) { clearInterval(timer); timer=null; } }, { once:true });
+        }
+
+        // basic swipe
+        let startX = null;
+        slider.addEventListener('touchstart', e => { if (e.touches.length===1) startX = e.touches[0].clientX; });
+        slider.addEventListener('touchend', e => {
+          if (startX == null) return;
+          const dx = (e.changedTouches[0].clientX - startX);
+          if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
+          startX = null;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
