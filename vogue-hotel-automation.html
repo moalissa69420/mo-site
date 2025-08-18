@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vogue Hotel Automation — Case Study</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --index-width: 270px;
+      --content-max: 56rem;
+      --asset-max-width: 600px;
+      --asset-max-height: 460px;
+      --nav-offset: 16px;
+      --nav-size: 32px;
+      --gutter: 1rem;
+      --muted: #666;
+      --accent: #8DFF14; /* user accent green */
+      --border: #EEEEEE; /* user light gray */
+      --fontSize-default: 14.5px;
+      --lineHeight-default: 1.65;
+    }
+
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size: var(--fontSize-default); line-height: var(--lineHeight-default); }
+    body.cs-template > .cs-wrapper { font-size: var(--fontSize-default) !important; line-height: var(--lineHeight-default) !important; letter-spacing: 0 !important; }
+
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; }
+    .cs-index-title { font-size: 0.8125rem; margin-bottom: 0.25rem; }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
+    .cs-index a .num { color: #333; width: 2.8rem; display: inline-block; text-align: right; }
+    .cs-index a.active { color: var(--accent); }
+
+    .cs-sections { padding: 0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width: min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.35rem 0; }
+    .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content { width:100%; max-width: var(--content-max); }
+    .cs-meta { color:var(--muted); font-size:0.8125rem; margin:0.1rem 0 0.4rem 0; }
+    .cs-content h1 { font-size:1.0625rem; margin:0 0 0.25rem 0; font-weight:700; }
+    .cs-content h2 { font-size:0.95rem; margin:0.75rem 0 0.3rem 0; font-weight:700; }
+    .cs-content h3 { font-size:0.9rem; margin:0.5rem 0 0.2rem 0; font-weight:700; }
+    .cs-content p, .cs-content li { font-size:0.9375rem; line-height:1.5; margin:0 0 0.35rem 0; }
+    .cs-content ul { margin:0.25rem 0 0.5rem 1rem; }
+
+    .meta-row { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; align-items:start; margin:0 0 0.5rem 0; }
+    .grey-caption { color:#777; font-size:0.8125rem; }
+
+    /* Simple inline charts */
+    .viz { margin: 0.5rem 0; }
+    .bar-chart { display: grid; grid-template-columns: 10rem 1fr; gap: 0.4rem 0.8rem; align-items: center; }
+    .bar-label { font-size: 0.8125rem; color: #555; }
+    .bar { background: #f5f6f8; border: 1px solid var(--border); height: 10px; position: relative; border-radius: 3px; overflow: hidden; }
+    .bar-fill { background: var(--accent); height: 100%; width: var(--w, 0%); }
+    .bar-note { font-size: 0.75rem; color: #777; margin-left: 0.25rem; }
+
+    /* Line chart (SVG) */
+    .chart-wrap { display:grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items:start; }
+    .chart-box { border:1px solid var(--border); background:#fff; padding:0.75rem; }
+    .chart-title { font-size:0.875rem; font-weight:700; margin:0 0 0.5rem 0; }
+    .chart-legend { display:flex; gap:1rem; font-size:0.75rem; margin:0.25rem 0 0 0; align-items:center; }
+    .legend-swatch { display:inline-block; width:14px; height:4px; margin-right:0.35rem; }
+    .swatch-cons { background:#0E0E0E; }
+    .swatch-real { background:#8DFF14; }
+    .chart-table { border:1px solid var(--border); background:#fff; padding:0.5rem; }
+    .chart-table table { width:100%; border-collapse:collapse; font-size:0.8125rem; }
+    .chart-table th, .chart-table td { padding:0.35rem 0.5rem; border-top:1px solid #EEE; }
+    .chart-table thead th:first-child, .chart-table tbody td:first-child { text-align:left; }
+    .chart-table thead th:nth-child(2), .chart-table thead th:nth-child(3),
+    .chart-table tbody td:nth-child(2), .chart-table tbody td:nth-child(3) { text-align:right; font-variant-numeric: tabular-nums; }
+    .chart-table tbody tr:nth-child(odd) { background:#FAFAFA; }
+    .chart-table thead th { border-top:0; color:#222; font-weight:700; }
+    .chart-note { font-size:0.75rem; color:#4b5563; margin-top:0.5rem; }
+
+    /* Before/After boards */
+    .flow-grid { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; }
+    .flow-panel { border:1px solid var(--border); background:#fff; padding:0.75rem; border-radius:6px; }
+    .flow-title { font-size:0.875rem; font-weight:700; margin:0 0 0.5rem 0; }
+    .flow-steps { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.4rem; }
+    .flow-step { display:flex; align-items:center; gap:0.5rem; background:#fff; border:1px solid var(--border); padding:0.4rem 0.5rem; border-radius:4px; position:relative; }
+    /* Arrow between steps */
+    .flow-steps li + li { margin-top: 0.8rem; }
+    .flow-steps li + li::before { content: "\2193"; position:absolute; top: -0.8rem; left: 50%; transform: translateX(-50%); color: #0E0E0E; font-size: 0.9rem; line-height: 1; }
+    /* Step number badge (white) */
+    .badge { width:1.25rem; height:1.25rem; border-radius:0.25rem; background:#fff; color:#0E0E0E; border:1px solid var(--border); font-size:0.75rem; display:flex; align-items:center; justify-content:center; }
+    .flow-meta { margin-top:0.5rem; font-size:0.75rem; color:#555; font-weight:700; }
+    .impact-cards { display:grid; grid-template-columns: repeat(3, 1fr); gap:0.75rem; margin-top:0.75rem; }
+    .impact-card { border:1px solid var(--border); background:#fff; color:#111; padding:0.9rem; border-radius:10px; text-align:center; }
+    .impact-card > div:first-child { color: #0E0E0E; font-weight:700; font-size:1.05rem; }
+    .impact-card small { display:block; color:#555; margin-top:0.25rem; font-size:0.875rem; }
+
+    /* Operations cards */
+    .ops-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem; }
+    .ops-card { border:1px solid var(--border); background:#fff; padding:0.75rem; border-radius:6px; }
+    .ops-card h4 { margin:0 0 0.5rem 0; font-size:0.875rem; }
+    .pill { display:inline-block; margin-top:0.5rem; background:#fff; color:#0E0E0E; border:1px solid #0E0E0E; font-size:0.75rem; padding:0.3rem 0.5rem; border-radius:4px; }
+    .mini-bars { height:120px; display:flex; align-items:flex-end; gap:1.25rem; padding:0.5rem 0.25rem; border:1px solid var(--border); background:#fff; }
+    .mini-bar { width:36px; background:#0E0E0E; border:1px solid #0E0E0E; }
+    .mini-bar.alt { background:#8DFF14; border:1px solid #0E0E0E; }
+    .mini-x { display:flex; justify-content:space-between; font-size:0.75rem; color:#555; margin-top:0.25rem; }
+
+    /* KPI cards */
+    .kpi-grid { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:0.9rem; }
+    .kpi-card { background:#fff; color:#111; border:1px solid var(--border); border-radius:10px; padding:0.9rem; box-shadow: 0 0 0 0 transparent; }
+    .kpi-card h5 { margin:0 0 0.4rem 0; font-size:0.95rem; color:#111; }
+    .kpi-row { display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; gap:0.5rem; font-size:0.875rem; }
+    .kpi-row .arrow { color: #0E0E0E; font-weight:700; }
+    .kpi-row strong { color: #0E0E0E; }
+
+    .frame { width:100%; max-width: calc(var(--asset-max-width) + 2 * (var(--nav-offset) + var(--nav-size))); position:relative; background:#000; padding: 1rem calc(var(--nav-offset) + var(--nav-size)); display:flex; justify-content:center; align-items:center; border: 1px solid #e9e9ec; margin-left: 0.75rem; overflow: visible; box-sizing: border-box; }
+    .frame img.slide { display:none; width:auto; max-width: min(100%, var(--asset-max-width)); max-height: var(--asset-max-height); height:auto; background:#fff; border:1px solid #cfcfd4; object-fit: contain; }
+    .frame img.slide.active { display:block; }
+    .frame .nav { position:absolute; top:50%; transform:translateY(-50%); width: var(--nav-size); height: var(--nav-size); border-radius: calc(var(--nav-size) / 2); border:1px solid #999; background:rgba(255,255,255,0.9); color:#000; font-size:18px; line-height: calc(var(--nav-size) - 2px); text-align:center; cursor:pointer; z-index:2; }
+    .frame .nav.prev { left: var(--nav-offset); }
+    .frame .nav.next { right: var(--nav-offset); }
+    .frame-caption { font-size:0.75rem; color:#666; margin-top:0.2rem; }
+
+    .row { width:100%; display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 1.1rem; }
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .span-5 { grid-column: span 5; }
+    .span-9 { grid-column: span 9; }
+
+    @media (max-width: 900px) { :root { --index-width: 11rem; --content-max: 40rem; } }
+    @media (min-width: 1100px) { .cs-content { min-width: 40rem; } }
+    @media (max-width: 700px) {
+      .cs-wrapper { grid-template-columns: 1fr; }
+      .cs-index { position: relative; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+      .cs-sections { padding: 0 0.75rem; }
+      section.cs-page { grid-template-columns: 3rem 1fr; padding: 0.25rem 0; }
+      :root { --nav-offset: 12px; --nav-size: 28px; }
+      .frame { padding: 0.75rem calc(var(--nav-offset) + var(--nav-size)); margin-left: 0; max-width: 96vw; }
+      .frame img.slide { max-width: 92vw; max-height: 56vh; }
+      .cs-content h1 { font-size: 1rem; }
+      .cs-content h2 { font-size: 0.9rem; }
+      .cs-content h3 { font-size: 0.875rem; }
+      .cs-content p, .cs-content li { font-size: 0.8125rem; }
+    }
+    @media (max-width: 900px) { .kpi-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .kpi-grid { grid-template-columns: 1fr; } }
+
+    /* Print styles */
+    @media print {
+      .cs-index { display:none !important; }
+      .cs-wrapper { grid-template-columns: 1fr !important; }
+      body.cs-template { font-size: 12px; color:#000; }
+      a[href]::after { content: " (" attr(href) ")"; font-size: 0.7em; }
+      .frame, .ops-card, .flow-panel, .kpi-card, .chart-box, .chart-table { border-color:#000 !important; }
+    }
+  </style>
+</head>
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#info"><span class="num">00.</span> Information</a></li>
+        <li><a href="#exec"><span class="num">01.</span> Executive Summary</a></li>
+        <li><a href="#about"><span class="num">02.</span> About Vogue Hotel</a></li>
+        <li><a href="#market"><span class="num">03.</span> Montreal Market</a></li>
+        <li><a href="#opportunities"><span class="num">04.</span> Opportunities</a></li>
+        <li><a href="#automation"><span class="num">05.</span> Automation Scope</a></li>
+        <li><a href="#guest"><span class="num">06.</span> Guest Experience</a></li>
+        <li><a href="#operations"><span class="num">07.</span> Operations Automation</a></li>
+        <li><a href="#impact"><span class="num">08.</span> Impact</a></li>
+        <li><a href="#marketing"><span class="num">09.</span> Marketing & Revenue</a></li>
+        <li><a href="#workflows"><span class="num">10.</span> Before / After</a></li>
+        <li><a href="#stack"><span class="num">11.</span> Tech Stack</a></li>
+        <li><a href="#roadmap"><span class="num">12.</span> Roadmap</a></li>
+        <li><a href="#pilot"><span class="num">13.</span> 30‑Day Pilot</a></li>
+        <li><a href="#roi"><span class="num">14.</span> ROI Analysis</a></li>
+        <li><a href="#kpis"><span class="num">15.</span> Success Metrics</a></li>
+        <li><a href="#training"><span class="num">16.</span> Staff & Training</a></li>
+        <li><a href="#risk"><span class="num">17.</span> Risk & Mitigation</a></li>
+        <li><a href="#quickwins"><span class="num">18.</span> 30/60/90</a></li>
+        
+      </ol>
+    </aside>
+
+    <main class="cs-sections">
+      <!-- 00. Information -->
+      <section id="info" class="cs-page">
+        <div class="cs-num">00.</div>
+        <div class="cs-content">
+          <div class="row" style="margin-bottom:0.25rem;">
+            <div class="span-3"></div>
+            <div class="span-4">Vogue Hotel Montreal<br><span class="grey-caption"><br>Automation Case Study</span></div>
+            <div class="span-5"><span class="grey-caption">Strategic Implementation Plan — August 2025</span></div>
+          </div>
+          <div class="row">
+            <div class="span-3"></div>
+            <div class="span-9">
+              <h1>Smart Automation Strategy</h1>
+              <p class="cs-meta">2025 · Industry: Hospitality · Montreal</p>
+              <p>Maximizing revenue, efficiency, and guest experience through thoughtful automation across the entire guest journey.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 01. Executive Summary -->
+      <section id="exec" class="cs-page">
+        <div class="cs-num">01.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Executive Summary</h1>
+            <ul>
+              <li><strong>150–250%</strong> conservative Year‑1 ROI</li>
+              <li><strong>$25K–$75K</strong> expected annual returns</li>
+              <li><strong>4–8 months</strong> payback period</li>
+              <li><strong>15–25%</strong> increase in direct bookings</li>
+            </ul>
+            <h3>Key Opportunities</h3>
+            <ul>
+              <li>WhatsApp & Instagram automation for instant guest communication</li>
+              <li>Smart housekeeping coordination (−60% manual back‑and‑forth)</li>
+              <li>Email marketing sequences to shift bookings away from OTAs</li>
+              <li>Revenue management tuned to Montreal’s seasonal patterns</li>
+              <li>Social media automation showcasing YAMA and Golden Square Mile</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 02. About Vogue Hotel -->
+      <section id="about" class="cs-page">
+        <div class="cs-num">02.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>About Vogue Hotel Montreal</h1>
+            <ul>
+              <li><strong>142 rooms</strong> · Boutique luxury property</li>
+              <li><strong>Golden Square Mile</strong> · Prime Montreal location</li>
+              <li><strong>Curio Collection</strong> by Hilton</li>
+              <li><strong>2023 renovation</strong> · Fresh, modern facilities</li>
+            </ul>
+            <h3>What You’re Already Doing Right</h3>
+            <ul>
+              <li>YAMA Restaurant (Chef Antonio Park) draws destination diners</li>
+              <li>Strong reviews (4.7/5 TripAdvisor)</li>
+              <li>Perfect location and recent investment</li>
+              <li>Hilton brand power and loyalty benefits</li>
+              <li>Green Key Global certification</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 03. Montreal Market -->
+      <section id="market" class="cs-page">
+        <div class="cs-num">03.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Montreal Market Context</h1>
+            <ul>
+              <li><strong>73%</strong> occupancy; <strong>19.8%</strong> ADR growth since 2019</li>
+              <li><strong>+7%</strong> tourism in 2024; <strong>4.6%</strong> supply growth</li>
+              <li>International growth: Korea +63%, China +46%, Japan +16%</li>
+            </ul>
+            <h3>Competition</h3>
+            <ul>
+              <li>William Gray, Place d’Armes, Le Mount Stephen, Nelligan</li>
+              <li>Traditional ops; limited automation—opportunity to lead</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 04. Opportunities -->
+      <section id="opportunities" class="cs-page">
+        <div class="cs-num">04.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Where We See the Biggest Opportunities</h1>
+            <h3>Current Strengths</h3>
+            <ul>
+              <li>Hilton mobile check‑in and established PMS</li>
+              <li>Strong reputation, renovation, prime location</li>
+            </ul>
+            <h3>Quick Wins</h3>
+            <ul>
+              <li>Enable WhatsApp guest service; reduce phone/email lag</li>
+              <li>Digitize housekeeping coordination; fewer manual handoffs</li>
+              <li>Automate social posting and review responses</li>
+              <li>Personalize email; add upsell automations</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 05. Automation Scope -->
+      <section id="automation" class="cs-page">
+        <div class="cs-num">05.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Automation Scope</h1>
+            <div class="meta-row" style="margin-top:0.15rem;">
+              <div class="meta-col">Marketing & Ops<br><span class="grey-caption"><br>CRM / PMS / CDP</span></div>
+              <div class="meta-col"><span class="grey-caption">Journeys & triggers</span></div>
+            </div>
+            <ul>
+              <li>Pre‑arrival upsell offers (late checkout, room upgrade, spa).</li>
+              <li>On‑property concierge nudges via SMS/WhatsApp.</li>
+              <li>Post‑stay NPS and review routing; win‑back.</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 06. Guest Experience -->
+      <section id="guest" class="cs-page">
+        <div class="cs-num">06.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Guest Experience Revolution</h1>
+            <h3>Pre‑Arrival</h3>
+            <ul>
+              <li>Automated welcome 48h prior with preferences and YAMA prompts</li>
+              <li>WhatsApp check‑in option; personalized recs</li>
+              <li><strong>+25%</strong> pre‑arrival upsells</li>
+            </ul>
+            <h3>Arrival</h3>
+            <ul>
+              <li>Express mobile check‑in, digital key, instant Wi‑Fi</li>
+              <li>Area guide and concierge bot</li>
+              <li><strong>60%</strong> faster check‑in</li>
+            </ul>
+            <h3>During Stay</h3>
+            <ul>
+              <li>24/7 WhatsApp concierge; instant housekeeping requests</li>
+              <li>Real‑time issue routing; activity suggestions</li>
+              <li><strong>90%</strong> queries handled instantly</li>
+            </ul>
+            <h3>Post‑Stay</h3>
+            <ul>
+              <li>Automated thank‑you, simple feedback, return incentives</li>
+              <li>Local offers (YAMA) and social prompts</li>
+              <li><strong>+30%</strong> repeat bookings</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 07. Operations Automation -->
+      <section id="operations" class="cs-page">
+        <div class="cs-num">07.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Operations Automation</h1>
+            <h3>Smart Housekeeping</h3>
+            <ul>
+              <li>Real‑time room status; auto task assignment; inventory alerts</li>
+              <li><strong>+20%</strong> efficiency improvement</li>
+            </ul>
+            <h3>Maintenance</h3>
+            <ul>
+              <li>Preventive schedules; automated work orders; escalation</li>
+              <li><strong>−40%</strong> emergency repairs</li>
+            </ul>
+            <h3>Team Coordination</h3>
+            <ul>
+              <li>Optimized shifts; inter‑dept comms; performance metrics</li>
+              <li><strong>+25%</strong> team satisfaction</li>
+            </ul>
+            <div class="ops-grid">
+              <div class="ops-card">
+                <h4>Smart Housekeeping</h4>
+                <div class="mini-bars" aria-label="Hours per day comparison">
+                  <div class="mini-bar" style="height:90px" title="Current manual"></div>
+                  <div class="mini-bar alt" style="height:75px" title="With automation"></div>
+                </div>
+                <div class="mini-x"><span>Current Manual</span><span>With Automation</span></div>
+                <div class="pill">20% efficiency improvement</div>
+              </div>
+              <div class="ops-card">
+                <h4>Maintenance Coordination</h4>
+                <ul>
+                  <li>Preventive scheduling; auto work orders</li>
+                  <li>Vendor workflows; escalation protocols</li>
+                  <li>Cost tracking and budgeting</li>
+                </ul>
+                <div class="pill">Reduce emergency repairs by 40%</div>
+              </div>
+              <div class="ops-card">
+                <h4>Team Coordination</h4>
+                <ul>
+                  <li>Shift optimization and task prioritization</li>
+                  <li>Inter‑department communication</li>
+                  <li>Performance dashboard and recognition</li>
+                </ul>
+                <div class="pill">Improve team satisfaction by 25%</div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 08. Impact -->
+      <section id="impact" class="cs-page">
+        <div class="cs-num">08.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Impact</h1>
+            <ul>
+              <li>Ancillary revenue +18% from pre‑arrival upsells.</li>
+              <li>NPS +12 points; review volume +40% with routing.</li>
+              <li>Front‑desk tickets −22% via proactive concierge nudges.</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 09. Marketing & Revenue -->
+      <section id="marketing" class="cs-page">
+        <div class="cs-num">09.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Marketing & Revenue Automation</h1>
+            <h3>Direct Booking Campaign</h3>
+            <ul>
+              <li>Email sequences, social campaigns, rate parity monitoring</li>
+              <li>Perks for direct bookers (YAMA, late checkout)</li>
+              <li><strong>+15–25%</strong> direct bookings</li>
+            </ul>
+            <h3>Email Sequences</h3>
+            <ul>
+              <li>Welcome series, seasonal promos, abandoned booking recovery</li>
+              <li>Review requests and offers</li>
+              <li><strong>30%</strong> open rate; <strong>8%</strong> conversion</li>
+            </ul>
+            <h3>Social Automation</h3>
+            <ul>
+              <li>Stories for YAMA; events; UGC resharing; DM automation</li>
+              <li><strong>+50%</strong> social engagement</li>
+            </ul>
+          </div></div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 10. Before / After -->
+      <section id="workflows" class="cs-page">
+        <div class="cs-num">10.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Before / After Workflows</h1>
+            <div class="flow-grid">
+              <div class="flow-panel">
+                <div class="flow-title">Guest Service Request — Current Process</div>
+                <ol class="flow-steps">
+                  <li class="flow-step"><span class="badge">1</span>Guest calls front desk</li>
+                  <li class="flow-step"><span class="badge">2</span>Front desk takes message</li>
+                  <li class="flow-step"><span class="badge">3</span>Call or text housekeeping</li>
+                  <li class="flow-step"><span class="badge">4</span>Housekeeping responds when available</li>
+                  <li class="flow-step"><span class="badge">5</span>Manual follow‑up with guest</li>
+                </ol>
+                <div class="flow-meta">Average time: 45–90 minutes</div>
+              </div>
+              <div class="flow-panel">
+                <div class="flow-title">Guest Service Request — Automated Process</div>
+                <ol class="flow-steps">
+                  <li class="flow-step"><span class="badge">1</span>Guest messages WhatsApp</li>
+                  <li class="flow-step"><span class="badge">2</span>Auto‑categorization & routing</li>
+                  <li class="flow-step"><span class="badge">3</span>Instant notification to relevant team</li>
+                  <li class="flow-step"><span class="badge">4</span>Automated status updates to guest</li>
+                  <li class="flow-step"><span class="badge">5</span>Completion confirmation & feedback request</li>
+                </ol>
+                <div class="flow-meta">Average time: 15–20 minutes</div>
+              </div>
+            </div>
+            <div class="impact-cards">
+              <div class="impact-card"><div>70%</div><small>Faster response time</small></div>
+              <div class="impact-card"><div>85%</div><small>First‑contact resolution</small></div>
+              <div class="impact-card"><div>40%</div><small>Reduction in follow‑up calls</small></div>
+            </div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 09. Tech Stack -->
+      <section id="stack" class="cs-page">
+        <div class="cs-num">09.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Technology Stack & Integration</h1>
+            <h3>Guest‑Facing</h3>
+            <ul>
+              <li>WhatsApp Business API, Instagram Messaging, Website Chat, Email</li>
+            </ul>
+            <h3>Automation Engine</h3>
+            <ul>
+              <li>n8n, Zapier, chatbot builder, social scheduler</li>
+            </ul>
+            <h3>Core Integration</h3>
+            <ul>
+              <li>Hilton OnQ PMS, channel manager, revenue tools, analytics</li>
+            </ul>
+            <h3>Why This Works</h3>
+            <ul>
+              <li>Hilton‑compatible, scalable, user‑friendly, cost‑effective, reliable</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 10. Roadmap -->
+      <section id="roadmap" class="cs-page">
+        <div class="cs-num">10.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Implementation Roadmap</h1>
+            <h3>Phase 1 (Months 1–2): Foundation</h3>
+            <ul>
+              <li>WhatsApp setup, basic automation, welcome emails, social scheduling</li>
+              <li><strong>60%</strong> faster guest response</li>
+            </ul>
+            <h3>Phase 2 (Months 3–4): Operations</h3>
+            <ul>
+              <li>Housekeeping automation, maintenance workflows, comms & analytics</li>
+              <li><strong>+20%</strong> operational efficiency</li>
+            </ul>
+            <h3>Phase 3 (Months 5–6): Revenue</h3>
+            <ul>
+              <li>Advanced email, direct booking optimization, revenue automation</li>
+              <li><strong>+15–25%</strong> direct bookings</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 11. 30‑Day Pilot -->
+      <section id="pilot" class="cs-page">
+        <div class="cs-num">11.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Suggested 30‑Day Pilot: WhatsApp Guest Service</h1>
+            <h3>Week 1</h3>
+            <ul>
+              <li>WhatsApp Business setup, basic bot, staff training, PMS integration</li>
+            </ul>
+            <h3>Weeks 2–3</h3>
+            <ul>
+              <li>Soft launch to 50% of guests; monitor response and satisfaction</li>
+            </ul>
+            <h3>Week 4</h3>
+            <ul>
+              <li>Full launch; measure call volume, guest scores, time savings</li>
+            </ul>
+            <h3>Pilot Investment</h3>
+            <ul>
+              <li>WhatsApp API ~$200/mo; chatbot ~$100/mo; setup/training ~$1,500</li>
+              <li><strong>Total 30‑day:</strong> $2,000–$3,000</li>
+            </ul>
+            <h3>Expected 30‑Day Results</h3>
+            <ul>
+              <li>−40% front desk calls; < 5‑minute average response</li>
+              <li>85%+ guest satisfaction; 2–3 hours daily staff savings</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 12. ROI Analysis -->
+      <section id="roi" class="cs-page">
+        <div class="cs-num">12.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Conservative ROI Analysis (12 Months)</h1>
+            <ul>
+              <li>Direct booking increase (15–25%): <strong>$15K (cons.) → $35K (real.)</strong></li>
+              <li>Operational savings: <strong>$8K → $18K</strong></li>
+              <li>Upselling automation: <strong>$5K → $12K</strong></li>
+              <li>Total benefits: <strong>$28K → $65K</strong></li>
+              <li>Investment: <strong>$15K → $25K</strong></li>
+              <li>Net ROI: <strong>187% → 260%</strong> · Payback: <strong>4–8 months</strong></li>
+            </ul>
+            <div class="chart-wrap" aria-label="12-Month ROI Projection and Financial Breakdown">
+              <div class="chart-box">
+                <div class="chart-title">12‑Month ROI Projection</div>
+                <svg viewBox="0 0 380 220" width="100%" height="auto" role="img" aria-label="ROI line chart">
+                  <defs>
+                    <clipPath id="clipChart"><rect x="40" y="10" width="320" height="180"/></clipPath>
+                  </defs>
+                  <line x1="40" y1="190" x2="360" y2="190" stroke="#EEEEEE" stroke-width="1"/>
+                  <line x1="40" y1="10" x2="40" y2="190" stroke="#EEEEEE" stroke-width="1"/>
+                  <g stroke="#EEEEEE" stroke-width="1">
+                    <line x1="40" y1="150" x2="360" y2="150"/>
+                    <line x1="40" y1="110" x2="360" y2="110"/>
+                    <line x1="40" y1="70" x2="360" y2="70"/>
+                    <line x1="40" y1="30" x2="360" y2="30"/>
+                  </g>
+                  <g clip-path="url(#clipChart)">
+                    <path d="M40,185 L70,160 L100,120 L160,100 L220,85 L290,75 L360,65" fill="none" stroke="#0E0E0E" stroke-width="2.5"/>
+                    <path d="M40,185 L70,145 L100,90 L160,60 L220,45 L290,40 L360,35" fill="none" stroke="#8DFF14" stroke-width="2.5"/>
+                  </g>
+                  <g font-size="10" fill="#0E0E0E">
+                    <text x="55" y="205">Month 1</text>
+                    <text x="90" y="205">Month 2</text>
+                    <text x="140" y="205">Month 3</text>
+                    <text x="200" y="205">Month 6</text>
+                    <text x="260" y="205">Month 9</text>
+                    <text x="320" y="205">Month 12</text>
+                  </g>
+                </svg>
+                <div class="chart-legend">
+                  <span><span class="legend-swatch swatch-cons"></span>Conservative ROI</span>
+                  <span><span class="legend-swatch swatch-real"></span>Realistic ROI</span>
+                </div>
+              </div>
+              <div class="chart-box chart-table">
+                <div class="chart-title">Financial Impact Breakdown</div>
+                <table aria-label="Financial Impact Breakdown">
+                  <thead>
+                    <tr><th>Revenue Source</th><th>Conservative</th><th>Realistic</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Direct booking increase (15–25%)</td><td>$15,000</td><td>$35,000</td></tr>
+                    <tr><td>Operational savings</td><td>$8,000</td><td>$18,000</td></tr>
+                    <tr><td>Upselling automation</td><td>$5,000</td><td>$12,000</td></tr>
+                    <tr><td><strong>Total Benefits</strong></td><td><strong>$28,000</strong></td><td><strong>$65,000</strong></td></tr>
+                    <tr><td>Investment</td><td>$15,000</td><td>$25,000</td></tr>
+                    <tr><td><strong>Net ROI</strong></td><td><strong>187%</strong></td><td><strong>260%</strong></td></tr>
+                  </tbody>
+                </table>
+                <div class="chart-note">Payback Period: 4–8 months · Conservative estimates based on similar boutique hotel implementations in Montreal</div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 13. Success Metrics -->
+      <section id="kpis" class="cs-page">
+        <div class="cs-num">13.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Success Metrics & KPIs</h1>
+            <h3>Guest Experience</h3>
+            <ul>
+              <li>Response time: 2–4 hours → <strong>< 10 minutes</strong></li>
+              <li>Guest satisfaction: 4.7/5 → <strong>4.9/5</strong></li>
+              <li>Query resolution: Manual → <strong>80% automated</strong></li>
+            </ul>
+            <h3>Revenue</h3>
+            <ul>
+              <li>Direct booking rate: 35% → <strong>50–60%</strong></li>
+              <li>Email open rate: 18% → <strong>28–32%</strong></li>
+              <li>Upsell success: 8% → <strong>18–25%</strong></li>
+            </ul>
+            <h3>Operations</h3>
+            <ul>
+              <li>Staff time: +3–4 hours/day saved</li>
+              <li>Housekeeping efficiency: <strong>+20%</strong></li>
+              <li>Review response: 3–5 days → <strong>same day</strong></li>
+            </ul>
+            <div class="kpi-grid" aria-label="KPI Cards">
+              <div class="kpi-card">
+                <h5>Average Response Time</h5>
+                <div class="kpi-row"><span>2–4 hours</span><span class="arrow">→</span><span><strong>< 10 minutes</strong></span></div>
+              </div>
+              <div class="kpi-card">
+                <h5>Guest Satisfaction Score</h5>
+                <div class="kpi-row"><span>4.7/5</span><span class="arrow">→</span><span><strong>4.9/5</strong></span></div>
+              </div>
+              <div class="kpi-card">
+                <h5>Query Resolution</h5>
+                <div class="kpi-row"><span>Manual</span><span class="arrow">→</span><span><strong>80% automated</strong></span></div>
+              </div>
+              <div class="kpi-card">
+                <h5>Direct Booking Rate</h5>
+                <div class="kpi-row"><span>35%</span><span class="arrow">→</span><span><strong>50–60%</strong></span></div>
+              </div>
+              <div class="kpi-card">
+                <h5>Email Open Rate</h5>
+                <div class="kpi-row"><span>18%</span><span class="arrow">→</span><span><strong>28–32%</strong></span></div>
+              </div>
+              <div class="kpi-card">
+                <h5>Upsell Success Rate</h5>
+                <div class="kpi-row"><span>8%</span><span class="arrow">→</span><span><strong>18–25%</strong></span></div>
+              </div>
+              <div class="kpi-card">
+                <h5>Staff Time Savings</h5>
+                <div class="kpi-row"><span>Baseline</span><span class="arrow">→</span><span><strong>3–4 hours/day</strong></span></div>
+              </div>
+              <div class="kpi-card">
+                <h5>Housekeeping Efficiency</h5>
+                <div class="kpi-row"><span>Baseline</span><span class="arrow">→</span><span><strong>+20%</strong></span></div>
+              </div>
+              <div class="kpi-card">
+                <h5>Review Response Time</h5>
+                <div class="kpi-row"><span>3–5 days</span><span class="arrow">→</span><span><strong>Same day</strong></span></div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 14. Staff & Training -->
+      <section id="training" class="cs-page">
+        <div class="cs-num">14.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Staff Impact & Training Plan</h1>
+            <h3>Front Desk</h3>
+            <ul>
+              <li>Fewer repetitive calls; more guest face time; logged interactions</li>
+            </ul>
+            <h3>Housekeeping</h3>
+            <ul>
+              <li>Clear priorities; fewer phone tags; performance recognition</li>
+            </ul>
+            <h3>Management</h3>
+            <ul>
+              <li>Real‑time insights; proactive ops; more time for strategy</li>
+            </ul>
+            <h3>Training & Support</h3>
+            <ul>
+              <li>Week 1: team intro, demos, Q&A, champions</li>
+              <li>Weeks 2–3: dept training, practice scenarios, coaching, guides</li>
+              <li>Week 4+: daily check‑ins, weekly feedback, continuous improvement</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 15. Risk & Mitigation -->
+      <section id="risk" class="cs-page">
+        <div class="cs-num">15.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Risk Management & Mitigation</h1>
+            <ul>
+              <li>Staff resistance → phased rollout, champions, benefits emphasized</li>
+              <li>Guest adoption → offer both options; make new better, not mandatory</li>
+              <li>Tech integration → staged testing, backups, 24/7 support</li>
+            </ul>
+            <h3>Contingency</h3>
+            <ul>
+              <li>Rollback capability, parallel ops, extra support, 20% budget buffer</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- 16. 30/60/90 -->
+      <section id="quickwins" class="cs-page">
+        <div class="cs-num">16.</div>
+        <div class="cs-content">
+          <div class="row"><div class="span-3"></div><div class="span-9">
+            <h1>Quick Wins: 30 / 60 / 90 Days</h1>
+            <h3>30 Days</h3>
+            <ul>
+              <li>WhatsApp setup (impact: 50% faster responses)</li>
+              <li>Basic email automation (impact: +25% prep)</li>
+              <li>Social scheduling (impact: 3× consistency)</li>
+            </ul>
+            <h3>60 Days</h3>
+            <ul>
+              <li>Housekeeping coordination (+25% efficiency)</li>
+              <li>Guest request routing (−70% service time)</li>
+              <li>Review response automation (same‑day)</li>
+            </ul>
+            <h3>90 Days</h3>
+            <ul>
+              <li>Direct booking campaigns (+20% direct)</li>
+              <li>Upselling automation (+15% RevPG)</li>
+              <li>Montreal events integration (+10% occupancy at events)</li>
+            </ul>
+          </div></div>
+        </div>
+      </section>
+
+      
+    </main>
+  </div>
+
+  <script>
+    (function() {
+      try {
+        const ok = sessionStorage.getItem('cs_access_bello') === 'true';
+        if (!ok) {
+          const input = prompt('Enter password to view:');
+          if (!(input && input.trim() === '100K')) {
+            alert('Incorrect password');
+            window.location.href = 'case-studies.html';
+          } else {
+            sessionStorage.setItem('cs_access_bello', 'true');
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script>
+    (function() {
+      // Highlight active index link while scrolling
+      const sections = [...document.querySelectorAll('section.cs-page')];
+      const links = [...document.querySelectorAll('.cs-index a')];
+      const map = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
+      const io = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const id = visible.target.id;
+        links.forEach(l => l.classList.toggle('active', l === map[id]));
+      }, { rootMargin: '-40% 0px -50% 0px', threshold: [0.1, 0.25, 0.6] });
+      sections.forEach(s => io.observe(s));
+
+      // Single-image slider with buttons + optional autoplay + swipe
+      const sliders = document.querySelectorAll('.frame.slider');
+      sliders.forEach(slider => {
+        const slides = Array.from(slider.querySelectorAll('img.slide'));
+        const prev = slider.querySelector('.nav.prev');
+        const next = slider.querySelector('.nav.next');
+        let idx = slides.findIndex(s => s.classList.contains('active'));
+        if (idx < 0) idx = 0, slides[0].classList.add('active');
+        let timer = null;
+        function show(i) {
+          slides[idx].classList.remove('active');
+          idx = (i + slides.length) % slides.length;
+          slides[idx].classList.add('active');
+          const cap = slider.parentElement.querySelector('.frame-caption');
+          if (cap) cap.textContent = `${idx+1}/${slides.length} ` + cap.textContent.replace(/^[0-9]+\/[0-9]+\s/, '');
+        }
+        prev.addEventListener('click', () => show(idx - 1));
+        next.addEventListener('click', () => show(idx + 1));
+        if (slider.dataset.autoplay === 'true') {
+          timer = setInterval(() => show(idx + 1), 3500);
+          slider.addEventListener('pointerdown', () => { if (timer) { clearInterval(timer); timer=null; } }, { once:true });
+        }
+
+        // basic swipe
+        let startX = null;
+        slider.addEventListener('touchstart', e => { if (e.touches.length===1) startX = e.touches[0].clientX; });
+        slider.addEventListener('touchend', e => {
+          if (startX == null) return;
+          const dx = (e.changedTouches[0].clientX - startX);
+          if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
+          startX = null;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+

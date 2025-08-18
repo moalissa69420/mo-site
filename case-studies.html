@@ -24,6 +24,9 @@
         <li>
           <a href="#" id="bello-link">Bello Water Growth Playbook</a>
         </li>
+        <li>
+          <a href="#" id="vogue-link">Vogue Hotel Automation</a>
+        </li>
       </ul>
     </div>
 
@@ -47,6 +50,18 @@
           if (input && input.trim() === PASSWORD) {
             grantAccess();
             window.location.href = DEST;
+          } else if (input !== null) {
+            alert('Incorrect password');
+          }
+        });
+        // Vogue Hotel Automation
+        document.getElementById('vogue-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          if (haveAccess()) { window.location.href = 'vogue-hotel-automation.html'; return; }
+          const input = prompt('Enter password to view:');
+          if (input && input.trim() === PASSWORD) {
+            grantAccess();
+            window.location.href = 'vogue-hotel-automation.html';
           } else if (input !== null) {
             alert('Incorrect password');
           }
