@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maket AI Growth Playbook — Case Study</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --index-width: 270px; --content-max: 56rem; --border:#EEEEEE; --accent:#8DFF14; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size:14.5px; line-height:1.65; }
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; }
+    .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
+    .cs-index a .num { color:#333; width:2.8rem; display:inline-block; text-align:right; }
+    .cs-index a.active { color: var(--accent); }
+    .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.35rem 0; }
+    .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content h1 { font-size:1.0625rem; margin:0 0 0.25rem 0; font-weight:700; }
+    .cs-content h3 { font-size:0.9rem; margin:0.5rem 0 0.2rem 0; font-weight:700; }
+    .cs-content ul { margin:0.25rem 0 0.5rem 1rem; }
+    .chart-box { border:1px solid var(--border); background:#fff; padding:0.75rem; }
+    .chart-title { font-size:0.875rem; font-weight:700; margin:0 0 0.5rem 0; }
+    .chart-table { border:1px solid var(--border); background:#fff; padding:0.5rem; }
+    .chart-table table { width:100%; border-collapse:collapse; font-size:0.8125rem; }
+    .chart-table th, .chart-table td { padding:0.35rem 0.5rem; border-top:1px solid #EEE; }
+    .chart-table tbody tr:nth-child(odd){ background:#FAFAFA; }
+    .kpi-grid { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:0.9rem; }
+    .kpi-card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:0.9rem; }
+    .kpi-card h5 { margin:0 0 0.4rem 0; font-size:0.95rem; }
+    .kpi-row { display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; gap:0.5rem; font-size:0.875rem; }
+    .kpi-row .arrow { color:#0E0E0E; font-weight:700; }
+    @media (max-width: 700px) { .cs-wrapper{ grid-template-columns:1fr;} .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;} .kpi-grid{ grid-template-columns:1fr;} }
+    @media (max-width: 900px) { .kpi-grid{ grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#info"><span class="num">00.</span> Information</a></li>
+        <li><a href="#summary"><span class="num">01.</span> Summary</a></li>
+        <li><a href="#levers"><span class="num">02.</span> Growth Levers</a></li>
+        <li><a href="#roi"><span class="num">03.</span> ROI & Economics</a></li>
+        <li><a href="#kpis"><span class="num">04.</span> KPIs</a></li>
+      </ol>
+    </aside>
+    <main class="cs-sections">
+      <section id="info" class="cs-page">
+        <div class="cs-num">00.</div>
+        <div class="cs-content">
+          <h1>Maket AI Growth Playbook</h1>
+          <p class="cs-meta">2025 · Industry: AI/Design · Toronto</p>
+          <p>Strategy and experiments to scale Maket AI across acquisition, activation, and expansion—coded in the same format as the Vogue case study with clean tables and charts.</p>
+        </div>
+      </section>
+      <section id="summary" class="cs-page">
+        <div class="cs-num">01.</div>
+        <div class="cs-content">
+          <h1>Executive Summary</h1>
+          <ul>
+            <li>Refine ICP segments; tailor onboarding per segment.</li>
+            <li>Content + community engine for architects/designers.</li>
+            <li>Pricing/packaging experiments to lift ARPA.</li>
+          </ul>
+        </div>
+      </section>
+      <section id="levers" class="cs-page">
+        <div class="cs-num">02.</div>
+        <div class="cs-content">
+          <h1>Growth Levers</h1>
+          <ul>
+            <li>Education funnel: tutorials → templates → projects.</li>
+            <li>Partner channels: schools, BIM libraries, marketplaces.</li>
+            <li>Activation: guided workflows and template gallery.</li>
+          </ul>
+        </div>
+      </section>
+      <section id="roi" class="cs-page">
+        <div class="cs-num">03.</div>
+        <div class="cs-content">
+          <h1>ROI & Unit Economics</h1>
+          <div class="chart-box">
+            <div class="chart-title">12‑Month Projection (illustrative)</div>
+            <svg viewBox="0 0 380 220" width="100%" height="auto" role="img" aria-label="ARR projection">
+              <defs><clipPath id="clipA"><rect x="40" y="10" width="320" height="180"/></clipPath></defs>
+              <line x1="40" y1="190" x2="360" y2="190" stroke="#EEEEEE"/>
+              <line x1="40" y1="10" x2="40" y2="190" stroke="#EEEEEE"/>
+              <g stroke="#EEEEEE"><line x1="40" y1="150" x2="360" y2="150"/><line x1="40" y1="110" x2="360" y2="110"/></g>
+              <g clip-path="url(#clipA)">
+                <path d="M40,185 L80,170 L120,150 L180,120 L240,95 L300,80 L360,70" fill="none" stroke="#0E0E0E" stroke-width="2.5"/>
+                <path d="M40,185 L80,165 L120,135 L180,95 L240,70 L300,55 L360,45" fill="none" stroke="#8DFF14" stroke-width="2.5"/>
+              </g>
+            </svg>
+          </div>
+          <div class="chart-table" style="margin-top:0.5rem;">
+            <div class="chart-title">Financial Breakdown</div>
+            <table>
+              <thead><tr><th>Driver</th><th>Conservative</th><th>Realistic</th></tr></thead>
+              <tbody>
+                <tr><td>New ARR</td><td>$120K</td><td>$300K</td></tr>
+                <tr><td>Expansion</td><td>$40K</td><td>$110K</td></tr>
+                <tr><td>Cost</td><td>$90K</td><td>$150K</td></tr>
+                <tr><td><strong>Net</strong></td><td><strong>$70K</strong></td><td><strong>$260K</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <section id="kpis" class="cs-page">
+        <div class="cs-num">04.</div>
+        <div class="cs-content">
+          <h1>KPIs</h1>
+          <div class="kpi-grid">
+            <div class="kpi-card"><h5>Activation</h5><div class="kpi-row"><span>Day 7</span><span class="arrow">→</span><span><strong>30%+</strong></span></div></div>
+            <div class="kpi-card"><h5>Wk‑4 Retention</h5><div class="kpi-row"><span>Baseline</span><span class="arrow">→</span><span><strong>+10 pts</strong></span></div></div>
+            <div class="kpi-card"><h5>ARPA</h5><div class="kpi-row"><span>$</span><span class="arrow">→</span><span><strong>+$8–$12</strong></span></div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    (function(){
+      try {
+        const ok = sessionStorage.getItem('cs_access_bello') === 'true';
+        if (!ok) {
+          const input = prompt('Enter password to view:');
+          if (!(input && input.trim() === '100K')) {
+            alert('Incorrect password');
+            window.location.href = 'case-studies.html';
+          } else { sessionStorage.setItem('cs_access_bello','true'); }
+        }
+      } catch(e){}
+    })();
+  </script>
+  <script>
+    (function(){
+      const sections = [...document.querySelectorAll('section.cs-page')];
+      const links = [...document.querySelectorAll('.cs-index a')];
+      const map = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
+      const io = new IntersectionObserver((entries)=>{
+        const v = entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+        if(!v) return; const id=v.target.id; links.forEach(l=>l.classList.toggle('active', l===map[id]));
+      }, { rootMargin:'-40% 0px -50% 0px', threshold:[0.1,0.25,0.6] });
+      sections.forEach(s=>io.observe(s));
+    })();
+  </script>
+</body>
+</html>
+

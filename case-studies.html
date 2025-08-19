@@ -27,6 +27,9 @@
         <li>
           <a href="#" id="vogue-link">Vogue Hotel Automation</a>
         </li>
+        <li>
+          <a href="#" id="marketai-link">Maket AI Growth Playbook</a>
+        </li>
       </ul>
     </div>
 
@@ -62,6 +65,19 @@
           if (input && input.trim() === PASSWORD) {
             grantAccess();
             window.location.href = 'vogue-hotel-automation.html';
+          } else if (input !== null) {
+            alert('Incorrect password');
+          }
+        });
+        // Maket AI Growth Playbook
+        document.getElementById('marketai-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = 'market-ai-growth-playbook.html';
+          if (haveAccess()) { window.location.href = target; return; }
+          const input = prompt('Enter password to view:');
+          if (input && input.trim() === PASSWORD) {
+            grantAccess();
+            window.location.href = target;
           } else if (input !== null) {
             alert('Incorrect password');
           }
