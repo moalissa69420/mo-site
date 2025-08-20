@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bagel Room - Investor Presentation</title>
+    <link rel="stylesheet" href="bagel-room-presentation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Navigation -->
+        <nav class="presentation-nav">
+            <div class="nav-brand">
+                <h1>BAGEL ROOM</h1>
+                <p>Investor Presentation</p>
+            </div>
+            <div class="nav-controls">
+                <button id="prevSlide" class="nav-btn">← Previous</button>
+                <span id="slideCounter" class="slide-counter">1 / 28</span>
+                <button id="nextSlide" class="nav-btn primary">Next →</button>
+            </div>
+        </nav>
+
+        <!-- Slide Container -->
+        <div class="slide-container">
+            <!-- Cover Slide -->
+            <section class="slide active" data-slide="1">
+                <div class="slide-content cover-slide">
+                    <div class="bagel-icon">●</div>
+                    <h1 class="cover-title">BAGEL ROOM</h1>
+                    <h2 class="cover-subtitle">Premium Investor Presentation</h2>
+                    <p class="cover-tagline">"Where you want to be, morning through night"</p>
+                    <div class="key-metrics">
+                        <div class="metric">
+                            <div class="metric-value">$1.05M</div>
+                            <div class="metric-label">Funding Request</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">24%</div>
+                            <div class="metric-label">Target Margins</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">8-10mo</div>
+                            <div class="metric-label">To Breakeven</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Executive Summary -->
+            <section class="slide" data-slide="2">
+                <div class="slide-content">
+                    <h2 class="slide-title">Executive Summary</h2>
+                    <div class="two-column">
+                        <div class="column">
+                            <h3>Investment Highlights</h3>
+                            <ul class="highlight-list">
+                                <li>Boston's first premium bagel + vinyl listening bar</li>
+                                <li>$50.85B+ market intersection opportunity</li>
+                                <li>All-day revenue model with 24% target margins</li>
+                                <li>Experienced team with hospitality & cultural expertise</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h3>Key Metrics</h3>
+                            <div class="metrics-grid">
+                                <div class="metric-card">
+                                    <div class="metric-number">$1.73M</div>
+                                    <div class="metric-desc">Target Annual Revenue</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-number">300</div>
+                                    <div class="metric-desc">Daily Customers</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Market Opportunity -->
+            <section class="slide" data-slide="3">
+                <div class="slide-content">
+                    <h2 class="slide-title">Market Opportunity</h2>
+                    <div class="chart-container">
+                        <canvas id="marketChart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="market-stats">
+                        <div class="stat">
+                            <div class="stat-value">$3.05B</div>
+                            <div class="stat-label">U.S. Bagel Market</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">$47.8B</div>
+                            <div class="stat-label">U.S. Coffee Market</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">78%</div>
+                            <div class="stat-label">Value Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Financial Projections -->
+            <section class="slide" data-slide="4">
+                <div class="slide-content">
+                    <h2 class="slide-title">Financial Projections</h2>
+                    <div class="chart-container">
+                        <canvas id="financialChart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="projection-details">
+                        <div class="scenario">
+                            <h4>Conservative</h4>
+                            <p>$1.26M Revenue</p>
+                            <p>250 Daily Orders</p>
+                        </div>
+                        <div class="scenario target">
+                            <h4>Target</h4>
+                            <p>$1.73M Revenue</p>
+                            <p>300 Daily Orders</p>
+                            <p>24% Net Margin</p>
+                        </div>
+                        <div class="scenario">
+                            <h4>Optimistic</h4>
+                            <p>$2.59M Revenue</p>
+                            <p>400 Daily Orders</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Funding Breakdown -->
+            <section class="slide" data-slide="5">
+                <div class="slide-content">
+                    <h2 class="slide-title">Use of Funds - $1.05M</h2>
+                    <div class="chart-container">
+                        <canvas id="fundingChart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="funding-breakdown">
+                        <div class="breakdown-item">
+                            <span class="category">Buildout & Design</span>
+                            <span class="amount">$320K (30.5%)</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="category">Wine & Beer License</span>
+                            <span class="amount">$200K (19.0%)</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="category">Staffing & Payroll</span>
+                            <span class="amount">$175K (16.7%)</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="category">Equipment & Technology</span>
+                            <span class="amount">$130K (12.4%)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <script src="bagel-room-presentation.js"></script>
+</body>
+</html>

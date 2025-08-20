@@ -1,0 +1,494 @@
+/* Bagel Room Investor Presentation Styles */
+
+:root {
+    /* Brand Colors */
+    --crimson: #ee1f23;
+    --off-white: #faf3e7;
+    --charcoal: #444444;
+    --black: #000000;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --medium-gray: #888888;
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+    /* Transitions */
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-weight: var(--font-regular);
+    line-height: 1.6;
+    color: var(--charcoal);
+    background: var(--off-white);
+    overflow: hidden;
+}
+
+.presentation-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation */
+.presentation-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    z-index: 100;
+}
+
+.nav-brand h1 {
+    font-size: 1.5rem;
+    font-weight: var(--font-light);
+    color: var(--black);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.nav-brand p {
+    font-size: 0.875rem;
+    color: var(--medium-gray);
+    margin-top: 0.25rem;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.nav-btn {
+    padding: var(--spacing-xs) var(--spacing-md);
+    border: 1px solid var(--medium-gray);
+    background: var(--white);
+    color: var(--charcoal);
+    font-family: var(--font-family);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-btn:hover {
+    background: var(--light-gray);
+    border-color: var(--charcoal);
+}
+
+.nav-btn.primary {
+    background: var(--crimson);
+    color: var(--white);
+    border-color: var(--crimson);
+}
+
+.nav-btn.primary:hover {
+    background: #cc1a1e;
+    border-color: #cc1a1e;
+}
+
+.slide-counter {
+    font-size: 0.875rem;
+    color: var(--medium-gray);
+    font-weight: var(--font-medium);
+}
+
+/* Slides */
+.slide-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.slide-content {
+    height: 100%;
+    padding: var(--spacing-2xl) var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cover Slide */
+.cover-slide {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--off-white) 0%, var(--light-gray) 100%);
+}
+
+.bagel-icon {
+    font-size: 4rem;
+    color: var(--crimson);
+    margin-bottom: var(--spacing-md);
+}
+
+.cover-title {
+    font-size: 4rem;
+    font-weight: var(--font-light);
+    color: var(--black);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-md);
+}
+
+.cover-subtitle {
+    font-size: 1.5rem;
+    font-weight: var(--font-regular);
+    color: var(--charcoal);
+    margin-bottom: var(--spacing-sm);
+}
+
+.cover-tagline {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--medium-gray);
+    margin-bottom: var(--spacing-xl);
+}
+
+.key-metrics {
+    display: flex;
+    gap: var(--spacing-xl);
+    justify-content: center;
+}
+
+.metric {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    min-width: 140px;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: var(--font-semibold);
+    color: var(--crimson);
+    margin-bottom: var(--spacing-xs);
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    color: var(--medium-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Content Slides */
+.slide-title {
+    font-size: 2.5rem;
+    font-weight: var(--font-light);
+    color: var(--black);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    flex: 1;
+}
+
+.column h3 {
+    font-size: 1.5rem;
+    font-weight: var(--font-medium);
+    color: var(--black);
+    margin-bottom: var(--spacing-md);
+}
+
+.highlight-list {
+    list-style: none;
+    padding: 0;
+}
+
+.highlight-list li {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--light-gray);
+    position: relative;
+    padding-left: var(--spacing-md);
+}
+
+.highlight-list li::before {
+    content: "•";
+    color: var(--crimson);
+    font-weight: var(--font-bold);
+    position: absolute;
+    left: 0;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.metric-card {
+    background: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.metric-number {
+    font-size: 2rem;
+    font-weight: var(--font-semibold);
+    color: var(--crimson);
+    margin-bottom: var(--spacing-xs);
+}
+
+.metric-desc {
+    font-size: 0.875rem;
+    color: var(--medium-gray);
+}
+
+/* Charts */
+.chart-container {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    margin: var(--spacing-lg) 0;
+    max-height: 400px;
+}
+
+/* Market Stats */
+.market-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: var(--spacing-lg);
+}
+
+.stat {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: var(--font-semibold);
+    color: var(--crimson);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--medium-gray);
+}
+
+/* Financial Projections */
+.projection-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--spacing-lg);
+}
+
+.scenario {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    flex: 1;
+    margin: 0 var(--spacing-sm);
+}
+
+.scenario.target {
+    background: var(--crimson);
+    color: var(--white);
+}
+
+.scenario h4 {
+    font-size: 1.25rem;
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.scenario p {
+    margin: var(--spacing-xs) 0;
+    font-weight: var(--font-medium);
+}
+
+/* Funding Breakdown */
+.funding-breakdown {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.breakdown-item:last-child {
+    border-bottom: none;
+}
+
+.category {
+    font-weight: var(--font-medium);
+    color: var(--charcoal);
+}
+
+.amount {
+    font-weight: var(--font-semibold);
+    color: var(--crimson);
+}
+
+/* Progress Bar */
+.progress-bar {
+    height: 4px;
+    background: var(--light-gray);
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--crimson);
+    transition: width 0.5s ease;
+    width: 3.6%; /* 1/28 slides */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .presentation-nav {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .slide-content {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .cover-title {
+        font-size: 2.5rem;
+    }
+
+    .key-metrics {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .projection-details {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .scenario {
+        margin: 0;
+    }
+
+    .market-stats {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-title {
+        font-size: 2rem;
+    }
+
+    .cover-title {
+        font-size: 2rem;
+    }
+
+    .slide-content {
+        padding: var(--spacing-md);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .presentation-nav,
+    .progress-bar {
+        display: none;
+    }
+
+    .slide {
+        position: static;
+        opacity: 1;
+        transform: none;
+        page-break-after: always;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .presentation-container {
+        overflow: visible;
+        height: auto;
+    }
+}
