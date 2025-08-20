@@ -30,6 +30,9 @@
         <li>
           <a href="#" id="marketai-link">Maket AI Growth Playbook</a>
         </li>
+        <li>
+          <a href="#" id="bagelroom-link">Bagel Room — Investor Case Study</a>
+        </li>
       </ul>
     </div>
 
@@ -73,6 +76,19 @@
         document.getElementById('marketai-link').addEventListener('click', function(e) {
           e.preventDefault();
           const target = 'market-ai-growth-playbook.html';
+          if (haveAccess()) { window.location.href = target; return; }
+          const input = prompt('Enter password to view:');
+          if (input && input.trim() === PASSWORD) {
+            grantAccess();
+            window.location.href = target;
+          } else if (input !== null) {
+            alert('Incorrect password');
+          }
+        });
+        // Bagel Room Case Study
+        document.getElementById('bagelroom-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = 'bagel-room.html';
           if (haveAccess()) { window.location.href = target; return; }
           const input = prompt('Enter password to view:');
           if (input && input.trim() === PASSWORD) {

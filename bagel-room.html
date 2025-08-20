@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bagel Room — Investor Case Study</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --index-width: 270px; --content-max: 56rem; --border:#EEEEEE; --accent:#8DFF14; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size:14.5px; line-height:1.65; }
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; }
+    .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
+    .cs-index a .num { color:#333; width:2.8rem; display:inline-block; text-align:right; }
+    .cs-index a.active { color: var(--accent); }
+    .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.35rem 0; }
+    .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content h1 { font-size:1.0625rem; margin:0 0 0.25rem 0; font-weight:700; }
+    .cs-content h3 { font-size:0.9rem; margin:0.5rem 0 0.2rem 0; font-weight:700; }
+    .cs-content ul { margin:0.25rem 0 0.5rem 1rem; }
+    .chart-box { border:1px solid var(--border); background:#fff; padding:0.75rem; }
+    .chart-title { font-size:0.875rem; font-weight:700; margin:0 0 0.5rem 0; }
+    .chart-table { border:1px solid var(--border); background:#fff; padding:0.5rem; }
+    .chart-table table { width:100%; border-collapse:collapse; font-size:0.8125rem; }
+    .chart-table th, .chart-table td { padding:0.35rem 0.5rem; border-top:1px solid #EEE; }
+    .chart-table tbody tr:nth-child(odd){ background:#FAFAFA; }
+    .kpi-grid { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:0.9rem; }
+    .kpi-card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:0.9rem; }
+    .kpi-card h5 { margin:0 0 0.4rem 0; font-size:0.95rem; }
+    .kpi-row { display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; gap:0.5rem; font-size:0.875rem; }
+    .kpi-row .arrow { color:#0E0E0E; font-weight:700; }
+    .cards-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap:0.9rem; }
+    .card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:0.9rem; }
+    .card h4 { margin:0 0 0.4rem 0; font-size:0.95rem; }
+    @media (max-width: 700px) { .cs-wrapper{ grid-template-columns:1fr;} .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;} .kpi-grid{ grid-template-columns:1fr;} .cards-3{ grid-template-columns:1fr;} }
+    @media (max-width: 900px) { .kpi-grid{ grid-template-columns:1fr 1fr; } .cards-3{ grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#info"><span class="num">00.</span> Information</a></li>
+        <li><a href="#exec"><span class="num">01.</span> Executive Summary</a></li>
+        <li><a href="#team"><span class="num">02.</span> Team</a></li>
+        <li><a href="#market"><span class="num">03.</span> Market Opportunity</a></li>
+        <li><a href="#consumer"><span class="num">04.</span> Consumer Behavior</a></li>
+        <li><a href="#problem"><span class="num">05.</span> Problem</a></li>
+        <li><a href="#solution"><span class="num">06.</span> Solution</a></li>
+        <li><a href="#visual"><span class="num">07.</span> Visual Inspiration</a></li>
+        <li><a href="#competitive"><span class="num">08.</span> Competitive Landscape</a></li>
+        <li><a href="#location"><span class="num">09.</span> Location Strategy</a></li>
+        <li><a href="#model"><span class="num">10.</span> Business Model</a></li>
+        <li><a href="#financial"><span class="num">11.</span> Financials</a></li>
+        <li><a href="#unit"><span class="num">12.</span> Unit Economics</a></li>
+        <li><a href="#funding"><span class="num">13.</span> Funding Breakdown</a></li>
+        <li><a href="#scenarios"><span class="num">14.</span> Funding Scenarios</a></li>
+        <li><a href="#revenue"><span class="num">15.</span> Revenue Model</a></li>
+        <li><a href="#fiveyear"><span class="num">16.</span> 5‑Year Projections</a></li>
+        <li><a href="#license"><span class="num">17.</span> Wine & Beer Strategy</a></li>
+        <li><a href="#menu"><span class="num">18.</span> Menu Strategy</a></li>
+        <li><a href="#brand"><span class="num">19.</span> Brand Strategy</a></li>
+        <li><a href="#ops"><span class="num">20.</span> Operations Plan</a></li>
+        <li><a href="#timeline"><span class="num">21.</span> Timeline</a></li>
+        <li><a href="#risks"><span class="num">22.</span> Risk Analysis</a></li>
+        <li><a href="#expansion"><span class="num">23.</span> Expansion Strategy</a></li>
+        <li><a href="#growth"><span class="num">24.</span> Market Growth</a></li>
+        <li><a href="#highlights"><span class="num">25.</span> Investment Highlights</a></li>
+        <li><a href="#ask"><span class="num">26.</span> The Ask</a></li>
+        <li><a href="#appendix"><span class="num">27.</span> Appendix</a></li>
+      </ol>
+    </aside>
+    <main class="cs-sections">
+      <section id="info" class="cs-page"><div class="cs-num">00.</div><div class="cs-content"><h1>Bagel Room — Master Investor Presentation</h1><p class="cs-meta">August 2025 · Boston</p></div></section>
+      <section id="exec" class="cs-page"><div class="cs-num">01.</div><div class="cs-content"><h1>Executive Summary</h1><ul><li>$50.85B market opportunity (Coffee $47.8B +9.5% YoY; Bagels $3.05B +4.3% YoY)</li><li>Investment ask: <strong>$1.05M</strong>; target margins <strong>24%</strong>; breakeven <strong>8–10 months</strong></li><li>Gap in premium all‑day bagel + wine concepts; wine license as competitive moat</li></ul></div></section>
+      <section id="team" class="cs-page"><div class="cs-num">02.</div><div class="cs-content"><h1>The Team</h1><ul><li>Maximillian DiFillippo — Creative Director & hospitality heritage</li><li>Jack Ferrara — Entrepreneur, deep Boston knowledge</li><li>Mo Alissa — Technologist & systems designer</li><li>Drew “Ciggs” Cinga — Photographer & Creative Director</li></ul></div></section>
+      <section id="market" class="cs-page"><div class="cs-num">03.</div><div class="cs-content"><h1>Market Opportunity</h1><div class="chart-table"><div class="chart-title">Combined Markets</div><table><thead><tr><th>Market</th><th>Size</th><th>Growth</th></tr></thead><tbody><tr><td>Coffee</td><td>$47.8B</td><td>+9.5% YoY</td></tr><tr><td>Bagels</td><td>$3.05B</td><td>+4.3% YoY</td></tr></tbody></table></div></div></section>
+      <section id="consumer" class="cs-page"><div class="cs-num">04.</div><div class="cs-content"><h1>Consumer Behavior</h1><div class="kpi-grid"><div class="kpi-card"><h5>Experience Value</h5><div class="kpi-row"><span>—</span><span class="arrow">→</span><span><strong>78%</strong></span></div></div><div class="kpi-card"><h5>Aesthetic Spaces</h5><div class="kpi-row"><span>—</span><span class="arrow">→</span><span><strong>70%</strong></span></div></div><div class="kpi-card"><h5>Discovery via Social</h5><div class="kpi-row"><span>—</span><span class="arrow">→</span><span><strong>74%</strong></span></div></div></div><p>Experience‑first mindset; all‑day usage; local authenticity premium; willingness to pay.</p></div></section>
+      <section id="problem" class="cs-page"><div class="cs-num">05.</div><div class="cs-content"><h1>The Problem</h1><ul><li>Limited operating hours waste evening revenue</li><li>Poor quality bagels; generic experiences</li><li>Underutilized prime real estate</li></ul></div></section>
+      <section id="solution" class="cs-page"><div class="cs-num">06.</div><div class="cs-content"><h1>The Solution</h1><ul><li>All‑day concept: Morning excellence (60% revenue) + Evening sophistication (40%)</li><li>Cultural authenticity; seamless transition; 16‑hour revenue generation</li></ul></div></section>
+      <section id="visual" class="cs-page"><div class="cs-num">07.</div><div class="cs-content"><h1>Visual Inspiration</h1><ul><li>Japanese minimalism + Scandinavian warmth</li><li>Tokyo listening bars; brand palette with crimson accents</li><li>Core principles: intentional simplicity, natural integration, cultural respect, functional beauty</li></ul></div></section>
+      <section id="competitive" class="cs-page"><div class="cs-num">08.</div><div class="cs-content"><h1>Competitive Landscape</h1><p>White space: No competitor combines premium coffee, artisanal bagels, evening wine, authentic cultural setting, and all‑day model.</p></div></section>
+      <section id="location" class="cs-page"><div class="cs-num">09.</div><div class="cs-content"><h1>Boston Location Analysis</h1><h3>Neighborhood Rankings</h3><ul><li>South End — 88</li><li>Cambridge — 80</li><li>Back Bay — 79</li></ul><h3>South End Advantages</h3><ul><li>Premium demographics; moderate competition; strong foot traffic</li><li>Wine license‑friendly; arts community alignment</li></ul></div></section>
+      <section id="model" class="cs-page"><div class="cs-num">10.</div><div class="cs-content"><h1>Business Model</h1><ul><li>Morning (6AM–2PM): coffee + bagels (60% revenue)</li><li>Evening (4PM–10PM): wine + small plates (40% revenue)</li><li>Revenue mix: Coffee 35%, Food 30%, Wine 25%, Events 10%</li></ul></div></section>
+      <section id="financial" class="cs-page"><div class="cs-num">11.</div><div class="cs-content"><h1>Financial Projections</h1><div class="chart-table"><div class="chart-title">Scenarios</div><table><thead><tr><th>Scenario</th><th>Revenue</th><th>Orders</th><th>Ticket</th><th>Breakeven</th></tr></thead><tbody><tr><td>Conservative</td><td>$1.26M</td><td>250/day</td><td>$14</td><td>12 mo</td></tr><tr><td>Target</td><td>$1.73M</td><td>300/day</td><td>$16</td><td>8–10 mo</td></tr><tr><td>Optimistic</td><td>$2.59M</td><td>400/day</td><td>$18</td><td>6–8 mo</td></tr></tbody></table></div></div></section>
+      <section id="unit" class="cs-page"><div class="cs-num">12.</div><div class="cs-content"><h1>Unit Economics</h1><div class="chart-table"><div class="chart-title">Annual P&L (Target)</div><table><thead><tr><th>Category</th><th>Amount</th><th>% of Rev</th></tr></thead><tbody><tr><td>Total Revenue</td><td>$1,728,000</td><td>100%</td></tr><tr><td>COGS</td><td>$483,840</td><td>28%</td></tr><tr><td>Labor & Benefits</td><td>$518,400</td><td>30%</td></tr><tr><td>Rent & Utilities</td><td>$241,920</td><td>14%</td></tr><tr><td>Marketing & Other</td><td>$69,120</td><td>4%</td></tr><tr><td><strong>Net Income</strong></td><td><strong>$414,720</strong></td><td><strong>24%</strong></td></tr></tbody></table></div></div></section>
+      <section id="funding" class="cs-page"><div class="cs-num">13.</div><div class="cs-content"><h1>Funding Breakdown</h1><div class="chart-table"><div class="chart-title">Allocation of $1.05M</div><table><thead><tr><th>Category</th><th>Amount</th><th>%</th></tr></thead><tbody><tr><td>Buildout & Design</td><td>$320K</td><td>30.5%</td></tr><tr><td>Wine & Beer License</td><td>$200K</td><td>19.0%</td></tr><tr><td>Staffing & Payroll</td><td>$175K</td><td>16.7%</td></tr><tr><td>Equipment & Tech</td><td>$130K</td><td>12.4%</td></tr><tr><td>Marketing & Launch</td><td>$100K</td><td>9.5%</td></tr><tr><td>Contingency & Other</td><td>$125K</td><td>11.9%</td></tr></tbody></table></div><div class="kpi-grid" style="margin-top:0.5rem;"><div class="kpi-card"><h5>Revenue Increase</h5><div class="kpi-row"><span>vs coffee‑only</span><span class="arrow">→</span><span><strong>+40%</strong></span></div></div><div class="kpi-card"><h5>Avg Evening Ticket</h5><div class="kpi-row"><span>—</span><span class="arrow">→</span><span><strong>$24</strong></span></div></div><div class="kpi-card"><h5>Daily Operating</h5><div class="kpi-row"><span>—</span><span class="arrow">→</span><span><strong>16 hrs</strong></span></div></div></div></div></section>
+      <section id="scenarios" class="cs-page"><div class="cs-num">14.</div><div class="cs-content"><h1>Funding Scenarios</h1><ul><li>Conservative $600K — no alcohol license, limited hours</li><li>Recommended $1.05M — wine & beer license, full hours</li><li>Premium $1.5M — full liquor license, extended concept</li></ul><p>Why $1.05M is optimal: license moat + faster ROI.</p></div></section>
+      <section id="revenue" class="cs-page"><div class="cs-num">15.</div><div class="cs-content"><h1>Revenue Model</h1><p>Diversified all‑day streams: morning coffee & bagels → evening wine & small plates; cross‑trained staff and shared equipment.</p></div></section>
+      <section id="fiveyear" class="cs-page"><div class="cs-num">16.</div><div class="cs-content"><h1>5‑Year Financial Projections</h1><p>Conservative expansion to $12M+ revenue across multiple locations.</p></div></section>
+      <section id="license" class="cs-page"><div class="cs-num">17.</div><div class="cs-content"><h1>Wine & Beer License Strategy</h1><p>$200K license vs $600K full liquor: optimal ROI with 18‑month payback and immediate differentiation.</p></div></section>
+      <section id="menu" class="cs-page"><div class="cs-num">18.</div><div class="cs-content"><h1>Menu Strategy</h1><p>Morning: hand‑rolled bagels, third‑wave coffee, spreads. Evening: curated wines, craft beers, small plates, coffee cocktails.</p></div></section>
+      <section id="brand" class="cs-page"><div class="cs-num">19.</div><div class="cs-content"><h1>Marketing & Brand Strategy</h1><p>Authentic programming: vinyl listening, artist showcases, cultural events, community partnerships.</p></div></section>
+      <section id="ops" class="cs-page"><div class="cs-num">20.</div><div class="cs-content"><h1>Operations Plan</h1><p>Cross‑trained staff, tech‑enabled ordering, inventory optimization, quality control.</p></div></section>
+      <section id="timeline" class="cs-page"><div class="cs-num">21.</div><div class="cs-content"><h1>Timeline & Milestones</h1><ul><li>Q4 2025 — Funding & Location</li><li>Q1 2026 — Buildout & Team</li><li>Q2 2026 — Launch</li><li>Q3‑Q4 2026 — Growth</li></ul></div></section>
+      <section id="risks" class="cs-page"><div class="cs-num">22.</div><div class="cs-content"><h1>Risk Analysis</h1><p>Market, operational, and financial risks with mitigation strategies and contingency.</p></div></section>
+      <section id="expansion" class="cs-page"><div class="cs-num">23.</div><div class="cs-content"><h1>Expansion Strategy</h1><p>Standardized operations; future locations in Cambridge and Back Bay (Years 2–3).</p></div></section>
+      <section id="growth" class="cs-page"><div class="cs-num">24.</div><div class="cs-content"><h1>Market Growth Opportunity</h1><p>TAM/SAM/SOM with Boston at $351M SAM and $8.5M SOM.</p></div></section>
+      <section id="highlights" class="cs-page"><div class="cs-num">25.</div><div class="cs-content"><h1>Investment Highlights</h1><ul><li>Proven market need</li><li>Strong unit economics</li><li>Experienced team</li><li>Scalable model</li></ul></div></section>
+      <section id="ask" class="cs-page"><div class="cs-num">26.</div><div class="cs-content"><h1>The Ask</h1><p>$1,050,000 strategic investment; projected 260% ROI by Year 5.</p></div></section>
+      <section id="appendix" class="cs-page"><div class="cs-num">27.</div><div class="cs-content"><h1>Appendix</h1><ul><li>Detailed P&L, cash flow, sensitivity analysis</li><li>Reports: Square 2023, Boston Restaurant Assoc., Mintel, IBISWorld</li><li>Legal & regulatory: licensing, zoning, health, insurance</li><li>Technical specs: equipment, buildout plans, tech stack</li></ul></div></section>
+    </main>
+  </div>
+  <script>
+    (function(){
+      try{ const ok = sessionStorage.getItem('cs_access_bello')==='true'; if(!ok){ const input = prompt('Enter password to view:'); if(!(input && input.trim()==='100K')){ alert('Incorrect password'); window.location.href='case-studies.html'; } else { sessionStorage.setItem('cs_access_bello','true'); } } }catch(e){}
+    })();
+  </script>
+  <script>
+    (function(){
+      const sections=[...document.querySelectorAll('section.cs-page')];
+      const links=[...document.querySelectorAll('.cs-index a')];
+      const map=Object.fromEntries(links.map(a=>[a.getAttribute('href').slice(1),a]));
+      const io=new IntersectionObserver((entries)=>{
+        const v=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+        if(!v) return; const id=v.target.id; links.forEach(l=>l.classList.toggle('active', l===map[id]));
+      },{rootMargin:'-40% 0px -50% 0px', threshold:[0.1,0.25,0.6]});
+      sections.forEach(s=>io.observe(s));
+    })();
+  </script>
+</body>
+</html>
+

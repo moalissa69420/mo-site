@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bagel Room - Investor Presentation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Navigation Controls -->
+        <div class="nav-controls">
+            <button class="btn btn--secondary btn--sm" id="prevBtn">← Previous</button>
+            <span class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">27</span>
+            </span>
+            <button class="btn btn--primary btn--sm" id="nextBtn">Next →</button>
+        </div>
+
+        <!-- Slide 1: Cover -->
+        <div class="slide active" data-slide="1">
+            <div class="slide-content cover-slide">
+                <h1 class="cover-title">BAGEL ROOM</h1>
+                <h2 class="cover-subtitle">Investor Presentation</h2>
+                <p class="cover-date">August 2025</p>
+                <p class="cover-tagline">"Where you want to be, morning through night"</p>
+                <div class="cover-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-number">$1.05M</div>
+                        <div class="highlight-text">Funding Request</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-number">8-10 Months</div>
+                        <div class="highlight-text">To Breakeven</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-number">$1.7M</div>
+                        <div class="highlight-text">Target Year 1 Revenue</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Table of Contents -->
+        <div class="slide" data-slide="2">
+            <div class="slide-content">
+                <h1>Table of Contents</h1>
+                <div class="toc-grid">
+                    <div class="toc-section">
+                        <h3>Business Overview</h3>
+                        <ul>
+                            <li>Executive Summary</li>
+                            <li>The Team</li>
+                            <li>Market Opportunity</li>
+                            <li>Problem & Solution</li>
+                        </ul>
+                    </div>
+                    <div class="toc-section">
+                        <h3>Market Analysis</h3>
+                        <ul>
+                            <li>Competitive Analysis</li>
+                            <li>Location Strategy</li>
+                            <li>Consumer Trends</li>
+                        </ul>
+                    </div>
+                    <div class="toc-section">
+                        <h3>Financial Strategy</h3>
+                        <ul>
+                            <li>Financial Projections</li>
+                            <li>Business Model</li>
+                            <li>Funding Request</li>
+                            <li>Timeline & Milestones</li>
+                        </ul>
+                    </div>
+                    <div class="toc-section">
+                        <h3>Risk & Appendix</h3>
+                        <ul>
+                            <li>Risk Analysis</li>
+                            <li>Supporting Data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Executive Summary -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content">
+                <h1>Executive Summary</h1>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>The Opportunity</h3>
+                        <p>Boston's premium coffee and bagel market is underserved with growing demand for authentic, all-day cultural experiences</p>
+                        <ul>
+                            <li>$47.8B coffee market growing at 9.5% annually</li>
+                            <li>$3.05B bagel market with 4.3% growth</li>
+                            <li>Boston population growth 6% YoY</li>
+                        </ul>
+                    </div>
+                    <div class="summary-card">
+                        <h3>The Solution</h3>
+                        <p>Bagel Room: A sophisticated cultural destination combining premium coffee, artisanal bagels, and evening wine experience</p>
+                        <ul>
+                            <li>All-day operational model</li>
+                            <li>Wine & beer license strategy</li>
+                            <li>Premium positioning in growth market</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="investment-highlights">
+                    <h3>Investment Highlights</h3>
+                    <div class="highlights-row">
+                        <div class="highlight-metric">
+                            <span class="metric-value">24%</span>
+                            <span class="metric-label">Target Margin</span>
+                        </div>
+                        <div class="highlight-metric">
+                            <span class="metric-value">18-24 Months</span>
+                            <span class="metric-label">ROI Timeline</span>
+                        </div>
+                        <div class="highlight-metric">
+                            <span class="metric-value">South End</span>
+                            <span class="metric-label">Prime Location</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Executive Summary Continued -->
+        <div class="slide" data-slide="4">
+            <div class="slide-content">
+                <h1>Strategic Positioning</h1>
+                <div class="positioning-grid">
+                    <div class="position-card">
+                        <h3>Cultural Authenticity</h3>
+                        <p>Not just a coffee shop - a sophisticated cultural experience that resonates with Boston's creative community</p>
+                    </div>
+                    <div class="position-card">
+                        <h3>Premium Differentiation</h3>
+                        <p>Elevated offerings and atmosphere that commands premium pricing while maintaining accessibility</p>
+                    </div>
+                    <div class="position-card">
+                        <h3>All-Day Revenue</h3>
+                        <p>Morning coffee & bagels transition to evening wine & small plates, maximizing revenue per square foot</p>
+                    </div>
+                    <div class="position-card">
+                        <h3>Scalable Model</h3>
+                        <p>Proven unit economics foundation for strategic expansion across Boston and beyond</p>
+                    </div>
+                </div>
+                <div class="key-metrics-chart" style="position: relative; height: 300px;">
+                    <canvas id="keyMetricsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: The Team -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content">
+                <h1>The Team</h1>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <h3>Maximillian DiFillippo</h3>
+                        <h4>Creative Director & Hospitality Visionary</h4>
+                        <ul>
+                            <li>Photography, fashion & visual design expertise</li>
+                            <li>Restaurant family background (Davio's)</li>
+                            <li>Brand-driven design specialist</li>
+                            <li>Guest-centered environment creator</li>
+                        </ul>
+                    </div>
+                    <div class="team-member">
+                        <h3>Jack Ferrara</h3>
+                        <h4>Entrepreneur & Creative Strategist</h4>
+                        <ul>
+                            <li>Boston native with business foundation</li>
+                            <li>Music industry experience</li>
+                            <li>Build-from-scratch mindset</li>
+                            <li>Restaurant industry pivot specialist</li>
+                        </ul>
+                    </div>
+                    <div class="team-member">
+                        <h3>Mo Alissa</h3>
+                        <h4>Technologist</h4>
+                        <ul>
+                            <li>Built app to 4M users by age 21</li>
+                            <li>Technology, art, and design intersection</li>
+                            <li>Systems-focused product development</li>
+                            <li>Culture-shifting tools creator</li>
+                        </ul>
+                    </div>
+                    <div class="team-member">
+                        <h3>Drew 'Ciggs' Cinga</h3>
+                        <h4>Photographer/Videographer</h4>
+                        <ul>
+                            <li>Multidisciplinary creative director</li>
+                            <li>Brand experience: Interscope, Complex, Hypebeast, Nike</li>
+                            <li>Gritty realism with cinematic polish</li>
+                            <li>Cultural authenticity specialist</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Why This Team Wins -->
+        <div class="slide" data-slide="6">
+            <div class="slide-content">
+                <h1>Why This Team Wins</h1>
+                <div class="team-strengths">
+                    <div class="strength-item">
+                        <h3>🎨 Creative Excellence</h3>
+                        <p>Combined decades of experience in visual design, brand creation, and cultural authenticity across fashion, music, and hospitality</p>
+                    </div>
+                    <div class="strength-item">
+                        <h3>🏗️ Execution Expertise</h3>
+                        <p>Proven track record of building and scaling businesses from concept to market success</p>
+                    </div>
+                    <div class="strength-item">
+                        <h3>🏙️ Boston Market Knowledge</h3>
+                        <p>Deep understanding of Boston's neighborhoods, customer preferences, and cultural landscape</p>
+                    </div>
+                    <div class="strength-item">
+                        <h3>🍽️ Industry Heritage</h3>
+                        <p>Restaurant industry background provides operational insights and supplier relationships</p>
+                    </div>
+                </div>
+                <div class="advisory-section">
+                    <h3>Advisory Board</h3>
+                    <p class="advisory-note">Industry veterans and Boston market experts committed to supporting our growth</p>
+                    <div class="advisory-grid">
+                        <div class="advisory-placeholder">Restaurant Industry Expert</div>
+                        <div class="advisory-placeholder">Boston Real Estate Advisor</div>
+                        <div class="advisory-placeholder">Food & Beverage Specialist</div>
+                        <div class="advisory-placeholder">Marketing & Brand Strategist</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Market Opportunity -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content">
+                <h1>Market Opportunity</h1>
+                <div class="market-overview">
+                    <div class="market-stats">
+                        <div class="stat-large">
+                            <span class="stat-number">$50.85B</span>
+                            <span class="stat-label">Combined Market Size</span>
+                        </div>
+                        <div class="stat-row">
+                            <div class="stat-item">
+                                <span class="stat-number">$47.8B</span>
+                                <span class="stat-label">Coffee Market</span>
+                                <span class="stat-growth">+9.5% YoY</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">$3.05B</span>
+                                <span class="stat-label">Bagel Market</span>
+                                <span class="stat-growth">+4.3% YoY</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="market-chart" style="position: relative; height: 350px;">
+                        <canvas id="marketSizeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Boston Market Dynamics -->
+        <div class="slide" data-slide="8">
+            <div class="slide-content">
+                <h1>Boston Market Dynamics</h1>
+                <div class="boston-stats">
+                    <div class="boston-metric">
+                        <h3>Population Growth</h3>
+                        <div class="metric-value">6% YoY</div>
+                        <p>Boston continues to attract young professionals and students</p>
+                    </div>
+                    <div class="boston-metric">
+                        <h3>Daily Coffee Consumers</h3>
+                        <div class="metric-value">25%</div>
+                        <p>Of Boston population drinks coffee daily</p>
+                    </div>
+                    <div class="boston-metric">
+                        <h3>Premium Positioning</h3>
+                        <div class="metric-value">$4.50+</div>
+                        <p>Average premium coffee price point</p>
+                    </div>
+                </div>
+                <div class="trend-analysis">
+                    <h3>Consumer Behavior Trends</h3>
+                    <div class="trend-grid">
+                        <div class="trend-item">
+                            <h4>Experience-Driven</h4>
+                            <p>Consumers seek authentic, Instagram-worthy experiences over commodity offerings</p>
+                        </div>
+                        <div class="trend-item">
+                            <h4>All-Day Dining</h4>
+                            <p>Blended concepts serving multiple dayparts show higher revenue per square foot</p>
+                        </div>
+                        <div class="trend-item">
+                            <h4>Local Preference</h4>
+                            <p>Boston consumers prefer locally-owned businesses with authentic neighborhood connection</p>
+                        </div>
+                        <div class="trend-item">
+                            <h4>Premium Quality</h4>
+                            <p>Willingness to pay premium for artisanal, high-quality food and beverage offerings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Market Growth Projections -->
+        <div class="slide" data-slide="9">
+            <div class="slide-content">
+                <h1>Market Growth Projections</h1>
+                <div class="growth-chart" style="position: relative; height: 400px;">
+                    <canvas id="growthProjectionChart"></canvas>
+                </div>
+                <div class="growth-insights">
+                    <div class="insight-card">
+                        <h3>Coffee Market Leadership</h3>
+                        <p>Coffee market driving growth at 9.5% annually, with specialty segment outpacing commodity offerings</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Bagel Renaissance</h3>
+                        <p>Artisanal bagel segment growing faster than traditional chains, driven by quality and authenticity</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Boston Premium Opportunity</h3>
+                        <p>Market gap exists for sophisticated all-day concepts combining quality, culture, and convenience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: The Problem -->
+        <div class="slide" data-slide="10">
+            <div class="slide-content">
+                <h1>The Problem</h1>
+                <div class="problem-grid">
+                    <div class="problem-item">
+                        <h3>⏰ Limited Operating Hours</h3>
+                        <p>Most coffee shops close by 3PM, missing evening revenue opportunities</p>
+                    </div>
+                    <div class="problem-item">
+                        <h3>🥯 Poor Quality Bagels</h3>
+                        <p>Chain bagels lack authenticity; local options are limited and inconsistent</p>
+                    </div>
+                    <div class="problem-item">
+                        <h3>🎭 Generic Experience</h3>
+                        <p>Coffee shops feel sterile and corporate, lacking cultural authenticity</p>
+                    </div>
+                    <div class="problem-item">
+                        <h3>💰 Underutilized Real Estate</h3>
+                        <p>Prime locations sit empty during profitable evening hours</p>
+                    </div>
+                </div>
+                <div class="market-gap">
+                    <h3>The Market Gap</h3>
+                    <p class="gap-description">Boston lacks a sophisticated, all-day destination that seamlessly transitions from morning coffee culture to evening wine experience while maintaining cultural authenticity throughout.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Our Solution -->
+        <div class="slide" data-slide="11">
+            <div class="slide-content">
+                <h1>Our Solution: Bagel Room</h1>
+                <div class="solution-hero">
+                    <h2>"Where you want to be, morning through night"</h2>
+                </div>
+                <div class="solution-grid">
+                    <div class="solution-item">
+                        <h3>🌅 Morning Excellence</h3>
+                        <p>Premium coffee program paired with authentic, hand-rolled bagels and house-made spreads</p>
+                    </div>
+                    <div class="solution-item">
+                        <h3>🍷 Evening Sophistication</h3>
+                        <p>Curated wine and beer selection with artisanal small plates in the same authentic space</p>
+                    </div>
+                    <div class="solution-item">
+                        <h3>🎨 Cultural Authenticity</h3>
+                        <p>Designed and curated by artists, for artists - genuine cultural destination</p>
+                    </div>
+                    <div class="solution-item">
+                        <h3>📍 Strategic Location</h3>
+                        <p>South End positioning connects creative community with neighborhood sophistication</p>
+                    </div>
+                </div>
+                <div class="why-now">
+                    <h3>Why Now?</h3>
+                    <ul>
+                        <li>Post-pandemic shift to experiential dining and all-day concepts</li>
+                        <li>Boston's growing creative class seeks authentic cultural destinations</li>
+                        <li>Wine & beer licensing creates competitive moat and revenue diversification</li>
+                        <li>Real estate opportunities emerging in prime South End locations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Competitive Landscape -->
+        <div class="slide" data-slide="12">
+            <div class="slide-content">
+                <h1>Competitive Landscape</h1>
+                <div class="competition-chart" style="position: relative; height: 400px;">
+                    <canvas id="competitionChart"></canvas>
+                </div>
+                <div class="competitive-insights">
+                    <div class="insight">
+                        <h3>Market Leaders</h3>
+                        <p>Established players focus on single dayparts or lack cultural authenticity</p>
+                    </div>
+                    <div class="insight">
+                        <h3>White Space</h3>
+                        <p>No competitor combines premium coffee, artisanal bagels, and evening wine in authentic cultural setting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Differentiation Matrix -->
+        <div class="slide" data-slide="13">
+            <div class="slide-content">
+                <h1>Competitive Differentiation</h1>
+                <div class="differentiation-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Competitor</th>
+                                <th>Coffee Quality</th>
+                                <th>Bagel Quality</th>
+                                <th>Evening Hours</th>
+                                <th>Wine/Beer</th>
+                                <th>Cultural Auth.</th>
+                                <th>Revenue/SF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bagel-room-row">
+                                <td><strong>Bagel Room</strong></td>
+                                <td class="excellent">Excellent</td>
+                                <td class="excellent">Excellent</td>
+                                <td class="excellent">Yes</td>
+                                <td class="excellent">Yes</td>
+                                <td class="excellent">High</td>
+                                <td class="excellent">$1,234/SF</td>
+                            </tr>
+                            <tr>
+                                <td>George Howell</td>
+                                <td class="excellent">Excellent</td>
+                                <td class="poor">None</td>
+                                <td class="poor">No</td>
+                                <td class="poor">No</td>
+                                <td class="good">Medium</td>
+                                <td class="good">$650/SF</td>
+                            </tr>
+                            <tr>
+                                <td>Thinking Cup</td>
+                                <td class="good">Good</td>
+                                <td class="poor">None</td>
+                                <td class="poor">No</td>
+                                <td class="poor">No</td>
+                                <td class="poor">Low</td>
+                                <td class="good">$580/SF</td>
+                            </tr>
+                            <tr>
+                                <td>PopUp Bagels</td>
+                                <td class="good">Good</td>
+                                <td class="excellent">Excellent</td>
+                                <td class="poor">No</td>
+                                <td class="poor">No</td>
+                                <td class="good">Medium</td>
+                                <td class="excellent">$1,100/SF</td>
+                            </tr>
+                            <tr>
+                                <td>Einstein Bros</td>
+                                <td class="poor">Fair</td>
+                                <td class="poor">Fair</td>
+                                <td class="poor">No</td>
+                                <td class="poor">No</td>
+                                <td class="poor">Low</td>
+                                <td class="poor">$420/SF</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="competitive-advantages">
+                    <h3>Our Competitive Advantages</h3>
+                    <div class="advantage-grid">
+                        <div class="advantage">
+                            <h4>Only All-Day Premium Concept</h4>
+                            <p>Unique positioning capturing morning and evening revenue streams</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Wine & Beer License Moat</h4>
+                            <p>Regulatory barrier creates defensible competitive position</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Authentic Cultural Brand</h4>
+                            <p>Built by and for creative community, not corporate committee</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Superior Unit Economics</h4>
+                            <p>Higher revenue per square foot through premium positioning and all-day operations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Location Strategy -->
+        <div class="slide" data-slide="14">
+            <div class="slide-content">
+                <h1>Location Strategy</h1>
+                <div class="location-analysis">
+                    <div class="neighborhood-comparison">
+                        <h3>Boston Neighborhood Analysis</h3>
+                        <div class="neighborhood-grid">
+                            <div class="neighborhood recommended">
+                                <h4>South End</h4>
+                                <div class="rent-price">$35/sqft</div>
+                                <ul>
+                                    <li>Creative community hub</li>
+                                    <li>High disposable income</li>
+                                    <li>Evening foot traffic</li>
+                                    <li>Wine culture appreciation</li>
+                                </ul>
+                                <div class="recommendation">✅ RECOMMENDED</div>
+                            </div>
+                            <div class="neighborhood">
+                                <h4>Back Bay</h4>
+                                <div class="rent-price">$55/sqft</div>
+                                <ul>
+                                    <li>High rent costs</li>
+                                    <li>Corporate clientele</li>
+                                    <li>Limited evening scene</li>
+                                    <li>High competition</li>
+                                </ul>
+                            </div>
+                            <div class="neighborhood">
+                                <h4>North End</h4>
+                                <div class="rent-price">$42/sqft</div>
+                                <ul>
+                                    <li>Tourist-focused</li>
+                                    <li>Limited morning traffic</li>
+                                    <li>Parking challenges</li>
+                                    <li>Traditional food scene</li>
+                                </ul>
+                            </div>
+                            <div class="neighborhood">
+                                <h4>Cambridge</h4>
+                                <div class="rent-price">$38/sqft</div>
+                                <ul>
+                                    <li>Student population</li>
+                                    <li>Lower spending power</li>
+                                    <li>Seasonal fluctuation</li>
+                                    <li>Limited wine culture</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: South End Deep Dive -->
+        <div class="slide" data-slide="15">
+            <div class="slide-content">
+                <h1>South End: The Perfect Location</h1>
+                <div class="south-end-analysis">
+                    <div class="location-metrics">
+                        <div class="metric">
+                            <h3>Demographics</h3>
+                            <ul>
+                                <li>Median age: 32</li>
+                                <li>Household income: $95K+</li>
+                                <li>College educated: 87%</li>
+                                <li>Creative professionals: 23%</li>
+                            </ul>
+                        </div>
+                        <div class="metric">
+                            <h3>Market Conditions</h3>
+                            <ul>
+                                <li>Rent: $35/sqft (vs. $55 Back Bay)</li>
+                                <li>Target space: 1,400 sqft</li>
+                                <li>Monthly rent: $4,083</li>
+                                <li>Strong foot traffic all day</li>
+                            </ul>
+                        </div>
+                        <div class="metric">
+                            <h3>Competition Gap</h3>
+                            <ul>
+                                <li>No premium bagel concepts</li>
+                                <li>Limited evening wine options</li>
+                                <li>Underserved creative community</li>
+                                <li>High barrier to entry</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="site-criteria">
+                        <h3>Site Selection Criteria</h3>
+                        <div class="criteria-grid">
+                            <div class="criteria-item">
+                                <h4>Corner Location Preferred</h4>
+                                <p>Maximum visibility and foot traffic from multiple directions</p>
+                            </div>
+                            <div class="criteria-item">
+                                <h4>Ground Floor Retail</h4>
+                                <p>Street-level access essential for coffee grab-and-go traffic</p>
+                            </div>
+                            <div class="criteria-item">
+                                <h4>Evening License Friendly</h4>
+                                <p>Neighborhood and building management supportive of wine/beer service</p>
+                            </div>
+                            <div class="criteria-item">
+                                <h4>Parking Accessibility</h4>
+                                <p>Nearby parking supports evening wine service customers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Financial Model Overview -->
+        <div class="slide" data-slide="16">
+            <div class="slide-content">
+                <h1>Financial Model Overview</h1>
+                <div class="financial-scenarios">
+                    <h3>Year 1 Revenue Scenarios</h3>
+                    <div class="scenario-grid">
+                        <div class="scenario conservative">
+                            <h4>Conservative</h4>
+                            <div class="scenario-value">$1.26M</div>
+                            <p>Base case with steady ramp-up</p>
+                        </div>
+                        <div class="scenario target">
+                            <h4>Target</h4>
+                            <div class="scenario-value">$1.73M</div>
+                            <p>Expected performance with marketing</p>
+                        </div>
+                        <div class="scenario optimistic">
+                            <h4>Optimistic</h4>
+                            <div class="scenario-value">$2.59M</div>
+                            <p>Strong brand adoption and word-of-mouth</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="revenue-chart" style="position: relative; height: 350px;">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="key-assumptions">
+                    <h3>Key Financial Assumptions</h3>
+                    <div class="assumptions-grid">
+                        <div class="assumption">
+                            <h4>Average Transaction</h4>
+                            <p>Morning: $8.50 | Evening: $24.00</p>
+                        </div>
+                        <div class="assumption">
+                            <h4>Daily Transactions</h4>
+                            <p>Conservative: 180 | Target: 235 | Optimistic: 350</p>
+                        </div>
+                        <div class="assumption">
+                            <h4>Operating Days</h4>
+                            <p>360 days per year (closed Christmas week)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Unit Economics -->
+        <div class="slide" data-slide="17">
+            <div class="slide-content">
+                <h1>Unit Economics Breakdown</h1>
+                <div class="unit-economics">
+                    <div class="economics-chart" style="position: relative; height: 300px;">
+                        <canvas id="unitEconomicsChart"></canvas>
+                    </div>
+                    <div class="economics-breakdown">
+                        <h3>Monthly Operating Model (Target Scenario)</h3>
+                        <div class="breakdown-grid">
+                            <div class="breakdown-item revenue">
+                                <h4>Revenue</h4>
+                                <div class="breakdown-value">$144,000</div>
+                                <p>Monthly gross revenue</p>
+                            </div>
+                            <div class="breakdown-item cogs">
+                                <h4>COGS (28%)</h4>
+                                <div class="breakdown-value">$40,320</div>
+                                <p>Food & beverage costs</p>
+                            </div>
+                            <div class="breakdown-item labor">
+                                <h4>Labor (32%)</h4>
+                                <div class="breakdown-value">$46,080</div>
+                                <p>Staff wages & benefits</p>
+                            </div>
+                            <div class="breakdown-item rent">
+                                <h4>Rent (3%)</h4>
+                                <div class="breakdown-value">$4,083</div>
+                                <p>South End location</p>
+                            </div>
+                            <div class="breakdown-item other">
+                                <h4>Other (13%)</h4>
+                                <div class="breakdown-value">$18,720</div>
+                                <p>Utilities, insurance, marketing</p>
+                            </div>
+                            <div class="breakdown-item profit">
+                                <h4>Net Profit (24%)</h4>
+                                <div class="breakdown-value">$34,560</div>
+                                <p>Monthly profit margin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: 5-Year Financial Projections -->
+        <div class="slide" data-slide="18">
+            <div class="slide-content">
+                <h1>5-Year Financial Projections</h1>
+                <div class="projections-chart" style="position: relative; height: 350px;">
+                    <canvas id="fiveYearChart"></canvas>
+                </div>
+                <div class="projections-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Revenue</th>
+                                <th>Gross Profit</th>
+                                <th>Net Profit</th>
+                                <th>Margin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Year 1</td>
+                                <td>$1,728,000</td>
+                                <td>$1,244,160</td>
+                                <td>$414,720</td>
+                                <td>24%</td>
+                            </tr>
+                            <tr>
+                                <td>Year 2</td>
+                                <td>$1,987,200</td>
+                                <td>$1,430,784</td>
+                                <td>$476,928</td>
+                                <td>24%</td>
+                            </tr>
+                            <tr>
+                                <td>Year 3</td>
+                                <td>$2,285,280</td>
+                                <td>$1,645,402</td>
+                                <td>$548,467</td>
+                                <td>24%</td>
+                            </tr>
+                            <tr>
+                                <td>Year 4</td>
+                                <td>$2,628,072</td>
+                                <td>$1,892,212</td>
+                                <td>$630,737</td>
+                                <td>24%</td>
+                            </tr>
+                            <tr>
+                                <td>Year 5</td>
+                                <td>$3,022,283</td>
+                                <td>$2,176,044</td>
+                                <td>$725,348</td>
+                                <td>24%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 19: Path to Profitability -->
+        <div class="slide" data-slide="19">
+            <div class="slide-content">
+                <h1>Path to Profitability</h1>
+                <div class="profitability-timeline">
+                    <div class="timeline-chart" style="position: relative; height: 300px;">
+                        <canvas id="profitabilityChart"></canvas>
+                    </div>
+                    <div class="profitability-milestones">
+                        <h3>Key Milestones</h3>
+                        <div class="milestone-grid">
+                            <div class="milestone">
+                                <h4>Month 3</h4>
+                                <p>Cash flow positive</p>
+                                <div class="milestone-value">$8,500/month</div>
+                            </div>
+                            <div class="milestone">
+                                <h4>Month 6</h4>
+                                <p>Operating leverage</p>
+                                <div class="milestone-value">$22,000/month</div>
+                            </div>
+                            <div class="milestone">
+                                <h4>Month 10</h4>
+                                <p>Full profitability</p>
+                                <div class="milestone-value">$34,500/month</div>
+                            </div>
+                            <div class="milestone">
+                                <h4>Month 18</h4>
+                                <p>ROI achievement</p>
+                                <div class="milestone-value">Break-even on investment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sensitivity-analysis">
+                    <h3>Sensitivity Analysis</h3>
+                    <p>Profitability maintained across scenarios:</p>
+                    <ul>
+                        <li><strong>Conservative:</strong> 18% margin, breakeven month 12</li>
+                        <li><strong>Target:</strong> 24% margin, breakeven month 10</li>
+                        <li><strong>Optimistic:</strong> 28% margin, breakeven month 8</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Business Model -->
+        <div class="slide" data-slide="20">
+            <div class="slide-content">
+                <h1>Business Model</h1>
+                <div class="revenue-streams">
+                    <h3>Multiple Revenue Streams</h3>
+                    <div class="streams-grid">
+                        <div class="stream morning">
+                            <h4>Morning Operations (6AM-2PM)</h4>
+                            <ul>
+                                <li>Premium coffee & espresso drinks</li>
+                                <li>Fresh bagels & house-made spreads</li>
+                                <li>Breakfast sandwiches & pastries</li>
+                                <li>Grab-and-go items</li>
+                            </ul>
+                            <div class="stream-revenue">60% of daily revenue</div>
+                        </div>
+                        <div class="stream evening">
+                            <h4>Evening Operations (4PM-10PM)</h4>
+                            <ul>
+                                <li>Curated wine & craft beer selection</li>
+                                <li>Artisanal small plates & charcuterie</li>
+                                <li>Coffee cocktails & specialty drinks</li>
+                                <li>Private events & tastings</li>
+                            </ul>
+                            <div class="stream-revenue">40% of daily revenue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="operational-model">
+                    <h3>All-Day Operational Excellence</h3>
+                    <div class="operations-grid">
+                        <div class="operation">
+                            <h4>Seamless Transition</h4>
+                            <p>Same space, same team, different vibe - morning energy transforms to evening sophistication</p>
+                        </div>
+                        <div class="operation">
+                            <h4>Staff Efficiency</h4>
+                            <p>Cross-trained team maximizes labor efficiency across dayparts</p>
+                        </div>
+                        <div class="operation">
+                            <h4>Space Optimization</h4>
+                            <p>Single location generates revenue 16 hours/day vs. traditional 8-hour coffee shop</p>
+                        </div>
+                        <div class="operation">
+                            <h4>Brand Consistency</h4>
+                            <p>Authentic atmosphere maintained throughout all service periods</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 21: Scalability Factors -->
+        <div class="slide" data-slide="21">
+            <div class="slide-content">
+                <h1>Scalability & Growth</h1>
+                <div class="scalability-framework">
+                    <h3>Proven Unit Economics Enable Expansion</h3>
+                    <div class="scale-grid">
+                        <div class="scale-factor">
+                            <h4>🏗️ Replicable Model</h4>
+                            <p>Standardized operations, training, and design systems ready for multiple locations</p>
+                        </div>
+                        <div class="scale-factor">
+                            <h4>📊 Data-Driven Growth</h4>
+                            <p>Technology integration provides insights for optimization and expansion planning</p>
+                        </div>
+                        <div class="scale-factor">
+                            <h4>🎯 Market Expansion</h4>
+                            <p>Boston area has 12+ neighborhoods suitable for Bagel Room concept</p>
+                        </div>
+                        <div class="scale-factor">
+                            <h4>💰 Capital Efficiency</h4>
+                            <p>Strong unit economics support self-funded growth after initial success</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="expansion-timeline">
+                    <h3>Growth Timeline</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Year 1-2</h4>
+                            <p>Perfect South End flagship, achieve target metrics</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Year 2-3</h4>
+                            <p>Second location in Cambridge or Back Bay</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Year 3-5</h4>
+                            <p>3-5 Boston area locations, regional expansion planning</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Year 5+</h4>
+                            <p>Franchise model or acquisition opportunity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 22: Funding Request Overview -->
+        <div class="slide" data-slide="22">
+            <div class="slide-content">
+                <h1>Funding Request</h1>
+                <div class="funding-overview">
+                    <div class="funding-amount">
+                        <h2>$1.05M Funding Request</h2>
+                        <p class="funding-subtitle">Strategic wine & beer license approach</p>
+                    </div>
+                    <div class="funding-scenarios-comparison">
+                        <h3>Funding Scenario Analysis</h3>
+                        <div class="scenarios-grid">
+                            <div class="scenario-option">
+                                <h4>Original Plan</h4>
+                                <div class="amount">$600K</div>
+                                <p>Coffee & bagels only</p>
+                                <div class="scenario-pros-cons">
+                                    <div class="pros">✅ Lower risk</div>
+                                    <div class="cons">❌ Limited revenue potential</div>
+                                </div>
+                            </div>
+                            <div class="scenario-option recommended-scenario">
+                                <h4>Recommended</h4>
+                                <div class="amount">$1.05M</div>
+                                <p>Wine & beer license</p>
+                                <div class="scenario-pros-cons">
+                                    <div class="pros">✅ 40% revenue increase</div>
+                                    <div class="pros">✅ Competitive moat</div>
+                                </div>
+                                <div class="recommended-badge">RECOMMENDED</div>
+                            </div>
+                            <div class="scenario-option">
+                                <h4>Full License</h4>
+                                <div class="amount">$1.5M</div>
+                                <p>Full liquor license</p>
+                                <div class="scenario-pros-cons">
+                                    <div class="pros">✅ Maximum revenue</div>
+                                    <div class="cons">❌ Complex licensing</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 23: Use of Funds -->
+        <div class="slide" data-slide="23">
+            <div class="slide-content">
+                <h1>Use of Funds Breakdown</h1>
+                <div class="funds-chart" style="position: relative; height: 400px;">
+                    <canvas id="useOfFundsChart"></canvas>
+                </div>
+                <div class="funds-breakdown">
+                    <div class="fund-category">
+                        <h4>Buildout & Equipment (45%)</h4>
+                        <div class="fund-amount">$472,500</div>
+                        <ul>
+                            <li>Kitchen equipment & espresso setup</li>
+                            <li>Interior design & construction</li>
+                            <li>Wine storage & service equipment</li>
+                            <li>Furniture & fixtures</li>
+                        </ul>
+                    </div>
+                    <div class="fund-category">
+                        <h4>Licensing & Legal (20%)</h4>
+                        <div class="fund-amount">$210,000</div>
+                        <ul>
+                            <li>Wine & beer license acquisition</li>
+                            <li>Legal and regulatory compliance</li>
+                            <li>Permits and inspections</li>
+                        </ul>
+                    </div>
+                    <div class="fund-category">
+                        <h4>Working Capital (20%)</h4>
+                        <div class="fund-amount">$210,000</div>
+                        <ul>
+                            <li>Initial inventory</li>
+                            <li>6 months operating expenses</li>
+                            <li>Staff training and onboarding</li>
+                        </ul>
+                    </div>
+                    <div class="fund-category">
+                        <h4>Marketing & Launch (15%)</h4>
+                        <div class="fund-amount">$157,500</div>
+                        <ul>
+                            <li>Brand identity and marketing materials</li>
+                            <li>Grand opening campaign</li>
+                            <li>Digital presence and social media</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 24: Investment Comparison -->
+        <div class="slide" data-slide="24">
+            <div class="slide-content">
+                <h1>Investment Return Analysis</h1>
+                <div class="investment-comparison">
+                    <h3>$1.05M Investment vs. Alternatives</h3>
+                    <div class="comparison-grid">
+                        <div class="investment-option">
+                            <h4>Bagel Room</h4>
+                            <div class="return-metrics">
+                                <div class="metric">
+                                    <span class="metric-label">18-Month ROI</span>
+                                    <span class="metric-value">100%</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Year 3 Value</span>
+                                    <span class="metric-value">$2.1M</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Annual Return</span>
+                                    <span class="metric-value">55%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="investment-option">
+                            <h4>S&P 500</h4>
+                            <div class="return-metrics">
+                                <div class="metric">
+                                    <span class="metric-label">Historical Return</span>
+                                    <span class="metric-value">10%</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">3-Year Value</span>
+                                    <span class="metric-value">$1.4M</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Liquidity</span>
+                                    <span class="metric-value">High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="investment-option">
+                            <h4>Real Estate</h4>
+                            <div class="return-metrics">
+                                <div class="metric">
+                                    <span class="metric-label">Boston Return</span>
+                                    <span class="metric-value">8%</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">3-Year Value</span>
+                                    <span class="metric-value">$1.32M</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Management</span>
+                                    <span class="metric-value">Passive</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="investment-advantages">
+                    <h3>Why Bagel Room Outperforms</h3>
+                    <div class="advantages-grid">
+                        <div class="advantage">
+                            <h4>Proven Market Demand</h4>
+                            <p>Established customer base and market validation reduce investment risk</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Multiple Exit Strategies</h4>
+                            <p>Expansion, franchise, or acquisition opportunities provide flexible exit paths</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Inflation Hedge</h4>
+                            <p>Physical business with pricing power protects against currency devaluation</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Tax Benefits</h4>
+                            <p>Business investment provides depreciation and operational tax advantages</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 25: Timeline & Milestones -->
+        <div class="slide" data-slide="25">
+            <div class="slide-content">
+                <h1>Timeline & Milestones</h1>
+                <div class="timeline-overview">
+                    <h3>Go-to-Market Timeline</h3>
+                    <div class="timeline-chart">
+                        <div class="timeline-phase">
+                            <h4>Months 1-3: Foundation</h4>
+                            <ul>
+                                <li>Secure funding and finalize location</li>
+                                <li>Begin licensing process</li>
+                                <li>Complete buildout design</li>
+                                <li>Hire core team</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-phase">
+                            <h4>Months 4-6: Construction</h4>
+                            <ul>
+                                <li>Complete buildout and equipment installation</li>
+                                <li>Finalize wine & beer licensing</li>
+                                <li>Staff training and recipe development</li>
+                                <li>Marketing campaign launch</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-phase">
+                            <h4>Months 7-9: Launch</h4>
+                            <ul>
+                                <li>Soft opening with friends & family</li>
+                                <li>Grand opening event</li>
+                                <li>Operations optimization</li>
+                                <li>Customer feedback integration</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-phase">
+                            <h4>Months 10-12: Growth</h4>
+                            <ul>
+                                <li>Scale marketing efforts</li>
+                                <li>Achieve target profitability</li>
+                                <li>Plan expansion strategy</li>
+                                <li>Investor reporting and planning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 26: Key Metrics & KPIs -->
+        <div class="slide" data-slide="26">
+            <div class="slide-content">
+                <h1>Key Performance Indicators</h1>
+                <div class="kpi-framework">
+                    <div class="kpi-section">
+                        <h3>Financial KPIs</h3>
+                        <div class="kpi-grid">
+                            <div class="kpi">
+                                <h4>Monthly Revenue</h4>
+                                <div class="kpi-target">Target: $144K</div>
+                                <div class="kpi-benchmark">Benchmark: 15% month-over-month growth</div>
+                            </div>
+                            <div class="kpi">
+                                <h4>Average Transaction</h4>
+                                <div class="kpi-target">Morning: $8.50 | Evening: $24</div>
+                                <div class="kpi-benchmark">Benchmark: Industry top quartile</div>
+                            </div>
+                            <div class="kpi">
+                                <h4>Gross Margin</h4>
+                                <div class="kpi-target">Target: 72%</div>
+                                <div class="kpi-benchmark">Benchmark: >70% sustainable</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-section">
+                        <h3>Operational KPIs</h3>
+                        <div class="kpi-grid">
+                            <div class="kpi">
+                                <h4>Daily Transactions</h4>
+                                <div class="kpi-target">Target: 235</div>
+                                <div class="kpi-benchmark">Ramp: 150 → 300 over 12 months</div>
+                            </div>
+                            <div class="kpi">
+                                <h4>Customer Retention</h4>
+                                <div class="kpi-target">Target: 65% monthly</div>
+                                <div class="kpi-benchmark">Premium concepts: 60%+</div>
+                            </div>
+                            <div class="kpi">
+                                <h4>Staff Productivity</h4>
+                                <div class="kpi-target">Revenue per employee hour</div>
+                                <div class="kpi-benchmark">Target: $125/hour</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="success-milestones">
+                    <h3>Success Milestones</h3>
+                    <div class="milestones-timeline">
+                        <div class="milestone-item">
+                            <h4>Month 3</h4>
+                            <p>150 daily transactions, positive cash flow</p>
+                        </div>
+                        <div class="milestone-item">
+                            <h4>Month 6</h4>
+                            <p>200 daily transactions, wine program launch</p>
+                        </div>
+                        <div class="milestone-item">
+                            <h4>Month 10</h4>
+                            <p>235+ daily transactions, target profitability</p>
+                        </div>
+                        <div class="milestone-item">
+                            <h4>Month 12</h4>
+                            <p>300 daily transactions, expansion planning</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 27: Risk Analysis -->
+        <div class="slide" data-slide="27">
+            <div class="slide-content">
+                <h1>Risk Analysis & Mitigation</h1>
+                <div class="risk-matrix">
+                    <div class="risk-category high-priority">
+                        <h3>High Priority Risks</h3>
+                        <div class="risk-item">
+                            <h4>Licensing Delays</h4>
+                            <p><strong>Risk:</strong> Wine/beer license takes longer than expected</p>
+                            <p><strong>Mitigation:</strong> Start process early, have backup coffee-only launch plan</p>
+                        </div>
+                        <div class="risk-item">
+                            <h4>Construction Cost Overruns</h4>
+                            <p><strong>Risk:</strong> Buildout exceeds budget</p>
+                            <p><strong>Mitigation:</strong> 15% contingency fund, phased construction approach</p>
+                        </div>
+                    </div>
+                    <div class="risk-category medium-priority">
+                        <h3>Medium Priority Risks</h3>
+                        <div class="risk-item">
+                            <h4>Competition Response</h4>
+                            <p><strong>Risk:</strong> Established players copy our model</p>
+                            <p><strong>Mitigation:</strong> First-mover advantage, licensing moat, brand loyalty</p>
+                        </div>
+                        <div class="risk-item">
+                            <h4>Economic Downturn</h4>
+                            <p><strong>Risk:</strong> Recession affects discretionary spending</p>
+                            <p><strong>Mitigation:</strong> Multiple price points, essential morning offerings</p>
+                        </div>
+                    </div>
+                    <div class="risk-category low-priority">
+                        <h3>Lower Priority Risks</h3>
+                        <div class="risk-item">
+                            <h4>Staff Turnover</h4>
+                            <p><strong>Risk:</strong> High hospitality industry turnover</p>
+                            <p><strong>Mitigation:</strong> Competitive wages, equity participation, culture focus</p>
+                        </div>
+                        <div class="risk-item">
+                            <h4>Supply Chain Issues</h4>
+                            <p><strong>Risk:</strong> Coffee or food supply disruption</p>
+                            <p><strong>Mitigation:</strong> Multiple supplier relationships, local sourcing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Slide: Thank You & Contact -->
+        <div class="slide" data-slide="28">
+            <div class="slide-content closing-slide">
+                <h1>Thank You</h1>
+                <div class="closing-content">
+                    <h2>Ready to Build the Future of Boston Coffee Culture</h2>
+                    <div class="closing-highlights">
+                        <div class="closing-highlight">
+                            <h3>$1.05M Investment</h3>
+                            <p>Strategic funding for sustainable growth</p>
+                        </div>
+                        <div class="closing-highlight">
+                            <h3>18-Month ROI</h3>
+                            <p>Proven path to profitability</p>
+                        </div>
+                        <div class="closing-highlight">
+                            <h3>Cultural Impact</h3>
+                            <p>More than a business - a community destination</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Next Steps</h3>
+                        <p>Let's discuss how Bagel Room fits into your investment portfolio</p>
+                        <div class="contact-details">
+                            <p><strong>Team Contact:</strong> Available for follow-up meetings</p>
+                            <p><strong>Due Diligence:</strong> Financial models and market research available</p>
+                            <p><strong>Site Visit:</strong> Tour proposed South End locations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
