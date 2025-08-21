@@ -27,16 +27,18 @@
 
     /* Two-column content (text left, image right) */
     .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:0.9rem; align-items:start; }
-    .box { background:#fff; border:1px solid var(--border); border-radius:10px; padding:0.9rem; }
+    .box { background:#fff; border:1px solid var(--border); border-radius:0; padding:0.9rem; }
     /* Single-image slider (Bagel Room style) */
-    .img-slider { display:grid; grid-template-columns: 28px 1fr 28px; align-items:center; gap:0.5rem; background:#fff; border:1px solid var(--border); border-radius:10px; padding:0.5rem; position:relative; }
-    .img-slider .slide-img { display:none; width:100%; border-radius:8px; }
+    .img-slider { display:grid; grid-template-columns: 28px 1fr 28px; align-items:center; gap:0.5rem; background:#fff; border:1px solid var(--border); border-radius:0; padding:0.5rem; position:relative; }
+    .img-slider .slide-img { display:none; width:100%; border-radius:0; }
     .img-slider .slide-img.active { display:block; }
     .slider-btn { appearance:none; background:#fff; color:#0E0E0E; border:1px solid var(--border); width:28px; height:28px; border-radius:999px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:700; }
     .slider-btn:disabled { opacity:0.4; cursor:not-allowed; }
     .dots { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; background:rgba(255,255,255,0.9); border:1px solid var(--border); padding:3px 6px; border-radius:999px; }
     .dot { width:8px; height:8px; border-radius:2px; border:1px solid #0E0E0E; background:#fff; opacity:0.7; }
     .dot.active { background:#8DFF14; opacity:1; }
+    /* Remove corners from all images in content */
+    .cs-content img { border-radius:0 !important; }
     @media (max-width: 900px){ .dv-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
     @media (max-width: 640px){ .dv-grid{ grid-template-columns: 1fr; } .dv-strip img{ height:86px; } }
 
@@ -50,13 +52,13 @@
       <ol>
         <li><a href="#info"><span class="num">01.</span> The Infinite Palette</a></li>
         <li><a href="#exec"><span class="num">02.</span> The Shirley Card</a></li>
-        <li><a href="#team"><span class="num">03.</span> Background — The evolution of standard</a></li>
+        <li><a href="#team"><span class="num">03.</span> Background</a></li>
         <li><a href="#market"><span class="num">04.</span> Introduction</a></li>
         <li><a href="#consumer"><span class="num">05.</span> The Capture Experience</a></li>
         <li><a href="#problem"><span class="num">06.</span> The AR Experience</a></li>
         <li><a href="#solution"><span class="num">07.</span> The Purpose</a></li>
         <li><a href="#visual"><span class="num">08.</span> About MODU</a></li>
-        <li><a href="#competitive"><span class="num">09.</span> Venue — DTLA · SoLa Beehive</a></li>
+        <li><a href="#competitive"><span class="num">09.</span> Venue</a></li>
         <li><a href="#location"><span class="num">10.</span> User Flow</a></li>
         <li><a href="#model"><span class="num">11.</span> Images from Event</a></li>
         <li><a href="#financial"><span class="num">12.</span> Images from Event</a></li>
