@@ -35,8 +35,12 @@
     .dv-main.active { display:block; }
     .dv-strip { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; }
     .dv-strip img { height:92px; border-radius:8px; flex: 0 0 auto; border:1px solid var(--border); cursor: zoom-in; }
-    .dv-progress { position:relative; height:4px; background:#EDEDED; border:1px solid var(--border); border-radius:999px; overflow:hidden; }
-    .dv-progress .bar { height:100%; width:0%; background:#8DFF14; transition: width 0.2s linear; }
+    .slider-controls { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:6px; }
+    .slider-btn { appearance:none; background:#fff; color:#0E0E0E; border:1px solid var(--border); width:28px; height:28px; border-radius:999px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:700; }
+    .slider-btn:disabled { opacity:0.4; cursor:not-allowed; }
+    .dots { display:flex; gap:6px; }
+    .dot { width:8px; height:8px; border-radius:2px; border:1px solid #0E0E0E; background:#fff; opacity:0.7; }
+    .dot.active { background:#8DFF14; opacity:1; }
     @media (max-width: 900px){ .dv-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
     @media (max-width: 640px){ .dv-grid{ grid-template-columns: 1fr; } .dv-strip img{ height:86px; } }
 
@@ -194,25 +198,28 @@
                 return im;
               });
 
-              // Progress bar
-              const prog = document.createElement('div'); prog.className='dv-progress';
-              const bar = document.createElement('div'); bar.className='bar'; prog.appendChild(bar);
-
-              // Auto-rotate if multiple
-              let idx = 0; let timer=null; const intervalMs = 1500; const step = 100/ (intervalMs/200);
-              function show(i){ imgs[idx].classList.remove('active'); idx = (i+imgs.length)%imgs.length; imgs[idx].classList.add('active'); bar.style.width='0%'; }
-              function start(){ if(imgs.length<=1 || timer) return; timer = setInterval(()=>{ bar.style.width = (parseFloat(bar.style.width||'0') + step) + '%'; if(parseFloat(bar.style.width) >= 100){ show(idx+1); } }, 200); }
+              // Single-image slider controls (prev/next + dots) and autoplay
+              let idx = 0; let timer=null; const intervalMs = 1500;
+              function show(i){ imgs[idx].classList.remove('active'); idx = (i+imgs.length)%imgs.length; imgs[idx].classList.add('active'); updateDots(); updateBtnState(); }
+              function start(){ if(imgs.length<=1 || timer) return; timer = setInterval(()=> show(idx+1), intervalMs); }
               function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+              function updateBtnState(){ prev.disabled = (idx===0); next.disabled = (idx===imgs.length-1); }
+              function updateDots(){ dots.forEach((d,i)=> d.classList.toggle('active', i===idx)); }
 
               const container = document.createElement('div');
               imgs.forEach(im=> container.appendChild(im));
 
-              const strip = document.createElement('div'); strip.className='dv-strip';
-              slide.images.forEach((src,i)=>{ const thumb=document.createElement('img'); thumb.loading='lazy'; thumb.src=src; thumb.alt=''; thumb.dataset.zoomable='1'; thumb.addEventListener('click', ()=>{ stop(); show(i); start(); }); strip.appendChild(thumb); });
+              // Controls row like Bagel Room
+              const controls = document.createElement('div'); controls.className='slider-controls';
+              const prev = document.createElement('button'); prev.className='slider-btn'; prev.textContent='‹'; prev.addEventListener('click', ()=>{ stop(); show(idx-1); start(); });
+              const dotsWrap = document.createElement('div'); dotsWrap.className='dots';
+              const dots = slide.images.map((_,i)=>{ const d=document.createElement('span'); d.className='dot' + (i===0?' active':''); d.addEventListener('click', ()=>{ stop(); show(i); start(); }); dotsWrap.appendChild(d); return d; });
+              const next = document.createElement('button'); next.className='slider-btn'; next.textContent='›'; next.addEventListener('click', ()=>{ stop(); show(idx+1); start(); });
+              controls.appendChild(prev); controls.appendChild(dotsWrap); controls.appendChild(next);
 
               card.appendChild(head);
               card.appendChild(container);
-              if(slide.images.length>1){ card.appendChild(prog); card.appendChild(strip); }
+              if(slide.images.length>1){ card.appendChild(controls); }
               card.addEventListener('mouseenter', stop);
               card.addEventListener('mouseleave', start);
               start();
