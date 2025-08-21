@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Google — Image Equity Case Study</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --index-width: 270px; --content-max: 56rem; --border:#EEEEEE; --accent:#8DFF14; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size:14.5px; line-height:1.65; }
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; }
+    .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
+    .cs-index a .num { color:#333; width:2.8rem; display:inline-block; text-align:right; }
+    .cs-index a.active { color: var(--accent); }
+    .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.35rem 0; }
+    .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content h1 { font-size:1.0625rem; margin:0 0 0.25rem 0; font-weight:700; }
+    .cs-content h3 { font-size:0.9rem; margin:0.5rem 0 0.2rem 0; font-weight:700; }
+    .cs-content ul { margin:0.25rem 0 0.5rem 1rem; }
+    .chart-box { border:1px solid var(--border); background:#fff; padding:0.75rem; }
+    .chart-title { font-size:0.875rem; font-weight:700; margin:0 0 0.5rem 0; }
+
+    /* Deck Visuals styles (image-on-top layout) */
+    .dv-grid { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:0.9rem; margin-top:0.6rem; }
+    .dv-card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:0.75rem; display:flex; flex-direction:column; gap:0.5rem; }
+    .dv-head { display:flex; align-items:center; justify-content:space-between; gap:0.5rem; }
+    .dv-title { font-size:0.9rem; font-weight:700; margin:0; }
+    .dv-badge { font-size:0.75rem; opacity:0.7; }
+    .dv-main { width:100%; border-radius:8px; border:1px solid var(--border); }
+    .dv-strip { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; }
+    .dv-strip img { height:92px; border-radius:8px; flex: 0 0 auto; border:1px solid var(--border); cursor: zoom-in; }
+    @media (max-width: 900px){ .dv-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 640px){ .dv-grid{ grid-template-columns: 1fr; } .dv-strip img{ height:86px; } }
+
+    @media (max-width: 700px) { .cs-wrapper{ grid-template-columns:1fr;} .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;} }
+  </style>
+</head>
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#info"><span class="num">00.</span> Information</a></li>
+        <li><a href="#exec"><span class="num">01.</span> Executive Summary</a></li>
+        <li><a href="#team"><span class="num">02.</span> Team</a></li>
+        <li><a href="#market"><span class="num">03.</span> Market Opportunity</a></li>
+        <li><a href="#consumer"><span class="num">04.</span> Consumer Behavior</a></li>
+        <li><a href="#problem"><span class="num">05.</span> Problem</a></li>
+        <li><a href="#solution"><span class="num">06.</span> Solution</a></li>
+        <li><a href="#visual"><span class="num">07.</span> Visual Inspiration</a></li>
+        <li><a href="#competitive"><span class="num">08.</span> Competitive Landscape</a></li>
+        <li><a href="#location"><span class="num">09.</span> Location Strategy</a></li>
+        <li><a href="#model"><span class="num">10.</span> Business Model</a></li>
+        <li><a href="#financial"><span class="num">11.</span> Financials</a></li>
+        <li><a href="#unit"><span class="num">12.</span> Unit Economics</a></li>
+        <li><a href="#funding"><span class="num">13.</span> Funding Breakdown</a></li>
+        <li><a href="#scenarios"><span class="num">14.</span> Funding Scenarios</a></li>
+        <li><a href="#revenue"><span class="num">15.</span> Revenue Model</a></li>
+        <li><a href="#fiveyear"><span class="num">16.</span> 5‑Year Projections</a></li>
+        <li><a href="#license"><span class="num">17.</span> License Strategy</a></li>
+        <li><a href="#menu"><span class="num">18.</span> Menu Strategy</a></li>
+        <li><a href="#brand"><span class="num">19.</span> Brand Strategy</a></li>
+        <li><a href="#ops"><span class="num">20.</span> Operations Plan</a></li>
+        <li><a href="#timeline"><span class="num">21.</span> Timeline</a></li>
+        <li><a href="#risks"><span class="num">22.</span> Risk Analysis</a></li>
+        <li><a href="#expansion"><span class="num">23.</span> Expansion Strategy</a></li>
+        <li><a href="#growth"><span class="num">24.</span> Market Growth</a></li>
+        <li><a href="#highlights"><span class="num">25.</span> Investment Highlights</a></li>
+        <li><a href="#ask"><span class="num">26.</span> The Ask</a></li>
+        <li><a href="#appendix"><span class="num">27.</span> Appendix</a></li>
+      </ol>
+    </aside>
+    <main class="cs-sections">
+      <!-- Sections scaffold; text and images auto-injected via manifest -->
+      <section id="info" class="cs-page"><div class="cs-num">00.</div><div class="cs-content"><h1>Information</h1><div class="chart-box"><div class="chart-title">Overview</div><ul class="auto-bullets"></ul></div><div class="dv-grid"></div></div></section>
+      <section id="exec" class="cs-page"><div class="cs-num">01.</div><div class="cs-content"><h1>Executive Summary</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="team" class="cs-page"><div class="cs-num">02.</div><div class="cs-content"><h1>Team</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="market" class="cs-page"><div class="cs-num">03.</div><div class="cs-content"><h1>Market Opportunity</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="consumer" class="cs-page"><div class="cs-num">04.</div><div class="cs-content"><h1>Consumer Behavior</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="problem" class="cs-page"><div class="cs-num">05.</div><div class="cs-content"><h1>Problem</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="solution" class="cs-page"><div class="cs-num">06.</div><div class="cs-content"><h1>Solution</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="visual" class="cs-page"><div class="cs-num">07.</div><div class="cs-content"><h1>Visual Inspiration</h1><div class="dv-grid"></div></div></section>
+      <section id="competitive" class="cs-page"><div class="cs-num">08.</div><div class="cs-content"><h1>Competitive Landscape</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="location" class="cs-page"><div class="cs-num">09.</div><div class="cs-content"><h1>Location Strategy</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="model" class="cs-page"><div class="cs-num">10.</div><div class="cs-content"><h1>Business Model</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="financial" class="cs-page"><div class="cs-num">11.</div><div class="cs-content"><h1>Financials</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="unit" class="cs-page"><div class="cs-num">12.</div><div class="cs-content"><h1>Unit Economics</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="funding" class="cs-page"><div class="cs-num">13.</div><div class="cs-content"><h1>Funding Breakdown</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="scenarios" class="cs-page"><div class="cs-num">14.</div><div class="cs-content"><h1>Funding Scenarios</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="revenue" class="cs-page"><div class="cs-num">15.</div><div class="cs-content"><h1>Revenue Model</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="fiveyear" class="cs-page"><div class="cs-num">16.</div><div class="cs-content"><h1>5‑Year Projections</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="license" class="cs-page"><div class="cs-num">17.</div><div class="cs-content"><h1>License Strategy</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="menu" class="cs-page"><div class="cs-num">18.</div><div class="cs-content"><h1>Menu Strategy</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="brand" class="cs-page"><div class="cs-num">19.</div><div class="cs-content"><h1>Brand Strategy</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="ops" class="cs-page"><div class="cs-num">20.</div><div class="cs-content"><h1>Operations Plan</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="timeline" class="cs-page"><div class="cs-num">21.</div><div class="cs-content"><h1>Timeline</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="risks" class="cs-page"><div class="cs-num">22.</div><div class="cs-content"><h1>Risk Analysis</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="expansion" class="cs-page"><div class="cs-num">23.</div><div class="cs-content"><h1>Expansion Strategy</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="growth" class="cs-page"><div class="cs-num">24.</div><div class="cs-content"><h1>Market Growth</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="highlights" class="cs-page"><div class="cs-num">25.</div><div class="cs-content"><h1>Investment Highlights</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="ask" class="cs-page"><div class="cs-num">26.</div><div class="cs-content"><h1>The Ask</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
+      <section id="appendix" class="cs-page"><div class="cs-num">27.</div><div class="cs-content"><h1>Appendix</h1><div class="dv-grid"></div></div></section>
+    </main>
+  </div>
+  <script>
+    (function(){
+      try{ const ok = sessionStorage.getItem('cs_access_bello')==='true'; if(!ok){ const input = prompt('Enter password to view:'); if(!(input && input.trim()==='100K')){ alert('Incorrect password'); window.location.href='case-studies.html'; } else { sessionStorage.setItem('cs_access_bello','true'); } } }catch(e){}
+    })();
+  </script>
+  <script>
+    (function(){
+      const sections=[...document.querySelectorAll('section.cs-page')];
+      const links=[...document.querySelectorAll('.cs-index a')];
+      const map=Object.fromEntries(links.map(a=>[a.getAttribute('href').slice(1),a]));
+      const io=new IntersectionObserver((entries)=>{
+        const v=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+        if(!v) return; const id=v.target.id; links.forEach(l=>l.classList.toggle('active', l===map[id]));
+      },{rootMargin:'-40% 0px -50% 0px', threshold:[0.1,0.25,0.6]});
+      sections.forEach(s=>io.observe(s));
+    })();
+  </script>
+  <script>
+    (async function(){
+      // Build dv-cards and bullets per section from manifest
+      async function loadManifest(){
+        const res = await fetch('Google/manifest.json', {cache:'no-store'});
+        if(!res.ok) throw new Error('manifest fetch failed');
+        return res.json();
+      }
+      function ensureContainer(section, selector){
+        const s = document.getElementById(section);
+        if(!s) return null;
+        let el = s.querySelector(selector);
+        if(!el && selector==='.dv-grid'){ el = document.createElement('div'); el.className='dv-grid'; s.querySelector('.cs-content').appendChild(el); }
+        if(!el && selector==='.auto-bullets'){ el = document.createElement('ul'); el.className='auto-bullets'; s.querySelector('.cs-content').insertBefore(el, s.querySelector('.dv-grid')); }
+        return el;
+      }
+      function toBullets(texts){
+        return texts
+          .map(t=> (t||'').trim())
+          .filter(t=>t.length>0)
+          .slice(0,10);
+      }
+      function render(manifest){
+        const bySection = manifest.sections || {};
+        Object.keys(bySection).forEach(sectionId =>{
+          const data = bySection[sectionId];
+          const bullets = ensureContainer(sectionId, '.auto-bullets');
+          if(bullets && data.texts && data.texts.length){
+            bullets.innerHTML = '';
+            toBullets(data.texts).forEach(t=>{ const li=document.createElement('li'); li.textContent = t; bullets.appendChild(li); });
+          }
+          const grid = ensureContainer(sectionId, '.dv-grid');
+          if(grid && data.slides){
+            grid.innerHTML='';
+            data.slides.forEach(slide =>{
+              if(!slide.images || !slide.images.length) return;
+              const card = document.createElement('div');
+              card.className = 'dv-card';
+              const head = document.createElement('div'); head.className='dv-head';
+              const title = document.createElement('h4'); title.className='dv-title'; title.textContent = slide.title || `Slide ${slide.slide}`;
+              const badge = document.createElement('div'); badge.className='dv-badge'; badge.textContent = `Slide ${slide.slide}`;
+              head.appendChild(title); head.appendChild(badge);
+              const main = document.createElement('img'); main.className='dv-main'; main.loading='lazy'; main.dataset.zoomable='1'; main.alt = title.textContent; main.src = slide.images[0];
+              const strip = document.createElement('div'); strip.className='dv-strip';
+              slide.images.slice(1).forEach(src=>{ const im=document.createElement('img'); im.loading='lazy'; im.src=src; im.alt=''; im.dataset.zoomable='1'; strip.appendChild(im); });
+              card.appendChild(head); card.appendChild(main); if(slide.images.length>1) card.appendChild(strip);
+              grid.appendChild(card);
+            });
+          }
+        });
+      }
+      try{
+        const manifest = await loadManifest();
+        render(manifest);
+      }catch(e){ console.warn('No manifest injected', e); }
+    })();
+  </script>
+  <script>
+    (function(){
+      // Lightweight click-to-zoom for any image with data-zoomable="1"
+      const overlay = document.createElement('div');
+      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999';
+      const big = document.createElement('img');
+      big.style.maxWidth = '92vw'; big.style.maxHeight = '92vh'; big.style.borderRadius='12px';
+      overlay.appendChild(big); document.body.appendChild(overlay);
+      overlay.addEventListener('click',()=> overlay.style.display='none');
+      document.addEventListener('click',(e)=>{ const t=e.target; if(t && t.tagName==='IMG' && t.dataset.zoomable==='1'){ big.src=t.src; overlay.style.display='flex'; }});
+    })();
+  </script>
+</body>
+</html>
+
+
