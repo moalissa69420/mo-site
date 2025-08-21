@@ -27,9 +27,9 @@
 
     /* Two-column content (text left, image right) */
     .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:0.9rem; align-items:start; }
-    .box { background:#fff; border:1px solid var(--border); border-radius:0; padding:0.9rem; }
+    .box { background:#fff; border:0; border-radius:0; padding:0.9rem; }
     /* Single-image slider (Bagel Room style) */
-    .img-slider { display:grid; grid-template-columns: 28px 1fr 28px; align-items:center; gap:0.5rem; background:#fff; border:1px solid var(--border); border-radius:0; padding:0.5rem; position:relative; }
+    .img-slider { display:grid; grid-template-columns: 28px 1fr 28px; align-items:center; gap:0.5rem; background:#fff; border:0; border-radius:0; padding:0.5rem; position:relative; }
     .img-slider .slide-img { display:none; width:100%; border-radius:0; }
     .img-slider .slide-img.active { display:block; }
     .slider-btn { appearance:none; background:#fff; color:#0E0E0E; border:1px solid var(--border); width:28px; height:28px; border-radius:999px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:700; }
@@ -38,7 +38,7 @@
     .dot { width:8px; height:8px; border-radius:2px; border:1px solid #0E0E0E; background:#fff; opacity:0.7; }
     .dot.active { background:#8DFF14; opacity:1; }
     /* Remove corners from all images in content */
-    .cs-content img { border-radius:0 !important; }
+    .cs-content img { border-radius:0 !important; border:0 !important; }
     @media (max-width: 900px){ .dv-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
     @media (max-width: 640px){ .dv-grid{ grid-template-columns: 1fr; } .dv-strip img{ height:86px; } }
 
