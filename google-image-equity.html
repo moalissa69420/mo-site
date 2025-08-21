@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     :root { --index-width: 270px; --content-max: 56rem; --border:#EEEEEE; --accent:#8DFF14; }
-    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size:14.5px; line-height:1.65; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size:15.5px; line-height:1.65; }
     .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
     .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; }
     .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; }
@@ -17,7 +17,7 @@
     .cs-index a .num { color:#333; width:2.8rem; display:inline-block; text-align:right; }
     .cs-index a.active { color: var(--accent); }
     .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
-    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.35rem 0; }
+    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.45rem 0; scroll-margin-top: 12px; }
     .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; }
     .cs-content h1 { font-size:1.0625rem; margin:0 0 0.25rem 0; font-weight:700; }
     .cs-content h3 { font-size:0.9rem; margin:0.5rem 0 0.2rem 0; font-weight:700; }
@@ -26,7 +26,7 @@
     .chart-title { font-size:0.875rem; font-weight:700; margin:0 0 0.5rem 0; }
 
     /* Two-column content (text left, image right) */
-    .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:0.9rem; align-items:start; }
+    .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start; }
     .box { background:#fff; border:0; border-radius:0; padding:0.9rem; }
     /* Single-image slider (Bagel Room style) */
     .img-slider { display:grid; grid-template-columns: 28px 1fr 28px; align-items:center; gap:0.5rem; background:#fff; border:0; border-radius:0; padding:0.5rem; position:relative; }
@@ -38,11 +38,12 @@
     .dot { width:8px; height:8px; border-radius:2px; border:1px solid #0E0E0E; background:#fff; opacity:0.7; }
     .dot.active { background:#8DFF14; opacity:1; }
     /* Remove corners from all images in content */
-    .cs-content img { border-radius:0 !important; border:0 !important; }
+    .cs-content img { border-radius:0 !important; border:0 !important; max-width:100%; height:auto; object-fit:contain; }
     @media (max-width: 900px){ .dv-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
     @media (max-width: 640px){ .dv-grid{ grid-template-columns: 1fr; } .dv-strip img{ height:86px; } }
 
-    @media (max-width: 700px) { .cs-wrapper{ grid-template-columns:1fr;} .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;} }
+    @media (max-width: 700px) { .cs-wrapper{ grid-template-columns:1fr;} .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;} .two-col{ grid-template-columns:1fr; gap:0.85rem;} }
+    @media print { .cs-index{ display:none !important; } .slider-btn,.dots{ display:none !important; } body{ color:#000; } }
   </style>
 </head>
 <body class="cs-template">
