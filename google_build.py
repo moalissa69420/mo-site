@@ -17,6 +17,7 @@ from pathlib import Path
 
 try:
     from pptx import Presentation
+    from pptx.enum.shapes import MSO_SHAPE_TYPE
 except Exception as e:
     print("python-pptx is required: pip install python-pptx", file=sys.stderr)
     raise
@@ -30,6 +31,7 @@ except Exception:
 ROOT = Path(__file__).resolve().parent
 GOOGLE_DIR = ROOT / "Google"
 EXPORTS = GOOGLE_DIR / "exports"
+PICTURES = GOOGLE_DIR / "pictures"
 MANIFEST = GOOGLE_DIR / "manifest.json"
 
 
@@ -71,7 +73,29 @@ def export_slide_image(prs, slide_index, out_dir):
     if Image and not filename.exists():
         img = Image.new("RGB", (1600, 900), color=(255, 255, 255))
         img.save(filename)
-    return filename.name
+    # Return a web path that is resolvable from site root
+    return f"Google/exports/{filename.name}"
+
+
+def extract_pictures_from_slide(slide, slide_index):
+    paths = []
+    PICTURES.mkdir(parents=True, exist_ok=True)
+    pic_idx = 0
+    for shape in slide.shapes:
+        try:
+            if shape.shape_type == MSO_SHAPE_TYPE.PICTURE:
+                image = shape.image
+                ext = image.ext or 'png'
+                pic_idx += 1
+                filename = PICTURES / f"pic_{slide_index+1:02d}_{pic_idx}.{ext}"
+                if not filename.exists():
+                    with open(filename, 'wb') as f:
+                        f.write(image.blob)
+                paths.append(f"Google/pictures/{filename.name}")
+        except Exception:
+            # Skip any problematic shapes silently
+            continue
+    return paths
 
 
 def infer_section_id_by_index(idx):
@@ -81,21 +105,29 @@ def infer_section_id_by_index(idx):
 
 def build_manifest(pptx_path: Path):
     prs = Presentation(str(pptx_path))
-    sections = { sid: {"texts": [], "slides": []} for sid in SECTION_IDS }
+    sections = { sid: {"title": "", "texts": [], "slides": []} for sid in SECTION_IDS }
     for i, slide in enumerate(prs.slides):
         sid = infer_section_id_by_index(i)
         texts = extract_texts_from_slide(slide)
-        img_name = export_slide_image(prs, i, EXPORTS)
+        # Prefer embedded pictures; fallback to blank export
+        pic_paths = extract_pictures_from_slide(slide, i)
+        if pic_paths:
+            images = pic_paths
+        else:
+            images = [export_slide_image(prs, i, EXPORTS)]
         entry = {
             "slide": i+1,
-            "title": texts[0] if texts else f"Slide {i+1}",
-            "images": [f"exports/{img_name}"]
+            "title": (getattr(slide.shapes, 'title', None).text.strip() if getattr(slide.shapes, 'title', None) and getattr(slide.shapes.title, 'text', '') else (texts[0] if texts else f"Slide {i+1}")),
+            "images": images
         }
         sections[sid]["slides"].append(entry)
         # add remaining texts as bullets
         if texts:
             # Use up to first 6 relevant lines per slide to keep page readable
             sections[sid]["texts"].extend(texts[:6])
+        # Set section display title if not already set
+        if not sections[sid]["title"] and entry["title"]:
+            sections[sid]["title"] = entry["title"]
 
     # Trim bullet explosion per section
     for sid in sections:

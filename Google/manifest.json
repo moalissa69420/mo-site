@@ -2,6 +2,7 @@
   "source": "Copy of Extended Reimagining The Image Equity Summit - April 2022.pptx",
   "sections": {
     "info": {
+      "title": "In Our Image:",
       "texts": [
         "In Our Image:",
         "Conversations on Image Equity",
@@ -15,12 +16,13 @@
           "slide": 1,
           "title": "In Our Image:",
           "images": [
-            "exports/slide_01.png"
+            "Google/pictures/pic_01_1.png"
           ]
         }
       ]
     },
     "exec": {
+      "title": "In response to the Omicron variant and uncertainty around COVID-19, we\u2019ve reimagined the Image Equity Summit that was slated for January 20, 2022.",
       "texts": [
         "In response to the Omicron variant and uncertainty around COVID-19, we\u2019ve reimagined the Image Equity Summit that was slated for January 20, 2022.",
         "This deck walks through our updated event plans, making the most of the messages, conversations, look, feel and experience of the original summit, while taking into account safety for all participants.",
@@ -32,12 +34,13 @@
           "slide": 2,
           "title": "In response to the Omicron variant and uncertainty around COVID-19, we\u2019ve reimagined the Image Equity Summit that was slated for January 20, 2022.",
           "images": [
-            "exports/slide_02.png"
+            "Google/exports/slide_02.png"
           ]
         }
       ]
     },
     "team": {
+      "title": "Table of Contents",
       "texts": [
         "Table of Contents",
         "Beyond8 | Creative Theory Agency, 2022",
@@ -51,12 +54,13 @@
           "slide": 3,
           "title": "Table of Contents",
           "images": [
-            "exports/slide_03.png"
+            "Google/pictures/pic_03_1.png"
           ]
         }
       ]
     },
     "market": {
+      "title": "WHAT",
       "texts": [
         "WHAT",
         "A private gathering featuring an immersive set of experiences and conversations that reflect on the past, present, and future states of representation in imagery, and how Google is working to deliver a more fair product experience.",
@@ -70,12 +74,13 @@
           "slide": 4,
           "title": "WHAT",
           "images": [
-            "exports/slide_04.png"
+            "Google/exports/slide_04.png"
           ]
         }
       ]
     },
     "consumer": {
+      "title": "Attendee Experience",
       "texts": [
         "Attendee Experience",
         "Beyond8 | Creative Theory Agency, 2022"
@@ -85,12 +90,13 @@
           "slide": 5,
           "title": "Attendee Experience",
           "images": [
-            "exports/slide_05.png"
+            "Google/pictures/pic_05_1.png"
           ]
         }
       ]
     },
     "problem": {
+      "title": "Activations",
       "texts": [
         "Activations",
         "Beyond8 | Creative Theory Agency, 2022"
@@ -100,12 +106,13 @@
           "slide": 6,
           "title": "Activations",
           "images": [
-            "exports/slide_06.png"
+            "Google/pictures/pic_06_1.png"
           ]
         }
       ]
     },
     "solution": {
+      "title": "Attendees are greeted by a reflection on the historical and modern implications of image equity, reading about the history of bias in photography, and many of the leaders of color who have fought to reverse these biases in our modern literature and tools. They will also be introduced to a few of our recorded expert speakers, via confessional-style interview clips in which they speak about what image equity means to them.",
       "texts": [
         "Attendees are greeted by a reflection on the historical and modern implications of image equity, reading about the history of bias in photography, and many of the leaders of color who have fought to reverse these biases in our modern literature and tools. They will also be introduced to a few of our recorded expert speakers, via confessional-style interview clips in which they speak about what image equity means to them.",
         "Attendees then dive into 19th century history, beginning in an immersive multimedia room of soundbites from Frederick Douglass\u2019 Lecture of Pictures, black and white period portraiture, vintage color motifs, and photo opps with the Pixel 6 and large format camera.",
@@ -119,12 +126,13 @@
           "slide": 7,
           "title": "Attendees are greeted by a reflection on the historical and modern implications of image equity, reading about the history of bias in photography, and many of the leaders of color who have fought to reverse these biases in our modern literature and tools. They will also be introduced to a few of our recorded expert speakers, via confessional-style interview clips in which they speak about what image equity means to them.",
           "images": [
-            "exports/slide_07.png"
+            "Google/exports/slide_07.png"
           ]
         }
       ]
     },
     "visual": {
+      "title": "FINAL",
       "texts": [
         "FINAL",
         "03/28/22",
@@ -138,12 +146,13 @@
           "slide": 8,
           "title": "FINAL",
           "images": [
-            "exports/slide_08.png"
+            "Google/pictures/pic_08_1.png"
           ]
         }
       ]
     },
     "competitive": {
+      "title": "WIP",
       "texts": [
         "WIP",
         "to be updated 03/29/22",
@@ -157,12 +166,14 @@
           "slide": 9,
           "title": "WIP",
           "images": [
-            "exports/slide_09.png"
+            "Google/pictures/pic_09_1.png",
+            "Google/pictures/pic_09_2.png"
           ]
         }
       ]
     },
     "location": {
+      "title": "2",
       "texts": [
         "2",
         "Frederick Douglass + History Of Protest",
@@ -174,12 +185,13 @@
           "slide": 10,
           "title": "2",
           "images": [
-            "exports/slide_10.png"
+            "Google/pictures/pic_10_1.png"
           ]
         }
       ]
     },
     "model": {
+      "title": "2",
       "texts": [
         "2",
         "Frederick Douglass + History Of Protest",
@@ -193,12 +205,15 @@
           "slide": 11,
           "title": "2",
           "images": [
-            "exports/slide_11.png"
+            "Google/pictures/pic_11_1.png",
+            "Google/pictures/pic_11_2.png",
+            "Google/pictures/pic_11_3.png"
           ]
         }
       ]
     },
     "financial": {
+      "title": "3",
       "texts": [
         "3",
         "Representation Boom in 70s",
@@ -211,12 +226,13 @@
           "slide": 12,
           "title": "3",
           "images": [
-            "exports/slide_12.png"
+            "Google/pictures/pic_12_1.png"
           ]
         }
       ]
     },
     "unit": {
+      "title": "3",
       "texts": [
         "3",
         "Representation Boom in the 70\u2019s",
@@ -230,12 +246,16 @@
           "slide": 13,
           "title": "3",
           "images": [
-            "exports/slide_13.png"
+            "Google/pictures/pic_13_1.png",
+            "Google/pictures/pic_13_2.png",
+            "Google/pictures/pic_13_3.png",
+            "Google/pictures/pic_13_4.png"
           ]
         }
       ]
     },
     "funding": {
+      "title": "4",
       "texts": [
         "4",
         "The New Standard",
@@ -247,12 +267,13 @@
           "slide": 14,
           "title": "4",
           "images": [
-            "exports/slide_14.png"
+            "Google/pictures/pic_14_1.png"
           ]
         }
       ]
     },
     "scenarios": {
+      "title": "4",
       "texts": [
         "4",
         "\u201cThe New Standard\u201d",
@@ -265,12 +286,14 @@
           "slide": 15,
           "title": "4",
           "images": [
-            "exports/slide_15.png"
+            "Google/pictures/pic_15_1.png",
+            "Google/pictures/pic_15_2.png"
           ]
         }
       ]
     },
     "revenue": {
+      "title": "4",
       "texts": [
         "4",
         "Real Tone Zone",
@@ -283,12 +306,15 @@
           "slide": 16,
           "title": "4",
           "images": [
-            "exports/slide_16.png"
+            "Google/pictures/pic_16_1.png",
+            "Google/pictures/pic_16_2.png",
+            "Google/pictures/pic_16_3.png"
           ]
         }
       ]
     },
     "fiveyear": {
+      "title": "4",
       "texts": [
         "4",
         "The Infinite Palette",
@@ -302,12 +328,14 @@
           "slide": 17,
           "title": "4",
           "images": [
-            "exports/slide_17.png"
+            "Google/pictures/pic_17_1.png",
+            "Google/pictures/pic_17_2.png"
           ]
         }
       ]
     },
     "license": {
+      "title": "5",
       "texts": [
         "5",
         "Gifting Moment",
@@ -320,12 +348,14 @@
           "slide": 18,
           "title": "5",
           "images": [
-            "exports/slide_18.png"
+            "Google/pictures/pic_18_1.png",
+            "Google/pictures/pic_18_2.jpg"
           ]
         }
       ]
     },
     "menu": {
+      "title": "Pixel 6 Real Tone Portrait Moment",
       "texts": [
         "Pixel 6 Real Tone Portrait Moment",
         "WIP",
@@ -336,12 +366,16 @@
           "slide": 19,
           "title": "Pixel 6 Real Tone Portrait Moment",
           "images": [
-            "exports/slide_19.png"
+            "Google/pictures/pic_19_1.jpg",
+            "Google/pictures/pic_19_2.png",
+            "Google/pictures/pic_19_3.png",
+            "Google/pictures/pic_19_4.png"
           ]
         }
       ]
     },
     "brand": {
+      "title": "Google Kiosks",
       "texts": [
         "Google Kiosks",
         "FINAL",
@@ -352,12 +386,14 @@
           "slide": 20,
           "title": "Google Kiosks",
           "images": [
-            "exports/slide_20.png"
+            "Google/pictures/pic_20_1.jpg",
+            "Google/pictures/pic_20_2.png"
           ]
         }
       ]
     },
     "ops": {
+      "title": "Venues + Logistics",
       "texts": [
         "Venues + Logistics",
         "Beyond8 | Creative Theory Agency, 2022"
@@ -367,12 +403,13 @@
           "slide": 21,
           "title": "Venues + Logistics",
           "images": [
-            "exports/slide_21.png"
+            "Google/pictures/pic_21_1.png"
           ]
         }
       ]
     },
     "timeline": {
+      "title": "Los Angeles, CA",
       "texts": [
         "Los Angeles, CA",
         "Thursday, April 7th, 2022 | 3:00 - 6:00pm PT (VIPs)",
@@ -384,12 +421,13 @@
           "slide": 22,
           "title": "Los Angeles, CA",
           "images": [
-            "exports/slide_22.png"
+            "Google/pictures/pic_22_1.png"
           ]
         }
       ]
     },
     "risks": {
+      "title": "Venue",
       "texts": [
         "Venue",
         "hybrid indoor/outdoor space",
@@ -403,12 +441,14 @@
           "slide": 23,
           "title": "Venue",
           "images": [
-            "exports/slide_23.png"
+            "Google/pictures/pic_23_1.png",
+            "Google/pictures/pic_23_2.png"
           ]
         }
       ]
     },
     "expansion": {
+      "title": "Guest Journey Overview",
       "texts": [
         "Guest Journey Overview",
         "FINAL",
@@ -419,12 +459,13 @@
           "slide": 24,
           "title": "Guest Journey Overview",
           "images": [
-            "exports/slide_24.png"
+            "Google/pictures/pic_24_1.png"
           ]
         }
       ]
     },
     "growth": {
+      "title": "Student + Org Guests",
       "texts": [
         "Student + Org Guests",
         "Thu Apr 7, Morning",
@@ -438,12 +479,13 @@
           "slide": 25,
           "title": "Student + Org Guests",
           "images": [
-            "exports/slide_25.png"
+            "Google/exports/slide_25.png"
           ]
         }
       ]
     },
     "highlights": {
+      "title": "VIP Guests",
       "texts": [
         "VIP Guests",
         "Thu Apr 7, Afternoon",
@@ -457,12 +499,13 @@
           "slide": 26,
           "title": "VIP Guests",
           "images": [
-            "exports/slide_26.png"
+            "Google/exports/slide_26.png"
           ]
         }
       ]
     },
     "ask": {
+      "title": "NYC",
       "texts": [
         "NYC",
         "Thursday, April 28th, 2022 | 1:00 - 4:00pm ET",
@@ -473,12 +516,13 @@
           "slide": 27,
           "title": "NYC",
           "images": [
-            "exports/slide_27.png"
+            "Google/pictures/pic_27_1.png"
           ]
         }
       ]
     },
     "appendix": {
+      "title": "Venue",
       "texts": [
         "Venue",
         "hybrid indoor/outdoor space",
@@ -498,308 +542,330 @@
           "slide": 28,
           "title": "Venue",
           "images": [
-            "exports/slide_28.png"
+            "Google/pictures/pic_28_1.jpg",
+            "Google/pictures/pic_28_2.jpg"
           ]
         },
         {
           "slide": 29,
           "title": "Guest Journey",
           "images": [
-            "exports/slide_29.png"
+            "Google/exports/slide_29.png"
           ]
         },
         {
           "slide": 30,
           "title": "WIP",
           "images": [
-            "exports/slide_30.png"
+            "Google/pictures/pic_30_1.png"
           ]
         },
         {
           "slide": 31,
           "title": "Content",
           "images": [
-            "exports/slide_31.png"
+            "Google/pictures/pic_31_1.png"
           ]
         },
         {
           "slide": 32,
           "title": "Participating expert speakers were asked a series of questions in beautiful confessional-style interviews about their backgrounds, their work and purpose, and what image equity means to them.",
           "images": [
-            "exports/slide_32.png"
+            "Google/exports/slide_32.png"
           ]
         },
         {
           "slide": 33,
           "title": "Expert Panel Conversations",
           "images": [
-            "exports/slide_33.png"
+            "Google/pictures/pic_33_1.png"
           ]
         },
         {
           "slide": 34,
           "title": "Visions for the Future",
           "images": [
-            "exports/slide_34.png"
+            "Google/pictures/pic_34_1.png",
+            "Google/pictures/pic_34_2.png",
+            "Google/pictures/pic_34_3.png"
           ]
         },
         {
           "slide": 35,
           "title": "Attendees",
           "images": [
-            "exports/slide_35.png"
+            "Google/pictures/pic_35_1.png"
           ]
         },
         {
           "slide": 36,
           "title": "Joshua Kissi",
           "images": [
-            "exports/slide_36.png"
+            "Google/exports/slide_36.png"
           ]
         },
         {
           "slide": 37,
           "title": "UCLA Student Groups",
           "images": [
-            "exports/slide_37.png"
+            "Google/exports/slide_37.png"
           ]
         },
         {
           "slide": 38,
           "title": "Products",
           "images": [
-            "exports/slide_38.png"
+            "Google/pictures/pic_38_1.png"
           ]
         },
         {
           "slide": 39,
           "title": "Product Highlights",
           "images": [
-            "exports/slide_39.png"
+            "Google/pictures/pic_39_1.png",
+            "Google/pictures/pic_39_2.png",
+            "Google/pictures/pic_39_3.png"
           ]
         },
         {
           "slide": 40,
           "title": "Food + Beverage",
           "images": [
-            "exports/slide_40.png"
+            "Google/pictures/pic_40_1.png"
           ]
         },
         {
           "slide": 41,
           "title": "Food + Beverage",
           "images": [
-            "exports/slide_41.png"
+            "Google/pictures/pic_41_1.png",
+            "Google/pictures/pic_41_2.png"
           ]
         },
         {
           "slide": 42,
           "title": "Food + Beverage",
           "images": [
-            "exports/slide_42.png"
+            "Google/pictures/pic_42_1.png"
           ]
         },
         {
           "slide": 43,
           "title": "Food + Beverage",
           "images": [
-            "exports/slide_43.png"
+            "Google/pictures/pic_43_1.png"
           ]
         },
         {
           "slide": 44,
           "title": "Gifting",
           "images": [
-            "exports/slide_44.png"
+            "Google/pictures/pic_44_1.png"
           ]
         },
         {
           "slide": 45,
           "title": "Google Pixel 6 + Case",
           "images": [
-            "exports/slide_45.png"
+            "Google/pictures/pic_45_1.png",
+            "Google/pictures/pic_45_2.png",
+            "Google/pictures/pic_45_3.jpg",
+            "Google/pictures/pic_45_4.png",
+            "Google/pictures/pic_45_5.jpg"
           ]
         },
         {
           "slide": 46,
           "title": "Graphics",
           "images": [
-            "exports/slide_46.png"
+            "Google/pictures/pic_46_1.png"
           ]
         },
         {
           "slide": 47,
           "title": "Temi Coker Artwork",
           "images": [
-            "exports/slide_47.png"
+            "Google/pictures/pic_47_1.jpg"
           ]
         },
         {
           "slide": 48,
           "title": "event lock up",
           "images": [
-            "exports/slide_48.png"
+            "Google/pictures/pic_48_1.png",
+            "Google/pictures/pic_48_2.png"
           ]
         },
         {
           "slide": 49,
           "title": "Approved Design Direction",
           "images": [
-            "exports/slide_49.png"
+            "Google/pictures/pic_49_1.png"
           ]
         },
         {
           "slide": 50,
           "title": "vaccine notice",
           "images": [
-            "exports/slide_50.png"
+            "Google/pictures/pic_50_1.jpg"
           ]
         },
         {
           "slide": 51,
           "title": "restroom signage",
           "images": [
-            "exports/slide_51.png"
+            "Google/pictures/pic_51_1.jpg",
+            "Google/pictures/pic_51_2.jpg",
+            "Google/pictures/pic_51_3.jpg"
           ]
         },
         {
           "slide": 52,
           "title": "monitor holding slides",
           "images": [
-            "exports/slide_52.png"
+            "Google/pictures/pic_52_1.jpg",
+            "Google/pictures/pic_52_2.jpg"
           ]
         },
         {
           "slide": 53,
           "title": "Copy",
           "images": [
-            "exports/slide_53.png"
+            "Google/pictures/pic_53_1.png"
           ]
         },
         {
           "slide": 54,
           "title": "Event Copy",
           "images": [
-            "exports/slide_54.png"
+            "Google/pictures/pic_54_1.png",
+            "Google/pictures/pic_54_2.png"
           ]
         },
         {
           "slide": 55,
           "title": "BA Uniforms",
           "images": [
-            "exports/slide_55.png"
+            "Google/pictures/pic_55_1.png"
           ]
         },
         {
           "slide": 56,
           "title": "Final: 3/30",
           "images": [
-            "exports/slide_56.png"
+            "Google/pictures/pic_56_1.png"
           ]
         },
         {
           "slide": 57,
           "title": "BA",
           "images": [
-            "exports/slide_57.png"
+            "Google/pictures/pic_57_1.png"
           ]
         },
         {
           "slide": 58,
           "title": "Thanks!",
           "images": [
-            "exports/slide_58.png"
+            "Google/pictures/pic_58_1.png"
           ]
         },
         {
           "slide": 59,
           "title": "Graveyard",
           "images": [
-            "exports/slide_59.png"
+            "Google/pictures/pic_59_1.png"
           ]
         },
         {
           "slide": 60,
           "title": "Speakers",
           "images": [
-            "exports/slide_60.png"
+            "Google/pictures/pic_60_1.png"
           ]
         },
         {
           "slide": 61,
           "title": "Speakers",
           "images": [
-            "exports/slide_61.png"
+            "Google/exports/slide_61.png"
           ]
         },
         {
           "slide": 62,
           "title": "Props",
           "images": [
-            "exports/slide_62.png"
+            "Google/pictures/pic_62_1.png"
           ]
         },
         {
           "slide": 63,
           "title": "Furniture and Set Additions",
           "images": [
-            "exports/slide_63.png"
+            "Google/exports/slide_63.png"
           ]
         },
         {
           "slide": 64,
           "title": "Experts\u2019 Works",
           "images": [
-            "exports/slide_64.png"
+            "Google/pictures/pic_64_1.png"
           ]
         },
         {
           "slide": 65,
           "title": "Experts\u2019 Works Placement",
           "images": [
-            "exports/slide_65.png"
+            "Google/pictures/pic_65_1.png"
           ]
         },
         {
           "slide": 66,
           "title": "1",
           "images": [
-            "exports/slide_66.png"
+            "Google/exports/slide_66.png"
           ]
         },
         {
           "slide": 67,
           "title": "2",
           "images": [
-            "exports/slide_67.png"
+            "Google/exports/slide_67.png"
           ]
         },
         {
           "slide": 68,
           "title": "3",
           "images": [
-            "exports/slide_68.png"
+            "Google/exports/slide_68.png"
           ]
         },
         {
           "slide": 69,
           "title": "Shoot Location",
           "images": [
-            "exports/slide_69.png"
+            "Google/pictures/pic_69_1.jpg",
+            "Google/pictures/pic_69_2.png"
           ]
         },
         {
           "slide": 70,
           "title": "LOCK UP",
           "images": [
-            "exports/slide_70.png"
+            "Google/pictures/pic_70_1.png",
+            "Google/pictures/pic_70_2.png",
+            "Google/pictures/pic_70_3.png",
+            "Google/pictures/pic_70_4.png",
+            "Google/pictures/pic_70_5.png",
+            "Google/pictures/pic_70_6.png"
           ]
         },
         {
           "slide": 71,
           "title": "4",
           "images": [
-            "exports/slide_71.png"
+            "Google/pictures/pic_71_1.png",
+            "Google/pictures/pic_71_2.png"
           ]
         }
       ]
