@@ -25,20 +25,16 @@
     .chart-box { border:1px solid var(--border); background:#fff; padding:0.75rem; }
     .chart-title { font-size:0.875rem; font-weight:700; margin:0 0 0.5rem 0; }
 
-    /* Deck Visuals styles (image-on-top layout) */
-    .dv-grid { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:0.9rem; margin-top:0.6rem; }
-    .dv-card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:0.75rem; display:flex; flex-direction:column; gap:0.5rem; }
-    .dv-head { display:flex; align-items:center; justify-content:space-between; gap:0.5rem; }
-    .dv-title { font-size:0.9rem; font-weight:700; margin:0; }
-    .dv-badge { font-size:0.75rem; opacity:0.7; }
-    .dv-main { width:100%; border-radius:8px; border:1px solid var(--border); display:none; }
-    .dv-main.active { display:block; }
-    .dv-strip { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; }
-    .dv-strip img { height:92px; border-radius:8px; flex: 0 0 auto; border:1px solid var(--border); cursor: zoom-in; }
-    .slider-controls { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:6px; }
+    /* Two-column content (text left, image right) */
+    .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:0.9rem; align-items:start; }
+    .box { background:#fff; border:1px solid var(--border); border-radius:10px; padding:0.9rem; }
+    /* Single-image slider (Bagel Room style) */
+    .img-slider { display:grid; grid-template-columns: 28px 1fr 28px; align-items:center; gap:0.5rem; background:#fff; border:1px solid var(--border); border-radius:10px; padding:0.5rem; position:relative; }
+    .img-slider .slide-img { display:none; width:100%; border-radius:8px; }
+    .img-slider .slide-img.active { display:block; }
     .slider-btn { appearance:none; background:#fff; color:#0E0E0E; border:1px solid var(--border); width:28px; height:28px; border-radius:999px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:700; }
     .slider-btn:disabled { opacity:0.4; cursor:not-allowed; }
-    .dots { display:flex; gap:6px; }
+    .dots { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; background:rgba(255,255,255,0.9); border:1px solid var(--border); padding:3px 6px; border-radius:999px; }
     .dot { width:8px; height:8px; border-radius:2px; border:1px solid #0E0E0E; background:#fff; opacity:0.7; }
     .dot.active { background:#8DFF14; opacity:1; }
     @media (max-width: 900px){ .dv-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
@@ -52,66 +48,56 @@
     <aside class="cs-index">
       <div class="cs-index-title">Index</div>
       <ol>
-        <li><a href="#info"><span class="num">00.</span> Information</a></li>
-        <li><a href="#exec"><span class="num">01.</span> Executive Summary</a></li>
-        <li><a href="#team"><span class="num">02.</span> Team</a></li>
-        <li><a href="#market"><span class="num">03.</span> Market Opportunity</a></li>
-        <li><a href="#consumer"><span class="num">04.</span> Consumer Behavior</a></li>
-        <li><a href="#problem"><span class="num">05.</span> Problem</a></li>
-        <li><a href="#solution"><span class="num">06.</span> Solution</a></li>
-        <li><a href="#visual"><span class="num">07.</span> Visual Inspiration</a></li>
-        <li><a href="#competitive"><span class="num">08.</span> Competitive Landscape</a></li>
-        <li><a href="#location"><span class="num">09.</span> Location Strategy</a></li>
-        <li><a href="#model"><span class="num">10.</span> Business Model</a></li>
-        <li><a href="#financial"><span class="num">11.</span> Financials</a></li>
-        <li><a href="#unit"><span class="num">12.</span> Unit Economics</a></li>
-        <li><a href="#funding"><span class="num">13.</span> Funding Breakdown</a></li>
-        <li><a href="#scenarios"><span class="num">14.</span> Funding Scenarios</a></li>
-        <li><a href="#revenue"><span class="num">15.</span> Revenue Model</a></li>
-        <li><a href="#fiveyear"><span class="num">16.</span> 5‑Year Projections</a></li>
-        <li><a href="#license"><span class="num">17.</span> License Strategy</a></li>
-        <li><a href="#menu"><span class="num">18.</span> Menu Strategy</a></li>
-        <li><a href="#brand"><span class="num">19.</span> Brand Strategy</a></li>
-        <li><a href="#ops"><span class="num">20.</span> Operations Plan</a></li>
-        <li><a href="#timeline"><span class="num">21.</span> Timeline</a></li>
-        <li><a href="#risks"><span class="num">22.</span> Risk Analysis</a></li>
-        <li><a href="#expansion"><span class="num">23.</span> Expansion Strategy</a></li>
-        <li><a href="#growth"><span class="num">24.</span> Market Growth</a></li>
-        <li><a href="#highlights"><span class="num">25.</span> Investment Highlights</a></li>
-        <li><a href="#ask"><span class="num">26.</span> The Ask</a></li>
-        <li><a href="#appendix"><span class="num">27.</span> Appendix</a></li>
+        <li><a href="#info"><span class="num">01.</span> The Infinite Palette</a></li>
+        <li><a href="#exec"><span class="num">02.</span> The Shirley Card</a></li>
+        <li><a href="#team"><span class="num">03.</span> Background — The evolution of standard</a></li>
+        <li><a href="#market"><span class="num">04.</span> Introduction</a></li>
+        <li><a href="#consumer"><span class="num">05.</span> The Capture Experience</a></li>
+        <li><a href="#problem"><span class="num">06.</span> The AR Experience</a></li>
+        <li><a href="#solution"><span class="num">07.</span> The Purpose</a></li>
+        <li><a href="#visual"><span class="num">08.</span> About MODU</a></li>
+        <li><a href="#competitive"><span class="num">09.</span> Venue — DTLA · SoLa Beehive</a></li>
+        <li><a href="#location"><span class="num">10.</span> User Flow</a></li>
+        <li><a href="#model"><span class="num">11.</span> Images from Event</a></li>
+        <li><a href="#financial"><span class="num">12.</span> Images from Event</a></li>
       </ol>
     </aside>
     <main class="cs-sections">
-      <!-- Sections scaffold; text and images auto-injected via manifest -->
-      <section id="info" class="cs-page"><div class="cs-num">00.</div><div class="cs-content"><h1>Information</h1><div class="chart-box"><div class="chart-title">Overview</div><ul class="auto-bullets"></ul></div><div class="dv-grid"></div></div></section>
-      <section id="exec" class="cs-page"><div class="cs-num">01.</div><div class="cs-content"><h1>Executive Summary</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="team" class="cs-page"><div class="cs-num">02.</div><div class="cs-content"><h1>Team</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="market" class="cs-page"><div class="cs-num">03.</div><div class="cs-content"><h1>Market Opportunity</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="consumer" class="cs-page"><div class="cs-num">04.</div><div class="cs-content"><h1>Consumer Behavior</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="problem" class="cs-page"><div class="cs-num">05.</div><div class="cs-content"><h1>Problem</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="solution" class="cs-page"><div class="cs-num">06.</div><div class="cs-content"><h1>Solution</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="visual" class="cs-page"><div class="cs-num">07.</div><div class="cs-content"><h1>Visual Inspiration</h1><div class="dv-grid"></div></div></section>
-      <section id="competitive" class="cs-page"><div class="cs-num">08.</div><div class="cs-content"><h1>Competitive Landscape</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="location" class="cs-page"><div class="cs-num">09.</div><div class="cs-content"><h1>Location Strategy</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="model" class="cs-page"><div class="cs-num">10.</div><div class="cs-content"><h1>Business Model</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="financial" class="cs-page"><div class="cs-num">11.</div><div class="cs-content"><h1>Financials</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="unit" class="cs-page"><div class="cs-num">12.</div><div class="cs-content"><h1>Unit Economics</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="funding" class="cs-page"><div class="cs-num">13.</div><div class="cs-content"><h1>Funding Breakdown</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="scenarios" class="cs-page"><div class="cs-num">14.</div><div class="cs-content"><h1>Funding Scenarios</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="revenue" class="cs-page"><div class="cs-num">15.</div><div class="cs-content"><h1>Revenue Model</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="fiveyear" class="cs-page"><div class="cs-num">16.</div><div class="cs-content"><h1>5‑Year Projections</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="license" class="cs-page"><div class="cs-num">17.</div><div class="cs-content"><h1>License Strategy</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="menu" class="cs-page"><div class="cs-num">18.</div><div class="cs-content"><h1>Menu Strategy</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="brand" class="cs-page"><div class="cs-num">19.</div><div class="cs-content"><h1>Brand Strategy</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="ops" class="cs-page"><div class="cs-num">20.</div><div class="cs-content"><h1>Operations Plan</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="timeline" class="cs-page"><div class="cs-num">21.</div><div class="cs-content"><h1>Timeline</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="risks" class="cs-page"><div class="cs-num">22.</div><div class="cs-content"><h1>Risk Analysis</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="expansion" class="cs-page"><div class="cs-num">23.</div><div class="cs-content"><h1>Expansion Strategy</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="growth" class="cs-page"><div class="cs-num">24.</div><div class="cs-content"><h1>Market Growth</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="highlights" class="cs-page"><div class="cs-num">25.</div><div class="cs-content"><h1>Investment Highlights</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="ask" class="cs-page"><div class="cs-num">26.</div><div class="cs-content"><h1>The Ask</h1><ul class="auto-bullets"></ul><div class="dv-grid"></div></div></section>
-      <section id="appendix" class="cs-page"><div class="cs-num">27.</div><div class="cs-content"><h1>Appendix</h1><div class="dv-grid"></div></div></section>
+      <!-- 01. The Infinite Palette -->
+      <section id="info" class="cs-page"><div class="cs-num">01.</div><div class="cs-content"><h1>The Infinite Palette</h1><div class="two-col"><div class="box"><p>An immersive experience that combines collaboration with individualism to create the new standard.</p><p><strong>Prepared By:</strong> Abdou Sarr & Mo Alissa — December 10th, 2021</p></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.001.jpeg" alt="Slide 1" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 02. The Shirley Card -->
+      <section id="exec" class="cs-page"><div class="cs-num">02.</div><div class="cs-content"><h1>The Shirley Card</h1><div class="two-col"><div class="box"><p>“Photography is not just a system of calibrating light, but a technology of subjective decisions”.</p><p>The original Shirley card ushered in an era of color correction where “Shirley” was the standard and left diverse skin tones out of the picture.</p></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.002.jpeg" alt="Slide 2" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 03. Background -->
+      <section id="team" class="cs-page"><div class="cs-num">03.</div><div class="cs-content"><h1>Background: The evolution of standard</h1><div class="two-col"><div class="box"><p>Since the 1990s, major strides have been made to improve how cameras see color and new standards have been put into place.</p><p>The truth however, is that in a world full of infinite unique and individual skin tones, there is no true standard.</p></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.003.jpeg" alt="Slide 3" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 04. Introduction -->
+      <section id="market" class="cs-page"><div class="cs-num">04.</div><div class="cs-content"><h1>Introduction</h1><div class="two-col"><div class="box"><p>We are so much more than a color code. The goal of this immersive art exhibit is to highlight the idea that the new standard is to not conform to a standard at all.</p><p>The Infinite Palette encourages attendees to form a new color palette (a human standard) in real time—visualizing the infinite range of our unique skin tones.</p><p>This palette is made from their skin tones and names (how they see the canvas digitally), instead of generic tones and color codes (how they see the canvas physically).</p></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.004.jpeg" alt="Slide 4" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 05. Capture Experience -->
+      <section id="consumer" class="cs-page"><div class="cs-num">05.</div><div class="cs-content"><h1>The Capture Experience</h1><div class="two-col"><div class="box"><p>Attendees see a large color‑grid canvas on the wall with a booth in front. Using a Pixel device app, they capture a selfie and add their name. Once submitted, their image is sent to the digital art piece.</p><p><em>Optional</em>: a sub‑experience shows what their photo would have looked like if corrected with the original Shirley card.</p></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.005.jpeg" alt="Slide 5" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 06. AR Experience -->
+      <section id="problem" class="cs-page"><div class="cs-num">06.</div><div class="cs-content"><h1>The AR Experience — Viewing the Digital Palette</h1><div class="two-col"><div class="box"><p>In real life, the canvas is just a grid of colors (representing the old standard). The viewing app brings the canvas to life via AR.</p><p>As more submissions arrive, viewers see the message forming in real time—subtle nuances and variations of each individual’s skin tone coming together into an infinite human color palette.</p><p>In the app, viewers see a grid of captured people, tones as backgrounds, and names below.</p></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.006.jpeg" alt="Slide 6" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 07. Purpose -->
+      <section id="solution" class="cs-page"><div class="cs-num">07.</div><div class="cs-content"><h1>The Purpose — Our Objective</h1><div class="two-col"><div class="box"><ul><li><strong>Educate</strong>: understand past & present via the non‑digital experience.</li><li><strong>Absorb</strong>: personal capture + submission app.</li><li><strong>Immerse</strong>: interactive AR evolves throughout the day.</li><li><strong>Embody</strong>: leave with a new perspective on color identity.</li></ul></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.007.jpeg" alt="Slide 7" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 08. About MODU -->
+      <section id="visual" class="cs-page"><div class="cs-num">08.</div><div class="cs-content"><h1>About MODU</h1><div class="two-col"><div class="box"><p><strong>Mo Alissa</strong> leads creative direction. 8+ years across photography, design, experience; from The Weeknd & Drake to Canon’s camera team.</p><p><strong>Abdou Sarr</strong> leads product management. 7+ years in mobile; Shopify’s youngest employee; Motorola ATAP; immersive media focus.</p><p>Together: Nike, Apple, Converse, Australian Open, Amazon, OVO; MODU moves fast.</p></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.008.jpeg" alt="Slide 8" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 09. Venue -->
+      <section id="competitive" class="cs-page"><div class="cs-num">09.</div><div class="cs-content"><h1>Venue — DTLA · SoLa Beehive</h1><div class="two-col"><div class="box"><ul><li>~120 Student/Org Partner guests (Morning)</li><li>~100 VIP guests (Afternoon)</li></ul></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.009.jpeg" alt="Slide 9" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 10. User Flow -->
+      <section id="location" class="cs-page"><div class="cs-num">10.</div><div class="cs-content"><h1>User Flow</h1><div class="two-col"><div class="box"><p><strong>KEY:</strong></p><p>1 Valet Drop‑off · 2 Check‑in · 3 Seen in Power · 4 Seen in Color · 5 Seen in Focus · 6 Seen as You See Yourself · 7 Gifting · 8 Restrooms · 9 Valet Pick‑up</p></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.010.jpeg" alt="Slide 10" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 11. Images from Event -->
+      <section id="model" class="cs-page"><div class="cs-num">11.</div><div class="cs-content"><h1>Images from Event</h1><div class="two-col"><div class="box"><p>Highlights from the activation.</p></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.011.jpeg" alt="Slide 11" style="width:100%;border-radius:8px"/></div></div></div></section>
+
+      <!-- 12. Images from Event -->
+      <section id="financial" class="cs-page"><div class="cs-num">12.</div><div class="cs-content"><h1>Images from Event</h1><div class="two-col"><div class="box"><p>Additional highlights from the activation.</p></div><div class="box"><img src="Google/[MODU]+Google+Project+Brief+(1) 2/[MODU]+Google+Project+Brief+(1) 2.012.jpeg" alt="Slide 12" style="width:100%;border-radius:8px"/></div></div></div></section>
     </main>
   </div>
   <script>
@@ -132,119 +118,38 @@
     })();
   </script>
   <script>
-    (async function(){
-      // Build dv-cards and bullets per section from manifest
-      async function loadManifest(){
-        const res = await fetch('Google/manifest.json', {cache:'no-store'});
-        if(!res.ok) throw new Error('manifest fetch failed');
-        return res.json();
-      }
-      function ensureContainer(section, selector){
-        const s = document.getElementById(section);
-        if(!s) return null;
-        let el = s.querySelector(selector);
-        if(!el && selector==='.dv-grid'){ el = document.createElement('div'); el.className='dv-grid'; s.querySelector('.cs-content').appendChild(el); }
-        if(!el && selector==='.auto-bullets'){ el = document.createElement('ul'); el.className='auto-bullets'; s.querySelector('.cs-content').insertBefore(el, s.querySelector('.dv-grid')); }
-        return el;
-      }
-      function toBullets(texts){
-        return texts
-          .map(t=> (t||'').trim())
-          .filter(t=>t.length>0)
-          .slice(0,10);
-      }
-      function render(manifest){
-        const bySection = manifest.sections || {};
-        Object.keys(bySection).forEach(sectionId =>{
-          const data = bySection[sectionId];
-          // Set section header title if present
-          const sec = document.getElementById(sectionId);
-          if(sec && data.title){
-            const h1 = sec.querySelector('.cs-content h1');
-            if(h1) h1.textContent = data.title;
-            // Also set index link label
-            const navLink = document.querySelector(`.cs-index a[href="#${sectionId}"]`);
-            if(navLink){
-              const numSpan = navLink.querySelector('.num');
-              navLink.textContent = data.title;
-              if(numSpan){ navLink.prepend(numSpan); }
-            }
-          }
-          const bullets = ensureContainer(sectionId, '.auto-bullets');
-          if(bullets && data.texts && data.texts.length){
-            bullets.innerHTML = '';
-            toBullets(data.texts).forEach(t=>{ const li=document.createElement('li'); li.textContent = t; bullets.appendChild(li); });
-          }
-          const grid = ensureContainer(sectionId, '.dv-grid');
-          if(grid && data.slides){
-            grid.innerHTML='';
-            data.slides.forEach(slide =>{
-              if(!slide.images || !slide.images.length) return;
-              const card = document.createElement('div');
-              card.className = 'dv-card';
-              const head = document.createElement('div'); head.className='dv-head';
-              const title = document.createElement('h4'); title.className='dv-title'; title.textContent = slide.title || `Slide ${slide.slide}`;
-              const badge = document.createElement('div'); badge.className='dv-badge'; badge.textContent = `Slide ${slide.slide}`;
-              head.appendChild(title); head.appendChild(badge);
-
-              // Slider images
-              const imgs = slide.images.map((src, i)=>{
-                const im = document.createElement('img');
-                im.className = 'dv-main' + (i===0 ? ' active' : '');
-                im.loading = 'lazy';
-                im.dataset.zoomable='1';
-                im.alt = title.textContent;
-                im.src = src;
-                return im;
-              });
-
-              // Single-image slider controls (prev/next + dots) and autoplay
-              let idx = 0; let timer=null; const intervalMs = 1500;
-              function show(i){ imgs[idx].classList.remove('active'); idx = (i+imgs.length)%imgs.length; imgs[idx].classList.add('active'); updateDots(); updateBtnState(); }
-              function start(){ if(imgs.length<=1 || timer) return; timer = setInterval(()=> show(idx+1), intervalMs); }
-              function stop(){ if(timer){ clearInterval(timer); timer=null; } }
-              function updateBtnState(){ prev.disabled = (idx===0); next.disabled = (idx===imgs.length-1); }
-              function updateDots(){ dots.forEach((d,i)=> d.classList.toggle('active', i===idx)); }
-
-              const container = document.createElement('div');
-              imgs.forEach(im=> container.appendChild(im));
-
-              // Controls row like Bagel Room
-              const controls = document.createElement('div'); controls.className='slider-controls';
-              const prev = document.createElement('button'); prev.className='slider-btn'; prev.textContent='‹'; prev.addEventListener('click', ()=>{ stop(); show(idx-1); start(); });
-              const dotsWrap = document.createElement('div'); dotsWrap.className='dots';
-              const dots = slide.images.map((_,i)=>{ const d=document.createElement('span'); d.className='dot' + (i===0?' active':''); d.addEventListener('click', ()=>{ stop(); show(i); start(); }); dotsWrap.appendChild(d); return d; });
-              const next = document.createElement('button'); next.className='slider-btn'; next.textContent='›'; next.addEventListener('click', ()=>{ stop(); show(idx+1); start(); });
-              controls.appendChild(prev); controls.appendChild(dotsWrap); controls.appendChild(next);
-
-              card.appendChild(head);
-              card.appendChild(container);
-              if(slide.images.length>1){ card.appendChild(controls); }
-              card.addEventListener('mouseenter', stop);
-              card.addEventListener('mouseleave', start);
-              start();
-
-              grid.appendChild(card);
-            });
-          }
-        });
-      }
-      try{
-        const manifest = await loadManifest();
-        render(manifest);
-      }catch(e){ console.warn('No manifest injected', e); }
-    })();
-  </script>
-  <script>
     (function(){
-      // Lightweight click-to-zoom for any image with data-zoomable="1"
-      const overlay = document.createElement('div');
-      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999';
-      const big = document.createElement('img');
-      big.style.maxWidth = '92vw'; big.style.maxHeight = '92vh'; big.style.borderRadius='12px';
-      overlay.appendChild(big); document.body.appendChild(overlay);
-      overlay.addEventListener('click',()=> overlay.style.display='none');
-      document.addEventListener('click',(e)=>{ const t=e.target; if(t && t.tagName==='IMG' && t.dataset.zoomable==='1'){ big.src=t.src; overlay.style.display='flex'; }});
+      // Minimal slider logic for sections with .img-slider
+      function initSlider(root){
+        if(!root) return;
+        const imgs=[...root.querySelectorAll('.slide-img')];
+        const prev=root.querySelector('[data-prev]');
+        const next=root.querySelector('[data-next]');
+        const dotsContainer=root.querySelector('.dots');
+        const dots=dotsContainer ? [...dotsContainer.querySelectorAll('.dot')] : [];
+        let idx=imgs.findIndex(i=>i.classList.contains('active'));
+        if(idx<0) idx=0;
+        const autoplayMs = parseInt(root.getAttribute('data-autoplay')) || 1500;
+        let timer=null;
+        function update(){
+          imgs.forEach((img,i)=> img.classList.toggle('active', i===idx));
+          dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
+          if(prev) prev.disabled = (idx===0);
+          if(next) next.disabled = (idx===imgs.length-1);
+        }
+        dots.forEach((d,i)=> d.addEventListener('click', ()=>{ idx=i; update(); restart(); }));
+        prev && prev.addEventListener('click', ()=>{ if(idx>0){ idx--; update(); restart(); } });
+        next && next.addEventListener('click', ()=>{ if(idx<imgs.length-1){ idx++; update(); restart(); } });
+        function start(){ if(timer || imgs.length<=1) return; timer = setInterval(()=>{ idx = (idx+1) % imgs.length; update(); }, autoplayMs); }
+        function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+        function restart(){ stop(); start(); }
+        root.addEventListener('mouseenter', stop);
+        root.addEventListener('mouseleave', start);
+        document.addEventListener('visibilitychange', ()=>{ if(document.hidden) stop(); else start(); });
+        update();
+        start();
+      }
+      document.querySelectorAll('.img-slider').forEach(initSlider);
     })();
   </script>
 </body>
