@@ -103,9 +103,46 @@ def infer_section_id_by_index(idx):
     return SECTION_IDS[min(idx, len(SECTION_IDS)-1)]
 
 
+def extract_toc_titles(prs):
+    """Attempt to extract Table of Contents/Agenda slide item titles.
+    Returns a list of strings, in order, up to the number of sections.
+    """
+    keywords = {"table of contents", "contents", "agenda", "overview"}
+    def all_text(slide):
+        lines = []
+        for sh in slide.shapes:
+            if hasattr(sh, "has_text_frame") and sh.has_text_frame:
+                for p in sh.text_frame.paragraphs:
+                    s = "".join(run.text for run in p.runs).strip()
+                    if s:
+                        lines.append(s)
+        return lines
+    for slide in prs.slides:
+        lines = all_text(slide)
+        joined_lower = " ".join(lines).lower()
+        if any(k in joined_lower for k in keywords) and len(lines) >= 3:
+            # Heuristic: drop the first line if it looks like the header
+            candidates = lines[1:]
+            # Keep concise items only
+            cleaned = []
+            seen = set()
+            for t in candidates:
+                t = t.strip().strip("-•· ")
+                if not t or t.lower() in keywords:
+                    continue
+                if t in seen:
+                    continue
+                seen.add(t)
+                cleaned.append(t)
+            if cleaned:
+                return cleaned[:len(SECTION_IDS)]
+    return []
+
+
 def build_manifest(pptx_path: Path):
     prs = Presentation(str(pptx_path))
     sections = { sid: {"title": "", "texts": [], "slides": []} for sid in SECTION_IDS }
+    toc_titles = extract_toc_titles(prs)
     for i, slide in enumerate(prs.slides):
         sid = infer_section_id_by_index(i)
         texts = extract_texts_from_slide(slide)
@@ -128,6 +165,12 @@ def build_manifest(pptx_path: Path):
         # Set section display title if not already set
         if not sections[sid]["title"] and entry["title"]:
             sections[sid]["title"] = entry["title"]
+
+    # Apply TOC titles to index labels if available
+    if toc_titles:
+        for idx, t in enumerate(toc_titles):
+            if idx < len(SECTION_IDS):
+                sections[SECTION_IDS[idx]]["title"] = t
 
     # Trim bullet explosion per section
     for sid in sections:
