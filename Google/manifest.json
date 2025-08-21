@@ -1,58 +1,61 @@
 {
-  "source": "Copy of Extended Reimagining The Image Equity Summit - April 2022.pptx",
+  "source": "modu-google-ppx.pptx",
   "sections": {
     "info": {
-      "title": "Beyond8 | Creative Theory Agency, 2022",
+      "title": "The Infinite Palette",
       "texts": [
-        "In Our Image:",
-        "Conversations on Image Equity",
-        "April 2022",
-        "Questions? itsflorian@",
-        "Last update: Wed 3/23",
-        "Beyond8 | Creative Theory Agency, 2022"
+        "An immersive experience combining collaboration and individualism",
+        "Aims to set a new standard for image equity",
+        "Prepared by Abdou Sarr & Mo Alissa \u2014 Dec 10, 2021"
       ],
       "slides": [
         {
           "slide": 1,
-          "title": "In Our Image:",
+          "title": "Slide 1",
           "images": [
-            "Google/pictures/pic_01_1.png"
+            "Google/pictures/pic_01_1.png",
+            "Google/pictures/pic_01_2.png",
+            "Google/pictures/pic_01_3.png",
+            "Google/pictures/pic_01_4.png",
+            "Google/pictures/pic_01_5.png",
+            "Google/pictures/pic_01_6.png",
+            "Google/pictures/pic_01_7.png",
+            "Google/pictures/pic_01_8.png",
+            "Google/pictures/pic_01_9.png",
+            "Google/pictures/pic_01_10.png",
+            "Google/pictures/pic_01_11.png",
+            "Google/pictures/pic_01_12.png"
           ]
         }
       ]
     },
     "exec": {
-      "title": "Exec Summary",
+      "title": "The Shirley Card",
       "texts": [
-        "In response to the Omicron variant and uncertainty around COVID-19, we\u2019ve reimagined the Image Equity Summit that was slated for January 20, 2022.",
-        "This deck walks through our updated event plans, making the most of the messages, conversations, look, feel and experience of the original summit, while taking into account safety for all participants.",
-        "Reimagining the",
-        "Image Equity Summit"
+        "Photography as subjective technology, not just light calibration",
+        "Original Shirley card set color correction standard, excluding diverse skin tones"
       ],
       "slides": [
         {
           "slide": 2,
-          "title": "In response to the Omicron variant and uncertainty around COVID-19, we\u2019ve reimagined the Image Equity Summit that was slated for January 20, 2022.",
+          "title": "Slide 2",
           "images": [
-            "Google/exports/slide_02.png"
+            "Google/pictures/pic_02_1.jpg",
+            "Google/pictures/pic_02_2.jpg"
           ]
         }
       ]
     },
     "team": {
-      "title": "Attendee Experience",
+      "title": "Background \u2014 The evolution of standard",
       "texts": [
-        "Table of Contents",
-        "Beyond8 | Creative Theory Agency, 2022",
-        "Exec Summary",
-        "Attendee Experience",
-        "Activations",
-        "Venues + Logistics"
+        "Since the 1990s, major strides improved how cameras see color",
+        "New standards emerged, but no single standard fits infinite skin tones"
       ],
       "slides": [
         {
           "slide": 3,
-          "title": "Table of Contents",
+          "title": "\u2022",
           "images": [
             "Google/pictures/pic_03_1.png"
           ]
@@ -60,125 +63,137 @@
       ]
     },
     "market": {
-      "title": "Activations",
+      "title": "Introduction",
       "texts": [
-        "WHAT",
-        "A private gathering featuring an immersive set of experiences and conversations that reflect on the past, present, and future states of representation in imagery, and how Google is working to deliver a more fair product experience.",
-        "WHY",
-        "(1) To build trust with cultural leaders from the communities our Image Equity efforts aim to serve, and whom our typical O&O channels have not reached, and;",
-        "(2) To give them hands-on experience with Real Tone\u2122 on Pixel",
-        "WHERE + WHEN"
+        "We are more than a color code",
+        "Goal: highlight that the new standard is to not conform to a standard",
+        "Attendees form a human palette in real time by contributing their tones and names"
       ],
       "slides": [
         {
           "slide": 4,
-          "title": "WHAT",
+          "title": "Old Standard: Color Code",
           "images": [
-            "Google/exports/slide_04.png"
+            "Google/pictures/pic_04_1.jpg",
+            "Google/pictures/pic_04_2.jpg",
+            "Google/pictures/pic_04_3.jpg",
+            "Google/pictures/pic_04_4.jpg"
           ]
         }
       ]
     },
     "consumer": {
-      "title": "Venues + Logistics",
+      "title": "The Capture Experience",
       "texts": [
-        "Attendee Experience",
-        "Beyond8 | Creative Theory Agency, 2022"
+        "Large color grid canvas + booth with Pixel app",
+        "Attendees capture a selfie, add their name, submit to the digital piece",
+        "Optional: show legacy Shirley-card corrected preview"
       ],
       "slides": [
         {
           "slide": 5,
-          "title": "Attendee Experience",
+          "title": ".,",
           "images": [
-            "Google/pictures/pic_05_1.png"
+            "Google/pictures/pic_05_1.jpg",
+            "Google/pictures/pic_05_2.jpg",
+            "Google/pictures/pic_05_3.jpg"
           ]
         }
       ]
     },
     "problem": {
-      "title": "Content",
+      "title": "The AR Experience \u2014 Viewing the Digital Palette",
       "texts": [
-        "Activations",
-        "Beyond8 | Creative Theory Agency, 2022"
+        "Canvas IRL is a color grid (old standard); AR app brings it to life",
+        "As submissions accrue, the infinite palette forms in real time",
+        "Viewers see a grid of people, skin tones as backgrounds, names below"
       ],
       "slides": [
         {
           "slide": 6,
-          "title": "Activations",
+          "title": "..,",
           "images": [
-            "Google/pictures/pic_06_1.png"
+            "Google/pictures/pic_06_1.jpg",
+            "Google/pictures/pic_06_2.jpg",
+            "Google/pictures/pic_06_3.jpg",
+            "Google/pictures/pic_06_4.jpg",
+            "Google/pictures/pic_06_5.jpg",
+            "Google/pictures/pic_06_6.jpg",
+            "Google/pictures/pic_06_7.jpg",
+            "Google/pictures/pic_06_8.jpg",
+            "Google/pictures/pic_06_9.jpg",
+            "Google/pictures/pic_06_10.jpg",
+            "Google/pictures/pic_06_11.jpg",
+            "Google/pictures/pic_06_12.jpg",
+            "Google/pictures/pic_06_13.jpg",
+            "Google/pictures/pic_06_14.jpg",
+            "Google/pictures/pic_06_15.jpg",
+            "Google/pictures/pic_06_16.jpg",
+            "Google/pictures/pic_06_17.jpg"
           ]
         }
       ]
     },
     "solution": {
-      "title": "Attendees",
+      "title": "The Purpose \u2014 Our Objective",
       "texts": [
-        "Attendees are greeted by a reflection on the historical and modern implications of image equity, reading about the history of bias in photography, and many of the leaders of color who have fought to reverse these biases in our modern literature and tools. They will also be introduced to a few of our recorded expert speakers, via confessional-style interview clips in which they speak about what image equity means to them.",
-        "Attendees then dive into 19th century history, beginning in an immersive multimedia room of soundbites from Frederick Douglass\u2019 Lecture of Pictures, black and white period portraiture, vintage color motifs, and photo opps with the Pixel 6 and large format camera.",
-        "In the room, an amber light glows, illuminating iconic 1970\u2019s references\u2014from revolution to roller disco. In this era, Black and Brown faces begin to show up en masse on TV, in magazines, and film. Guests are invited to reflect on how they were or weren\u2019t represented in this time, becoming \u201cpart\u201d of the set as they sit for a staged album cover photo opp with the Pixel 6 and a grainy/sepia tone style, true to the era.",
-        "Finally, we have a blank canvas for what the future looks like. Attendees are invited to consider the future of Image Equity in a room full of primary color blocking that references and reworks the old Shirley Card aesthetic. Here, there will be several portrait opps on the Google Pixel 6, emphasizing the impact of Real Tone.",
-        "Throughout the event, attendees will watch recorded panel discussions by our expert speakers, enjoy light bites and beverages from local vendors, and VIP guests will receive a curated gift bag, including a Google Pixel 6.",
-        "See following slides for visuals."
+        "Educate: past & present via non-digital experience",
+        "Absorb: capture & submission app builds personal connection",
+        "Immerse: interactive AR evolves as more content arrives",
+        "Embody: leave with a new perspective on color identity"
       ],
       "slides": [
         {
           "slide": 7,
-          "title": "Attendees are greeted by a reflection on the historical and modern implications of image equity, reading about the history of bias in photography, and many of the leaders of color who have fought to reverse these biases in our modern literature and tools. They will also be introduced to a few of our recorded expert speakers, via confessional-style interview clips in which they speak about what image equity means to them.",
+          "title": "Slide 7",
           "images": [
-            "Google/exports/slide_07.png"
+            "Google/pictures/pic_07_1.jpg",
+            "Google/pictures/pic_07_2.jpg",
+            "Google/pictures/pic_07_3.jpg",
+            "Google/pictures/pic_07_4.jpg"
           ]
         }
       ]
     },
     "visual": {
-      "title": "Products",
+      "title": "About MODU",
       "texts": [
-        "FINAL",
-        "03/28/22",
-        "Event Overview",
-        "2",
-        "3",
-        "5"
+        "Mo Alissa \u2014 creative direction; Canon, The Weeknd, Drake",
+        "Abdou Sarr \u2014 product management; Shopify, Motorola ATAP",
+        "Work for Nike, Apple, Converse, Australian Open, Amazon, OVO"
       ],
       "slides": [
         {
           "slide": 8,
-          "title": "FINAL",
+          "title": "Slide 8",
           "images": [
-            "Google/pictures/pic_08_1.png"
+            "Google/pictures/pic_08_1.jpg"
           ]
         }
       ]
     },
     "competitive": {
-      "title": "Food + Beverage",
+      "title": "Venue \u2014 DTLA \u00b7 SoLa Beehive",
       "texts": [
-        "WIP",
-        "to be updated 03/29/22",
-        "Guest Experience",
-        "Insightful, concise content and experiences that speak to the impact of image equity on and for communities of color.",
-        "1",
-        "Entry Lounge"
+        "~120 Student/Org Partner guests (Morning)",
+        "~100 VIP guests (Afternoon)"
       ],
       "slides": [
         {
           "slide": 9,
-          "title": "WIP",
+          "title": "Slide 9",
           "images": [
-            "Google/pictures/pic_09_1.png",
-            "Google/pictures/pic_09_2.png"
+            "Google/pictures/pic_09_1.png"
           ]
         }
       ]
     },
     "location": {
-      "title": "Gifting",
+      "title": "User Flow",
       "texts": [
-        "2",
-        "Frederick Douglass + History Of Protest",
-        "FINAL",
-        "03/28/22"
+        "1 Valet Drop\u2011off \u00b7 2 Check\u2011in \u00b7 3 Seen in Power \u00b7 4 Seen in Color",
+        "5 Seen in Focus \u00b7 6 Seen as You See Yourself \u00b7 7 Gifting",
+        "8 Restrooms \u00b7 9 Valet Pick\u2011up"
       ],
       "slides": [
         {
@@ -191,684 +206,114 @@
       ]
     },
     "model": {
-      "title": "Graphics",
+      "title": "Images from Event",
       "texts": [
-        "2",
-        "Frederick Douglass + History Of Protest",
-        "Saloon style room detailing image-making as activism [e.g. Frederick Douglass, Ida B Wells] with accompanying video content.",
-        "Displaying images of international protests from early 1900s to 1960s.",
-        "Featuring a 19th century portrait photo moment.",
-        "*false walls will be built in this room for the wood paneling and wallpaper"
+        "Event highlights"
       ],
       "slides": [
         {
           "slide": 11,
-          "title": "2",
+          "title": "Slide 11",
           "images": [
-            "Google/pictures/pic_11_1.png",
-            "Google/pictures/pic_11_2.png",
-            "Google/pictures/pic_11_3.png"
+            "Google/pictures/pic_11_1.jpg"
           ]
         }
       ]
     },
     "financial": {
-      "title": "Copy",
+      "title": "Images from Event",
       "texts": [
-        "3",
-        "Representation Boom in 70s",
-        "*this room will exist outdoors with only two walls and a ceiling.",
-        "FINAL",
-        "03/28/22"
+        "Event highlights"
       ],
       "slides": [
         {
           "slide": 12,
-          "title": "3",
+          "title": "Slide 12",
           "images": [
-            "Google/pictures/pic_12_1.png"
+            "Google/pictures/pic_12_1.jpg"
           ]
         }
       ]
     },
     "unit": {
-      "title": "3",
-      "texts": [
-        "3",
-        "Representation Boom in the 70\u2019s",
-        "70\u2019s living room film set photo moment featuring magazine cover wall of icons of color.",
-        "Photo albums will be displayed in a study next to the tv set, as well as a full collection of books, vinyls, comics, and an encyclopedia collection.",
-        "70s album cover photo moment using provided props.",
-        "FINAL"
-      ],
-      "slides": [
-        {
-          "slide": 13,
-          "title": "3",
-          "images": [
-            "Google/pictures/pic_13_1.png",
-            "Google/pictures/pic_13_2.png",
-            "Google/pictures/pic_13_3.png",
-            "Google/pictures/pic_13_4.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "funding": {
-      "title": "4",
-      "texts": [
-        "4",
-        "The New Standard",
-        "FINAL",
-        "03/28/22"
-      ],
-      "slides": [
-        {
-          "slide": 14,
-          "title": "4",
-          "images": [
-            "Google/pictures/pic_14_1.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "scenarios": {
-      "title": "4",
-      "texts": [
-        "4",
-        "\u201cThe New Standard\u201d",
-        "Shirley Card-esque frame photo moment adds new twist to original, with the technology experience references color checkers, a tool that has been integral to color tuning in cameras.",
-        "FINAL",
-        "03/28/22"
-      ],
-      "slides": [
-        {
-          "slide": 15,
-          "title": "4",
-          "images": [
-            "Google/pictures/pic_15_1.png",
-            "Google/pictures/pic_15_2.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "revenue": {
-      "title": "4",
-      "texts": [
-        "4",
-        "Real Tone Zone",
-        "This portion of the experience explores skin tone hues and also the absence of color via vignettes/scenes of browns, tans, black and white.",
-        "FINAL",
-        "03/28/22"
-      ],
-      "slides": [
-        {
-          "slide": 16,
-          "title": "4",
-          "images": [
-            "Google/pictures/pic_16_1.png",
-            "Google/pictures/pic_16_2.png",
-            "Google/pictures/pic_16_3.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "fiveyear": {
-      "title": "4",
-      "texts": [
-        "4",
-        "The Infinite Palette",
-        "This experience is a custom made app by MODU Research, a first-generation canadian duo of app developers.",
-        "With this app, we reimagine the colorchecker as a technology that pulls hues from your skin, rather than from an index of colors already in its system.",
-        "See more details here.",
-        "FINAL"
-      ],
-      "slides": [
-        {
-          "slide": 17,
-          "title": "4",
-          "images": [
-            "Google/pictures/pic_17_1.png",
-            "Google/pictures/pic_17_2.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "license": {
-      "title": "5",
-      "texts": [
-        "5",
-        "Gifting Moment",
-        "Elevated space and gift bar that will be staffed by guest relations to add a personal touch.",
-        "FINAL",
-        "03/28/22"
-      ],
-      "slides": [
-        {
-          "slide": 18,
-          "title": "5",
-          "images": [
-            "Google/pictures/pic_18_1.png",
-            "Google/pictures/pic_18_2.jpg"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "menu": {
-      "title": "Pixel 6 Real Tone Portrait Moment",
-      "texts": [
-        "Pixel 6 Real Tone Portrait Moment",
-        "WIP",
-        "to be updated 03/30/22"
-      ],
-      "slides": [
-        {
-          "slide": 19,
-          "title": "Pixel 6 Real Tone Portrait Moment",
-          "images": [
-            "Google/pictures/pic_19_1.jpg",
-            "Google/pictures/pic_19_2.png",
-            "Google/pictures/pic_19_3.png",
-            "Google/pictures/pic_19_4.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "brand": {
-      "title": "Google Kiosks",
-      "texts": [
-        "Google Kiosks",
-        "FINAL",
-        "03/28/22"
-      ],
-      "slides": [
-        {
-          "slide": 20,
-          "title": "Google Kiosks",
-          "images": [
-            "Google/pictures/pic_20_1.jpg",
-            "Google/pictures/pic_20_2.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "ops": {
-      "title": "Venues + Logistics",
-      "texts": [
-        "Venues + Logistics",
-        "Beyond8 | Creative Theory Agency, 2022"
-      ],
-      "slides": [
-        {
-          "slide": 21,
-          "title": "Venues + Logistics",
-          "images": [
-            "Google/pictures/pic_21_1.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "timeline": {
-      "title": "Los Angeles, CA",
-      "texts": [
-        "Los Angeles, CA",
-        "Thursday, April 7th, 2022 | 3:00 - 6:00pm PT (VIPs)",
-        "Friday, April 8th, 2022 | 11:00am - 3:00pm PT (Orgs + Students)",
-        "Beyond8 | Creative Theory Agency, 2022"
-      ],
-      "slides": [
-        {
-          "slide": 22,
-          "title": "Los Angeles, CA",
-          "images": [
-            "Google/pictures/pic_22_1.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "risks": {
-      "title": "Venue",
-      "texts": [
-        "Venue",
-        "hybrid indoor/outdoor space",
-        "DTLA",
-        "SoLa Beehive",
-        "~120 Student/Org Partner guests (Morning)",
-        "~ 100 VIP guests (Afternoon)"
-      ],
-      "slides": [
-        {
-          "slide": 23,
-          "title": "Venue",
-          "images": [
-            "Google/pictures/pic_23_1.png",
-            "Google/pictures/pic_23_2.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "expansion": {
-      "title": "Guest Journey Overview",
-      "texts": [
-        "Guest Journey Overview",
-        "FINAL",
-        "03/28/22"
-      ],
-      "slides": [
-        {
-          "slide": 24,
-          "title": "Guest Journey Overview",
-          "images": [
-            "Google/pictures/pic_24_1.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "growth": {
-      "title": "Student + Org Guests",
-      "texts": [
-        "Student + Org Guests",
-        "Thu Apr 7, Morning",
-        "content",
-        "Guided into the Frederick Douglass room where they encounter the first programming experience",
-        "Each subsequent \u201croom\u201d will have relevant content running to provide guest clearer context on the initiative(s).",
-        "activation"
-      ],
-      "slides": [
-        {
-          "slide": 25,
-          "title": "Student + Org Guests",
-          "images": [
-            "Google/exports/slide_25.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "highlights": {
-      "title": "VIP Guests",
-      "texts": [
-        "VIP Guests",
-        "Thu Apr 7, Afternoon",
-        "content",
-        "Guided into the Frederick Douglass room where they encounter the first programming experience",
-        "Each subsequent \u201croom\u201d will have relevant content running to provide guest clearer context on the initiative(s).",
-        "activation"
-      ],
-      "slides": [
-        {
-          "slide": 26,
-          "title": "VIP Guests",
-          "images": [
-            "Google/exports/slide_26.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "ask": {
-      "title": "NYC",
-      "texts": [
-        "NYC",
-        "Thursday, April 28th, 2022 | 1:00 - 4:00pm ET",
-        "Beyond8 | Creative Theory Agency, 2022"
-      ],
-      "slides": [
-        {
-          "slide": 27,
-          "title": "NYC",
-          "images": [
-            "Google/pictures/pic_27_1.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     },
     "appendix": {
-      "title": "Venue",
-      "texts": [
-        "Venue",
-        "hybrid indoor/outdoor space",
-        "Williamsburg, BK",
-        "99 Scott",
-        "Weather considerations: Setup as covered space that is heated and water proofed.",
-        "~ 45 VIP guests",
-        "Guest Journey",
-        "vip",
-        "content",
-        "Guided to the programming start area with intro video.",
-        "Video content experience in programming theater",
-        "program"
-      ],
-      "slides": [
-        {
-          "slide": 28,
-          "title": "Venue",
-          "images": [
-            "Google/pictures/pic_28_1.jpg",
-            "Google/pictures/pic_28_2.jpg"
-          ]
-        },
-        {
-          "slide": 29,
-          "title": "Guest Journey",
-          "images": [
-            "Google/exports/slide_29.png"
-          ]
-        },
-        {
-          "slide": 30,
-          "title": "WIP",
-          "images": [
-            "Google/pictures/pic_30_1.png"
-          ]
-        },
-        {
-          "slide": 31,
-          "title": "Content",
-          "images": [
-            "Google/pictures/pic_31_1.png"
-          ]
-        },
-        {
-          "slide": 32,
-          "title": "Participating expert speakers were asked a series of questions in beautiful confessional-style interviews about their backgrounds, their work and purpose, and what image equity means to them.",
-          "images": [
-            "Google/exports/slide_32.png"
-          ]
-        },
-        {
-          "slide": 33,
-          "title": "Expert Panel Conversations",
-          "images": [
-            "Google/pictures/pic_33_1.png"
-          ]
-        },
-        {
-          "slide": 34,
-          "title": "Visions for the Future",
-          "images": [
-            "Google/pictures/pic_34_1.png",
-            "Google/pictures/pic_34_2.png",
-            "Google/pictures/pic_34_3.png"
-          ]
-        },
-        {
-          "slide": 35,
-          "title": "Attendees",
-          "images": [
-            "Google/pictures/pic_35_1.png"
-          ]
-        },
-        {
-          "slide": 36,
-          "title": "Joshua Kissi",
-          "images": [
-            "Google/exports/slide_36.png"
-          ]
-        },
-        {
-          "slide": 37,
-          "title": "UCLA Student Groups",
-          "images": [
-            "Google/exports/slide_37.png"
-          ]
-        },
-        {
-          "slide": 38,
-          "title": "Products",
-          "images": [
-            "Google/pictures/pic_38_1.png"
-          ]
-        },
-        {
-          "slide": 39,
-          "title": "Product Highlights",
-          "images": [
-            "Google/pictures/pic_39_1.png",
-            "Google/pictures/pic_39_2.png",
-            "Google/pictures/pic_39_3.png"
-          ]
-        },
-        {
-          "slide": 40,
-          "title": "Food + Beverage",
-          "images": [
-            "Google/pictures/pic_40_1.png"
-          ]
-        },
-        {
-          "slide": 41,
-          "title": "Food + Beverage",
-          "images": [
-            "Google/pictures/pic_41_1.png",
-            "Google/pictures/pic_41_2.png"
-          ]
-        },
-        {
-          "slide": 42,
-          "title": "Food + Beverage",
-          "images": [
-            "Google/pictures/pic_42_1.png"
-          ]
-        },
-        {
-          "slide": 43,
-          "title": "Food + Beverage",
-          "images": [
-            "Google/pictures/pic_43_1.png"
-          ]
-        },
-        {
-          "slide": 44,
-          "title": "Gifting",
-          "images": [
-            "Google/pictures/pic_44_1.png"
-          ]
-        },
-        {
-          "slide": 45,
-          "title": "Google Pixel 6 + Case",
-          "images": [
-            "Google/pictures/pic_45_1.png",
-            "Google/pictures/pic_45_2.png",
-            "Google/pictures/pic_45_3.jpg",
-            "Google/pictures/pic_45_4.png",
-            "Google/pictures/pic_45_5.jpg"
-          ]
-        },
-        {
-          "slide": 46,
-          "title": "Graphics",
-          "images": [
-            "Google/pictures/pic_46_1.png"
-          ]
-        },
-        {
-          "slide": 47,
-          "title": "Temi Coker Artwork",
-          "images": [
-            "Google/pictures/pic_47_1.jpg"
-          ]
-        },
-        {
-          "slide": 48,
-          "title": "event lock up",
-          "images": [
-            "Google/pictures/pic_48_1.png",
-            "Google/pictures/pic_48_2.png"
-          ]
-        },
-        {
-          "slide": 49,
-          "title": "Approved Design Direction",
-          "images": [
-            "Google/pictures/pic_49_1.png"
-          ]
-        },
-        {
-          "slide": 50,
-          "title": "vaccine notice",
-          "images": [
-            "Google/pictures/pic_50_1.jpg"
-          ]
-        },
-        {
-          "slide": 51,
-          "title": "restroom signage",
-          "images": [
-            "Google/pictures/pic_51_1.jpg",
-            "Google/pictures/pic_51_2.jpg",
-            "Google/pictures/pic_51_3.jpg"
-          ]
-        },
-        {
-          "slide": 52,
-          "title": "monitor holding slides",
-          "images": [
-            "Google/pictures/pic_52_1.jpg",
-            "Google/pictures/pic_52_2.jpg"
-          ]
-        },
-        {
-          "slide": 53,
-          "title": "Copy",
-          "images": [
-            "Google/pictures/pic_53_1.png"
-          ]
-        },
-        {
-          "slide": 54,
-          "title": "Event Copy",
-          "images": [
-            "Google/pictures/pic_54_1.png",
-            "Google/pictures/pic_54_2.png"
-          ]
-        },
-        {
-          "slide": 55,
-          "title": "BA Uniforms",
-          "images": [
-            "Google/pictures/pic_55_1.png"
-          ]
-        },
-        {
-          "slide": 56,
-          "title": "Final: 3/30",
-          "images": [
-            "Google/pictures/pic_56_1.png"
-          ]
-        },
-        {
-          "slide": 57,
-          "title": "BA",
-          "images": [
-            "Google/pictures/pic_57_1.png"
-          ]
-        },
-        {
-          "slide": 58,
-          "title": "Thanks!",
-          "images": [
-            "Google/pictures/pic_58_1.png"
-          ]
-        },
-        {
-          "slide": 59,
-          "title": "Graveyard",
-          "images": [
-            "Google/pictures/pic_59_1.png"
-          ]
-        },
-        {
-          "slide": 60,
-          "title": "Speakers",
-          "images": [
-            "Google/pictures/pic_60_1.png"
-          ]
-        },
-        {
-          "slide": 61,
-          "title": "Speakers",
-          "images": [
-            "Google/exports/slide_61.png"
-          ]
-        },
-        {
-          "slide": 62,
-          "title": "Props",
-          "images": [
-            "Google/pictures/pic_62_1.png"
-          ]
-        },
-        {
-          "slide": 63,
-          "title": "Furniture and Set Additions",
-          "images": [
-            "Google/exports/slide_63.png"
-          ]
-        },
-        {
-          "slide": 64,
-          "title": "Experts\u2019 Works",
-          "images": [
-            "Google/pictures/pic_64_1.png"
-          ]
-        },
-        {
-          "slide": 65,
-          "title": "Experts\u2019 Works Placement",
-          "images": [
-            "Google/pictures/pic_65_1.png"
-          ]
-        },
-        {
-          "slide": 66,
-          "title": "1",
-          "images": [
-            "Google/exports/slide_66.png"
-          ]
-        },
-        {
-          "slide": 67,
-          "title": "2",
-          "images": [
-            "Google/exports/slide_67.png"
-          ]
-        },
-        {
-          "slide": 68,
-          "title": "3",
-          "images": [
-            "Google/exports/slide_68.png"
-          ]
-        },
-        {
-          "slide": 69,
-          "title": "Shoot Location",
-          "images": [
-            "Google/pictures/pic_69_1.jpg",
-            "Google/pictures/pic_69_2.png"
-          ]
-        },
-        {
-          "slide": 70,
-          "title": "LOCK UP",
-          "images": [
-            "Google/pictures/pic_70_1.png",
-            "Google/pictures/pic_70_2.png",
-            "Google/pictures/pic_70_3.png",
-            "Google/pictures/pic_70_4.png",
-            "Google/pictures/pic_70_5.png",
-            "Google/pictures/pic_70_6.png"
-          ]
-        },
-        {
-          "slide": 71,
-          "title": "4",
-          "images": [
-            "Google/pictures/pic_71_1.png",
-            "Google/pictures/pic_71_2.png"
-          ]
-        }
-      ]
+      "title": "",
+      "texts": [],
+      "slides": []
     }
   }
 }

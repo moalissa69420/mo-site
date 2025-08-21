@@ -172,6 +172,100 @@ def build_manifest(pptx_path: Path):
             if idx < len(SECTION_IDS):
                 sections[SECTION_IDS[idx]]["title"] = t
 
+    # If this is the provided MODU deck, override titles and bullets per spec
+    name_lower = pptx_path.name.lower()
+    if "modu-google-ppx" in name_lower:
+        overrides = [
+            {
+                "title": "The Infinite Palette",
+                "texts": [
+                    "An immersive experience combining collaboration and individualism",
+                    "Aims to set a new standard for image equity",
+                    "Prepared by Abdou Sarr & Mo Alissa — Dec 10, 2021",
+                ],
+            },
+            {
+                "title": "The Shirley Card",
+                "texts": [
+                    "Photography as subjective technology, not just light calibration",
+                    "Original Shirley card set color correction standard, excluding diverse skin tones",
+                ],
+            },
+            {
+                "title": "Background — The evolution of standard",
+                "texts": [
+                    "Since the 1990s, major strides improved how cameras see color",
+                    "New standards emerged, but no single standard fits infinite skin tones",
+                ],
+            },
+            {
+                "title": "Introduction",
+                "texts": [
+                    "We are more than a color code",
+                    "Goal: highlight that the new standard is to not conform to a standard",
+                    "Attendees form a human palette in real time by contributing their tones and names",
+                ],
+            },
+            {
+                "title": "The Capture Experience",
+                "texts": [
+                    "Large color grid canvas + booth with Pixel app",
+                    "Attendees capture a selfie, add their name, submit to the digital piece",
+                    "Optional: show legacy Shirley-card corrected preview",
+                ],
+            },
+            {
+                "title": "The AR Experience — Viewing the Digital Palette",
+                "texts": [
+                    "Canvas IRL is a color grid (old standard); AR app brings it to life",
+                    "As submissions accrue, the infinite palette forms in real time",
+                    "Viewers see a grid of people, skin tones as backgrounds, names below",
+                ],
+            },
+            {
+                "title": "The Purpose — Our Objective",
+                "texts": [
+                    "Educate: past & present via non-digital experience",
+                    "Absorb: capture & submission app builds personal connection",
+                    "Immerse: interactive AR evolves as more content arrives",
+                    "Embody: leave with a new perspective on color identity",
+                ],
+            },
+            {
+                "title": "About MODU",
+                "texts": [
+                    "Mo Alissa — creative direction; Canon, The Weeknd, Drake",
+                    "Abdou Sarr — product management; Shopify, Motorola ATAP",
+                    "Work for Nike, Apple, Converse, Australian Open, Amazon, OVO",
+                ],
+            },
+            {
+                "title": "Venue — DTLA · SoLa Beehive",
+                "texts": [
+                    "~120 Student/Org Partner guests (Morning)",
+                    "~100 VIP guests (Afternoon)",
+                ],
+            },
+            {
+                "title": "User Flow",
+                "texts": [
+                    "1 Valet Drop‑off · 2 Check‑in · 3 Seen in Power · 4 Seen in Color",
+                    "5 Seen in Focus · 6 Seen as You See Yourself · 7 Gifting",
+                    "8 Restrooms · 9 Valet Pick‑up",
+                ],
+            },
+            { "title": "Images from Event", "texts": ["Event highlights"] },
+            { "title": "Images from Event", "texts": ["Event highlights"] },
+        ]
+        for idx, ov in enumerate(overrides):
+            if idx >= len(SECTION_IDS):
+                break
+            sid = SECTION_IDS[idx]
+            if ov.get("title"):
+                sections[sid]["title"] = ov["title"]
+            if ov.get("texts"):
+                sections[sid]["texts"] = ov["texts"]
+
     # Trim bullet explosion per section
     for sid in sections:
         uniq = []
@@ -192,7 +286,12 @@ def build_manifest(pptx_path: Path):
 
 
 def main():
-    candidates = glob(str(GOOGLE_DIR / "*.pptx"))
+    # Prefer the new modu deck if present
+    preferred = GOOGLE_DIR / "modu-google-ppx.pptx"
+    if preferred.exists():
+        candidates = [str(preferred)]
+    else:
+        candidates = glob(str(GOOGLE_DIR / "*.pptx"))
     if not candidates:
         print("No PPTX found in ./Google", file=sys.stderr)
         sys.exit(1)
