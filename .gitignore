@@ -1,0 +1,5 @@
+# Ignore large PPTX decks
+Amazon - C2A/*.pptx
+Amazon - C2A/**/*.pptx
+Amazon - C2A/Copy of C2A Internal Design Deck (1).pptx
+

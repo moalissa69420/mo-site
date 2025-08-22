@@ -36,6 +36,9 @@
         <li>
           <a href="#" id="google-link">Google — Image Equity</a>
         </li>
+        <li>
+          <a href="#" id="amazon-c2a-link">Amazon — Coming 2 America 2</a>
+        </li>
       </ul>
     </div>
 
@@ -105,6 +108,19 @@
         document.getElementById('google-link').addEventListener('click', function(e) {
           e.preventDefault();
           const target = 'google-image-equity.html';
+          if (haveAccess()) { window.location.href = target; return; }
+          const input = prompt('Enter password to view:');
+          if (input && input.trim() === PASSWORD) {
+            grantAccess();
+            window.location.href = target;
+          } else if (input !== null) {
+            alert('Incorrect password');
+          }
+        });
+        // Amazon C2A Case Study
+        document.getElementById('amazon-c2a-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = 'amazon-c2a.html';
           if (haveAccess()) { window.location.href = target; return; }
           const input = prompt('Enter password to view:');
           if (input && input.trim() === PASSWORD) {

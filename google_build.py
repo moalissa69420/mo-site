@@ -286,7 +286,7 @@ def build_manifest(pptx_path: Path):
 
 
 def main():
-    # Prefer the new modu deck if present
+    # Prefer the new modu deck if present, else support Amazon deck export task
     preferred = GOOGLE_DIR / "modu-google-ppx.pptx"
     if preferred.exists():
         candidates = [str(preferred)]
