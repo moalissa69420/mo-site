@@ -16,6 +16,9 @@
     .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
     .cs-index a .num { color:#333; width:2.8rem; display:inline-block; text-align:right; }
     .cs-index a.active { color: var(--accent); }
+    .cs-thumbs { margin-top:0.5rem; display:grid; grid-template-columns: repeat(3, 1fr); gap:6px; }
+    .cs-thumbs a { display:block; }
+    .cs-thumbs img { width:100%; height:auto; display:block; background:#fff; border:0; border-radius:0; }
     .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
     section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.45rem 0; scroll-margin-top: 12px; }
     .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; }
@@ -88,6 +91,7 @@
         <li><a href="#s55"><span class="num">55.</span> Slide 55</a></li>
         <li><a href="#s56"><span class="num">56.</span> Slide 56</a></li>
       </ol>
+      <div class="cs-thumbs" id="cs-thumbs" aria-label="Slide thumbnails"></div>
     </aside>
     <main class="cs-sections">
       <section id="s1" class="cs-page"><div class="cs-num">01.</div><div class="cs-content"><h1>Slide 1</h1><div class="two-col"><div class="box"><p>Amazon — Coming 2 America 2</p><p>All slides embedded below.</p></div><div class="box"><img src="Amazon - C2A/exports_jpg/slide_01.jpg" alt="Slide 1" loading="lazy" decoding="async" /></div></div></div></section>
@@ -162,6 +166,40 @@
         if(!v) return; const id=v.target.id; links.forEach(l=>l.classList.toggle('active', l===map[id]));
       },{rootMargin:'-40% 0px -50% 0px', threshold:[0.1,0.25,0.6]});
       sections.forEach(s=>io.observe(s));
+    })();
+  </script>
+  <script>
+    (function(){
+      const wrap=document.getElementById('cs-thumbs');
+      if(!wrap) return;
+      for(let i=1;i<=56;i++){
+        const a=document.createElement('a');
+        a.href=`#s${i}`;
+        const img=document.createElement('img');
+        const num=String(i).padStart(2,'0');
+        img.loading='lazy';
+        img.decoding='async';
+        img.alt=`Slide ${i}`;
+        img.src=`Amazon - C2A/exports_jpg/slide_${num}.jpg`;
+        img.onerror=()=>{ img.onerror=null; img.src=`Amazon - C2A/exports/slide_${num}.png`; };
+        a.appendChild(img);
+        wrap.appendChild(a);
+      }
+    })();
+  </script>
+  <script>
+    (function(){
+      const imgs=[...document.querySelectorAll('.cs-content img')];
+      imgs.forEach((img)=>{
+        if(img.getAttribute('src') && img.getAttribute('src').includes('exports_jpg/')){
+          const handler=()=>{
+            img.removeEventListener('error', handler);
+            const fallback=img.getAttribute('src').replace('exports_jpg/','exports/').replace('.jpg','.png');
+            img.setAttribute('src', fallback);
+          };
+          img.addEventListener('error', handler, { once:false });
+        }
+      });
     })();
   </script>
 </body>
