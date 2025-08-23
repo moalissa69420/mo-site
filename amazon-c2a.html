@@ -193,14 +193,24 @@
     (function(){
       const imgs=[...document.querySelectorAll('.cs-content img')];
       imgs.forEach((img)=>{
-        if(img.getAttribute('src') && img.getAttribute('src').includes('exports_jpg/')){
-          const handler=()=>{
-            img.removeEventListener('error', handler);
-            const fallback=img.getAttribute('src').replace('exports_jpg/','exports/').replace('.jpg','.png');
-            img.setAttribute('src', fallback);
-          };
-          img.addEventListener('error', handler, { once:false });
+        const src=img.getAttribute('src')||'';
+        const num=(src.match(/slide_(\d{2})/)||[])[1];
+        if(!num) return;
+        const pdfSrc=`Amazon - C2A/exports_pdf_pages/slide_${num}.png`;
+        // Prefer PDF-rendered page
+        if(!src.includes('exports_pdf_pages/')){
+          img.setAttribute('src', pdfSrc);
         }
+        // Chain fallbacks: pdf_pages -> exports (pptx placeholders) -> exports_jpg
+        img.onerror=()=>{
+          img.onerror=null;
+          const pptxPng=`Amazon - C2A/exports/slide_${num}.png`;
+          img.src=pptxPng;
+          img.onerror=()=>{
+            img.onerror=null;
+            img.src=`Amazon - C2A/exports_jpg/slide_${num}.jpg`;
+          };
+        };
       });
     })();
   </script>
