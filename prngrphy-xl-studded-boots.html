@@ -33,6 +33,23 @@
     .bar-label { position:absolute; left:8px; top:50%; transform:translateY(-50%); font-size:0.85rem; }
     .grid-3 { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:0.75rem; }
     .grid-3 img { width:100%; height:auto; display:block; border:0; border-radius:0; object-fit:cover; }
+    .grid-3.equal .media { position:relative; width:100%; aspect-ratio: 4/5; overflow:hidden; background:#f7f7f7; }
+    .grid-3.equal .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    /* Donut + legend */
+    .donut-wrap { display:grid; grid-template-columns: 200px 1fr; gap:0.75rem; align-items:center; }
+    .legend { display:grid; grid-template-columns: repeat(3, max-content); gap:0.5rem 1rem; align-items:center; font-size:0.875rem; }
+    .legend .key { width:10px; height:10px; display:inline-block; border-radius:2px; margin-right:6px; }
+    /* Waterfall */
+    .waterfall { border:1px solid var(--border); padding:0.6rem; }
+    .wf-row { display:flex; align-items:center; gap:0.5rem; margin:0.25rem 0; }
+    .wf-bar { height:18px; background:#eee; position:relative; flex:1; }
+    .wf-fill { position:absolute; left:0; top:0; bottom:0; background: var(--accent); }
+    .wf-label { min-width:80px; font-size:0.85rem; color:#333; }
+    /* Lightbox */
+    .lb { position:fixed; inset:0; background: rgba(0,0,0,0.7); display:none; align-items:center; justify-content:center; z-index:9999; }
+    .lb.open { display:flex; }
+    .lb img { max-width:92vw; max-height:90vh; border:0; border-radius:0; background:#fff; }
+    .lb-close { position:absolute; top:10px; right:14px; font-size:28px; color:#fff; cursor:pointer; }
     .card { background:#fff; border:1px solid var(--border); padding:0.75rem; }
     .pill { display:inline-block; padding:0.15rem 0.35rem; border:1px solid #ddd; margin-right:0.35rem; }
     @media (max-width: 700px) { .cs-wrapper{ grid-template-columns:1fr;} .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;} .two-col{ grid-template-columns:1fr; gap:0.85rem;} .kpi-grid, .grid-3{ grid-template-columns:1fr; } }
@@ -64,7 +81,44 @@
     </aside>
     <main class="cs-sections">
       <section id="s1" class="cs-page"><div class="cs-num">01.</div><div class="cs-content"><h1>Executive Summary</h1><div class="two-col"><div class="box"><p><strong>PRNGRPHY — XL Studded Suede Boots</strong><br/>Y2K grunge meets modern comfort. Limited edition launch.</p><div class="kpi-grid"><div class="kpi-card"><div class="big">290%</div><div>UGG popularity increase</div></div><div class="kpi-card"><div class="big">Sep–Oct 2025</div><div>Y2K trend peak</div></div><div class="kpi-card"><div class="big">$8,500</div><div>Total investment</div></div></div></div><div class="box"><div class="bar-chart" aria-label="ROI scenarios"><div class="bar"><div class="bar-fill" style="width:118%; max-width:100%"></div><div class="bar-label">ROI Conservative 118%</div></div><div class="bar"><div class="bar-fill" style="width:227%; max-width:100%"></div><div class="bar-label">ROI Moderate 227%</div></div><div class="bar"><div class="bar-fill" style="width:336%; max-width:100%"></div><div class="bar-label">ROI Aggressive 336%</div></div></div></div></div></section>
-      <section id="s2" class="cs-page"><div class="cs-num">02.</div><div class="cs-content"><h1>Product Overview</h1><div class="two-col"><div class="box"><p><strong>XL Studded Suede Boots</strong></p><ul><li>Unique studded design</li><li>Premium suede</li><li>Y2K grunge aesthetic</li><li>Modern comfort tech</li><li>Limited edition</li></ul><p><strong>SRP:</strong> $185.41 USD</p><p><strong>Colors & Inventory:</strong> Black 185, Pink 165, Brown 150</p></div><div class="box"><div class="kpi-grid"><div class="kpi-card"><div class="big">500</div><div>Total units</div></div><div class="kpi-card"><div class="big">$92,705</div><div>Max Revenue</div></div><div class="kpi-card"><div class="big">84%</div><div>Gross Margin</div></div></div></div></div><div class="grid-3" style="margin-top:0.5rem" aria-label="Product images"><img src="prngrphy/7727C32E-DA63-4568-AD07-2A3F0CDF923A.JPG" alt="PRNGRPHY boot image 1" loading="lazy" decoding="async" /><img src="prngrphy/94B0DE40-CDDD-4245-99F3-BE59401D00D8.JPG" alt="PRNGRPHY boot image 2" loading="lazy" decoding="async" /><img src="prngrphy/EE877EA2-C485-4090-8F43-AE6720AF787F.JPG" alt="PRNGRPHY boot image 3" loading="lazy" decoding="async" /></div></div></section>
+      <section id="s2" class="cs-page"><div class="cs-num">02.</div><div class="cs-content"><h1>Product Overview</h1><div class="two-col"><div class="box"><p><strong>XL Studded Suede Boots</strong></p><ul><li>Unique studded design</li><li>Premium suede</li><li>Y2K grunge aesthetic</li><li>Modern comfort tech</li><li>Limited edition</li></ul><p><strong>SRP:</strong> $185.41 USD</p><p><strong>Colors & Inventory:</strong> Black 185, Pink 165, Brown 150</p></div><div class="box"><div class="kpi-grid"><div class="kpi-card"><div class="big">500</div><div>Total units</div></div><div class="kpi-card"><div class="big">$92,705</div><div>Max Revenue</div></div><div class="kpi-card"><div class="big">84%</div><div>Gross Margin</div></div></div></div></div>
+        <div class="grid-3 equal" style="margin-top:0.5rem" aria-label="Product images">
+          <div class="media"><img class="zoomable" src="prngrphy/7727C32E-DA63-4568-AD07-2A3F0CDF923A.JPG" alt="PRNGRPHY boot image 1" loading="lazy" decoding="async" /></div>
+          <div class="media"><img class="zoomable" src="prngrphy/94B0DE40-CDDD-4245-99F3-BE59401D00D8.JPG" alt="PRNGRPHY boot image 2" loading="lazy" decoding="async" /></div>
+          <div class="media"><img class="zoomable" src="prngrphy/EE877EA2-C485-4090-8F43-AE6720AF787F.JPG" alt="PRNGRPHY boot image 3" loading="lazy" decoding="async" /></div>
+        </div>
+        <div class="two-col" style="margin-top:0.6rem; align-items:center;">
+          <div class="box">
+            <h3 style="margin-top:0">Inventory by Color</h3>
+            <div class="donut-wrap">
+              <svg class="donut" viewBox="0 0 42 42" width="200" height="200" aria-label="Inventory donut">
+                <circle cx="21" cy="21" r="15.915" fill="#fff" stroke="#eee" stroke-width="6" />
+                <!-- Black 37% -->
+                <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#0E0E0E" stroke-width="6" stroke-dasharray="37 63" stroke-dashoffset="25"/>
+                <!-- Pink 33% -->
+                <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#d88" stroke-width="6" stroke-dasharray="33 67" stroke-dashoffset="-12"/>
+                <!-- Brown 30% -->
+                <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#a67c52" stroke-width="6" stroke-dasharray="30 70" stroke-dashoffset="-45"/>
+                <text x="21" y="22" text-anchor="middle" font-size="4.2" fill="#333">500</text>
+              </svg>
+              <div class="legend">
+                <div><span class="key" style="background:#0E0E0E"></span>Black 185</div>
+                <div><span class="key" style="background:#d88"></span>Pink 165</div>
+                <div><span class="key" style="background:#a67c52"></span>Brown 150</div>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <h3 style="margin-top:0">Price Waterfall</h3>
+            <div class="waterfall" aria-label="Price waterfall">
+              <div class="wf-row"><div class="wf-label">Unit Cost</div><div class="wf-bar"><div class="wf-fill" style="width:15.9%"></div></div><div class="wf-label">$29.50</div></div>
+              <div class="wf-row"><div class="wf-label">Shipping</div><div class="wf-bar"><div class="wf-fill" style="width:1.1%"></div></div><div class="wf-label">$2.00</div></div>
+              <div class="wf-row"><div class="wf-label">Gross Margin</div><div class="wf-bar"><div class="wf-fill" style="width:83.0%"></div></div><div class="wf-label">~$153.91</div></div>
+              <div class="wf-row"><div class="wf-label">SRP</div><div class="wf-bar"><div class="wf-fill" style="width:100%"></div></div><div class="wf-label">$185.41</div></div>
+            </div>
+          </div>
+        </div>
+      </div></section>
       <section id="s3" class="cs-page"><div class="cs-num">03.</div><div class="cs-content"><h1>Market Opportunity</h1><div class="two-col"><div class="box"><ul><li>Y2K trends at mainstream adoption</li><li>Back‑to‑school timing aligns with demand</li><li>Unique spiked design differentiates</li><li>Comfort‑focused footwear demand rising</li><li>Social media drives boot trend</li></ul></div><div class="box"><div class="bar-chart"><div class="bar"><div class="bar-fill" style="width:90%"></div><div class="bar-label">Trend Momentum</div></div><div class="bar"><div class="bar-fill" style="width:75%"></div><div class="bar-label">Social Buzz</div></div><div class="bar"><div class="bar-fill" style="width:60%"></div><div class="bar-label">Differentiation</div></div></div></div></div></div></section>
       <section id="s4" class="cs-page"><div class="cs-num">04.</div><div class="cs-content"><h1>Business Model</h1><div class="two-col"><div class="box"><ul><li><strong>Unit Cost:</strong> $29.50</li><li><strong>Inventory (500):</strong> $14,750</li><li><strong>Down Payment:</strong> $6,500</li><li><strong>Shipping:</strong> $2,000</li><li><strong>Total Investment:</strong> $8,500</li></ul></div><div class="box"><ul><li><strong>Retail Price:</strong> $185.41</li><li><strong>Gross Margin:</strong> 84%</li><li><strong>Profit / Unit:</strong> $155.91</li><li><strong>Max Revenue:</strong> $92,705</li></ul></div></div></div></section>
       <section id="s5" class="cs-page"><div class="cs-num">05.</div><div class="cs-content"><h1>Financial Projections</h1><div class="two-col"><div class="box"><ul><li>Conservative: 100 units</li><li>Moderate: 150 units</li><li>Aggressive: 200 units</li></ul></div><div class="box"><div class="bar-chart"><div class="bar"><div class="bar-fill" style="width:20%"></div><div class="bar-label">100 units</div></div><div class="bar"><div class="bar-fill" style="width:30%"></div><div class="bar-label">150 units</div></div><div class="bar"><div class="bar-fill" style="width:40%"></div><div class="bar-label">200 units</div></div></div></div></div></div></section>
@@ -102,6 +156,22 @@
         if(!v) return; const id=v.target.id; links.forEach(l=>l.classList.toggle('active', l===map[id]));
       },{rootMargin:'-40% 0px -50% 0px', threshold:[0.1,0.25,0.6]});
       sections.forEach(s=>io.observe(s));
+    })();
+  </script>
+  <script>
+    // Simple lightbox for product images
+    (function(){
+      const imgs=[...document.querySelectorAll('img.zoomable')];
+      if(!imgs.length) return;
+      const overlay=document.createElement('div');
+      overlay.className='lb';
+      overlay.innerHTML='<span class="lb-close" aria-label="Close">×</span><img alt="Zoomed" />';
+      document.body.appendChild(overlay);
+      const imgEl=overlay.querySelector('img');
+      const close=()=>overlay.classList.remove('open');
+      overlay.addEventListener('click', (e)=>{ if(e.target===overlay || e.target.classList.contains('lb-close')) close(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+      imgs.forEach(i=> i.addEventListener('click', ()=>{ imgEl.src=i.src; overlay.classList.add('open'); }));
     })();
   </script>
 </body>
