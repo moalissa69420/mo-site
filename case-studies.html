@@ -42,6 +42,9 @@
         <li>
           <a href="#" id="prngrphy-link">PRNGRPHY — XL Studded Boots</a>
         </li>
+        <li>
+          <a href="#" id="nvidia-link">NVIDIA — Brand Identity Modernization</a>
+        </li>
       </ul>
     </div>
 
@@ -137,6 +140,19 @@
         document.getElementById('prngrphy-link').addEventListener('click', function(e) {
           e.preventDefault();
           const target = 'prngrphy-xl-studded-boots.html';
+          if (haveAccess()) { window.location.href = target; return; }
+          const input = prompt('Enter password to view:');
+          if (input && input.trim() === PASSWORD) {
+            grantAccess();
+            window.location.href = target;
+          } else if (input !== null) {
+            alert('Incorrect password');
+          }
+        });
+        // NVIDIA Case Study
+        document.getElementById('nvidia-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = 'nvidia-brand-modernization.html';
           if (haveAccess()) { window.location.href = target; return; }
           const input = prompt('Enter password to view:');
           if (input && input.trim() === PASSWORD) {

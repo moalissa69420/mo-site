@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NVIDIA — Brand Identity Modernization</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --index-width: 270px; --content-max: 56rem; --accent:#8DFF14; --border:#EEEEEE; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#0E0E0E; background:#fff; font-size:15.5px; line-height:1.65; }
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; }
+    .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
+    .cs-index a .num { color:#333; width:2.8rem; display:inline-block; text-align:right; }
+    .cs-index a.active { color: var(--accent); }
+    .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.45rem 0; scroll-margin-top: 12px; }
+    .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content h1 { font-size:1.125rem; margin:0 0 0.35rem 0; font-weight:700; }
+    .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start; }
+    .two-col.image-only { grid-template-columns: 1fr; }
+    .box { background:#fff; border:0; border-radius:0; padding:0.9rem; }
+    .kpi-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:0.75rem; }
+    .kpi-card { border:1px solid var(--border); background:#fff; padding:0.75rem; }
+    .kpi-card .big { font-size:1.25rem; font-weight:700; }
+    .bar-chart { display:grid; gap:0.4rem; }
+    .bar { background:#fff; border:1px solid var(--border); height:22px; position:relative; }
+    .bar-fill { background: var(--accent); height:100%; width:0; }
+    .bar-label { position:absolute; left:8px; top:50%; transform:translateY(-50%); font-size:0.85rem; }
+    @media (max-width: 700px) { .cs-wrapper{ grid-template-columns:1fr;} .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;} .two-col{ grid-template-columns:1fr; gap:0.85rem;} .kpi-grid{ grid-template-columns:1fr; } }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+</head>
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#s1"><span class="num">01.</span> Executive Summary</a></li>
+        <li><a href="#s2"><span class="num">02.</span> The Challenge</a></li>
+        <li><a href="#s3"><span class="num">03.</span> Current Brand Analysis</a></li>
+        <li><a href="#s4"><span class="num">04.</span> Industry Trends</a></li>
+        <li><a href="#s5"><span class="num">05.</span> Brand Strategy</a></li>
+        <li><a href="#s6"><span class="num">06.</span> Visual Identity</a></li>
+        <li><a href="#s7"><span class="num">07.</span> Roadmap</a></li>
+        <li><a href="#s8"><span class="num">08.</span> Investment & ROI</a></li>
+        <li><a href="#s9"><span class="num">09.</span> Success Metrics</a></li>
+        <li><a href="#s10"><span class="num">10.</span> Risks & Mitigation</a></li>
+        <li><a href="#s11"><span class="num">11.</span> Next Steps</a></li>
+      </ol>
+    </aside>
+    <main class="cs-sections">
+      <section id="s1" class="cs-page"><div class="cs-num">01.</div><div class="cs-content"><h1>Executive Summary</h1><div class="two-col"><div class="box"><p><strong>NVIDIA Brand Identity Modernization</strong> — A strategic proposal for the AI era (Aug 2025).</p><ul><li><strong>$3.65T</strong> market cap</li><li><strong>98%</strong> brand value growth</li><li><strong>$87.9B</strong> current brand value</li></ul></div><div class="box"><div class="kpi-grid"><div class="kpi-card"><div class="big">Problem</div><div>Outside top 100 global brands</div></div><div class="kpi-card"><div class="big">Opportunity</div><div>$50B+ unrealized brand value</div></div><div class="kpi-card"><div class="big">Solution</div><div>Comprehensive identity modernization</div></div></div></div></div></section>
+      <section id="s2" class="cs-page"><div class="cs-num">02.</div><div class="cs-content"><h1>The Challenge</h1><div class="two-col"><div class="box"><h3>Market Performance</h3><ul><li>World's most valuable tech company</li><li>70–95% AI chip market share</li><li>Essential AI infrastructure provider</li></ul></div><div class="box"><h3>Brand Recognition</h3><ul><li>Not in top 100 global brands</li><li>Limited consumer awareness (45%)</li><li>Gaming‑centric perception; B2B/B2C gap</li></ul></div></div></div></section>
+      <section id="s3" class="cs-page"><div class="cs-num">03.</div><div class="cs-content"><h1>Current Brand Analysis</h1><div class="two-col"><div class="box"><h3>Strengths</h3><ul><li>Iconic eye symbol; strong green association</li><li>Technical heritage and credibility</li><li>Undisputed market dominance</li></ul></div><div class="box"><h3>Challenges</h3><ul><li>Outdated visual system; limited public recognition</li><li>Gaming‑centric perception</li><li>B2B vs B2C disconnect</li></ul></div></div></div></section>
+      <section id="s4" class="cs-page"><div class="cs-num">04.</div><div class="cs-content"><h1>Industry Branding Trends (2024–2025)</h1><div class="two-col"><div class="box"><ul><li>Minimalist Design (93% adoption)</li><li>AI‑Centric Branding</li><li>Geometric Simplicity</li><li>Digital‑first optimization</li></ul></div><div class="box"><div class="bar-chart"><div class="bar"><div class="bar-fill" style="width:80%"></div><div class="bar-label">Brand value uplift after modernization</div></div><div class="bar"><div class="bar-fill" style="width:60%"></div><div class="bar-label">Adoption of AI‑centric narratives</div></div></div></div></div></div></section>
+      <section id="s5" class="cs-page"><div class="cs-num">05.</div><div class="cs-content"><h1>Brand Strategy Framework</h1><div class="two-col"><div class="box"><h3>Vision</h3><p>Empowering the AI‑driven future through revolutionary computing technology.</p><h3>Positioning Shift</h3><p>Gaming Company → AI Platform.</p></div><div class="box"><h3>5 Key Attributes</h3><div class="kpi-grid"><div class="kpi-card"><div class="big">Visionary</div></div><div class="kpi-card"><div class="big">Intelligent</div></div><div class="kpi-card"><div class="big">Computational</div></div><div class="kpi-card"><div class="big">Accessible</div></div><div class="kpi-card"><div class="big">Responsible</div></div></div></div></div></div></section>
+      <section id="s6" class="cs-page"><div class="cs-num">06.</div><div class="cs-content"><h1>Visual Identity Modernization</h1><div class="two-col"><div class="box"><ul><li>Preserve iconic eye; refine geometry</li><li>Enhance scalability and digital performance</li><li>Maintain recognition while modernizing</li></ul></div><div class="box"><ul><li>Color System Expansion (keep core green)</li><li>Modern technical typography</li><li>Component‑based design system</li></ul></div></div></div></section>
+      <section id="s7" class="cs-page"><div class="cs-num">07.</div><div class="cs-content"><h1>Implementation Roadmap (12 months)</h1><div class="two-col"><div class="box"><h3>Phase 1: Foundation (M1–M3)</h3><ul><li>Logo finalization; guidelines</li><li>Asset library; internal alignment</li></ul><h3>Phase 2: Digital Transition (M4–M6)</h3><ul><li>Website; social; software UI</li><li>Digital asset rollout</li></ul></div><div class="box"><h3>Phase 3–4: Physical + Market</h3><ul><li>Corporate materials; tradeshows; offices</li><li>Public campaign; media; customer education</li><li>Performance tracking</li></ul></div></div></div></section>
+      <section id="s8" class="cs-page"><div class="cs-num">08.</div><div class="cs-content"><h1>Investment & ROI</h1><div class="two-col"><div class="box"><h3>Investment</h3><ul><li>Total: <strong>$45–58M</strong> (&lt;0.2% of market cap)</li></ul><h3>Expected Returns</h3><ul><li><strong>$100B+</strong> brand value increase</li><li><strong>200–400%</strong> ROI (conservative)</li></ul></div><div class="box"><div class="bar-chart"><div class="bar"><div class="bar-fill" style="width:40%"></div><div class="bar-label">Investment</div></div><div class="bar"><div class="bar-fill" style="width:100%"></div><div class="bar-label">Brand Value Uplift</div></div></div></div></div></div></section>
+      <section id="s9" class="cs-page"><div class="cs-num">09.</div><div class="cs-content"><h1>Success Metrics</h1><div class="two-col"><div class="box"><ul><li>Top‑50 global brands in 24 months</li><li>+200% unaided recognition</li><li>+150% brand consideration</li></ul></div><div class="box"><ul><li>#1 AI company recognition</li><li>Brand Strength Index 95+</li><li>Enhanced acquisition +40–60%</li></ul></div></div></div></section>
+      <section id="s10" class="cs-page"><div class="cs-num">10.</div><div class="cs-content"><h1>Risk Assessment & Mitigation</h1><div class="two-col"><div class="box"><h3>Risks</h3><ul><li>Brand heritage loss</li><li>Implementation complexity</li><li>Market timing</li></ul></div><div class="box"><h3>Mitigation</h3><ul><li>Gradual evolution; preserve core elements</li><li>Phased rollout with checkpoints</li><li>Leverage leadership to define standards</li></ul></div></div></div></section>
+      <section id="s11" class="cs-page"><div class="cs-num">11.</div><div class="cs-content"><h1>Next Steps</h1><div class="two-col"><div class="box"><h3>Immediate (Week 1)</h3><ul><li>Exec alignment; budget approval</li><li>Select transformation partner</li><li>Form brand steering committee</li></ul></div><div class="box"><h3>30‑Day Milestones</h3><ul><li>Brand audit; positioning; logo evolution</li><li>Implementation timeline; resourcing</li></ul></div></div></div></section>
+    </main>
+  </div>
+  <script>
+    (function(){
+      try{ const ok = sessionStorage.getItem('cs_access_bello')==='true'; if(!ok){ const input = prompt('Enter password to view:'); if(!(input && input.trim()==='100K')){ alert('Incorrect password'); window.location.href='case-studies.html'; } else { sessionStorage.setItem('cs_access_bello','true'); } } }catch(e){}
+    })();
+    (function(){
+      const sections=[...document.querySelectorAll('section.cs-page')];
+      const links=[...document.querySelectorAll('.cs-index a')];
+      const map=Object.fromEntries(links.map(a=>[a.getAttribute('href').slice(1),a]));
+      const io=new IntersectionObserver((entries)=>{
+        const v=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+        if(!v) return; const id=v.target.id; links.forEach(l=>l.classList.toggle('active', l===map[id]));
+      },{rootMargin:'-40% 0px -50% 0px', threshold:[0.1,0.25,0.6]});
+      sections.forEach(s=>io.observe(s));
+    })();
+  </script>
+</body>
+</html>
+
+
