@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPATAIL — Geometry‑Led Web Concept</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --index-width: 270px; --content-max: 56rem; --accent:#8DFF14; --border:#EEEEEE; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#0E0E0E; background:#fff; font-size:15.5px; line-height:1.65; }
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; }
+    .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
+    .cs-index a .num { color:#333; width:2.8rem; display:inline-block; text-align:right; }
+    .cs-index a.active { color: var(--accent); }
+    .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.45rem 0; scroll-margin-top: 12px; }
+    .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content h1 { font-size:1.125rem; margin:0 0 0.35rem 0; font-weight:700; }
+    .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start; }
+    .two-col.image-only { grid-template-columns: 1fr; }
+    .box { background:#fff; border:0; border-radius:0; padding:0.9rem; }
+    .kpi-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:0.75rem; }
+    .kpi-card { border:1px solid var(--border); background:#fff; padding:0.75rem; }
+    .kpi-card .big { font-size:1.25rem; font-weight:700; }
+    .bar-chart { display:grid; gap:0.4rem; }
+    .bar { background:#fff; border:1px solid var(--border); height:22px; position:relative; }
+    .bar-fill { background: var(--accent); height:100%; width:0; }
+    .bar-label { position:absolute; left:8px; top:50%; transform:translateY(-50%); font-size:0.85rem; }
+    /* Geometry grid visual */
+    .geo { border:1px solid var(--border); padding:0.6rem; }
+    .geo svg { width:100%; height:auto; display:block; }
+    @media (max-width: 700px) { .cs-wrapper{ grid-template-columns:1fr;} .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;} .two-col{ grid-template-columns:1fr; gap:0.85rem;} .kpi-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#s1"><span class="num">01.</span> Executive Summary</a></li>
+        <li><a href="#s2"><span class="num">02.</span> Design Principles</a></li>
+        <li><a href="#s3"><span class="num">03.</span> Visual System</a></li>
+        <li><a href="#s4"><span class="num">04.</span> Interaction Model</a></li>
+        <li><a href="#s5"><span class="num">05.</span> Layout Explorations</a></li>
+        <li><a href="#s6"><span class="num">06.</span> Implementation Roadmap</a></li>
+        <li><a href="#s7"><span class="num">07.</span> Risks & Mitigation</a></li>
+        <li><a href="#s8"><span class="num">08.</span> Next Steps</a></li>
+      </ol>
+    </aside>
+    <main class="cs-sections">
+      <section id="s1" class="cs-page"><div class="cs-num">01.</div><div class="cs-content"><h1>Executive Summary</h1><div class="two-col"><div class="box"><p><strong>SPATAIL</strong> is a geometry‑led web concept inspired by precision couture interfaces — bold lines, strict grids, and a product‑first canvas.</p><div class="kpi-grid"><div class="kpi-card"><div class="big">Geometry</div><div>Lines as layout logic</div></div><div class="kpi-card"><div class="big">Minimal</div><div>Surface reduces friction</div></div><div class="kpi-card"><div class="big">Product</div><div>Visual focus > chrome</div></div></div></div><div class="box"><div class="geo"><svg viewBox="0 0 480 180" role="img" aria-label="Geometric grid with accent blocks"><rect x="0" y="0" width="480" height="180" fill="#fff" stroke="#EEEEEE"/><g stroke="#EEEEEE"> 
+  <path d="M40 0 v180 M120 0 v180 M200 0 v180 M280 0 v180 M360 0 v180 M0 30 h480 M0 90 h480 M0 150 h480"/></g>
+  <rect x="120" y="30" width="80" height="60" fill="#8DFF14"/>
+  <rect x="280" y="90" width="80" height="60" fill="#8DFF14"/>
+</svg></div></div></div></div></section>
+
+      <section id="s2" class="cs-page"><div class="cs-num">02.</div><div class="cs-content"><h1>Design Principles</h1><div class="two-col"><div class="box"><ul><li><strong>Bold Lines & Geometry:</strong> layout derived from grid lines and orthogonal rhythm.</li><li><strong>Minimal UI:</strong> reduce decoration; emphasize composition, spacing, and typographic hierarchy.</li><li><strong>Product‑First:</strong> imagery and content dominate the frame; chrome recedes.</li></ul></div><div class="box"><ul><li><strong>Precision:</strong> pixel‑tight alignment; measured whitespace.</li><li><strong>Continuity:</strong> consistent rules across pages; no ad‑hoc patterns.</li><li><strong>Motion:</strong> restrained transitions aligned to grid axes.</li></ul></div></div></div></section>
+
+      <section id="s3" class="cs-page"><div class="cs-num">03.</div><div class="cs-content"><h1>Visual System</h1><div class="two-col"><div class="box"><h3>Grid & Type</h3><ul><li>12‑column baseline grid; modular scale for type.</li><li>Typographic contrast via weight, not color.</li><li>Responsive collapse with preserved rhythm.</li></ul></div><div class="box"><h3>Color & Accents</h3><ul><li>Core: #0E0E0E text, #EEEEEE borders, #8DFF14 accent.</li><li>Accent reserved for data, state, callouts.</li><li>No rounded corners; no ornamental strokes.</li></ul></div></div></div></section>
+
+      <section id="s4" class="cs-page"><div class="cs-num">04.</div><div class="cs-content"><h1>Interaction Model</h1><div class="two-col"><div class="box"><ul><li>Scroll‑locked sections with index highlight.</li><li>Keyboard navigation for galleries.</li><li>Autoplay sliders with pause on hover/visibility.</li></ul></div><div class="box"><div class="bar-chart" aria-label="Interaction emphasis"><div class="bar"><div class="bar-fill" style="width:70%"></div><div class="bar-label">Focus on content</div></div><div class="bar"><div class="bar-fill" style="width:45%"></div><div class="bar-label">UI chrome</div></div></div></div></div></section>
+
+      <section id="s5" class="cs-page"><div class="cs-num">05.</div><div class="cs-content"><h1>Layout Explorations</h1><div class="two-col"><div class="box"><p>Two‑column compositions pairing copy with product visuals; product rail with strict gutters; hero built from intersecting lines.</p></div><div class="box"><div class="geo"><svg viewBox="0 0 480 180" role="img" aria-label="Two-column mock"><rect x="0" y="0" width="480" height="180" fill="#fff" stroke="#EEEEEE"/><rect x="30" y="30" width="170" height="120" fill="#f8f8f8" stroke="#EEEEEE"/><rect x="230" y="30" width="220" height="120" fill="#f8f8f8" stroke="#EEEEEE"/><rect x="230" y="30" width="110" height="120" fill="#8DFF14" opacity="0.12"/></svg></div></div></div></div></section>
+
+      <section id="s6" class="cs-page"><div class="cs-num">06.</div><div class="cs-content"><h1>Implementation Roadmap</h1><div class="two-col"><div class="box"><h3>Phase 1</h3><ul><li>Grid + tokens + typography</li><li>Core components (nav, index, section)</li></ul><h3>Phase 2</h3><ul><li>Media systems (sliders, lightbox)</li><li>Templates (landing, product)</li></ul></div><div class="box"><h3>Phase 3</h3><ul><li>Motion guidelines</li><li>Accessibility + performance pass</li></ul></div></div></div></section>
+
+      <section id="s7" class="cs-page"><div class="cs-num">07.</div><div class="cs-content"><h1>Risks & Mitigation</h1><div class="two-col"><div class="box"><ul><li><strong>Over‑minimalism:</strong> mitigate with clear affordances and focus states.</li><li><strong>Grid rigidity:</strong> introduce flexible spans and safe gaps.</li></ul></div><div class="box"><ul><li><strong>Content variability:</strong> establish image aspect frames (e.g., 4:5, 16:9).</li><li><strong>Performance:</strong> lazy load, decode async, WebP fallbacks.</li></ul></div></div></div></section>
+
+      <section id="s8" class="cs-page"><div class="cs-num">08.</div><div class="cs-content"><h1>Next Steps</h1><div class="two-col image-only"><div class="box"><ul><li>Translate hero + product rail into coded components.</li><li>Assemble style specimens: grid, type, color, motion.</li><li>Integrate with our case study component set.</li></ul></div></div></div></section>
+    </main>
+  </div>
+  <script>
+    (function(){
+      try{ const ok = sessionStorage.getItem('cs_access_bello')==='true'; if(!ok){ const input = prompt('Enter password to view:'); if(!(input && input.trim()==='100K')){ alert('Incorrect password'); window.location.href='case-studies.html'; } else { sessionStorage.setItem('cs_access_bello','true'); } } }catch(e){}
+    })();
+    (function(){
+      const sections=[...document.querySelectorAll('section.cs-page')];
+      const links=[...document.querySelectorAll('.cs-index a')];
+      const map=Object.fromEntries(links.map(a=>[a.getAttribute('href').slice(1),a]));
+      const io=new IntersectionObserver((entries)=>{
+        const v=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+        if(!v) return; const id=v.target.id; links.forEach(l=>l.classList.toggle('active', l===map[id]));
+      },{rootMargin:'-40% 0px -50% 0px', threshold:[0.1,0.25,0.6]});
+      sections.forEach(s=>io.observe(s));
+    })();
+  </script>
+</body>
+</html>
+
+
