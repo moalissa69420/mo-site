@@ -11,7 +11,7 @@
   <div class="presentation-container">
     <div class="slide-nav">
       <button class="nav-btn" id="prevBtn">&lt;</button>
-      <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">19</span></span>
+      <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">21</span></span>
       <button class="nav-btn" id="nextBtn">&gt;</button>
     </div>
 
@@ -286,6 +286,99 @@
         <h1>Why This Is Our Second Chance</h1>
         <blockquote class="quote">“In 2019, we built the first 3D photo app. 4M people used it. Then we pivoted to B2B. The company died. iOS 26 just validated everything we believed. There’s still nowhere to share spatial photos. This is our second chance — and we won’t waste it.”</blockquote>
         <p class="cta">Let’s build the future of spatial social media.</p>
+      </div>
+    </div>
+
+    <!-- 20. Wireframe — Feed -->
+    <div class="slide" id="slide-20">
+      <div class="slide-content">
+        <h1>Wireframe — Home Feed</h1>
+        <div class="two-col">
+          <div>
+            <ul class="list">
+              <li>Top bar: logo, search, inbox</li>
+              <li>Vertical cards: spatial photo viewport, depth badge</li>
+              <li>Actions: like, comment, share, save</li>
+              <li>Tabs: Home • Discover • Capture • Inbox • Profile</li>
+            </ul>
+          </div>
+          <div>
+            <svg class="phone-svg" viewBox="0 0 300 620" width="300" height="620" role="img" aria-label="Feed wireframe">
+              <rect x="1" y="1" width="298" height="618" fill="#fff" stroke="#EEEEEE" stroke-width="2"/>
+              <!-- status / top bar -->
+              <rect x="1" y="1" width="298" height="44" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="14" y="12" width="60" height="20" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="86" y="12" width="140" height="20" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="238" y="12" width="48" height="20" fill="#fff" stroke="#EEEEEE"/>
+              <!-- card 1 -->
+              <rect x="14" y="60" width="272" height="280" fill="#fff" stroke="#0E0E0E" stroke-width="1"/>
+              <rect x="22" y="68" width="48" height="10" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="230" y="68" width="48" height="10" fill="#8DFF14" stroke="#8DFF14"/>
+              <rect x="22" y="86" width="256" height="240" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="22" y="332" width="140" height="10" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="166" y="332" width="40" height="10" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="212" y="332" width="40" height="10" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="258" y="332" width="20" height="10" fill="#fff" stroke="#EEEEEE"/>
+              <!-- card 2 -->
+              <rect x="14" y="358" width="272" height="180" fill="#fff" stroke="#0E0E0E" stroke-width="1"/>
+              <rect x="22" y="366" width="48" height="10" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="230" y="366" width="48" height="10" fill="#8DFF14" stroke="#8DFF14"/>
+              <rect x="22" y="384" width="256" height="120" fill="#fff" stroke="#EEEEEE"/>
+              <!-- tab bar -->
+              <rect x="1" y="574" width="298" height="45" fill="#fff" stroke="#EEEEEE"/>
+              <g fill="#fff" stroke="#0E0E0E">
+                <rect x="22" y="586" width="24" height="12"/>
+                <rect x="82" y="586" width="24" height="12"/>
+                <rect x="142" y="582" width="28" height="16" fill="#8DFF14" stroke="#8DFF14"/>
+                <rect x="206" y="586" width="24" height="12"/>
+                <rect x="266" y="586" width="24" height="12"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 21. Wireframe — Detail -->
+    <div class="slide" id="slide-21">
+      <div class="slide-content">
+        <h1>Wireframe — Detail View</h1>
+        <div class="two-col">
+          <div>
+            <ul class="list">
+              <li>Immersive spatial image area</li>
+              <li>Depth badge, swipe carousel</li>
+              <li>Actions: Like • Comment • Share • Save</li>
+              <li>Creator card + follow CTA</li>
+            </ul>
+          </div>
+          <div>
+            <svg class="phone-svg" viewBox="0 0 300 620" width="300" height="620" role="img" aria-label="Detail wireframe">
+              <rect x="1" y="1" width="298" height="618" fill="#fff" stroke="#EEEEEE" stroke-width="2"/>
+              <rect x="1" y="1" width="298" height="44" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="14" y="12" width="90" height="20" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="206" y="12" width="78" height="20" fill="#fff" stroke="#EEEEEE"/>
+              <!-- media -->
+              <rect x="14" y="60" width="272" height="340" fill="#fff" stroke="#0E0E0E"/>
+              <rect x="22" y="68" width="52" height="12" fill="#8DFF14" stroke="#8DFF14"/>
+              <rect x="230" y="68" width="48" height="12" fill="#fff" stroke="#EEEEEE"/>
+              <!-- actions -->
+              <rect x="22" y="410" width="36" height="16" fill="#fff" stroke="#0E0E0E"/>
+              <rect x="66" y="410" width="36" height="16" fill="#fff" stroke="#0E0E0E"/>
+              <rect x="110" y="410" width="36" height="16" fill="#fff" stroke="#0E0E0E"/>
+              <rect x="154" y="410" width="36" height="16" fill="#fff" stroke="#0E0E0E"/>
+              <!-- creator card -->
+              <rect x="14" y="438" width="272" height="80" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="22" y="448" width="48" height="48" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="78" y="452" width="120" height="12" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="78" y="468" width="90" height="10" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="216" y="454" width="60" height="20" fill="#fff" stroke="#0E0E0E"/>
+              <!-- comments preview -->
+              <rect x="14" y="522" width="272" height="44" fill="#fff" stroke="#EEEEEE"/>
+              <rect x="14" y="574" width="298" height="45" fill="#fff" stroke="#EEEEEE"/>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
 
