@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPATIAL — The First Social Network for Spatial Photos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="presentation-container">
+    <div class="slide-nav">
+      <button class="nav-btn" id="prevBtn">&lt;</button>
+      <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">19</span></span>
+      <button class="nav-btn" id="nextBtn">&gt;</button>
+    </div>
+
+    <!-- 1. Title -->
+    <div class="slide active" id="slide-1">
+      <div class="slide-content title-slide">
+        <h1 class="brand-title">SPATIAL</h1>
+        <h2 class="product-title">The First Social Network for Spatial Photos</h2>
+        <div class="launch-badge">Pre‑Seed Pitch • October 2025</div>
+        <div class="key-stats">
+          <div class="stat"><span class="stat-number">Mo Alissa</span><span class="stat-label">CEO</span></div>
+          <div class="stat"><span class="stat-number">Abdou</span><span class="stat-label">CTO</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Perfect Storm -->
+    <div class="slide" id="slide-2">
+      <div class="slide-content">
+        <h1>The Perfect Storm</h1>
+        <div class="bullet-grid">
+          <div class="bullet">500M iPhone users can create spatial photos (iOS 26)</div>
+          <div class="bullet">Zero dedicated spatial social networks</div>
+          <div class="bullet">4M FILM3D users ready to migrate</div>
+          <div class="bullet">Spatial market $149.6B → $825.46B (23.8% CAGR)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Problem -->
+    <div class="slide" id="slide-3">
+      <div class="slide-content">
+        <h1>The Problem</h1>
+        <ul class="list">
+          <li>iOS 26 created 500M spatial photo creators</li>
+          <li>Sharing limited to Messages & AirDrop</li>
+          <li>Instagram/TikTok/Snapchat are 2D</li>
+          <li>Apple’s Spatial Gallery is curated, not social</li>
+          <li>Massive supply, zero social distribution</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4. Solution -->
+    <div class="slide" id="slide-4">
+      <div class="slide-content">
+        <h1>Our Solution</h1>
+        <ul class="list">
+          <li>TikTok‑style vertical feed for spatial photos</li>
+          <li>Works on any iPhone, magical on Vision Pro</li>
+          <li>iOS 26 import + FILM3D capture technology</li>
+          <li>First‑mover advantage in $825B market</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5. Market Size -->
+    <div class="slide" id="slide-5">
+      <div class="slide-content">
+        <h1>Market Size</h1>
+        <div class="two-col">
+          <div>
+            <ul class="list">
+              <li><strong>TAM:</strong> 1.3B iPhone users globally</li>
+              <li><strong>SAM:</strong> 500M iOS 26 users by Q2 2026</li>
+              <li><strong>SOM:</strong> 2% share = 10M users</li>
+            </ul>
+          </div>
+          <div>
+            <div class="chart-card"><canvas id="marketChart"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Why Now -->
+    <div class="slide" id="slide-6">
+      <div class="slide-content">
+        <h1>Why Now?</h1>
+        <ul class="list">
+          <li>iOS 26 launched Sep 2025 (30% adoption in 1 month)</li>
+          <li>No competition in spatial photo social</li>
+          <li>Vision Pro ecosystem growing (420K units)</li>
+          <li>$80B+ VC interest in spatial computing</li>
+          <li>BeReal proved format‑specific networks win (€500M)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 7. Competition -->
+    <div class="slide" id="slide-7">
+      <div class="slide-content">
+        <h1>Competition</h1>
+        <div class="matrix">
+          <div class="matrix-item"><strong>Direct:</strong> ZERO spatial photo social</div>
+          <div class="matrix-item"><strong>Instagram:</strong> Likely adds spatial (12–18m)</div>
+          <div class="matrix-item"><strong>TikTok:</strong> Video‑first, no spatial plans</div>
+          <div class="matrix-item"><strong>Apple Photos:</strong> Not social; we complement</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Secret Weapon -->
+    <div class="slide" id="slide-8">
+      <div class="slide-content">
+        <h1>Our Secret Weapon</h1>
+        <ul class="list">
+          <li>4M FILM3D users with push access</li>
+          <li>Built the first 3D photo app (2019–2023)</li>
+          <li>Proved PMF before Apple; learned from B2B pivot</li>
+          <li>True first‑mover in spatial social</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 9. Business Model -->
+    <div class="slide" id="slide-9">
+      <div class="slide-content">
+        <h1>Business Model</h1>
+        <div class="two-col">
+          <div>
+            <ul class="list">
+              <li>Freemium: Free + $2.99/month Pro</li>
+              <li>5% conversion (Discord 3.3%, premium social 2–8%)</li>
+              <li>85% gross margins (post App Store)</li>
+            </ul>
+          </div>
+          <div class="comparables">
+            <div class="pill">Discord $15B</div>
+            <div class="pill">BeReal €500M</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. Financial Projections -->
+    <div class="slide" id="slide-10">
+      <div class="slide-content">
+        <h1>Financial Projections — Base Case</h1>
+        <div class="chart-card"><canvas id="projectionChart"></canvas></div>
+        <div class="projection-summary">
+          <div class="metric"><span class="metric-value">Y1: 500K</span><span class="metric-desc">25K paying, $900K ARR</span></div>
+          <div class="metric"><span class="metric-value">Y2: 2M</span><span class="metric-desc">100K paying, $3.6M ARR</span></div>
+          <div class="metric"><span class="metric-value">Y3: 10M</span><span class="metric-desc">500K paying, $18M ARR</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Scenario Analysis -->
+    <div class="slide" id="slide-11">
+      <div class="slide-content">
+        <h1>Scenario Analysis</h1>
+        <div class="chart-card"><canvas id="scenarioChart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- 12. GTM -->
+    <div class="slide" id="slide-12">
+      <div class="slide-content">
+        <h1>Go‑to‑Market Strategy</h1>
+        <ol class="steps">
+          <li><strong>Phase 1:</strong> Reactivate 4M FILM3D (Week 1–2)</li>
+          <li><strong>Phase 2:</strong> Build in public (Week 3–8)</li>
+          <li><strong>Phase 3:</strong> Product Hunt + App Store (Week 9–12)</li>
+          <li><strong>Phase 4:</strong> Viral mechanics + paid (Month 4+)</li>
+        </ol>
+        <p class="note"><strong>Key metric:</strong> 2–5% FILM3D reactivation for initial traction</p>
+      </div>
+    </div>
+
+    <!-- 13. Format-specific wins -->
+    <div class="slide" id="slide-13">
+      <div class="slide-content">
+        <h1>Format‑Specific Social Networks Win</h1>
+        <div class="wins-grid">
+          <div class="win"><h3>BeReal</h3><p>0→20M DAU in 3 years • €500M exit</p></div>
+          <div class="win"><h3>Discord</h3><p>150M MAU • 3.3% conversion • $15B valuation</p></div>
+          <div class="win"><h3>Clubhouse</h3><p>0→10M MAU in 1 year • $4B peak</p></div>
+          <div class="win"><h3>Instagram</h3><p>1M→100M in 2 years • $1B exit</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. Team -->
+    <div class="slide" id="slide-14">
+      <div class="slide-content">
+        <h1>The Team</h1>
+        <ul class="list">
+          <li><strong>Mo Alissa:</strong> CEO — product vision, growth, fundraising</li>
+          <li><strong>Abdou:</strong> CTO — iOS, spatial tech</li>
+          <li>Track record: FILM3D (4M users), MODU validation</li>
+          <li>Planned hires: iOS engineer, backend, designer, growth</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 15. MVP -->
+    <div class="slide" id="slide-15">
+      <div class="slide-content">
+        <h1>MVP Features (8‑Week Build)</h1>
+        <ul class="list">
+          <li>iOS 26 spatial photo import</li>
+          <li>Vertical feed with depth/parallax</li>
+          <li>Like, follow, profile system</li>
+          <li>FILM3D capture integration</li>
+          <li>Vision Pro optimization</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 16. Traction Plan -->
+    <div class="slide" id="slide-16">
+      <div class="slide-content">
+        <h1>Traction Plan & Milestones</h1>
+        <ul class="list">
+          <li><strong>Month 1:</strong> 25K users (reactivation test)</li>
+          <li><strong>Month 3:</strong> 100K users (organic)</li>
+          <li><strong>Month 6:</strong> 500K users (PMF)</li>
+          <li><strong>Month 12:</strong> 2M users (scale + paid)</li>
+          <li><strong>Key risk:</strong> Instagram response timeline (12–18m)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 17. The Ask -->
+    <div class="slide" id="slide-17">
+      <div class="slide-content">
+        <h1>The Ask — $500K Pre‑Seed</h1>
+        <div class="two-col">
+          <div>
+            <ul class="list">
+              <li><strong>Team:</strong> $250K (6 months runway)</li>
+              <li><strong>Infrastructure:</strong> $50K</li>
+              <li><strong>Marketing:</strong> $100K</li>
+              <li><strong>Legal/Buffer:</strong> $100K</li>
+            </ul>
+          </div>
+          <div class="note">8 weeks to MVP • 12 weeks to launch • MVP + 100K users → $2–3M seed</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18. Exit Strategy -->
+    <div class="slide" id="slide-18">
+      <div class="slide-content">
+        <h1>Exit Strategy & Comparables</h1>
+        <ul class="list">
+          <li><strong>Apple:</strong> $500M–1B (social layer for Spatial Gallery)</li>
+          <li><strong>Meta:</strong> $300–800M (spatial social for Quest)</li>
+          <li><strong>Snap:</strong> $400–700M (spatial AR content)</li>
+        </ul>
+        <p class="note">Target: 10M users × $50–100/user = $500M–1B</p>
+      </div>
+    </div>
+
+    <!-- 19. Second Chance -->
+    <div class="slide" id="slide-19">
+      <div class="slide-content">
+        <h1>Why This Is Our Second Chance</h1>
+        <blockquote class="quote">“In 2019, we built the first 3D photo app. 4M people used it. Then we pivoted to B2B. The company died. iOS 26 just validated everything we believed. There’s still nowhere to share spatial photos. This is our second chance — and we won’t waste it.”</blockquote>
+        <p class="cta">Let’s build the future of spatial social media.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+
