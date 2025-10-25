@@ -8,46 +8,46 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <style>
-    :root { --index-width: 270px; --content-max: 56rem; --accent:#8DFF14; --border:#EEEEEE; }
-    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#0E0E0E; background:#fff; font-size:15.5px; line-height:1.65; }
+    :root { --index-width: 270px; --content-max: 56rem; --border:#000; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size:15.5px; line-height:1.65; }
     .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
     .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; }
     .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; }
     .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
     .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
-    .cs-index a .num { color:#333; width:2.8rem; display:inline-block; text-align:right; }
-    .cs-index a.active { color: var(--accent); }
+    .cs-index a .num { color:#000; width:2.8rem; display:inline-block; text-align:right; }
+    .cs-index a.active { color: #000; font-weight: bold; }
     .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
     section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.45rem 0; scroll-margin-top: 12px; }
-    .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; }
-    .cs-content h1 { font-size:1.125rem; margin:0 0 0.35rem 0; font-weight:700; }
-    .cs-content h2 { font-size:1rem; margin:0.5rem 0 0.25rem 0; font-weight:600; color:#333; }
-    .cs-content h3 { font-size:0.9rem; margin:0.4rem 0 0.2rem 0; font-weight:600; color:#555; }
+    .cs-num { display:block; text-align:right; color:#000; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content h1 { font-size:1.125rem; margin:0 0 0.35rem 0; font-weight:700; color:#000; }
+    .cs-content h2 { font-size:1rem; margin:0.5rem 0 0.25rem 0; font-weight:600; color:#000; }
+    .cs-content h3 { font-size:0.9rem; margin:0.4rem 0 0.2rem 0; font-weight:600; color:#000; }
     .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start; }
     .two-col.image-only { grid-template-columns: 1fr; }
     .box { background:#fff; border:1px solid var(--border); border-radius:0; padding:0.9rem; }
-    .problem-box { background:#fff; border:1px solid #ff6b6b; border-left:4px solid #ff6b6b; padding:0.9rem; }
-    .solution-box { background:#fff; border:1px solid var(--accent); border-left:4px solid var(--accent); padding:0.9rem; }
-    .alert-box { background:#fff; border:1px solid #ff6b6b; border-left:4px solid #ff6b6b; padding:0.9rem; }
-    .success-box { background:#fff; border:1px solid var(--accent); border-left:4px solid var(--accent); padding:0.9rem; }
-    .code-block { background:#f8f8f8; border:1px solid var(--border); padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; overflow-x:auto; }
-    .terminal-output { background:#000; color:#00ff00; border:1px solid #333; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; white-space:pre-wrap; }
-    .ascii-art { background:#f8f8f8; border:1px solid var(--border); padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.75rem; white-space:pre-wrap; overflow-x:auto; }
+    .problem-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .solution-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .alert-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .success-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .code-block { background:#fff; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; overflow-x:auto; color:#000; }
+    .terminal-output { background:#fff; color:#000; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; white-space:pre-wrap; }
+    .ascii-art { background:#fff; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.75rem; white-space:pre-wrap; overflow-x:auto; color:#000; }
     .kpi-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:0.75rem; }
-    .kpi-card { border:1px solid var(--border); background:#fff; padding:0.75rem; text-align:center; }
-    .kpi-card .big { font-size:1.25rem; font-weight:700; color:var(--accent); }
-    .mermaid { background:#fff; border:1px solid var(--border); padding:1rem; margin:1rem 0; overflow-x:auto; }
+    .kpi-card { border:1px solid #000; background:#fff; padding:0.75rem; text-align:center; }
+    .kpi-card .big { font-size:1.25rem; font-weight:700; color:#000; }
+    .mermaid { background:#fff; border:1px solid #000; padding:1rem; margin:1rem 0; overflow-x:auto; }
     .mermaid svg { max-width:100%; height:auto; }
-    .component-section { background:#f8f8f8; border:1px solid var(--border); padding:0.9rem; margin:0.5rem 0; }
-    .workflow-step { background:#fff; border:1px solid var(--border); border-left:4px solid var(--accent); padding:0.9rem; margin:0.5rem 0; }
+    .component-section { background:#fff; border:1px solid #000; padding:0.9rem; margin:0.5rem 0; }
+    .workflow-step { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; margin:0.5rem 0; }
     .metrics-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:0.75rem; margin:1rem 0; }
-    .metric-card { background:#fff; border:1px solid var(--border); padding:0.75rem; text-align:center; }
-    .metric-value { font-size:1.5rem; font-weight:700; color:var(--accent); margin-bottom:0.25rem; }
-    .metric-label { font-size:0.8rem; color:#666; text-transform:uppercase; letter-spacing:0.5px; }
+    .metric-card { background:#fff; border:1px solid #000; padding:0.75rem; text-align:center; }
+    .metric-value { font-size:1.5rem; font-weight:700; color:#000; margin-bottom:0.25rem; }
+    .metric-label { font-size:0.8rem; color:#000; text-transform:uppercase; letter-spacing:0.5px; }
     .before-after { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin:1rem 0; }
-    .before { background:#fff; border:1px solid #ff6b6b; border-left:4px solid #ff6b6b; padding:0.9rem; }
-    .after { background:#fff; border:1px solid var(--accent); border-left:4px solid var(--accent); padding:0.9rem; }
-    .pill { display:inline-block; padding:0.15rem 0.35rem; border:1px solid #ddd; margin-right:0.35rem; font-size:0.8rem; }
+    .before { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .after { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .pill { display:inline-block; padding:0.15rem 0.35rem; border:1px solid #000; margin-right:0.35rem; font-size:0.8rem; color:#000; }
     @media (max-width: 700px) { 
       .cs-wrapper{ grid-template-columns:1fr;} 
       .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} 
@@ -346,38 +346,70 @@ class ContentOrchestrator:
           </div>
           
           <div class="component-section">
-            <h3>Implementation</h3>
+            <h3>Live Collision Detection Demo</h3>
             <div class="code-block">
-class CollisionDetector:
-    def __init__(self):
-        self.semantic_engine = EmbeddingModel()
-        self.calendar = ContentCalendar()
-        self.audience_fatigue_model = FatiguePredictor()
+// Real-time collision detection system
+class CollisionDetector {
+    constructor() {
+        this.semanticThreshold = 0.8;
+        this.fatigueWindow = 7; // days
+        this.minGap = 3; // minimum days between similar content
+    }
     
-    def check_collision(self, new_content):
-        # Semantic similarity check
-        similar_content = self.semantic_engine.find_similar(
-            new_content.topic,
-            threshold=0.8  # 80% similarity triggers alert
-        )
+    async checkCollision(contentRequest) {
+        const { team, title, description, proposedDate, contentType } = contentRequest;
         
-        # Temporal collision check
-        same_day_content = self.calendar.get_content_for_date(
-            new_content.proposed_date
-        )
+        // Simulate semantic similarity check
+        const semanticConflicts = await this.findSemanticConflicts(title, description);
         
-        # Audience fatigue check
-        recent_similar = self.calendar.get_recent_similar(
-            new_content.topic,
-            days_back=7
-        )
+        // Check temporal collisions
+        const temporalConflicts = await this.findTemporalConflicts(proposedDate);
         
-        return CollisionReport(
-            semantic_conflicts=similar_content,
-            temporal_conflicts=same_day_content,
-            fatigue_risk=self.audience_fatigue_model.predict(recent_similar),
-            recommendations=self.generate_alternatives()
-        )
+        // Calculate audience fatigue
+        const fatigueRisk = await this.calculateFatigueRisk(contentType, proposedDate);
+        
+        return {
+            hasConflicts: semanticConflicts.length > 0 || temporalConflicts.length > 0 || fatigueRisk > 0.7,
+            semanticConflicts,
+            temporalConflicts,
+            fatigueRisk,
+            recommendations: this.generateRecommendations(semanticConflicts, temporalConflicts, fatigueRisk)
+        };
+    }
+    
+    async findSemanticConflicts(title, description) {
+        // Simulate AI semantic analysis
+        const existingContent = [
+            { title: "AI Commerce Features", team: "Product", date: "2025-01-21", similarity: 0.85 },
+            { title: "How AI Transforms Business", team: "Risk Takers", date: "2025-01-20", similarity: 0.78 }
+        ];
+        
+        return existingContent.filter(content => content.similarity > this.semanticThreshold);
+    }
+    
+    generateRecommendations(semantic, temporal, fatigue) {
+        if (semantic.length > 0) {
+            return [
+                "Combine efforts for mega-piece",
+                "Shift to Thursday (3-day gap)",
+                "Adjust angle to differentiate"
+            ];
+        }
+        return ["Content approved for publishing"];
+    }
+}
+
+// Demo usage
+const detector = new CollisionDetector();
+const result = await detector.checkCollision({
+    team: "Product Marketing",
+    title: "AI Commerce Features",
+    description: "Deep dive into AI tools for merchants",
+    proposedDate: "2025-01-22",
+    contentType: "case_study"
+});
+
+console.log("Collision Check Result:", result);
             </div>
           </div>
 
@@ -464,44 +496,96 @@ Recommendation:
           </div>
 
           <div class="component-section">
-            <h3>The AI Stack</h3>
+            <h3>Live Performance Prediction Engine</h3>
             <div class="code-block">
-class PerformancePredictor:
-    def __init__(self):
-        self.historical_data = load_300_videos()
-        self.youtube_algorithm_model = YouTubeSimulator()
-        self.thumbnail_analyzer = ComputerVisionModel()
-        self.title_optimizer = GPT4_TitleGen()
+// AI-powered performance prediction system
+class PerformancePredictor {
+    constructor() {
+        this.historicalData = this.loadHistoricalData();
+        this.algorithmModel = new YouTubeAlgorithmSimulator();
+        this.thumbnailAnalyzer = new ThumbnailAnalyzer();
+        this.titleOptimizer = new TitleOptimizer();
+    }
     
-    def predict_performance(self, content_package):
-        # Analyze similar historical videos
-        similar_videos = self.find_similar_performers(content_package)
-        baseline_views = similar_videos.average_views()
+    async predictPerformance(contentPackage) {
+        const { title, description, contentType, proposedDate, thumbnail } = contentPackage;
         
-        # Score the title
-        title_score = self.title_optimizer.score(
-            content_package.title,
-            factors=['keywords', 'emotion', 'length', 'clickability']
-        )
+        // Find similar historical videos
+        const similarVideos = await this.findSimilarPerformers(title, description);
+        const baselineViews = this.calculateBaseline(similarVideos);
         
-        # Score the thumbnail
-        thumbnail_score = self.thumbnail_analyzer.predict_CTR(
-            content_package.thumbnail
-        )
+        // Score components
+        const titleScore = await this.scoreTitle(title);
+        const thumbnailScore = await this.scoreThumbnail(thumbnail);
+        const timingScore = this.scoreTiming(proposedDate);
+        const seriesBonus = this.calculateSeriesBonus(contentPackage);
         
-        # Check timing optimization
-        timing_score = self.youtube_algorithm_model.best_time(
-            content_package.topic,
-            content_package.audience
-        )
+        // Calculate predicted views
+        const predictedViews = Math.round(
+            baselineViews * titleScore * thumbnailScore * timingScore * seriesBonus
+        );
         
-        predicted_views = baseline_views * title_score * thumbnail_score * timing_score
+        const confidence = this.calculateConfidence(similarVideos.length);
         
-        return PerformancePrediction(
-            expected_views=predicted_views,
-            confidence=0.85,
-            optimization_suggestions=self.generate_improvements()
-        )
+        return {
+            predictedViews,
+            confidence,
+            baselineViews,
+            factors: {
+                titleScore,
+                thumbnailScore,
+                timingScore,
+                seriesBonus
+            },
+            suggestions: this.generateOptimizationSuggestions(title, thumbnail, proposedDate)
+        };
+    }
+    
+    async scoreTitle(title) {
+        const factors = {
+            keywords: this.checkKeywords(title),
+            emotion: this.detectEmotion(title),
+            length: this.optimizeLength(title),
+            clickability: this.assessClickability(title)
+        };
+        
+        return Object.values(factors).reduce((a, b) => a * b, 1);
+    }
+    
+    checkKeywords(title) {
+        const powerWords = ['how', 'why', 'best', 'guide', 'shopify', 'commerce'];
+        const matches = powerWords.filter(word => 
+            title.toLowerCase().includes(word)
+        ).length;
+        return 1 + (matches * 0.1);
+    }
+    
+    generateOptimizationSuggestions(title, thumbnail, date) {
+        const suggestions = [];
+        
+        if (title.length < 40) {
+            suggestions.push("Add more descriptive keywords to title");
+        }
+        
+        if (date.getDay() === 0 || date.getDay() === 6) {
+            suggestions.push("Consider Tuesday-Thursday for better performance");
+        }
+        
+        return suggestions;
+    }
+}
+
+// Demo usage
+const predictor = new PerformancePredictor();
+const prediction = await predictor.predictPerformance({
+    title: "How Kendo Brands Scaled to $1B with Shopify Plus",
+    description: "Learn how Kendo Brands uses Shopify Plus to manage multiple beauty brands",
+    contentType: "case_study",
+    proposedDate: new Date("2025-01-22"),
+    thumbnail: "kendo-thumbnail.jpg"
+});
+
+console.log("Performance Prediction:", prediction);
             </div>
           </div>
 
@@ -952,51 +1036,151 @@ With improvements: 35,000 views
           </div>
 
           <div class="component-section">
-            <h3>How It Works</h3>
+            <h3>Live AI Agent Persona Simulator</h3>
             <div class="code-block">
-class PersonaAgentSimulator:
-    def __init__(self):
-        self.personas = self.build_personas_from_analytics()
-        self.predictive_model = PredictiveAI()  # e.g., ML model for behavior forecasting
-        self.orchestrator = ContentOrchestrator()
+// AI Agent Persona Simulator - Predictive Content Generation
+class PersonaAgentSimulator {
+    constructor() {
+        this.personas = this.buildPersonas();
+        this.predictiveModel = new PredictiveModel();
+        this.orchestrator = new ContentOrchestrator();
+    }
     
-    def build_personas_from_analytics(self):
-        # Analyze viewer data to create 5-10 key personas
-        personas = [
-            {"name": "New Entrepreneur", "traits": "Beginner, budget-conscious, seeks basics"},
-            {"name": "Scaling Merchant", "traits": "Mid-level, focuses on growth hacks, SEO"},
-            {"name": "Tech-Savvy Creator", "traits": "Advanced, AI-forward, monetization focus"}
-        ]
-        return personas
+    buildPersonas() {
+        return [
+            {
+                name: "New Entrepreneur",
+                traits: "Beginner, budget-conscious, seeks basics",
+                interests: ["startup", "funding", "basics", "getting started"],
+                painPoints: ["limited budget", "uncertainty", "overwhelm"]
+            },
+            {
+                name: "Scaling Merchant", 
+                traits: "Mid-level, focuses on growth hacks, SEO",
+                interests: ["growth", "SEO", "optimization", "scaling"],
+                painPoints: ["plateau", "competition", "complexity"]
+            },
+            {
+                name: "Tech-Savvy Creator",
+                traits: "Advanced, AI-forward, monetization focus",
+                interests: ["AI", "automation", "monetization", "advanced"],
+                painPoints: ["time management", "advanced needs", "ROI"]
+            }
+        ];
+    }
     
-    def simulate_journey(self, persona, starting_content):
-        # Use AI agent to role-play the persona's journey
-        agent = ClaudeAgent(persona["traits"])
-        current_state = starting_content
-        predictions = []
+    async simulateJourney(persona, startingContent) {
+        const journey = [];
+        let currentContent = startingContent;
         
-        for step in range(5):  # Simulate 5 steps in journey
-            response = agent.reason(f"Starting from {current_state}, what would you want next as {persona['name']}?")
-            next_need = response["predicted_next"]
-            predictions.append(next_need)
-            current_state = next_need
+        // Simulate 5-step journey for each persona
+        for (let step = 0; step < 5; step++) {
+            const nextNeed = await this.predictNextNeed(persona, currentContent);
+            const predictedContent = this.generateContentIdea(nextNeed, persona);
+            
+            journey.push({
+                step: step + 1,
+                need: nextNeed,
+                contentIdea: predictedContent,
+                estimatedViews: this.predictViews(predictedContent, persona)
+            });
+            
+            currentContent = nextNeed;
+        }
         
-        return predictions
+        return journey;
+    }
     
-    def generate_content_recommendations(self, video_id):
-        starting_content = self.get_video_details(video_id)
-        all_recommendations = []
+    async predictNextNeed(persona, currentContent) {
+        // Simulate AI reasoning based on persona traits
+        const needs = {
+            "New Entrepreneur": [
+                "How to get funding for my startup",
+                "What are the legal requirements",
+                "How to build my first product",
+                "How to find customers",
+                "How to scale operations"
+            ],
+            "Scaling Merchant": [
+                "Advanced SEO strategies",
+                "AI tools for optimization", 
+                "International expansion",
+                "Team building and management",
+                "Exit strategy planning"
+            ],
+            "Tech-Savvy Creator": [
+                "AI automation workflows",
+                "Advanced monetization strategies",
+                "Technical integrations",
+                "Performance optimization",
+                "Future technology trends"
+            ]
+        };
         
-        for persona in self.personas:
-            journey = self.simulate_journey(persona, starting_content)
-            recs = self.predictive_model.forecast(journey)  # Predict views, engagement
-            all_recommendations.extend(recs)
+        const personaNeeds = needs[persona.name] || [];
+        const randomIndex = Math.floor(Math.random() * personaNeeds.length);
+        return personaNeeds[randomIndex];
+    }
+    
+    generateContentIdea(need, persona) {
+        const contentTypes = {
+            "New Entrepreneur": ["tutorial", "case study", "guide", "interview"],
+            "Scaling Merchant": ["advanced tutorial", "strategy deep-dive", "tool review"],
+            "Tech-Savvy Creator": ["technical walkthrough", "AI integration", "automation guide"]
+        };
         
-        # Dedupe and feed to orchestrator
-        unique_recs = set(all_recommendations)
-        self.orchestrator.schedule_without_overlap(unique_recs)
+        const types = contentTypes[persona.name] || ["tutorial"];
+        const type = types[Math.floor(Math.random() * types.length)];
         
-        return unique_recs
+        return {
+            title: `${need} - ${type}`,
+            type: type,
+            targetAudience: persona.name,
+            estimatedViews: this.predictViews(need, persona)
+        };
+    }
+    
+    predictViews(contentIdea, persona) {
+        const baseViews = {
+            "New Entrepreneur": 15000,
+            "Scaling Merchant": 25000, 
+            "Tech-Savvy Creator": 35000
+        };
+        
+        const variance = Math.random() * 0.4 - 0.2; // ±20% variance
+        return Math.round(baseViews[persona.name] * (1 + variance));
+    }
+    
+    async generateContentRecommendations(videoId) {
+        const startingContent = await this.getVideoDetails(videoId);
+        const allRecommendations = [];
+        
+        for (const persona of this.personas) {
+            const journey = await this.simulateJourney(persona, startingContent.title);
+            allRecommendations.push(...journey);
+        }
+        
+        // Remove duplicates and sort by estimated views
+        const uniqueRecs = this.deduplicateRecommendations(allRecommendations);
+        return uniqueRecs.sort((a, b) => b.estimatedViews - a.estimatedViews);
+    }
+    
+    deduplicateRecommendations(recommendations) {
+        const seen = new Set();
+        return recommendations.filter(rec => {
+            const key = rec.contentIdea.title;
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
+    }
+}
+
+// Demo usage
+const simulator = new PersonaAgentSimulator();
+const recommendations = await simulator.generateContentRecommendations("kendo-brands-video");
+
+console.log("AI-Generated Content Ideas:", recommendations);
             </div>
           </div>
 
@@ -1040,26 +1224,147 @@ Recommendation: Generate series branch—schedule for next week?
           </div>
 
           <div class="component-section">
-            <h3>Implementation</h3>
+            <h3>Live SEO Optimizer Implementation</h3>
             <div class="code-block">
-class SEOOptimizer:
-    def __init__(self):
-        self.ai_engines = ["ChatGPT", "Grok", "Claude", "Google"]
-        self.scanner = SiteScanner()
+// AI-powered SEO optimization system
+class SEOOptimizer {
+    constructor() {
+        this.aiEngines = ["ChatGPT", "Grok", "Claude", "Google"];
+        this.scanner = new SiteScanner();
+        this.orchestrator = new ContentOrchestrator();
+    }
     
-    def optimize_site(self, site_url):
-        scan_results = self.scanner.analyze(site_url)  # Keywords, content gaps
-        rankings = {}
+    async optimizeSite(siteUrl) {
+        // Scan site for keywords and content gaps
+        const scanResults = await this.scanner.analyze(siteUrl);
         
-        for engine in self.ai_engines:
-            rankings[engine] = self.query_engine(engine, scan_results["keywords"])
+        // Check rankings across AI engines
+        const rankings = await this.checkRankings(scanResults.keywords);
         
-        recommendations = self.generate_recs(rankings)
-        return recommendations  # e.g., "Create video: 'SEO Tips for Beginners' to boost 'shopify startup' ranking"
+        // Generate content recommendations
+        const recommendations = this.generateRecommendations(rankings, scanResults);
+        
+        return {
+            siteUrl,
+            keywords: scanResults.keywords,
+            rankings,
+            recommendations,
+            priority: this.calculatePriority(rankings)
+        };
+    }
     
-    def feed_to_content(self, recs):
-        for rec in recs:
-            self.orchestrator.receive_content_request("SEO Team", "video", rec)
+    async checkRankings(keywords) {
+        const rankings = {};
+        
+        for (const engine of this.aiEngines) {
+            rankings[engine] = await this.queryEngine(engine, keywords);
+        }
+        
+        return rankings;
+    }
+    
+    async queryEngine(engine, keywords) {
+        // Simulate AI engine queries
+        const mockRankings = {
+            "ChatGPT": this.simulateRanking(keywords, 0.7),
+            "Grok": this.simulateRanking(keywords, 0.6),
+            "Claude": this.simulateRanking(keywords, 0.8),
+            "Google": this.simulateRanking(keywords, 0.5)
+        };
+        
+        return mockRankings[engine];
+    }
+    
+    simulateRanking(keywords, baseScore) {
+        return keywords.map(keyword => ({
+            keyword,
+            position: Math.floor(Math.random() * 20) + 1,
+            score: baseScore + (Math.random() * 0.3 - 0.15),
+            difficulty: Math.random()
+        }));
+    }
+    
+    generateRecommendations(rankings, scanResults) {
+        const recommendations = [];
+        
+        // Find low-ranking keywords
+        const lowRankingKeywords = this.findLowRankingKeywords(rankings);
+        
+        // Generate content ideas for each keyword
+        for (const keyword of lowRankingKeywords) {
+            const contentIdea = this.generateContentIdea(keyword);
+            recommendations.push({
+                keyword,
+                contentIdea,
+                estimatedImpact: this.calculateImpact(keyword),
+                priority: this.calculateKeywordPriority(keyword)
+            });
+        }
+        
+        return recommendations.sort((a, b) => b.priority - a.priority);
+    }
+    
+    findLowRankingKeywords(rankings) {
+        const lowRanking = [];
+        
+        for (const engine in rankings) {
+            for (const result of rankings[engine]) {
+                if (result.position > 10 && result.score < 0.6) {
+                    lowRanking.push(result.keyword);
+                }
+            }
+        }
+        
+        return [...new Set(lowRanking)]; // Remove duplicates
+    }
+    
+    generateContentIdea(keyword) {
+        const contentTypes = [
+            `"How to ${keyword}" - Complete Guide`,
+            `"${keyword} Best Practices" - Tutorial`,
+            `"${keyword} Case Study" - Real Examples`,
+            `"Advanced ${keyword}" - Pro Tips`
+        ];
+        
+        const randomType = contentTypes[Math.floor(Math.random() * contentTypes.length)];
+        
+        return {
+            title: randomType,
+            type: "video",
+            description: `Educational content targeting "${keyword}" keyword`,
+            estimatedViews: this.estimateViews(keyword),
+            targetAudience: this.identifyAudience(keyword)
+        };
+    }
+    
+    calculateImpact(keyword) {
+        const searchVolume = this.estimateSearchVolume(keyword);
+        const competition = this.estimateCompetition(keyword);
+        return Math.round(searchVolume * (1 - competition) * 100);
+    }
+    
+    async feedToContent(recommendations) {
+        for (const rec of recommendations) {
+            await this.orchestrator.receiveContentRequest({
+                team: "SEO Team",
+                contentType: "video",
+                title: rec.contentIdea.title,
+                description: rec.contentIdea.description,
+                priority: rec.priority,
+                keyword: rec.keyword
+            });
+        }
+    }
+}
+
+// Demo usage
+const seoOptimizer = new SEOOptimizer();
+const optimization = await seoOptimizer.optimizeSite("shopify.com");
+
+console.log("SEO Optimization Results:", optimization);
+
+// Feed recommendations to content pipeline
+await seoOptimizer.feedToContent(optimization.recommendations);
             </div>
           </div>
         </div>
@@ -1614,14 +1919,18 @@ Shopify dominates YouTube commerce education.
   <script>
     mermaid.initialize({ 
       startOnLoad: true,
-      theme: 'default',
+      theme: 'base',
       themeVariables: {
-        primaryColor: '#8DFF14',
-        primaryTextColor: '#0E0E0E',
-        primaryBorderColor: '#EEEEEE',
-        lineColor: '#8DFF14',
-        secondaryColor: '#f8f8f8',
-        tertiaryColor: '#ffffff'
+        primaryColor: '#ffffff',
+        primaryTextColor: '#000000',
+        primaryBorderColor: '#000000',
+        lineColor: '#000000',
+        secondaryColor: '#ffffff',
+        tertiaryColor: '#ffffff',
+        background: '#ffffff',
+        mainBkg: '#ffffff',
+        secondBkg: '#ffffff',
+        tertiaryBkg: '#ffffff'
       }
     });
   </script>
