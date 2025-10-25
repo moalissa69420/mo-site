@@ -259,7 +259,8 @@
             </div>
             
             <div class="control-panel" style="margin-top:1rem; text-align:center;">
-              <button onclick="startChaosAnimation()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Show Upload Chaos</button>
+              <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
+              <button onclick="startChaosAnimation()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Upload Chaos</button>
               <button onclick="resetChaosAnimation()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
             </div>
           </div>
@@ -719,7 +720,8 @@ OPTIMIZATION SUGGESTIONS:
               </div>
               
               <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                <button onclick="startSeriesTracker()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Track Series</button>
+                <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
+                <button onclick="startSeriesTracker()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Series Tracking</button>
                 <button onclick="resetSeriesTracker()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
               </div>
             </div>
@@ -895,7 +897,8 @@ AI INTERVENTION:
               </div>
               
               <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                <button onclick="startLocalizationDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Localize Content</button>
+                <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
+                <button onclick="startLocalizationDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Localization</button>
                 <button onclick="resetLocalizationDemo()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
               </div>
             </div>
@@ -990,7 +993,8 @@ AI INTERVENTION:
               </div>
               
               <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                <button onclick="startShortsDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Extract Shorts</button>
+                <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
+                <button onclick="startShortsDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Shorts Extraction</button>
                 <button onclick="resetShortsDemo()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
               </div>
             </div>
@@ -1216,7 +1220,8 @@ AI Tutorial: 18,322 views (on track)
                 </div>
                 
                 <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                  <button onclick="startQualityCheck()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Run Quality Check</button>
+                  <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
+                  <button onclick="startQualityCheck()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Quality Check</button>
                   <button onclick="resetQualityCheck()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
                 </div>
               </div>
@@ -2177,7 +2182,8 @@ PATTERN: I build systems that multiply human talent
               </div>
               
               <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                <button onclick="startTransformationDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Show Transformation</button>
+                <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
+                <button onclick="startTransformationDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Transformation</button>
                 <button onclick="resetTransformationDemo()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
               </div>
             </div>
@@ -2325,6 +2331,54 @@ PATTERN: I build systems that multiply human talent
 
       document.querySelectorAll('.metric-card').forEach(card => {
         metricObserver.observe(card);
+      });
+
+      // Auto-trigger interactive demos when they come into view
+      const autoDemoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const demo = entry.target;
+            const demoId = demo.id;
+            
+            // Auto-trigger specific demos based on their ID
+            switch(demoId) {
+              case 'chaos-visualization':
+                setTimeout(() => startChaosAnimation(), 500);
+                break;
+              case 'series-tracker':
+                setTimeout(() => startSeriesTracker(), 500);
+                break;
+              case 'localization-flow':
+                setTimeout(() => startLocalizationDemo(), 500);
+                break;
+              case 'shorts-generator':
+                setTimeout(() => startShortsDemo(), 500);
+                break;
+              case 'quality-scanner':
+                setTimeout(() => startQualityCheck(), 500);
+                break;
+              case 'transformation-visualization':
+                setTimeout(() => startTransformationDemo(), 500);
+                break;
+              case 'collision-demo':
+                setTimeout(() => startCollisionDemo(), 500);
+                break;
+              case 'persona-demo':
+                setTimeout(() => startPersonaDemo(), 500);
+                break;
+              case 'seo-demo':
+                setTimeout(() => startSEODemo(), 500);
+                break;
+            }
+            
+            autoDemoObserver.unobserve(demo); // Only auto-trigger once
+          }
+        });
+      }, { threshold: 0.4 }); // Trigger when 40% visible
+
+      // Observe all interactive demos for auto-triggering
+      document.querySelectorAll('.interactive-demo').forEach(demo => {
+        autoDemoObserver.observe(demo);
       });
     });
 
