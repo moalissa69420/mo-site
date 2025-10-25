@@ -1,398 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopify Content Intelligence Platform (SCIP) — AI-First Orchestration System</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <style>
-        body {
-            background: #000;
-            color: #fff;
-            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .cs-page {
-            margin-bottom: 4rem;
-            border: 1px solid #333;
-            padding: 2rem;
-            background: #111;
-        }
-        
-        .cs-num {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-            margin-right: 1rem;
-            display: inline-block;
-            width: 2rem;
-        }
-        
-        .cs-content h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .cs-content h2 {
-            font-size: 1.4rem;
-            margin: 2rem 0 1rem 0;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .cs-content h3 {
-            font-size: 1.2rem;
-            margin: 1.5rem 0 0.8rem 0;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .cs-content h4 {
-            font-size: 1rem;
-            margin: 1rem 0 0.5rem 0;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .cs-content p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-        
-        .cs-content ul, .cs-content ol {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-        }
-        
-        .cs-content li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .code-block {
-            background: #000;
-            border: 1px solid #333;
-            border-radius: 0;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            color: #00ff00;
-        }
-        
-        .terminal-output {
-            background: #000;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #00ff00;
-            white-space: pre-wrap;
-        }
-        
-        .ascii-art {
-            background: #000;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-            font-size: 0.8rem;
-            color: #fff;
-            white-space: pre-wrap;
-            overflow-x: auto;
-        }
-        
-        .dashboard-box {
-            background: #000;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #fff;
-            white-space: pre-wrap;
-        }
-        
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .metric-card {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .metric-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #00ff00;
-            margin-bottom: 0.5rem;
-        }
-        
-        .metric-label {
-            font-size: 0.9rem;
-            color: #ccc;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .problem-solution {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .problem-box, .solution-box {
-            padding: 1.5rem;
-            border: 1px solid #333;
-        }
-        
-        .problem-box {
-            background: #111;
-            border-left: 4px solid #ff0000;
-        }
-        
-        .solution-box {
-            background: #111;
-            border-left: 4px solid #00ff00;
-        }
-        
-        .workflow-step {
-            background: #111;
-            border: 1px solid #333;
-            border-left: 4px solid #00ff00;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .alert-box {
-            background: #111;
-            border: 1px solid #ff0000;
-            border-left: 4px solid #ff0000;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .success-box {
-            background: #111;
-            border: 1px solid #00ff00;
-            border-left: 4px solid #00ff00;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .tech-stack {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .implementation-roadmap {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .roi-calculation {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .before-after {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .before, .after {
-            padding: 1.5rem;
-            border: 1px solid #333;
-        }
-        
-        .before {
-            background: #111;
-            border-left: 4px solid #ff0000;
-        }
-        
-        .after {
-            background: #111;
-            border-left: 4px solid #00ff00;
-        }
-        
-        .component-section {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .slack-message {
-            background: #000;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #00ff00;
-        }
-        
-        .persona-simulator {
-            background: #111;
-            border: 1px solid #333;
-            border-left: 4px solid #00ff00;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .seo-optimizer {
-            background: #111;
-            border: 1px solid #333;
-            border-left: 4px solid #00ff00;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .mermaid {
-            background: #000;
-            border: 1px solid #333;
-            border-radius: 0;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            overflow-x: auto;
-        }
-        
-        .ascii-divider {
-            text-align: center;
-            margin: 2rem 0;
-            color: #333;
-        }
-        
-        .collision-scenario {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .quality-gate-example {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .multiplication-engine {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .series-momentum-dashboard {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .slack-command-center {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .track-record {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .first-30-days {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .transformation-summary {
-            background: #111;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shopify Content Intelligence Platform (SCIP) — AI-First Orchestration System</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    :root { --index-width: 270px; --content-max: 56rem; --accent:#8DFF14; --border:#EEEEEE; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#0E0E0E; background:#fff; font-size:15.5px; line-height:1.65; }
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; }
+    .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
+    .cs-index a .num { color:#333; width:2.8rem; display:inline-block; text-align:right; }
+    .cs-index a.active { color: var(--accent); }
+    .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.45rem 0; scroll-margin-top: 12px; }
+    .cs-num { display:block; text-align:right; color:#777; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content h1 { font-size:1.125rem; margin:0 0 0.35rem 0; font-weight:700; }
+    .cs-content h2 { font-size:1rem; margin:0.5rem 0 0.25rem 0; font-weight:600; color:#333; }
+    .cs-content h3 { font-size:0.9rem; margin:0.4rem 0 0.2rem 0; font-weight:600; color:#555; }
+    .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start; }
+    .two-col.image-only { grid-template-columns: 1fr; }
+    .box { background:#fff; border:1px solid var(--border); border-radius:0; padding:0.9rem; }
+    .problem-box { background:#fff; border:1px solid #ff6b6b; border-left:4px solid #ff6b6b; padding:0.9rem; }
+    .solution-box { background:#fff; border:1px solid var(--accent); border-left:4px solid var(--accent); padding:0.9rem; }
+    .alert-box { background:#fff; border:1px solid #ff6b6b; border-left:4px solid #ff6b6b; padding:0.9rem; }
+    .success-box { background:#fff; border:1px solid var(--accent); border-left:4px solid var(--accent); padding:0.9rem; }
+    .code-block { background:#f8f8f8; border:1px solid var(--border); padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; overflow-x:auto; }
+    .terminal-output { background:#000; color:#00ff00; border:1px solid #333; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; white-space:pre-wrap; }
+    .ascii-art { background:#f8f8f8; border:1px solid var(--border); padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.75rem; white-space:pre-wrap; overflow-x:auto; }
+    .kpi-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:0.75rem; }
+    .kpi-card { border:1px solid var(--border); background:#fff; padding:0.75rem; text-align:center; }
+    .kpi-card .big { font-size:1.25rem; font-weight:700; color:var(--accent); }
+    .mermaid { background:#fff; border:1px solid var(--border); padding:1rem; margin:1rem 0; overflow-x:auto; }
+    .mermaid svg { max-width:100%; height:auto; }
+    .component-section { background:#f8f8f8; border:1px solid var(--border); padding:0.9rem; margin:0.5rem 0; }
+    .workflow-step { background:#fff; border:1px solid var(--border); border-left:4px solid var(--accent); padding:0.9rem; margin:0.5rem 0; }
+    .metrics-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:0.75rem; margin:1rem 0; }
+    .metric-card { background:#fff; border:1px solid var(--border); padding:0.75rem; text-align:center; }
+    .metric-value { font-size:1.5rem; font-weight:700; color:var(--accent); margin-bottom:0.25rem; }
+    .metric-label { font-size:0.8rem; color:#666; text-transform:uppercase; letter-spacing:0.5px; }
+    .before-after { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin:1rem 0; }
+    .before { background:#fff; border:1px solid #ff6b6b; border-left:4px solid #ff6b6b; padding:0.9rem; }
+    .after { background:#fff; border:1px solid var(--accent); border-left:4px solid var(--accent); padding:0.9rem; }
+    .pill { display:inline-block; padding:0.15rem 0.35rem; border:1px solid #ddd; margin-right:0.35rem; font-size:0.8rem; }
+    @media (max-width: 700px) { 
+      .cs-wrapper{ grid-template-columns:1fr;} 
+      .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} 
+      section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;} 
+      .two-col{ grid-template-columns:1fr; gap:0.85rem;} 
+      .kpi-grid, .metrics-grid{ grid-template-columns:1fr; } 
+      .before-after{ grid-template-columns:1fr; }
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <section id="s1" class="cs-page">
-            <div class="cs-num">1.</div>
-            <div class="cs-content">
-                <h1>Shopify Content Intelligence Platform (SCIP)</h1>
-                <h2>The AI-First Orchestration System That Scales Content to 100+ Videos/Month</h2>
-                
-                <div class="ascii-divider">
-                    ═══════════════════════════════════════════════════════════════════════════════
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#s1"><span class="num">01.</span> Executive Summary</a></li>
+        <li><a href="#s2"><span class="num">02.</span> Problem Diagnosis</a></li>
+        <li><a href="#s3"><span class="num">03.</span> System Architecture</a></li>
+        <li><a href="#s4"><span class="num">04.</span> Orchestrator Brain</a></li>
+        <li><a href="#s5"><span class="num">05.</span> Collision Detection</a></li>
+        <li><a href="#s6"><span class="num">06.</span> Performance Prediction</a></li>
+        <li><a href="#s7"><span class="num">07.</span> Series Momentum</a></li>
+        <li><a href="#s8"><span class="num">08.</span> Global Orchestration</a></li>
+        <li><a href="#s9"><span class="num">09.</span> Short-Form Automation</a></li>
+        <li><a href="#s10"><span class="num">10.</span> Team Communication</a></li>
+        <li><a href="#s11"><span class="num">11.</span> Quality Control</a></li>
+        <li><a href="#s12"><span class="num">12.</span> AI Agent Simulator</a></li>
+        <li><a href="#s13"><span class="num">13.</span> SEO Optimizer</a></li>
+        <li><a href="#s14"><span class="num">14.</span> Complete Workflow</a></li>
+        <li><a href="#s15"><span class="num">15.</span> Implementation Roadmap</a></li>
+        <li><a href="#s16"><span class="num">16.</span> Metrics & Success</a></li>
+        <li><a href="#s17"><span class="num">17.</span> Technical Architecture</a></li>
+        <li><a href="#s18"><span class="num">18.</span> Risk Mitigation</a></li>
+        <li><a href="#s19"><span class="num">19.</span> Vision 2025+</a></li>
+        <li><a href="#s20"><span class="num">20.</span> ROI Calculation</a></li>
+        <li><a href="#s21"><span class="num">21.</span> Working Implementation</a></li>
+        <li><a href="#s22"><span class="num">22.</span> First 30 Days</a></li>
+        <li><a href="#s23"><span class="num">23.</span> Track Record</a></li>
+        <li><a href="#s24"><span class="num">24.</span> Conclusion</a></li>
+      </ol>
+    </aside>
+    <main class="cs-sections">
+      <section id="s1" class="cs-page">
+        <div class="cs-num">01.</div>
+        <div class="cs-content">
+          <h1>Executive Summary</h1>
+          <div class="two-col">
+            <div class="box">
+              <p><strong>Shopify Content Intelligence Platform (SCIP)</strong></p>
+              <p>The AI-First Orchestration System That Scales Content to 100+ Videos/Month</p>
+              <ul>
+                <li>Central intelligence preventing content collisions</li>
+                <li>Performance prediction with 87% accuracy</li>
+                <li>Series momentum tracking and automation</li>
+                <li>Global content multiplication (1 video → 30 assets)</li>
+                <li>AI agent persona simulation for predictive content</li>
+                <li>SEO optimization integration</li>
+              </ul>
+            </div>
+            <div class="box">
+              <div class="kpi-grid">
+                <div class="kpi-card">
+                  <div class="big">6.7x</div>
+                  <div>View Growth Potential</div>
                 </div>
-                
-                <div class="problem-solution">
-                    <div class="problem-box">
-                        <h3>🚨 THE CORE PROBLEM</h3>
-                        <p><strong>Multi-Department Upload Chaos</strong></p>
-                        <ul>
-                            <li>No Central Intelligence — Teams upload whenever ready</li>
-                            <li>No Collision Detection — Multiple teams drop similar content</li>
-                            <li>No Momentum Tracking — Series abandoned mid-flight</li>
-                            <li>No Performance Learning — Each team reinvents the wheel</li>
-                            <li>No Global Coordination — US/Canada/UK teams work in silos</li>
-                            <li>Scaling Bottleneck — Limited by manual ideation</li>
-                            <li>SEO Integration Gap — Content not optimized for AI/web search</li>
-                        </ul>
-                    </div>
-                    <div class="solution-box">
-                        <h3>✅ THE SOLUTION</h3>
-                        <p><strong>AI-First Content Orchestration</strong></p>
-                        <ul>
-                            <li>Central intelligence preventing collisions</li>
-                            <li>Performance prediction (87% accuracy)</li>
-                            <li>Series momentum tracking</li>
-                            <li>Global content multiplication</li>
-                            <li>AI agent persona simulation</li>
-                            <li>SEO optimization integration</li>
-                        </ul>
-                    </div>
+                <div class="kpi-card">
+                  <div class="big">50+</div>
+                  <div>Videos/Month Capacity</div>
                 </div>
+                <div class="kpi-card">
+                  <div class="big">100M+</div>
+                  <div>Additional Annual Views</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <div class="ascii-art">
+      <section id="s2" class="cs-page">
+        <div class="cs-num">02.</div>
+        <div class="cs-content">
+          <h1>Problem Diagnosis</h1>
+          <div class="two-col">
+            <div class="problem-box">
+              <h2>Current State: Multi-Department Upload Chaos</h2>
+              <ul>
+                <li>No Central Intelligence — Teams upload whenever ready</li>
+                <li>No Collision Detection — Multiple teams drop similar content</li>
+                <li>No Momentum Tracking — Series abandoned mid-flight</li>
+                <li>No Performance Learning — Each team reinvents the wheel</li>
+                <li>No Global Coordination — US/Canada/UK teams work in silos</li>
+                <li>Scaling Bottleneck — Limited by manual ideation</li>
+                <li>SEO Integration Gap — Content not optimized for AI/web search</li>
+              </ul>
+            </div>
+            <div class="solution-box">
+              <h2>The Evidence</h2>
+              <ul>
+                <li>400x view variance (725 vs 291K views)</li>
+                <li>Upload gaps: 9 days → 1 month → 2 months</li>
+                <li>Mejuri: 4 videos same day (audience fatigue)</li>
+                <li>Editions: 5 videos burst then silence</li>
+                <li>Viewer Drop-Off: Analytics show users abandon journeys</li>
+                <li>Learn channel: 10-20K views steady vs main channel chaos</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ascii-art">
 MONDAY          TUESDAY         WEDNESDAY       THURSDAY        FRIDAY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Risk Takers ──┐                               
@@ -410,99 +174,78 @@ Product Team ─┘   4 videos
 Learn Team ─────────────────────────────────► Consistent uploads
                                               10-20K views steady
 Viewer Prediction Gap → Drop-offs after first video
-                </div>
+          </div>
+        </div>
+      </section>
 
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-value">6.7x</div>
-                        <div class="metric-label">View Growth Potential</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">50+</div>
-                        <div class="metric-label">Videos/Month Capacity</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">100M+</div>
-                        <div class="metric-label">Additional Annual Views</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">30%</div>
-                        <div class="metric-label">Production Time Reduction</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="s2" class="cs-page">
-            <div class="cs-num">2.</div>
-            <div class="cs-content">
-                <h1>System Architecture Overview</h1>
+      <section id="s3" class="cs-page">
+        <div class="cs-num">03.</div>
+        <div class="cs-content">
+          <h1>System Architecture</h1>
+          <div class="mermaid">
+            graph LR
+                subgraph "INPUT LAYER"
+                    A1[Slack Commands]
+                    A2[Calendar Events]
+                    A3[Brief Submissions]
+                    A4[Team Requests]
+                    A5[Viewer Analytics Data]
+                    A6[Merchant Site Scans]
+                end
                 
-                <div class="mermaid">
-                    graph LR
-                        subgraph "INPUT LAYER"
-                            A1[Slack Commands]
-                            A2[Calendar Events]
-                            A3[Brief Submissions]
-                            A4[Team Requests]
-                            A5[Viewer Analytics Data]
-                            A6[Merchant Site Scans]
-                        end
-                        
-                        subgraph "INTELLIGENCE CORE"
-                            B1[Content Orchestrator AI]
-                            B2[Collision Detection]
-                            B3[Performance Predictor]
-                            B4[Global Coordinator]
-                            B5[AI Agent Persona Simulator]
-                            B6[Predictive Journey Modeler]
-                            B7[SEO Optimizer]
-                        end
-                        
-                        subgraph "EXECUTION LAYER"
-                            C1[Production Pipeline]
-                            C2[Publishing Engine]
-                            C3[Distribution Network]
-                            C4[Analytics Loop]
-                            C5[Content Generator]
-                        end
-                        
-                        subgraph "OUTPUT CHANNELS"
-                            D1[YouTube Main]
-                            D2[YouTube Learn]
-                            D3[Shorts/Clips]
-                            D4[International]
-                            D5[Merchant SEO Content]
-                        end
-                        
-                        A1 --> B1
-                        A2 --> B1
-                        A3 --> B1
-                        A4 --> B1
-                        A5 --> B5
-                        A6 --> B7
-                        
-                        B1 --> B2
-                        B1 --> B3
-                        B1 --> B4
-                        B5 --> B6
-                        B6 --> B1
-                        B7 --> B1
-                        
-                        B2 --> C1
-                        B3 --> C2
-                        B4 --> C3
-                        B6 --> C5
-                        C1 --> D1
-                        C2 --> D2
-                        C3 --> D3
-                        C4 --> B1
-                        C5 --> D5
-                </div>
-
-                <div class="tech-stack">
-                    <h3>Technical Stack</h3>
-                    <div class="code-block">
+                subgraph "INTELLIGENCE CORE"
+                    B1[Content Orchestrator AI]
+                    B2[Collision Detection]
+                    B3[Performance Predictor]
+                    B4[Global Coordinator]
+                    B5[AI Agent Persona Simulator]
+                    B6[Predictive Journey Modeler]
+                    B7[SEO Optimizer]
+                end
+                
+                subgraph "EXECUTION LAYER"
+                    C1[Production Pipeline]
+                    C2[Publishing Engine]
+                    C3[Distribution Network]
+                    C4[Analytics Loop]
+                    C5[Content Generator]
+                end
+                
+                subgraph "OUTPUT CHANNELS"
+                    D1[YouTube Main]
+                    D2[YouTube Learn]
+                    D3[Shorts/Clips]
+                    D4[International]
+                    D5[Merchant SEO Content]
+                end
+                
+                A1 --> B1
+                A2 --> B1
+                A3 --> B1
+                A4 --> B1
+                A5 --> B5
+                A6 --> B7
+                
+                B1 --> B2
+                B1 --> B3
+                B1 --> B4
+                B5 --> B6
+                B6 --> B1
+                B7 --> B1
+                
+                B2 --> C1
+                B3 --> C2
+                B4 --> C3
+                B6 --> C5
+                C1 --> D1
+                C2 --> D2
+                C3 --> D3
+                C4 --> B1
+                C5 --> D5
+          </div>
+          <div class="component-section">
+            <h2>Technical Stack</h2>
+            <div class="code-block">
 Core Intelligence:
   - GPT-4 API for content analysis
   - Claude for strategic planning
@@ -526,22 +269,21 @@ AI Agents:
 SEO Layer:
   - Ahrefs/SEMrush API for rankings
   - OpenAI for AI engine queries
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s3" class="cs-page">
-            <div class="cs-num">3.</div>
-            <div class="cs-content">
-                <h1>Component 1: The Orchestrator Brain</h1>
-                <h2>Central AI Command Center</h2>
-                
-                <p><strong>Purpose:</strong> Single source of truth that knows everything happening across all teams</p>
-                
-                <div class="component-section">
-                    <h3>How It Works</h3>
-                    <div class="code-block">
+      <section id="s4" class="cs-page">
+        <div class="cs-num">04.</div>
+        <div class="cs-content">
+          <h1>Component 1: The Orchestrator Brain</h1>
+          <h2>Central AI Command Center</h2>
+          <p><strong>Purpose:</strong> Single source of truth that knows everything happening across all teams</p>
+          
+          <div class="component-section">
+            <h3>How It Works</h3>
+            <div class="code-block">
 class ContentOrchestrator:
     def __init__(self):
         self.content_calendar = GlobalCalendar()
@@ -569,43 +311,43 @@ class ContentOrchestrator:
         self.coordinate_with_regions(content_type, topic)
         
         return self.create_production_plan()
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s4" class="cs-page">
-            <div class="cs-num">4.</div>
-            <div class="cs-content">
-                <h1>Component 2: Collision Detection System</h1>
-                <h2>Preventing Content Cannibalization</h2>
+      <section id="s5" class="cs-page">
+        <div class="cs-num">05.</div>
+        <div class="cs-content">
+          <h1>Component 2: Collision Detection System</h1>
+          <h2>Preventing Content Cannibalization</h2>
+          
+          <div class="alert-box">
+            <p><strong>The Problem:</strong> Mejuri dropped 4 videos same day → audience fatigue → poor performance</p>
+            <p><strong>The Solution:</strong> AI-Powered Collision Detection</p>
+          </div>
+          
+          <div class="mermaid">
+            flowchart TB
+                A[New Content Request] --> B{Collision Check}
+                B -->|Topic Overlap| C[Alert & Alternatives]
+                B -->|Timing Conflict| D[Reschedule]
+                B -->|Audience Fatigue| E[Space Out]
+                B -->|Clear| F[Approve]
                 
-                <div class="alert-box">
-                    <p><strong>The Problem:</strong> Mejuri dropped 4 videos same day → audience fatigue → poor performance</p>
-                    <p><strong>The Solution:</strong> AI-Powered Collision Detection</p>
-                </div>
+                C --> G[AI Suggests Different Angle]
+                D --> H[Find Optimal Slot]
+                E --> I[Minimum 3-Day Gap]
                 
-                <div class="mermaid">
-                    flowchart TB
-                        A[New Content Request] --> B{Collision Check}
-                        B -->|Topic Overlap| C[Alert & Alternatives]
-                        B -->|Timing Conflict| D[Reschedule]
-                        B -->|Audience Fatigue| E[Space Out]
-                        B -->|Clear| F[Approve]
-                        
-                        C --> G[AI Suggests Different Angle]
-                        D --> H[Find Optimal Slot]
-                        E --> I[Minimum 3-Day Gap]
-                        
-                        G --> J[Production Green Light]
-                        H --> J
-                        I --> J
-                        F --> J
-                </div>
-                
-                <div class="component-section">
-                    <h3>Implementation</h3>
-                    <div class="code-block">
+                G --> J[Production Green Light]
+                H --> J
+                I --> J
+                F --> J
+          </div>
+          
+          <div class="component-section">
+            <h3>Implementation</h3>
+            <div class="code-block">
 class CollisionDetector:
     def __init__(self):
         self.semantic_engine = EmbeddingModel()
@@ -636,12 +378,12 @@ class CollisionDetector:
             fatigue_risk=self.audience_fatigue_model.predict(recent_similar),
             recommendations=self.generate_alternatives()
         )
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="collision-scenario">
-                    <h3>Real Example: Wednesday Upload Conflict</h3>
-                    <div class="ascii-art">
+          <div class="component-section">
+            <h3>Real Example: Wednesday Upload Conflict</h3>
+            <div class="ascii-art">
 SCENARIO: Three teams want to publish AI content on Wednesday
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -664,7 +406,7 @@ INTELLIGENT RESOLUTION:
 │ ✅ AI RECOMMENDATION                        │
 │                                             │
 │ Option 1: COMBINE                          │
-│ Create mega-piece "Complete AI Guide"    │
+│ Create mega-piece "Complete AI Guide"      │
 │ All teams collaborate                      │
 │ Result: 100K+ views (vs 3x 20K)           │
 │                                             │
@@ -680,16 +422,10 @@ INTELLIGENT RESOLUTION:
 │ Learn → Beginner basics                    │
 │ Result: Clear positioning, no overlap      │
 └────────────────────────────────────────────┘
+            </div>
+          </div>
 
-AUTOMATED SLACK MESSAGE:
-"@risk_takers @product @learn - AI has detected collision 
-and prepared 3 solutions. Please review and vote by 2pm."
-                    </div>
-                </div>
-
-                <div class="slack-message">
-                    <h4>Slack Integration Example</h4>
-                    <div class="terminal-output">
+          <div class="terminal-output">
 🚨 COLLISION DETECTED
 Team: Product Marketing
 Content: "AI Commerce Features"
@@ -698,39 +434,38 @@ Recommendation:
 1. Combine efforts for mega-piece
 2. Shift to Thursday (3-day gap)
 3. Adjust angle to "AI for Small Business" (differentiated)
-                    </div>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s5" class="cs-page">
-            <div class="cs-num">5.</div>
-            <div class="cs-content">
-                <h1>Component 3: Performance Prediction Engine</h1>
-                <h2>Never Ship a 725-View Video Again</h2>
+      <section id="s6" class="cs-page">
+        <div class="cs-num">06.</div>
+        <div class="cs-content">
+          <h1>Component 3: Performance Prediction Engine</h1>
+          <h2>Never Ship a 725-View Video Again</h2>
+          
+          <div class="alert-box">
+            <p><strong>Current Problem:</strong> Skullcandy video got 725 views while similar case studies get 65K+</p>
+            <p><strong>Solution:</strong> Pre-Publication Performance Prediction</p>
+          </div>
+          
+          <div class="mermaid">
+            graph LR
+                A[Content Brief] --> B[Historical Analysis]
+                B --> C[Title Optimization]
+                C --> D[Thumbnail Testing]
+                D --> E[Timing Optimization]
+                E --> F[Performance Score]
                 
-                <div class="alert-box">
-                    <p><strong>Current Problem:</strong> Skullcandy video got 725 views while similar case studies get 65K+</p>
-                    <p><strong>Solution:</strong> Pre-Publication Performance Prediction</p>
-                </div>
+                F -->|Score < 7| G[Revise]
+                F -->|Score >= 7| H[Publish]
                 
-                <div class="mermaid">
-                    graph LR
-                        A[Content Brief] --> B[Historical Analysis]
-                        B --> C[Title Optimization]
-                        C --> D[Thumbnail Testing]
-                        D --> E[Timing Optimization]
-                        E --> F[Performance Score]
-                        
-                        F -->|Score < 7| G[Revise]
-                        F -->|Score >= 7| H[Publish]
-                        
-                        G --> A
-                </div>
+                G --> A
+          </div>
 
-                <div class="component-section">
-                    <h3>The AI Stack</h3>
-                    <div class="code-block">
+          <div class="component-section">
+            <h3>The AI Stack</h3>
+            <div class="code-block">
 class PerformancePredictor:
     def __init__(self):
         self.historical_data = load_300_videos()
@@ -767,51 +502,51 @@ class PerformancePredictor:
             confidence=0.85,
             optimization_suggestions=self.generate_improvements()
         )
-                    </div>
-                </div>
-
-                <div class="success-box">
-                    <h4>Pre-Flight Checklist</h4>
-                    <ul>
-                        <li>✓ Performance Score >= 7/10</li>
-                        <li>✓ Title A/B tested (3 variants)</li>
-                        <li>✓ Thumbnail CTR predicted > 5%</li>
-                        <li>✓ No collision detected</li>
-                        <li>✓ Series momentum maintained</li>
-                        <li>✓ Cross-promotion planned</li>
-                    </ul>
-                </div>
             </div>
-        </section>
+          </div>
 
-        <section id="s6" class="cs-page">
-            <div class="cs-num">6.</div>
-            <div class="cs-content">
-                <h1>Component 4: Series Momentum Engine</h1>
-                <h2>Never Abandon a Winning Series</h2>
-                
-                <div class="alert-box">
-                    <p><strong>Problem:</strong> Risk Takers Series: One video (65K views) then stopped</p>
-                    <p><strong>Solution:</strong> AI Series Tracker</p>
-                </div>
-                
-                <div class="mermaid">
-                    stateDiagram-v2
-                        [*] --> SeriesLaunch: New Series Started
-                        SeriesLaunch --> Monitoring: Track Performance
-                        Monitoring --> Growing: Views Increasing
-                        Monitoring --> Declining: Views Decreasing
-                        Growing --> NextEpisode: Schedule Next
-                        Declining --> Optimize: Adjust Strategy
-                        Optimize --> NextEpisode
-                        NextEpisode --> Monitoring
-                        Monitoring --> Complete: Series Goals Met
-                        Complete --> [*]
-                </div>
+          <div class="success-box">
+            <h4>Pre-Flight Checklist</h4>
+            <ul>
+              <li>✓ Performance Score >= 7/10</li>
+              <li>✓ Title A/B tested (3 variants)</li>
+              <li>✓ Thumbnail CTR predicted > 5%</li>
+              <li>✓ No collision detected</li>
+              <li>✓ Series momentum maintained</li>
+              <li>✓ Cross-promotion planned</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-                <div class="component-section">
-                    <h3>Implementation</h3>
-                    <div class="code-block">
+      <section id="s7" class="cs-page">
+        <div class="cs-num">07.</div>
+        <div class="cs-content">
+          <h1>Component 4: Series Momentum Engine</h1>
+          <h2>Never Abandon a Winning Series</h2>
+          
+          <div class="alert-box">
+            <p><strong>Problem:</strong> Risk Takers Series: One video (65K views) then stopped</p>
+            <p><strong>Solution:</strong> AI Series Tracker</p>
+          </div>
+          
+          <div class="mermaid">
+            stateDiagram-v2
+                [*] --> SeriesLaunch: New Series Started
+                SeriesLaunch --> Monitoring: Track Performance
+                Monitoring --> Growing: Views Increasing
+                Monitoring --> Declining: Views Decreasing
+                Growing --> NextEpisode: Schedule Next
+                Declining --> Optimize: Adjust Strategy
+                Optimize --> NextEpisode
+                NextEpisode --> Monitoring
+                Monitoring --> Complete: Series Goals Met
+                Complete --> [*]
+          </div>
+
+          <div class="component-section">
+            <h3>Implementation</h3>
+            <div class="code-block">
 class SeriesMomentumTracker:
     def __init__(self):
         self.active_series = {}
@@ -843,12 +578,12 @@ class SeriesMomentumTracker:
                     f"Average views: {series.average_views}\n"
                     f"ACTION REQUIRED: Ship next episode or formally close series"
                 )
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="series-momentum-dashboard">
-                    <h3>Series Momentum Dashboard</h3>
-                    <div class="ascii-art">
+          <div class="component-section">
+            <h3>Series Momentum Dashboard</h3>
+            <div class="ascii-art">
 RISK TAKERS SERIES MOMENTUM DASHBOARD
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -876,39 +611,39 @@ AI INTERVENTION:
 │                                      │
 │ [SCHEDULE NOW] [SNOOZE] [END SERIES]│
 └─────────────────────────────────────┘
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s7" class="cs-page">
-            <div class="cs-num">7.</div>
-            <div class="cs-content">
-                <h1>Component 5: Global Orchestration Layer</h1>
-                <h2>Scaling to International Markets</h2>
+      <section id="s8" class="cs-page">
+        <div class="cs-num">08.</div>
+        <div class="cs-content">
+          <h1>Component 5: Global Orchestration Layer</h1>
+          <h2>Scaling to International Markets</h2>
+          
+          <p><strong>Vision:</strong> One video becomes 10 (languages) × 3 (formats) = 30 assets</p>
+          
+          <div class="mermaid">
+            graph TB
+                A[Original Content] --> B[AI Analysis]
+                B --> C{Localization Decision}
+                C -->|High Priority| D[Full Translation]
+                C -->|Medium Priority| E[Subtitles Only]
+                C -->|Low Priority| F[Skip]
                 
-                <p><strong>Vision:</strong> One video becomes 10 (languages) × 3 (formats) = 30 assets</p>
+                D --> G[Human Review]
+                G --> H[Regional Thumbnails]
+                H --> I[Local Platform Dist]
                 
-                <div class="mermaid">
-                    graph TB
-                        A[Original Content] --> B[AI Analysis]
-                        B --> C{Localization Decision}
-                        C -->|High Priority| D[Full Translation]
-                        C -->|Medium Priority| E[Subtitles Only]
-                        C -->|Low Priority| F[Skip]
-                        
-                        D --> G[Human Review]
-                        G --> H[Regional Thumbnails]
-                        H --> I[Local Platform Dist]
-                        
-                        D --> J[UK Version]
-                        D --> K[Canada Version]
-                        D --> L[Australia Version]
-                </div>
+                D --> J[UK Version]
+                D --> K[Canada Version]
+                D --> L[Australia Version]
+          </div>
 
-                <div class="component-section">
-                    <h3>The Localization Pipeline</h3>
-                    <div class="code-block">
+          <div class="component-section">
+            <h3>The Localization Pipeline</h3>
+            <div class="code-block">
 class GlobalContentMultiplier:
     def __init__(self):
         self.markets = ['US', 'CA', 'UK', 'AU', 'DE', 'FR']
@@ -943,25 +678,25 @@ class GlobalContentMultiplier:
             multiplied_assets.append(localized)
         
         return multiplied_assets
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s8" class="cs-page">
-            <div class="cs-num">8.</div>
-            <div class="cs-content">
-                <h1>Component 6: Short-Form Automation</h1>
-                <h2>Every Long Video → 5-10 Shorts</h2>
-                
-                <div class="alert-box">
-                    <p><strong>Current Gap:</strong> Main channel abandoned Shorts despite 135K+ view potential</p>
-                    <p><strong>Solution:</strong> AI Clip Extractor</p>
-                </div>
+      <section id="s9" class="cs-page">
+        <div class="cs-num">09.</div>
+        <div class="cs-content">
+          <h1>Component 6: Short-Form Automation</h1>
+          <h2>Every Long Video → 5-10 Shorts</h2>
+          
+          <div class="alert-box">
+            <p><strong>Current Gap:</strong> Main channel abandoned Shorts despite 135K+ view potential</p>
+            <p><strong>Solution:</strong> AI Clip Extractor</p>
+          </div>
 
-                <div class="component-section">
-                    <h3>Short-Form Generator</h3>
-                    <div class="code-block">
+          <div class="component-section">
+            <h3>Short-Form Generator</h3>
+            <div class="code-block">
 class ShortFormGenerator:
     def __init__(self):
         self.clip_detector = VideoAnalysisAI()
@@ -994,37 +729,37 @@ class ShortFormGenerator:
             shorts.append(short)
         
         return shorts
-                    </div>
-                </div>
-
-                <div class="success-box">
-                    <h4>Distribution Strategy</h4>
-                    <ul>
-                        <li>Day 0: Original long video</li>
-                        <li>Day 1: Short #1 (strongest hook)</li>
-                        <li>Day 3: Short #2 (different angle)</li>
-                        <li>Day 5: Short #3 (behind scenes)</li>
-                        <li>Day 7: Compilation short</li>
-                        <li>Day 10: Best performer to Instagram/TikTok</li>
-                    </ul>
-                </div>
             </div>
-        </section>
+          </div>
 
-        <section id="s9" class="cs-page">
-            <div class="cs-num">9.</div>
-            <div class="cs-content">
-                <h1>Component 7: Team Communication Hub</h1>
-                <h2>Single Source of Truth via Slack</h2>
-                
-                <div class="alert-box">
-                    <p><strong>Problem:</strong> 5+ teams working in isolation</p>
-                    <p><strong>Solution:</strong> AI Slack Orchestrator</p>
-                </div>
+          <div class="success-box">
+            <h4>Distribution Strategy</h4>
+            <ul>
+              <li>Day 0: Original long video</li>
+              <li>Day 1: Short #1 (strongest hook)</li>
+              <li>Day 3: Short #2 (different angle)</li>
+              <li>Day 5: Short #3 (behind scenes)</li>
+              <li>Day 7: Compilation short</li>
+              <li>Day 10: Best performer to Instagram/TikTok</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-                <div class="slack-command-center">
-                    <h3>Daily Team Coordination</h3>
-                    <div class="ascii-art">
+      <section id="s10" class="cs-page">
+        <div class="cs-num">10.</div>
+        <div class="cs-content">
+          <h1>Component 7: Team Communication Hub</h1>
+          <h2>Single Source of Truth via Slack</h2>
+          
+          <div class="alert-box">
+            <p><strong>Problem:</strong> 5+ teams working in isolation</p>
+            <p><strong>Solution:</strong> AI Slack Orchestrator</p>
+          </div>
+
+          <div class="component-section">
+            <h3>Daily Team Coordination</h3>
+            <div class="ascii-art">
 #content-orchestration channel
 
 CONTENT INTELLIGENCE 🤖 BOT - 9:00 AM
@@ -1061,12 +796,10 @@ AI Tutorial: 18,322 views (on track)
 /find-best-slot [content type]
 /extract-shorts [video url]
 /series-status [series name]
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="slack-message">
-                    <h4>Daily Slack Brief Example</h4>
-                    <div class="terminal-output">
+          <div class="terminal-output">
 🎬 CONTENT INTELLIGENCE BRIEF - Monday Jan 20
 
 📅 TODAY'S CALENDAR
@@ -1099,34 +832,33 @@ AI Tutorial: 18,322 views (on track)
 @product_team - Review collision alert and respond by noon
 @learn_team - Thumbnail A/B test results ready
 @risk_takers - Episode 3 script due tomorrow
-                    </div>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s10" class="cs-page">
-            <div class="cs-num">10.</div>
-            <div class="cs-content">
-                <h1>Component 8: Quality Control System</h1>
-                <h2>AI-Powered Quality Gates</h2>
-                
-                <p><strong>Ensure 8/10 Minimum Quality Score</strong></p>
-                
-                <div class="mermaid">
-                    graph LR
-                        A[Content Created] --> B{Brand Check}
-                        B -->|Fail| C[Revision Required]
-                        B -->|Pass| D{Quality Score}
-                        D -->|<8| C
-                        D -->|>=8| E{Performance Prediction}
-                        E -->|<7| C
-                        E -->|>=7| F[Ready to Publish]
-                        C --> A
-                </div>
+      <section id="s11" class="cs-page">
+        <div class="cs-num">11.</div>
+        <div class="cs-content">
+          <h1>Component 8: Quality Control System</h1>
+          <h2>AI-Powered Quality Gates</h2>
+          
+          <p><strong>Ensure 8/10 Minimum Quality Score</strong></p>
+          
+          <div class="mermaid">
+            graph LR
+                A[Content Created] --> B{Brand Check}
+                B -->|Fail| C[Revision Required]
+                B -->|Pass| D{Quality Score}
+                D -->|<8| C
+                D -->|>=8| E{Performance Prediction}
+                E -->|<7| C
+                E -->|>=7| F[Ready to Publish]
+                C --> A
+          </div>
 
-                <div class="component-section">
-                    <h3>Quality Scoring Algorithm</h3>
-                    <div class="code-block">
+          <div class="component-section">
+            <h3>Quality Scoring Algorithm</h3>
+            <div class="code-block">
 class QualityGatekeeper:
     def __init__(self):
         self.brand_guidelines = load_brand_standards()
@@ -1158,12 +890,12 @@ class QualityGatekeeper:
             status="APPROVED",
             publish_ready=True
         )
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="quality-gate-example">
-                    <h3>Real Example Output</h3>
-                    <div class="terminal-output">
+          <div class="component-section">
+            <h3>Real Example Output</h3>
+            <div class="terminal-output">
 Video: "Skullcandy Case Study"
 Overall Score: 6.2/10 ❌
 
@@ -1178,50 +910,50 @@ Current path: 725 views
 With improvements: 35,000 views
 
 [AUTO-GENERATED SUGGESTIONS ATTACHED]
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s11" class="cs-page">
-            <div class="cs-num">11.</div>
-            <div class="cs-content">
-                <h1>Component 9: AI Agent Persona Simulator</h1>
-                <h2>Scaling Through Predictive Viewer Modeling</h2>
+      <section id="s12" class="cs-page">
+        <div class="cs-num">12.</div>
+        <div class="cs-content">
+          <h1>Component 9: AI Agent Persona Simulator</h1>
+          <h2>Scaling Through Predictive Viewer Modeling</h2>
+          
+          <div class="component-section">
+            <h3>Purpose</h3>
+            <p>Address the scaling bottleneck by creating AI agents that simulate viewer personas, model their journeys, and predict "what's next" to generate tailored content ideas.</p>
+            
+            <h4>The Problem</h4>
+            <p>Current systems react to data; they don't anticipate. Viewers (e.g., new entrepreneurs) drop off because the next video doesn't match their evolving needs. Manual ideation limits output to 20-30 videos/month.</p>
+            
+            <h4>The Solution</h4>
+            <p>AI agents as "synthetic viewers" that simulate journeys, predict behaviors, and recommend content sequences. Based on research, similar to agentic AI in recommendation systems that provide real-time personalization and boost engagement by 30-50%.</p>
+          </div>
+          
+          <div class="mermaid">
+            graph TD
+                A[Viewer Analytics] --> B[Persona Builder AI]
+                B --> C[Agent 1: New Entrepreneur]
+                B --> D[Agent 2: Scaling Merchant]
+                B --> E[Agent 3: Tech-Savvy Creator]
                 
-                <div class="persona-simulator">
-                    <h3>Purpose</h3>
-                    <p>Address the scaling bottleneck by creating AI agents that simulate viewer personas, model their journeys, and predict "what's next" to generate tailored content ideas.</p>
-                    
-                    <h4>The Problem</h4>
-                    <p>Current systems react to data; they don't anticipate. Viewers (e.g., new entrepreneurs) drop off because the next video doesn't match their evolving needs. Manual ideation limits output to 20-30 videos/month.</p>
-                    
-                    <h4>The Solution</h4>
-                    <p>AI agents as "synthetic viewers" that simulate journeys, predict behaviors, and recommend content sequences. Based on research, similar to agentic AI in recommendation systems that provide real-time personalization and boost engagement by 30-50%.</p>
-                </div>
+                C --> F[Simulate Journey: Watch 'Start a Store' → Predict Next: 'Funding Tips']
+                D --> G[Simulate Journey: Watch 'SEO Basics' → Predict Next: 'AI Optimization']
+                E --> H[Simulate Journey: Watch 'YouTube Growth' → Predict Next: 'Monetization Strategies']
                 
-                <div class="mermaid">
-                    graph TD
-                        A[Viewer Analytics] --> B[Persona Builder AI]
-                        B --> C[Agent 1: New Entrepreneur]
-                        B --> D[Agent 2: Scaling Merchant]
-                        B --> E[Agent 3: Tech-Savvy Creator]
-                        
-                        C --> F[Simulate Journey: Watch 'Start a Store' → Predict Next: 'Funding Tips']
-                        D --> G[Simulate Journey: Watch 'SEO Basics' → Predict Next: 'AI Optimization']
-                        E --> H[Simulate Journey: Watch 'YouTube Growth' → Predict Next: 'Monetization Strategies']
-                        
-                        F --> I[Generate Content Ideas]
-                        G --> I
-                        H --> I
-                        
-                        I --> J[Feed to Orchestrator for Scheduling]
-                        J --> K[No Overlaps, Exponential Output]
-                </div>
+                F --> I[Generate Content Ideas]
+                G --> I
+                H --> I
+                
+                I --> J[Feed to Orchestrator for Scheduling]
+                J --> K[No Overlaps, Exponential Output]
+          </div>
 
-                <div class="component-section">
-                    <h3>How It Works</h3>
-                    <div class="code-block">
+          <div class="component-section">
+            <h3>How It Works</h3>
+            <div class="code-block">
 class PersonaAgentSimulator:
     def __init__(self):
         self.personas = self.build_personas_from_analytics()
@@ -1265,54 +997,51 @@ class PersonaAgentSimulator:
         self.orchestrator.schedule_without_overlap(unique_recs)
         
         return unique_recs
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="slack-message">
-                    <h4>Alert System Example</h4>
-                    <div class="terminal-output">
+          <div class="terminal-output">
 🚀 AGENT PREDICTION ALERT
 Persona: New Entrepreneur
 After "Start a Store" video: Predicts need for "Funding Basics" (80% confidence, 50K views est.)
 Recommendation: Generate series branch—schedule for next week?
 [GENERATE BRIEF] [SIMULATE MORE] [IGNORE]
-                    </div>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s12" class="cs-page">
-            <div class="cs-num">12.</div>
-            <div class="cs-content">
-                <h1>Component 10: SEO Optimizer Integration</h1>
-                <h2>Optimizing for AI/Web Search + Merchant Synergies</h2>
+      <section id="s13" class="cs-page">
+        <div class="cs-num">13.</div>
+        <div class="cs-content">
+          <h1>Component 10: SEO Optimizer Integration</h1>
+          <h2>Optimizing for AI/Web Search + Merchant Synergies</h2>
+          
+          <div class="component-section">
+            <h3>Purpose</h3>
+            <p>Extend SCIP to scan merchant sites (or Shopify's own), analyze optimization in AI engines (ChatGPT, Grok, Claude, Google), and recommend content (videos, blogs, copy) to boost rankings. Ties into YouTube by suggesting video topics that fill SEO gaps.</p>
+            
+            <h4>The Problem</h4>
+            <p>Content isn't optimized for emerging AI search; merchants lose traffic, reducing Shopify's ecosystem value.</p>
+            
+            <h4>The Solution</h4>
+            <p>AI scanner for site/AI optimization, generating recommendations that feed into content pipeline. Based on GEO best practices: Use schema markup, factual content, and tools like Mangools for monitoring rankings across AI engines.</p>
+          </div>
+          
+          <div class="mermaid">
+            flowchart TB
+                A[Merchant Site Scan] --> B[AI Engine Check]
+                B --> C{Keyword Ranking}
+                C -->|Low| D[Recommend: New Video/Blog]
+                C -->|High| E[Maintain]
                 
-                <div class="seo-optimizer">
-                    <h3>Purpose</h3>
-                    <p>Extend SCIP to scan merchant sites (or Shopify's own), analyze optimization in AI engines (ChatGPT, Grok, Claude, Google), and recommend content (videos, blogs, copy) to boost rankings. Ties into YouTube by suggesting video topics that fill SEO gaps.</p>
-                    
-                    <h4>The Problem</h4>
-                    <p>Content isn't optimized for emerging AI search; merchants lose traffic, reducing Shopify's ecosystem value.</p>
-                    
-                    <h4>The Solution</h4>
-                    <p>AI scanner for site/AI optimization, generating recommendations that feed into content pipeline. Based on GEO best practices: Use schema markup, factual content, and tools like Mangools for monitoring rankings across AI engines.</p>
-                </div>
-                
-                <div class="mermaid">
-                    flowchart TB
-                        A[Merchant Site Scan] --> B[AI Engine Check]
-                        B --> C{Keyword Ranking}
-                        C -->|Low| D[Recommend: New Video/Blog]
-                        C -->|High| E[Maintain]
-                        
-                        D --> F[Generate Copy Suggestions]
-                        F --> G[Feed to Orchestrator]
-                        G --> H[Schedule YouTube Content]
-                </div>
+                D --> F[Generate Copy Suggestions]
+                F --> G[Feed to Orchestrator]
+                G --> H[Schedule YouTube Content]
+          </div>
 
-                <div class="component-section">
-                    <h3>Implementation</h3>
-                    <div class="code-block">
+          <div class="component-section">
+            <h3>Implementation</h3>
+            <div class="code-block">
 class SEOOptimizer:
     def __init__(self):
         self.ai_engines = ["ChatGPT", "Grok", "Claude", "Google"]
@@ -1331,160 +1060,160 @@ class SEOOptimizer:
     def feed_to_content(self, recs):
         for rec in recs:
             self.orchestrator.receive_content_request("SEO Team", "video", rec)
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s13" class="cs-page">
-            <div class="cs-num">13.</div>
-            <div class="cs-content">
-                <h1>The Complete Workflow</h1>
-                <h2>From Idea to Global Distribution</h2>
+      <section id="s14" class="cs-page">
+        <div class="cs-num">14.</div>
+        <div class="cs-content">
+          <h1>Complete Workflow</h1>
+          <h2>From Idea to Global Distribution</h2>
+          
+          <div class="mermaid">
+            sequenceDiagram
+                participant Team as Content Team
+                participant AI as AI Orchestrator
+                participant QC as Quality Control
+                participant Pub as Publishing Engine
+                participant Analytics as Analytics
                 
-                <div class="mermaid">
-                    sequenceDiagram
-                        participant Team as Content Team
-                        participant AI as AI Orchestrator
-                        participant QC as Quality Control
-                        participant Pub as Publishing Engine
-                        participant Analytics as Analytics
-                        
-                        Team->>AI: Submit content idea
-                        AI->>AI: Check collisions
-                        AI->>AI: Predict performance
-                        AI->>Team: Approved with slot
-                        Team->>Team: Create content
-                        Team->>QC: Submit for review
-                        QC->>AI: Quality check
-                        AI->>Team: Score: 8.5/10
-                        Team->>Pub: Ready to publish
-                        Pub->>Pub: Optimize metadata
-                        Pub->>Pub: Schedule publication
-                        Pub->>Pub: Generate shorts
-                        Pub->>Pub: Create translations
-                        Pub->>Analytics: Monitor performance
-                        Analytics->>AI: Feed learning loop
-                </div>
+                Team->>AI: Submit content idea
+                AI->>AI: Check collisions
+                AI->>AI: Predict performance
+                AI->>Team: Approved with slot
+                Team->>Team: Create content
+                Team->>QC: Submit for review
+                QC->>AI: Quality check
+                AI->>Team: Score: 8.5/10
+                Team->>Pub: Ready to publish
+                Pub->>Pub: Optimize metadata
+                Pub->>Pub: Schedule publication
+                Pub->>Pub: Generate shorts
+                Pub->>Pub: Create translations
+                Pub->>Analytics: Monitor performance
+                Analytics->>AI: Feed learning loop
+          </div>
+        </div>
+      </section>
+
+      <section id="s15" class="cs-page">
+        <div class="cs-num">15.</div>
+        <div class="cs-content">
+          <h1>Implementation Roadmap</h1>
+          
+          <div class="component-section">
+            <h3>Week 1-2: Foundation</h3>
+            <ul>
+              <li>Set up Orchestrator brain (Supabase + APIs)</li>
+              <li>Create Slack integration</li>
+              <li>Map all team workflows</li>
+              <li>Build collision detection MVP</li>
+            </ul>
+            <p><strong>Deliverable:</strong> Central command center online</p>
+          </div>
+
+          <div class="component-section">
+            <h3>Week 3-4: Intelligence Layer</h3>
+            <ul>
+              <li>Deploy performance predictor</li>
+              <li>Implement quality gates</li>
+              <li>Launch series tracker</li>
+              <li>Create daily briefing system</li>
+            </ul>
+            <p><strong>Deliverable:</strong> AI intelligence operational</p>
+          </div>
+
+          <div class="component-section">
+            <h3>Week 5-8: Automation</h3>
+            <ul>
+              <li>Build short-form extractor</li>
+              <li>Launch thumbnail optimizer</li>
+              <li>Deploy metadata automation</li>
+              <li>Implement A/B testing system</li>
+            </ul>
+            <p><strong>Deliverable:</strong> Automation reducing workload 40%</p>
+          </div>
+
+          <div class="component-section">
+            <h3>Week 9-12: Scale</h3>
+            <ul>
+              <li>Launch localization pipeline (2 markets)</li>
+              <li>Expand to 50+ videos/month</li>
+              <li>Implement predictive planning</li>
+              <li>Full analytics feedback loop</li>
+            </ul>
+            <p><strong>Deliverable:</strong> Global content machine</p>
+          </div>
+
+          <div class="component-section">
+            <h3>Week 13-16: Predictive Scaling</h3>
+            <ul>
+              <li>Build AI Agent Simulator (Claude-based personas)</li>
+              <li>Integrate Predictive Models (ML for behavior forecasting)</li>
+              <li>Launch SEO Optimizer MVP</li>
+            </ul>
+            <p><strong>Deliverable:</strong> 2x content ideas via agents; first SEO scans</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s16" class="cs-page">
+        <div class="cs-num">16.</div>
+        <div class="cs-content">
+          <h1>Metrics & Success Criteria</h1>
+          
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-value">70%+</div>
+              <div class="metric-label">Predictive Accuracy</div>
             </div>
-        </section>
-
-        <section id="s14" class="cs-page">
-            <div class="cs-num">14.</div>
-            <div class="cs-content">
-                <h1>Implementation Roadmap</h1>
-                
-                <div class="implementation-roadmap">
-                    <h3>Week 1-2: Foundation</h3>
-                    <ul>
-                        <li>Set up Orchestrator brain (Supabase + APIs)</li>
-                        <li>Create Slack integration</li>
-                        <li>Map all team workflows</li>
-                        <li>Build collision detection MVP</li>
-                    </ul>
-                    <p><strong>Deliverable:</strong> Central command center online</p>
-                </div>
-
-                <div class="implementation-roadmap">
-                    <h3>Week 3-4: Intelligence Layer</h3>
-                    <ul>
-                        <li>Deploy performance predictor</li>
-                        <li>Implement quality gates</li>
-                        <li>Launch series tracker</li>
-                        <li>Create daily briefing system</li>
-                    </ul>
-                    <p><strong>Deliverable:</strong> AI intelligence operational</p>
-                </div>
-
-                <div class="implementation-roadmap">
-                    <h3>Week 5-8: Automation</h3>
-                    <ul>
-                        <li>Build short-form extractor</li>
-                        <li>Launch thumbnail optimizer</li>
-                        <li>Deploy metadata automation</li>
-                        <li>Implement A/B testing system</li>
-                    </ul>
-                    <p><strong>Deliverable:</strong> Automation reducing workload 40%</p>
-                </div>
-
-                <div class="implementation-roadmap">
-                    <h3>Week 9-12: Scale</h3>
-                    <ul>
-                        <li>Launch localization pipeline (2 markets)</li>
-                        <li>Expand to 50+ videos/month</li>
-                        <li>Implement predictive planning</li>
-                        <li>Full analytics feedback loop</li>
-                    </ul>
-                    <p><strong>Deliverable:</strong> Global content machine</p>
-                </div>
-
-                <div class="implementation-roadmap">
-                    <h3>Week 13-16: Predictive Scaling</h3>
-                    <ul>
-                        <li>Build AI Agent Simulator (Claude-based personas)</li>
-                        <li>Integrate Predictive Models (ML for behavior forecasting)</li>
-                        <li>Launch SEO Optimizer MVP</li>
-                    </ul>
-                    <p><strong>Deliverable:</strong> 2x content ideas via agents; first SEO scans</p>
-                </div>
+            <div class="metric-card">
+              <div class="metric-value">100+</div>
+              <div class="metric-label">Videos/Month via Agents</div>
             </div>
-        </section>
-
-        <section id="s15" class="cs-page">
-            <div class="cs-num">15.</div>
-            <div class="cs-content">
-                <h1>Metrics & Success Criteria</h1>
-                
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-value">70%+</div>
-                        <div class="metric-label">Predictive Accuracy</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">100+</div>
-                        <div class="metric-label">Videos/Month via Agents</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">20%+</div>
-                        <div class="metric-label">SEO Ranking Improvement</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">10K</div>
-                        <div class="metric-label">View Floor Minimum</div>
-                    </div>
-                </div>
-
-                <div class="before-after">
-                    <div class="before">
-                        <h3>Leading Indicators (Week 1-4)</h3>
-                        <ul>
-                            <li>Collision alerts preventing overlaps</li>
-                            <li>Upload consistency (no gaps > 7 days)</li>
-                            <li>Quality scores all > 8/10</li>
-                            <li>Team sentiment improving</li>
-                        </ul>
-                    </div>
-                    <div class="after">
-                        <h3>Business Impact (Quarter 2)</h3>
-                        <ul>
-                            <li>50+ videos/month capacity</li>
-                            <li>2 new markets launched</li>
-                            <li>100M+ additional annual views</li>
-                            <li>30% reduction in production time</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="metric-card">
+              <div class="metric-value">20%+</div>
+              <div class="metric-label">SEO Ranking Improvement</div>
             </div>
-        </section>
+            <div class="metric-card">
+              <div class="metric-value">10K</div>
+              <div class="metric-label">View Floor Minimum</div>
+            </div>
+          </div>
 
-        <section id="s16" class="cs-page">
-            <div class="cs-num">16.</div>
-            <div class="cs-content">
-                <h1>Technical Architecture</h1>
-                
-                <div class="tech-stack">
-                    <h3>Stack Overview</h3>
-                    <div class="code-block">
+          <div class="before-after">
+            <div class="before">
+              <h3>Leading Indicators (Week 1-4)</h3>
+              <ul>
+                <li>Collision alerts preventing overlaps</li>
+                <li>Upload consistency (no gaps > 7 days)</li>
+                <li>Quality scores all > 8/10</li>
+                <li>Team sentiment improving</li>
+              </ul>
+            </div>
+            <div class="after">
+              <h3>Business Impact (Quarter 2)</h3>
+              <ul>
+                <li>50+ videos/month capacity</li>
+                <li>2 new markets launched</li>
+                <li>100M+ additional annual views</li>
+                <li>30% reduction in production time</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s17" class="cs-page">
+        <div class="cs-num">17.</div>
+        <div class="cs-content">
+          <h1>Technical Architecture</h1>
+          
+          <div class="component-section">
+            <h3>Stack Overview</h3>
+            <div class="code-block">
 Orchestration:
   - n8n for workflow automation
   - Supabase for real-time database
@@ -1522,183 +1251,140 @@ AI Agents:
 SEO Layer:
   - Ahrefs/SEMrush API for rankings
   - OpenAI for AI engine queries
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s17" class="cs-page">
-            <div class="cs-num">17.</div>
-            <div class="cs-content">
-                <h1>Risk Mitigation</h1>
-                
-                <div class="alert-box">
-                    <h3>Risk Matrix</h3>
-                    <ul>
-                        <li><strong>Risk:</strong> Team resistance to AI oversight<br>
-                        <strong>Mitigation:</strong> Position as "assistant" not "boss"<br>
-                        <strong>Implementation:</strong> Make their lives easier first</li>
-                        
-                        <li><strong>Risk:</strong> YouTube algorithm changes<br>
-                        <strong>Mitigation:</strong> Build on fundamentals not hacks<br>
-                        <strong>Implementation:</strong> Focus on quality + consistency</li>
-                        
-                        <li><strong>Risk:</strong> Technical complexity<br>
-                        <strong>Mitigation:</strong> Phase rollout, start simple<br>
-                        <strong>Implementation:</strong> Week 1 just collision detection</li>
-                        
-                        <li><strong>Risk:</strong> Content feels robotic<br>
-                        <strong>Mitigation:</strong> AI assists, humans create<br>
-                        <strong>Implementation:</strong> 80% human, 20% AI enhance</li>
-                        
-                        <li><strong>Risk:</strong> Agent Hallucinations in Predictions<br>
-                        <strong>Mitigation:</strong> Human-in-loop reviews; ground in real analytics<br>
-                        <strong>Implementation:</strong> Start with 3 personas, validate against A/B tests</li>
-                    </ul>
-                </div>
+      <section id="s18" class="cs-page">
+        <div class="cs-num">18.</div>
+        <div class="cs-content">
+          <h1>Risk Mitigation</h1>
+          
+          <div class="alert-box">
+            <h3>Risk Matrix</h3>
+            <ul>
+              <li><strong>Risk:</strong> Team resistance to AI oversight<br>
+              <strong>Mitigation:</strong> Position as "assistant" not "boss"<br>
+              <strong>Implementation:</strong> Make their lives easier first</li>
+              
+              <li><strong>Risk:</strong> YouTube algorithm changes<br>
+              <strong>Mitigation:</strong> Build on fundamentals not hacks<br>
+              <strong>Implementation:</strong> Focus on quality + consistency</li>
+              
+              <li><strong>Risk:</strong> Technical complexity<br>
+              <strong>Mitigation:</strong> Phase rollout, start simple<br>
+              <strong>Implementation:</strong> Week 1 just collision detection</li>
+              
+              <li><strong>Risk:</strong> Content feels robotic<br>
+              <strong>Mitigation:</strong> AI assists, humans create<br>
+              <strong>Implementation:</strong> 80% human, 20% AI enhance</li>
+              
+              <li><strong>Risk:</strong> Agent Hallucinations in Predictions<br>
+              <strong>Mitigation:</strong> Human-in-loop reviews; ground in real analytics<br>
+              <strong>Implementation:</strong> Start with 3 personas, validate against A/B tests</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="s19" class="cs-page">
+        <div class="cs-num">19.</div>
+        <div class="cs-content">
+          <h1>Vision: 2025 and Beyond</h1>
+          
+          <div class="before-after">
+            <div class="before">
+              <h3>Year 1: Foundation</h3>
+              <ul>
+                <li>600+ videos published</li>
+                <li>5 markets launched</li>
+                <li>100M+ views generated</li>
+                <li>System fully operational</li>
+              </ul>
             </div>
-        </section>
-
-        <section id="s18" class="cs-page">
-            <div class="cs-num">18.</div>
-            <div class="cs-content">
-                <h1>The Vision: 2025 and Beyond</h1>
-                
-                <div class="before-after">
-                    <div class="before">
-                        <h3>Year 1: Foundation</h3>
-                        <ul>
-                            <li>600+ videos published</li>
-                            <li>5 markets launched</li>
-                            <li>100M+ views generated</li>
-                            <li>System fully operational</li>
-                        </ul>
-                    </div>
-                    <div class="after">
-                        <h3>Year 2: Domination</h3>
-                        <ul>
-                            <li>1,200+ videos annually</li>
-                            <li>10 markets active</li>
-                            <li>AI predicting trends</li>
-                            <li>Shopify owns "commerce education"</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="success-box">
-                    <h3>Year 3: Evolution</h3>
-                    <ul>
-                        <li>Content creates itself</li>
-                        <li>Real-time personalization</li>
-                        <li>Every video hits target</li>
-                        <li>YouTube's #1 business channel</li>
-                    </ul>
-                </div>
+            <div class="after">
+              <h3>Year 2: Domination</h3>
+              <ul>
+                <li>1,200+ videos annually</li>
+                <li>10 markets active</li>
+                <li>AI predicting trends</li>
+                <li>Shopify owns "commerce education"</li>
+              </ul>
             </div>
-        </section>
+          </div>
 
-        <section id="s19" class="cs-page">
-            <div class="cs-num">19.</div>
-            <div class="cs-content">
-                <h1>Why This Will Work</h1>
-                
-                <div class="workflow-step">
-                    <h3>1. Learn with Shopify Already Proved It</h3>
-                    <ul>
-                        <li>337K engaged subscribers</li>
-                        <li>Consistent 10-20K views</li>
-                        <li>The model works, just need orchestration</li>
-                    </ul>
-                </div>
+          <div class="success-box">
+            <h3>Year 3: Evolution</h3>
+            <ul>
+              <li>Content creates itself</li>
+              <li>Real-time personalization</li>
+              <li>Every video hits target</li>
+              <li>YouTube's #1 business channel</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-                <div class="workflow-step">
-                    <h3>2. The Technology Exists Today</h3>
-                    <ul>
-                        <li>No custom ML required</li>
-                        <li>All APIs available</li>
-                        <li>Can start tomorrow</li>
-                    </ul>
-                </div>
+      <section id="s20" class="cs-page">
+        <div class="cs-num">20.</div>
+        <div class="cs-content">
+          <h1>ROI Calculation</h1>
+          
+          <div class="component-section">
+            <h3>Current State (Monthly)</h3>
+            <ul>
+              <li>20 videos produced</li>
+              <li>400x view variance (725 to 291K)</li>
+              <li>5+ teams uncoordinated</li>
+              <li>~30% effort on coordination</li>
+              <li>Average views: 15K per video</li>
+              <li>Total monthly views: 300K</li>
+            </ul>
+          </div>
 
-                <div class="workflow-step">
-                    <h3>3. The ROI is Undeniable</h3>
-                    <ul>
-                        <li>Current: 400x view variance</li>
-                        <li>With system: 10x max variance</li>
-                        <li>Impact: Millions of additional views</li>
-                    </ul>
-                </div>
+          <div class="component-section">
+            <h3>With AI Orchestration (Month 3)</h3>
+            <ul>
+              <li>50+ videos produced (2.5x)</li>
+              <li>10x max variance (controlled)</li>
+              <li>All teams synchronized</li>
+              <li>~5% effort on coordination</li>
+              <li>Average views: 40K per video (2.7x)</li>
+              <li>Total monthly views: 2M (6.7x)</li>
+            </ul>
+          </div>
 
-                <div class="workflow-step">
-                    <h3>4. It's Built for Shopify's Reality</h3>
-                    <ul>
-                        <li>Acknowledges multi-team structure</li>
-                        <li>Doesn't require reorg</li>
-                        <li>Makes everyone's life easier</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+          <div class="component-section">
+            <h3>Investment vs Return</h3>
+            <ul>
+              <li><strong>Investment:</strong> Platform costs: $1,200/month</li>
+              <li><strong>Return:</strong> 6.7x view multiplication</li>
+              <li><strong>ROI:</strong> 670% in 90 days</li>
+              <li><strong>Breakeven:</strong> Day 12</li>
+            </ul>
+          </div>
 
-        <section id="s20" class="cs-page">
-            <div class="cs-num">20.</div>
-            <div class="cs-content">
-                <h1>ROI Calculation</h1>
-                
-                <div class="roi-calculation">
-                    <h3>Current State (Monthly)</h3>
-                    <ul>
-                        <li>20 videos produced</li>
-                        <li>400x view variance (725 to 291K)</li>
-                        <li>5+ teams uncoordinated</li>
-                        <li>~30% effort on coordination</li>
-                        <li>Average views: 15K per video</li>
-                        <li>Total monthly views: 300K</li>
-                    </ul>
-                </div>
+          <div class="success-box">
+            <h3>With AI Agents (Month 6)</h3>
+            <ul>
+              <li>10x content ideas via persona simulation</li>
+              <li>8x views from personalized journeys</li>
+              <li>ROI: 1200% in 180 days</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-                <div class="roi-calculation">
-                    <h3>With AI Orchestration (Month 3)</h3>
-                    <ul>
-                        <li>50+ videos produced (2.5x)</li>
-                        <li>10x max variance (controlled)</li>
-                        <li>All teams synchronized</li>
-                        <li>~5% effort on coordination</li>
-                        <li>Average views: 40K per video (2.7x)</li>
-                        <li>Total monthly views: 2M (6.7x)</li>
-                    </ul>
-                </div>
-
-                <div class="roi-calculation">
-                    <h3>Investment vs Return</h3>
-                    <ul>
-                        <li><strong>Investment:</strong> Platform costs: $1,200/month</li>
-                        <li><strong>Return:</strong> 6.7x view multiplication</li>
-                        <li><strong>ROI:</strong> 670% in 90 days</li>
-                        <li><strong>Breakeven:</strong> Day 12</li>
-                    </ul>
-                </div>
-
-                <div class="success-box">
-                    <h3>With AI Agents (Month 6)</h3>
-                    <ul>
-                        <li>10x content ideas via persona simulation</li>
-                        <li>8x views from personalized journeys</li>
-                        <li>ROI: 1200% in 180 days</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="s21" class="cs-page">
-            <div class="cs-num">21.</div>
-            <div class="cs-content">
-                <h1>Working Implementation</h1>
-                <h2>Live Demo: The System in Action</h2>
-                
-                <div class="component-section">
-                    <h3>Collision Detection Engine (Working Code)</h3>
-                    <div class="code-block">
+      <section id="s21" class="cs-page">
+        <div class="cs-num">21.</div>
+        <div class="cs-content">
+          <h1>Working Implementation</h1>
+          <h2>Live Demo: The System in Action</h2>
+          
+          <div class="component-section">
+            <h3>Collision Detection Engine (Working Code)</h3>
+            <div class="code-block">
 # Real working example for Shopify
 
 import openai
@@ -1755,12 +1441,12 @@ class ShopifyContentOrchestrator:
             },
             "recommendations": recommendations
         }
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="component-section">
-                    <h3>AI Agent Persona Simulator (Working Code)</h3>
-                    <div class="code-block">
+          <div class="component-section">
+            <h3>AI Agent Persona Simulator (Working Code)</h3>
+            <div class="code-block">
 class PersonaAgentSimulator:
     def __init__(self):
         self.personas = self.build_personas()
@@ -1787,12 +1473,12 @@ class PersonaAgentSimulator:
             recs = self.predictive_model.forecast(journey)
             all_recs.extend([{"persona": persona["name"], **rec} for rec in recs])
         return all_recs
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="component-section">
-                    <h3>SEO Optimizer (Working Code)</h3>
-                    <div class="code-block">
+          <div class="component-section">
+            <h3>SEO Optimizer (Working Code)</h3>
+            <div class="code-block">
 class SEOOptimizer:
     def __init__(self):
         self.ai_engines = ["ChatGPT", "Grok", "Claude", "Google"]
@@ -1811,19 +1497,19 @@ class SEOOptimizer:
     def feed_to_content(self, recs):
         for rec in recs:
             self.orchestrator.receive_content_request("SEO Team", "video", rec)
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s22" class="cs-page">
-            <div class="cs-num">22.</div>
-            <div class="cs-content">
-                <h1>The First 30 Days</h1>
-                
-                <div class="first-30-days">
-                    <h3>Week 1 Priorities</h3>
-                    <div class="ascii-art">
+      <section id="s22" class="cs-page">
+        <div class="cs-num">22.</div>
+        <div class="cs-content">
+          <h1>First 30 Days</h1>
+          
+          <div class="component-section">
+            <h3>Week 1 Priorities</h3>
+            <div class="ascii-art">
 MONDAY (Day 1):
 □ Set up command center (Supabase + Slack)
 □ Meet all content teams
@@ -1848,24 +1534,24 @@ WEEK 2-4:
 RESULT BY DAY 30:
 "We prevented 5 collisions, improved average 
 views by 40%, and teams actually love it."
-                    </div>
-                </div>
-
-                <div class="implementation-roadmap">
-                    <h3>Day 15-30</h3>
-                    <p>Prototype first 3 agents; run simulations on top 10 videos</p>
-                </div>
             </div>
-        </section>
+          </div>
 
-        <section id="s23" class="cs-page">
-            <div class="cs-num">23.</div>
-            <div class="cs-content">
-                <h1>Why I'm The One To Build This</h1>
-                <h2>My Systematic Scaling Track Record</h2>
-                
-                <div class="track-record">
-                    <div class="ascii-art">
+          <div class="component-section">
+            <h3>Day 15-30</h3>
+            <p>Prototype first 3 agents; run simulations on top 10 videos</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s23" class="cs-page">
+        <div class="cs-num">23.</div>
+        <div class="cs-content">
+          <h1>Why I'm The One To Build This</h1>
+          <h2>My Systematic Scaling Track Record</h2>
+          
+          <div class="component-section">
+            <div class="ascii-art">
 FILM3D ORCHESTRATION:
 Challenge: 15 external dev teams, total chaos
 My System: Central coordination platform
@@ -1882,19 +1568,19 @@ My System: Cross-functional orchestration
 Result: 15M views, 99.8% uptime
 
 PATTERN: I build systems that multiply human talent
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="s24" class="cs-page">
-            <div class="cs-num">24.</div>
-            <div class="cs-content">
-                <h1>Conclusion: The Transformation</h1>
-                <h2>From Chaos to Symphony</h2>
-                
-                <div class="transformation-summary">
-                    <div class="ascii-art">
+      <section id="s24" class="cs-page">
+        <div class="cs-num">24.</div>
+        <div class="cs-content">
+          <h1>Conclusion: The Transformation</h1>
+          <h2>From Chaos to Symphony</h2>
+          
+          <div class="component-section">
+            <div class="ascii-art">
 TODAY:                          90 DAYS FROM NOW:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -1913,30 +1599,31 @@ This isn't about control - it's about multiplication.
 Every creator becomes 5x more impactful.
 Every video reaches its full potential.
 Shopify dominates YouTube commerce education.
-                    </div>
-                </div>
-
-                <div class="success-box">
-                    <h3>With AI Agents</h3>
-                    <p>SCIP becomes predictive—simulating journeys like ad tech, optimizing SEO, and scaling to 200+ assets/month</p>
-                </div>
             </div>
-        </section>
-    </div>
-    
-    <script>
-        mermaid.initialize({ 
-            startOnLoad: true,
-            theme: 'dark',
-            themeVariables: {
-                primaryColor: '#00ff00',
-                primaryTextColor: '#ffffff',
-                primaryBorderColor: '#333333',
-                lineColor: '#00ff00',
-                secondaryColor: '#111111',
-                tertiaryColor: '#000000'
-            }
-        });
-    </script>
+          </div>
+
+          <div class="success-box">
+            <h3>With AI Agents</h3>
+            <p>SCIP becomes predictive—simulating journeys like ad tech, optimizing SEO, and scaling to 200+ assets/month</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <script>
+    mermaid.initialize({ 
+      startOnLoad: true,
+      theme: 'default',
+      themeVariables: {
+        primaryColor: '#8DFF14',
+        primaryTextColor: '#0E0E0E',
+        primaryBorderColor: '#EEEEEE',
+        lineColor: '#8DFF14',
+        secondaryColor: '#f8f8f8',
+        tertiaryColor: '#ffffff'
+      }
+    });
+  </script>
 </body>
 </html>
