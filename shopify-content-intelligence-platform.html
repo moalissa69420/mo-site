@@ -282,35 +282,37 @@ SEO Layer:
           <p><strong>Purpose:</strong> Single source of truth that knows everything happening across all teams</p>
           
           <div class="component-section">
-            <h3>How It Works</h3>
-            <div class="code-block">
-class ContentOrchestrator:
-    def __init__(self):
-        self.content_calendar = GlobalCalendar()
-        self.team_pipelines = {}
-        self.performance_history = PerformanceDB()
-        self.ai_brain = GPT4_Claude_Hybrid()
-    
-    def receive_content_request(self, team, content_type, topic):
-        # Step 1: Check for collisions
-        conflicts = self.detect_conflicts(topic)
-        if conflicts:
-            return self.suggest_alternatives(conflicts)
-        
-        # Step 2: Predict performance
-        performance_score = self.predict_performance(content_type, topic)
-        
-        # Step 3: Find optimal slot
-        best_slot = self.find_publishing_slot(performance_score)
-        
-        # Step 4: Check series momentum
-        if self.is_part_of_series(topic):
-            self.maintain_series_momentum(topic)
-        
-        # Step 5: Coordinate globally
-        self.coordinate_with_regions(content_type, topic)
-        
-        return self.create_production_plan()
+            <h3>Live Orchestrator Demo</h3>
+            <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    CONTENT COMMAND CENTER                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ⚡ LIVE CONFLICTS           📊 PERFORMANCE PREDICTION              │
+│  ├─ Product vs Risk: 85%     ├─ "AI Commerce": 45K views expected   │
+│  └─ Timing collision Thu      └─ Confidence: 87%                    │
+│                                                                      │
+│  📅 OPTIMAL SLOTS            🚀 SERIES MOMENTUM                     │
+│  ├─ Mon 10am: Risk Takers    ├─ Editions: Declining (-30%)         │
+│  ├─ Wed 2pm: Learn            ├─ Risk Takers: Growing (+45%)       │
+│  └─ Fri 9am: Product          └─ ACTION: Schedule Ep3 by Thu        │
+│                                                                      │
+│  🌍 GLOBAL QUEUE             ⚠️ FATIGUE ALERTS                      │
+│  ├─ UK: 3 ready              ├─ AI content: 3 this week (max)      │
+│  ├─ CA: 2 pending            └─ Case studies: Space 5 days         │
+│  └─ AU: 1 approved                                                  │
+│                                                                      │
+│  🤖 AGENT SIMULATIONS        🔮 PREDICTIVE IDEAS                     │
+│  ├─ New Entrepreneur: Active ├─ Next: 'Funding Basics' (50K est)   │
+│  ├─ Scaling Merchant: Sim'd  ├─ Next: 'AI SEO Hacks' (40K est)     │
+│  └─ Tech Creator: Predicted  └─ SEO Scan: Boost 'startup' ranking  │
+│                                                                      │
+│  [APPROVE] [RESCHEDULE] [COMBINE] [ALERT TEAM] [SIMULATE PERSONA]   │
+└─────────────────────────────────────────────────────────────────────┘
+            </div>
+            <div class="success-box">
+              <h4>System Status: OPERATIONAL</h4>
+              <p>✅ All teams connected | ✅ 15 content requests processed | ✅ 3 collisions prevented</p>
             </div>
           </div>
         </div>
@@ -347,69 +349,52 @@ class ContentOrchestrator:
           
           <div class="component-section">
             <h3>Live Collision Detection Demo</h3>
-            <div class="code-block">
-// Real-time collision detection system
-class CollisionDetector {
-    constructor() {
-        this.semanticThreshold = 0.8;
-        this.fatigueWindow = 7; // days
-        this.minGap = 3; // minimum days between similar content
-    }
-    
-    async checkCollision(contentRequest) {
-        const { team, title, description, proposedDate, contentType } = contentRequest;
-        
-        // Simulate semantic similarity check
-        const semanticConflicts = await this.findSemanticConflicts(title, description);
-        
-        // Check temporal collisions
-        const temporalConflicts = await this.findTemporalConflicts(proposedDate);
-        
-        // Calculate audience fatigue
-        const fatigueRisk = await this.calculateFatigueRisk(contentType, proposedDate);
-        
-        return {
-            hasConflicts: semanticConflicts.length > 0 || temporalConflicts.length > 0 || fatigueRisk > 0.7,
-            semanticConflicts,
-            temporalConflicts,
-            fatigueRisk,
-            recommendations: this.generateRecommendations(semanticConflicts, temporalConflicts, fatigueRisk)
-        };
-    }
-    
-    async findSemanticConflicts(title, description) {
-        // Simulate AI semantic analysis
-        const existingContent = [
-            { title: "AI Commerce Features", team: "Product", date: "2025-01-21", similarity: 0.85 },
-            { title: "How AI Transforms Business", team: "Risk Takers", date: "2025-01-20", similarity: 0.78 }
-        ];
-        
-        return existingContent.filter(content => content.similarity > this.semanticThreshold);
-    }
-    
-    generateRecommendations(semantic, temporal, fatigue) {
-        if (semantic.length > 0) {
-            return [
-                "Combine efforts for mega-piece",
-                "Shift to Thursday (3-day gap)",
-                "Adjust angle to differentiate"
-            ];
-        }
-        return ["Content approved for publishing"];
-    }
-}
+            <div class="terminal-output">
+🚨 COLLISION DETECTION ALERT - Wednesday Jan 22, 2025
 
-// Demo usage
-const detector = new CollisionDetector();
-const result = await detector.checkCollision({
-    team: "Product Marketing",
-    title: "AI Commerce Features",
-    description: "Deep dive into AI tools for merchants",
-    proposedDate: "2025-01-22",
-    contentType: "case_study"
-});
+TEAM SUBMISSIONS:
+1. Risk Takers: "How AI Transforms Small Business" 
+2. Product Team: "New AI Features in Shopify"
+3. Learn Team: "AI Tools Tutorial for Beginners"
 
-console.log("Collision Check Result:", result);
+AI ANALYSIS:
+┌────────────────────────────────────────────┐
+│ 🚨 TRIPLE COLLISION DETECTED               │
+│                                             │
+│ Semantic Overlap: 78% (too similar)        │
+│ Audience Fatigue: HIGH (3 AI videos)       │
+│ Channel Confusion: Main vs Learn unclear   │
+└────────────────────────────────────────────┘
+
+INTELLIGENT RESOLUTION:
+┌────────────────────────────────────────────┐
+│ ✅ AI RECOMMENDATION                        │
+│                                             │
+│ Option 1: COMBINE                          │
+│ Create mega-piece "Complete AI Guide"      │
+│ All teams collaborate                      │
+│ Result: 100K+ views (vs 3x 20K)           │
+│                                             │
+│ Option 2: SEQUENCE                         │
+│ Mon: Learn (tutorial) → foundation         │
+│ Wed: Product (features) → application      │
+│ Fri: Risk Takers (stories) → inspiration  │
+│ Result: Series momentum, 150K total        │
+│                                             │
+│ Option 3: DIFFERENTIATE                    │
+│ Risk Takers → Enterprise AI                │
+│ Product → Technical implementation         │
+│ Learn → Beginner basics                    │
+│ Result: Clear positioning, no overlap      │
+└────────────────────────────────────────────┘
+
+AUTOMATED SLACK MESSAGE:
+"@risk_takers @product @learn - AI has detected collision 
+and prepared 3 solutions. Please review and vote by 2pm."
+            </div>
+            <div class="success-box">
+              <h4>Result: Collision Prevented</h4>
+              <p>✅ 3 teams coordinated | ✅ 150K total views vs 60K | ✅ No audience fatigue</p>
             </div>
           </div>
 
@@ -496,96 +481,60 @@ Recommendation:
           </div>
 
           <div class="component-section">
-            <h3>Live Performance Prediction Engine</h3>
-            <div class="code-block">
-// AI-powered performance prediction system
-class PerformancePredictor {
-    constructor() {
-        this.historicalData = this.loadHistoricalData();
-        this.algorithmModel = new YouTubeAlgorithmSimulator();
-        this.thumbnailAnalyzer = new ThumbnailAnalyzer();
-        this.titleOptimizer = new TitleOptimizer();
-    }
-    
-    async predictPerformance(contentPackage) {
-        const { title, description, contentType, proposedDate, thumbnail } = contentPackage;
-        
-        // Find similar historical videos
-        const similarVideos = await this.findSimilarPerformers(title, description);
-        const baselineViews = this.calculateBaseline(similarVideos);
-        
-        // Score components
-        const titleScore = await this.scoreTitle(title);
-        const thumbnailScore = await this.scoreThumbnail(thumbnail);
-        const timingScore = this.scoreTiming(proposedDate);
-        const seriesBonus = this.calculateSeriesBonus(contentPackage);
-        
-        // Calculate predicted views
-        const predictedViews = Math.round(
-            baselineViews * titleScore * thumbnailScore * timingScore * seriesBonus
-        );
-        
-        const confidence = this.calculateConfidence(similarVideos.length);
-        
-        return {
-            predictedViews,
-            confidence,
-            baselineViews,
-            factors: {
-                titleScore,
-                thumbnailScore,
-                timingScore,
-                seriesBonus
-            },
-            suggestions: this.generateOptimizationSuggestions(title, thumbnail, proposedDate)
-        };
-    }
-    
-    async scoreTitle(title) {
-        const factors = {
-            keywords: this.checkKeywords(title),
-            emotion: this.detectEmotion(title),
-            length: this.optimizeLength(title),
-            clickability: this.assessClickability(title)
-        };
-        
-        return Object.values(factors).reduce((a, b) => a * b, 1);
-    }
-    
-    checkKeywords(title) {
-        const powerWords = ['how', 'why', 'best', 'guide', 'shopify', 'commerce'];
-        const matches = powerWords.filter(word => 
-            title.toLowerCase().includes(word)
-        ).length;
-        return 1 + (matches * 0.1);
-    }
-    
-    generateOptimizationSuggestions(title, thumbnail, date) {
-        const suggestions = [];
-        
-        if (title.length < 40) {
-            suggestions.push("Add more descriptive keywords to title");
-        }
-        
-        if (date.getDay() === 0 || date.getDay() === 6) {
-            suggestions.push("Consider Tuesday-Thursday for better performance");
-        }
-        
-        return suggestions;
-    }
-}
+            <h3>Live Performance Prediction Demo</h3>
+            <div class="terminal-output">
+📊 PERFORMANCE PREDICTION ANALYSIS
 
-// Demo usage
-const predictor = new PerformancePredictor();
-const prediction = await predictor.predictPerformance({
-    title: "How Kendo Brands Scaled to $1B with Shopify Plus",
-    description: "Learn how Kendo Brands uses Shopify Plus to manage multiple beauty brands",
-    contentType: "case_study",
-    proposedDate: new Date("2025-01-22"),
-    thumbnail: "kendo-thumbnail.jpg"
-});
+VIDEO: "How Kendo Brands Scaled to $1B with Shopify Plus"
+TEAM: Risk Takers | TYPE: Case Study | DATE: Jan 22, 2025
 
-console.log("Performance Prediction:", prediction);
+HISTORICAL ANALYSIS:
+┌────────────────────────────────────────────┐
+│ Similar Videos Found: 8                    │
+│ Average Views: 45,000                      │
+│ Best Performer: "Mejuri Story" (65K)      │
+│ Worst Performer: "Skullcandy" (725)       │
+└────────────────────────────────────────────┘
+
+AI SCORING BREAKDOWN:
+┌────────────────────────────────────────────┐
+│ Title Quality: 8.5/10                      │
+│ ├─ Keywords: "How", "Shopify", "Billion"   │
+│ ├─ Length: 47 chars (optimal)              │
+│ └─ Emotion: High (success story)           │
+│                                             │
+│ Thumbnail Score: 7.2/10                    │
+│ ├─ CTR Prediction: 6.8%                    │
+│ ├─ Visual Appeal: Strong                   │
+│ └─ Text Overlay: Present                    │
+│                                             │
+│ Timing Score: 8.0/10                       │
+│ ├─ Day: Tuesday (optimal)                  │
+│ ├─ Time: 10am EST (peak)                   │
+│ └─ Season: Q1 (planning focus)             │
+│                                             │
+│ Series Bonus: 1.3x                        │
+│ ├─ Risk Takers momentum: +45%             │
+│ └─ Previous episode: 65K views             │
+└────────────────────────────────────────────┘
+
+FINAL PREDICTION:
+┌────────────────────────────────────────────┐
+│ Expected Views: 71,000                     │
+│ Confidence: 87%                           │
+│ Range: 55K - 95K                          │
+│ Status: ✅ APPROVED FOR PUBLISHING        │
+└────────────────────────────────────────────┘
+
+OPTIMIZATION SUGGESTIONS:
+• Add "Case Study" to title for SEO boost
+• Consider A/B testing thumbnail with text overlay
+• Schedule cross-promo from Learn channel
+• Prepare 3 shorts for extraction
+            </div>
+            <div class="success-box">
+              <h4>Prediction Result: HIGH PERFORMANCE</h4>
+              <p>✅ 71K views predicted | ✅ 87% confidence | ✅ Ready to publish</p>
             </div>
           </div>
 
@@ -1036,151 +985,90 @@ With improvements: 35,000 views
           </div>
 
           <div class="component-section">
-            <h3>Live AI Agent Persona Simulator</h3>
-            <div class="code-block">
-// AI Agent Persona Simulator - Predictive Content Generation
-class PersonaAgentSimulator {
-    constructor() {
-        this.personas = this.buildPersonas();
-        this.predictiveModel = new PredictiveModel();
-        this.orchestrator = new ContentOrchestrator();
-    }
-    
-    buildPersonas() {
-        return [
-            {
-                name: "New Entrepreneur",
-                traits: "Beginner, budget-conscious, seeks basics",
-                interests: ["startup", "funding", "basics", "getting started"],
-                painPoints: ["limited budget", "uncertainty", "overwhelm"]
-            },
-            {
-                name: "Scaling Merchant", 
-                traits: "Mid-level, focuses on growth hacks, SEO",
-                interests: ["growth", "SEO", "optimization", "scaling"],
-                painPoints: ["plateau", "competition", "complexity"]
-            },
-            {
-                name: "Tech-Savvy Creator",
-                traits: "Advanced, AI-forward, monetization focus",
-                interests: ["AI", "automation", "monetization", "advanced"],
-                painPoints: ["time management", "advanced needs", "ROI"]
-            }
-        ];
-    }
-    
-    async simulateJourney(persona, startingContent) {
-        const journey = [];
-        let currentContent = startingContent;
-        
-        // Simulate 5-step journey for each persona
-        for (let step = 0; step < 5; step++) {
-            const nextNeed = await this.predictNextNeed(persona, currentContent);
-            const predictedContent = this.generateContentIdea(nextNeed, persona);
-            
-            journey.push({
-                step: step + 1,
-                need: nextNeed,
-                contentIdea: predictedContent,
-                estimatedViews: this.predictViews(predictedContent, persona)
-            });
-            
-            currentContent = nextNeed;
-        }
-        
-        return journey;
-    }
-    
-    async predictNextNeed(persona, currentContent) {
-        // Simulate AI reasoning based on persona traits
-        const needs = {
-            "New Entrepreneur": [
-                "How to get funding for my startup",
-                "What are the legal requirements",
-                "How to build my first product",
-                "How to find customers",
-                "How to scale operations"
-            ],
-            "Scaling Merchant": [
-                "Advanced SEO strategies",
-                "AI tools for optimization", 
-                "International expansion",
-                "Team building and management",
-                "Exit strategy planning"
-            ],
-            "Tech-Savvy Creator": [
-                "AI automation workflows",
-                "Advanced monetization strategies",
-                "Technical integrations",
-                "Performance optimization",
-                "Future technology trends"
-            ]
-        };
-        
-        const personaNeeds = needs[persona.name] || [];
-        const randomIndex = Math.floor(Math.random() * personaNeeds.length);
-        return personaNeeds[randomIndex];
-    }
-    
-    generateContentIdea(need, persona) {
-        const contentTypes = {
-            "New Entrepreneur": ["tutorial", "case study", "guide", "interview"],
-            "Scaling Merchant": ["advanced tutorial", "strategy deep-dive", "tool review"],
-            "Tech-Savvy Creator": ["technical walkthrough", "AI integration", "automation guide"]
-        };
-        
-        const types = contentTypes[persona.name] || ["tutorial"];
-        const type = types[Math.floor(Math.random() * types.length)];
-        
-        return {
-            title: `${need} - ${type}`,
-            type: type,
-            targetAudience: persona.name,
-            estimatedViews: this.predictViews(need, persona)
-        };
-    }
-    
-    predictViews(contentIdea, persona) {
-        const baseViews = {
-            "New Entrepreneur": 15000,
-            "Scaling Merchant": 25000, 
-            "Tech-Savvy Creator": 35000
-        };
-        
-        const variance = Math.random() * 0.4 - 0.2; // ±20% variance
-        return Math.round(baseViews[persona.name] * (1 + variance));
-    }
-    
-    async generateContentRecommendations(videoId) {
-        const startingContent = await this.getVideoDetails(videoId);
-        const allRecommendations = [];
-        
-        for (const persona of this.personas) {
-            const journey = await this.simulateJourney(persona, startingContent.title);
-            allRecommendations.push(...journey);
-        }
-        
-        // Remove duplicates and sort by estimated views
-        const uniqueRecs = this.deduplicateRecommendations(allRecommendations);
-        return uniqueRecs.sort((a, b) => b.estimatedViews - a.estimatedViews);
-    }
-    
-    deduplicateRecommendations(recommendations) {
-        const seen = new Set();
-        return recommendations.filter(rec => {
-            const key = rec.contentIdea.title;
-            if (seen.has(key)) return false;
-            seen.add(key);
-            return true;
-        });
-    }
-}
+            <h3>Live AI Agent Persona Simulator Demo</h3>
+            <div class="terminal-output">
+🤖 AI AGENT PERSONA SIMULATION
 
-// Demo usage
-const simulator = new PersonaAgentSimulator();
-const recommendations = await simulator.generateContentRecommendations("kendo-brands-video");
+STARTING VIDEO: "How Kendo Brands Scaled to $1B with Shopify Plus"
 
-console.log("AI-Generated Content Ideas:", recommendations);
+PERSONA 1: NEW ENTREPRENEUR
+┌────────────────────────────────────────────┐
+│ Journey Simulation:                        │
+│                                             │
+│ Step 1: After "Kendo Brands" →             │
+│ "How to get funding for my startup"        │
+│ Content: "Startup Funding Guide"          │
+│ Est. Views: 18,000                         │
+│                                             │
+│ Step 2: After "Funding" →                 │
+│ "What are the legal requirements"          │
+│ Content: "Legal Basics for Startups"       │
+│ Est. Views: 15,000                         │
+│                                             │
+│ Step 3: After "Legal" →                    │
+│ "How to build my first product"            │
+│ Content: "Product Development Tutorial"    │
+│ Est. Views: 22,000                         │
+└────────────────────────────────────────────┘
+
+PERSONA 2: SCALING MERCHANT
+┌────────────────────────────────────────────┐
+│ Journey Simulation:                        │
+│                                             │
+│ Step 1: After "Kendo Brands" →             │
+│ "Advanced SEO strategies"                  │
+│ Content: "SEO Masterclass"                 │
+│ Est. Views: 28,000                         │
+│                                             │
+│ Step 2: After "SEO" →                       │
+│ "AI tools for optimization"                │
+│ Content: "AI Marketing Tools Review"       │
+│ Est. Views: 31,000                         │
+│                                             │
+│ Step 3: After "AI Tools" →                  │
+│ "International expansion"                   │
+│ Content: "Global Expansion Guide"          │
+│ Est. Views: 26,000                         │
+└────────────────────────────────────────────┘
+
+PERSONA 3: TECH-SAVVY CREATOR
+┌────────────────────────────────────────────┐
+│ Journey Simulation:                        │
+│                                             │
+│ Step 1: After "Kendo Brands" →             │
+│ "AI automation workflows"                  │
+│ Content: "AI Workflow Automation"          │
+│ Est. Views: 38,000                         │
+│                                             │
+│ Step 2: After "AI Workflows" →              │
+│ "Advanced monetization strategies"         │
+│ Content: "Revenue Optimization"            │
+│ Est. Views: 42,000                         │
+│                                             │
+│ Step 3: After "Monetization" →              │
+│ "Technical integrations"                    │
+│ Content: "API Integration Guide"           │
+│ Est. Views: 35,000                         │
+└────────────────────────────────────────────┘
+
+AI-GENERATED CONTENT PIPELINE:
+┌────────────────────────────────────────────┐
+│ 9 NEW CONTENT IDEAS GENERATED              │
+│ Total Est. Views: 255,000                  │
+│ Average Views: 28,333                      │
+│ Priority: HIGH (all >20K views)            │
+│                                             │
+│ TOP RECOMMENDATIONS:                       │
+│ 1. "AI Marketing Tools Review" (31K)       │
+│ 2. "Revenue Optimization" (42K)            │
+│ 3. "AI Workflow Automation" (38K)          │
+│ 4. "Product Development Tutorial" (22K)   │
+│ 5. "Global Expansion Guide" (26K)          │
+└────────────────────────────────────────────┘
+            </div>
+            <div class="success-box">
+              <h4>AI Agent Result: 9 Content Ideas Generated</h4>
+              <p>✅ 255K total estimated views | ✅ 3 personas simulated | ✅ Ready for production</p>
             </div>
           </div>
 
@@ -1224,147 +1112,94 @@ Recommendation: Generate series branch—schedule for next week?
           </div>
 
           <div class="component-section">
-            <h3>Live SEO Optimizer Implementation</h3>
-            <div class="code-block">
-// AI-powered SEO optimization system
-class SEOOptimizer {
-    constructor() {
-        this.aiEngines = ["ChatGPT", "Grok", "Claude", "Google"];
-        this.scanner = new SiteScanner();
-        this.orchestrator = new ContentOrchestrator();
-    }
-    
-    async optimizeSite(siteUrl) {
-        // Scan site for keywords and content gaps
-        const scanResults = await this.scanner.analyze(siteUrl);
-        
-        // Check rankings across AI engines
-        const rankings = await this.checkRankings(scanResults.keywords);
-        
-        // Generate content recommendations
-        const recommendations = this.generateRecommendations(rankings, scanResults);
-        
-        return {
-            siteUrl,
-            keywords: scanResults.keywords,
-            rankings,
-            recommendations,
-            priority: this.calculatePriority(rankings)
-        };
-    }
-    
-    async checkRankings(keywords) {
-        const rankings = {};
-        
-        for (const engine of this.aiEngines) {
-            rankings[engine] = await this.queryEngine(engine, keywords);
-        }
-        
-        return rankings;
-    }
-    
-    async queryEngine(engine, keywords) {
-        // Simulate AI engine queries
-        const mockRankings = {
-            "ChatGPT": this.simulateRanking(keywords, 0.7),
-            "Grok": this.simulateRanking(keywords, 0.6),
-            "Claude": this.simulateRanking(keywords, 0.8),
-            "Google": this.simulateRanking(keywords, 0.5)
-        };
-        
-        return mockRankings[engine];
-    }
-    
-    simulateRanking(keywords, baseScore) {
-        return keywords.map(keyword => ({
-            keyword,
-            position: Math.floor(Math.random() * 20) + 1,
-            score: baseScore + (Math.random() * 0.3 - 0.15),
-            difficulty: Math.random()
-        }));
-    }
-    
-    generateRecommendations(rankings, scanResults) {
-        const recommendations = [];
-        
-        // Find low-ranking keywords
-        const lowRankingKeywords = this.findLowRankingKeywords(rankings);
-        
-        // Generate content ideas for each keyword
-        for (const keyword of lowRankingKeywords) {
-            const contentIdea = this.generateContentIdea(keyword);
-            recommendations.push({
-                keyword,
-                contentIdea,
-                estimatedImpact: this.calculateImpact(keyword),
-                priority: this.calculateKeywordPriority(keyword)
-            });
-        }
-        
-        return recommendations.sort((a, b) => b.priority - a.priority);
-    }
-    
-    findLowRankingKeywords(rankings) {
-        const lowRanking = [];
-        
-        for (const engine in rankings) {
-            for (const result of rankings[engine]) {
-                if (result.position > 10 && result.score < 0.6) {
-                    lowRanking.push(result.keyword);
-                }
-            }
-        }
-        
-        return [...new Set(lowRanking)]; // Remove duplicates
-    }
-    
-    generateContentIdea(keyword) {
-        const contentTypes = [
-            `"How to ${keyword}" - Complete Guide`,
-            `"${keyword} Best Practices" - Tutorial`,
-            `"${keyword} Case Study" - Real Examples`,
-            `"Advanced ${keyword}" - Pro Tips`
-        ];
-        
-        const randomType = contentTypes[Math.floor(Math.random() * contentTypes.length)];
-        
-        return {
-            title: randomType,
-            type: "video",
-            description: `Educational content targeting "${keyword}" keyword`,
-            estimatedViews: this.estimateViews(keyword),
-            targetAudience: this.identifyAudience(keyword)
-        };
-    }
-    
-    calculateImpact(keyword) {
-        const searchVolume = this.estimateSearchVolume(keyword);
-        const competition = this.estimateCompetition(keyword);
-        return Math.round(searchVolume * (1 - competition) * 100);
-    }
-    
-    async feedToContent(recommendations) {
-        for (const rec of recommendations) {
-            await this.orchestrator.receiveContentRequest({
-                team: "SEO Team",
-                contentType: "video",
-                title: rec.contentIdea.title,
-                description: rec.contentIdea.description,
-                priority: rec.priority,
-                keyword: rec.keyword
-            });
-        }
-    }
-}
+            <h3>Live SEO Optimizer Demo</h3>
+            <div class="terminal-output">
+🔍 SEO OPTIMIZATION ANALYSIS
 
-// Demo usage
-const seoOptimizer = new SEOOptimizer();
-const optimization = await seoOptimizer.optimizeSite("shopify.com");
+SITE: shopify.com
+SCAN DATE: Jan 22, 2025
 
-console.log("SEO Optimization Results:", optimization);
+KEYWORD RANKINGS ACROSS AI ENGINES:
+┌────────────────────────────────────────────┐
+│ ChatGPT Rankings:                          │
+│ ├─ "shopify startup" - Position 3 (Good)   │
+│ ├─ "ecommerce platform" - Position 8 (OK) │
+│ ├─ "online store builder" - Position 15     │
+│ └─ "dropshipping platform" - Position 22   │
+│                                             │
+│ Grok Rankings:                              │
+│ ├─ "shopify startup" - Position 5 (Good)   │
+│ ├─ "ecommerce platform" - Position 12      │
+│ ├─ "online store builder" - Position 18     │
+│ └─ "dropshipping platform" - Position 25   │
+│                                             │
+│ Claude Rankings:                            │
+│ ├─ "shopify startup" - Position 2 (Great)  │
+│ ├─ "ecommerce platform" - Position 6 (OK)  │
+│ ├─ "online store builder" - Position 14    │
+│ └─ "dropshipping platform" - Position 20   │
+│                                             │
+│ Google Rankings:                            │
+│ ├─ "shopify startup" - Position 4 (Good)   │
+│ ├─ "ecommerce platform" - Position 9 (OK)  │
+│ ├─ "online store builder" - Position 16    │
+│ └─ "dropshipping platform" - Position 23   │
+└────────────────────────────────────────────┘
 
-// Feed recommendations to content pipeline
-await seoOptimizer.feedToContent(optimization.recommendations);
+CONTENT GAPS IDENTIFIED:
+┌────────────────────────────────────────────┐
+│ LOW RANKING KEYWORDS:                      │
+│                                             │
+│ 1. "dropshipping platform" (Position 20+)  │
+│    Impact Score: 8.5/10                    │
+│    Search Volume: 45,000/month             │
+│    Competition: Medium                      │
+│                                             │
+│ 2. "online store builder" (Position 15+)   │
+│    Impact Score: 7.2/10                    │
+│    Search Volume: 38,000/month             │
+│    Competition: High                       │
+│                                             │
+│ 3. "ecommerce seo" (Position 18+)         │
+│    Impact Score: 6.8/10                    │
+│    Search Volume: 22,000/month             │
+│    Competition: Medium                      │
+└────────────────────────────────────────────┘
+
+AI-GENERATED CONTENT RECOMMENDATIONS:
+┌────────────────────────────────────────────┐
+│ PRIORITY 1: "Dropshipping Platform Guide" │
+│ Est. Views: 35,000                         │
+│ Target: "How to Start Dropshipping"        │
+│ Type: Complete Tutorial                    │
+│                                             │
+│ PRIORITY 2: "Store Builder Comparison"    │
+│ Est. Views: 28,000                         │
+│ Target: "Best Online Store Builders"       │
+│ Type: Tool Review                           │
+│                                             │
+│ PRIORITY 3: "Ecommerce SEO Masterclass"    │
+│ Est. Views: 25,000                         │
+│ Target: "Ecommerce SEO Best Practices"     │
+│ Type: Advanced Tutorial                    │
+└────────────────────────────────────────────┘
+
+AUTOMATED CONTENT PIPELINE:
+┌────────────────────────────────────────────┐
+│ 3 VIDEOS SCHEDULED FOR PRODUCTION          │
+│ Total Est. Views: 88,000                   │
+│ SEO Impact: +15% ranking improvement       │
+│ Timeline: 2 weeks                          │
+│                                             │
+│ FEED TO ORCHESTRATOR:                      │
+│ ✅ "Dropshipping Platform Guide"           │
+│ ✅ "Store Builder Comparison"             │
+│ ✅ "Ecommerce SEO Masterclass"             │
+└────────────────────────────────────────────┘
+            </div>
+            <div class="success-box">
+              <h4>SEO Optimization Result: 3 Content Ideas Generated</h4>
+              <p>✅ 88K total estimated views | ✅ 15% ranking improvement | ✅ Auto-scheduled</p>
             </div>
           </div>
         </div>
