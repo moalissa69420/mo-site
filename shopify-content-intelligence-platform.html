@@ -49,64 +49,32 @@
     .after { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
     .pill { display:inline-block; padding:0.15rem 0.35rem; border:1px solid #000; margin-right:0.35rem; font-size:0.8rem; color:#000; }
     
-    /* Animation styles */
-    .demo-animated { animation: fadeInUp 0.8s ease-out; }
-    .demo-pulse { animation: pulse 2s infinite; }
-    .demo-slide { animation: slideIn 1s ease-out; }
-    .demo-typing { animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite; }
-    .demo-counter { animation: countUp 2s ease-out; }
+    /* Simple animation styles - no weird transitions */
+    .demo-animated { animation: fadeInUp 0.3s ease-out; }
+    .demo-pulse { animation: pulse 1s infinite; }
+    .demo-counter { animation: countUp 0.5s ease-out; }
     
     @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
     
     @keyframes pulse {
         0%, 100% { opacity: 1; }
-        50% { opacity: 0.7; }
-    }
-    
-    @keyframes slideIn {
-        from { transform: translateX(-100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
-    }
-    
-    @keyframes blink-caret {
-        from, to { border-color: transparent; }
-        50% { border-color: #000; }
+        50% { opacity: 0.8; }
     }
     
     @keyframes countUp {
-        from { transform: scale(0.8); opacity: 0; }
-        to { transform: scale(1); opacity: 1; }
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
     
-    .live-demo { position: relative; overflow: hidden; }
-    .live-demo::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent); animation: scan 3s infinite; }
-    
-    @keyframes scan {
-        0% { left: -100%; }
-        100% { left: 100%; }
-    }
-    
-    .status-indicator { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #000; animation: pulse 1.5s infinite; }
+    .status-indicator { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #000; }
     .status-indicator.active { background: #000; }
     .status-indicator.processing { background: #666; }
-    .status-indicator.complete { background: #000; animation: none; }
+    .status-indicator.complete { background: #000; }
     
     /* Interactive demo styles */
-    @keyframes dash {
-        to { stroke-dashoffset: -10; }
-    }
-    
-    .flow-arrow { stroke-dasharray: 5,5; animation: dash 1s linear infinite; }
-    .team-box { cursor: pointer; transition: fill 0.3s; }
-    .team-box:hover { fill: #f0f0f0; }
     .interactive-demo { margin: 1rem 0; }
     .flow-visualization, .persona-visualization, .seo-visualization { background: #fff; }
     @media (max-width: 700px) { 
@@ -910,12 +878,12 @@ AI INTERVENTION:
                     <text x="450" y="445" text-anchor="middle" font-size="10">(4 markets × 6 formats + 6 originals)</text>
                   </g>
                   
-                  <!-- Animated arrows -->
+                  <!-- Static arrows -->
                   <g id="flow-paths">
-                    <path d="M 150 250 L 250 250" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" class="flow-arrow" style="stroke-dasharray: 5,5; animation: dash 1s linear infinite;"/>
-                    <path d="M 400 250 L 480 90" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" class="flow-arrow" style="stroke-dasharray: 5,5; animation: dash 1s linear infinite;"/>
-                    <path d="M 400 250 L 480 190" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" class="flow-arrow" style="stroke-dasharray: 5,5; animation: dash 1s linear infinite;"/>
-                    <path d="M 400 250 L 680 140" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" class="flow-arrow" style="stroke-dasharray: 5,5; animation: dash 1s linear infinite;"/>
+                    <path d="M 150 250 L 250 250" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <path d="M 400 250 L 480 90" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <path d="M 400 250 L 480 190" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <path d="M 400 250 L 680 140" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
                   </g>
                   
                   <defs>
@@ -1017,7 +985,7 @@ AI INTERVENTION:
                   </g>
                   
                   <!-- Flow arrow -->
-                  <path d="M 350 200 L 430 110" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" class="flow-arrow" style="stroke-dasharray: 5,5; animation: dash 1s linear infinite;"/>
+                  <path d="M 350 200 L 430 110" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
                 </svg>
               </div>
               
@@ -2441,27 +2409,23 @@ PATTERN: I build systems that multiply human talent
       animations.forEach((anim, i) => {
         setTimeout(() => {
           anim.style.opacity = '1';
-          anim.style.transition = 'opacity 0.5s';
-        }, i * 300);
+        }, i * 200);
       });
       
       // Show collision
       setTimeout(() => {
         collisionAlert.style.opacity = '1';
-        collisionAlert.style.transition = 'opacity 0.5s';
-      }, 1000);
+      }, 800);
       
       // Show editions burst
       setTimeout(() => {
         burstAnimation.style.opacity = '1';
-        burstAnimation.style.transition = 'opacity 0.5s';
-      }, 1800);
+      }, 1400);
       
       // Show learn team steady
       setTimeout(() => {
         steadyAnimation.style.opacity = '1';
-        steadyAnimation.style.transition = 'opacity 0.5s';
-      }, 2400);
+      }, 1800);
     }
     
     function resetChaosAnimation() {
@@ -2476,18 +2440,15 @@ PATTERN: I build systems that multiply human talent
       
       setTimeout(() => {
         missingEp.style.opacity = '1';
-        missingEp.style.transition = 'opacity 0.5s';
-      }, 500);
+      }, 300);
       
       setTimeout(() => {
         momentumGauge.style.opacity = '1';
-        momentumGauge.style.transition = 'opacity 0.5s';
         
         // Animate needle
         const needle = document.getElementById('momentum-needle');
-        needle.style.transition = 'transform 1s';
         needle.style.transform = 'rotate(-90deg)';
-      }, 1200);
+      }, 800);
     }
     
     function resetSeriesTracker() {
@@ -2504,23 +2465,19 @@ PATTERN: I build systems that multiply human talent
       
       setTimeout(() => {
         aiAnalysis.style.opacity = '1';
-        aiAnalysis.style.transition = 'opacity 0.5s';
-      }, 300);
+      }, 200);
       
       setTimeout(() => {
         localizedVersions.style.opacity = '1';
-        localizedVersions.style.transition = 'opacity 0.5s';
-      }, 1000);
+      }, 600);
       
       setTimeout(() => {
         shortsVersions.style.opacity = '1';
-        shortsVersions.style.transition = 'opacity 0.5s';
-      }, 1800);
+      }, 1000);
       
       setTimeout(() => {
         resultSummary.style.opacity = '1';
-        resultSummary.style.transition = 'opacity 0.5s';
-      }, 2400);
+      }, 1200);
     }
     
     function resetLocalizationDemo() {
@@ -2536,18 +2493,15 @@ PATTERN: I build systems that multiply human talent
       
       setTimeout(() => {
         timeline.style.opacity = '1';
-        timeline.style.transition = 'opacity 0.5s';
-      }, 300);
+      }, 200);
       
       setTimeout(() => {
         shortsOutput.style.opacity = '1';
-        shortsOutput.style.transition = 'opacity 0.5s';
-      }, 1000);
+      }, 600);
       
       setTimeout(() => {
         distribution.style.opacity = '1';
-        distribution.style.transition = 'opacity 0.5s';
-      }, 1800);
+      }, 1000);
     }
     
     function resetShortsDemo() {
@@ -2583,14 +2537,12 @@ PATTERN: I build systems that multiply human talent
       transforms.forEach((transform, i) => {
         setTimeout(() => {
           transform.style.opacity = '1';
-          transform.style.transition = 'opacity 0.5s';
-        }, i * 400);
+        }, i * 200);
       });
       
       setTimeout(() => {
         impactSummary.style.opacity = '1';
-        impactSummary.style.transition = 'opacity 0.5s';
-      }, transforms.length * 400 + 500);
+      }, transforms.length * 200 + 300);
     }
     
     function resetTransformationDemo() {
