@@ -259,7 +259,6 @@
             </div>
             
             <div class="control-panel" style="margin-top:1rem; text-align:center;">
-              <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
               <button onclick="startChaosAnimation()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Upload Chaos</button>
               <button onclick="resetChaosAnimation()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
             </div>
@@ -272,41 +271,45 @@
         <div class="cs-content">
           <h1>System Architecture</h1>
           <div class="mermaid">
-            graph LR
-                subgraph "INPUT LAYER"
-                    A1[Slack Commands]
-                    A2[Calendar Events]
-                    A3[Brief Submissions]
-                    A4[Team Requests]
-                    A5[Viewer Analytics Data]
-                    A6[Merchant Site Scans]
+            graph TB
+                subgraph INPUT["INPUT LAYER"]
+                    A1["Slack Commands"]
+                    A2["Calendar Events"]
+                    A3["Brief Submissions"]
+                    A4["Team Requests"]
+                    A5["Viewer Analytics"]
+                    A6["Merchant Scans"]
                 end
                 
-                subgraph "INTELLIGENCE CORE"
-                    B1[Content Orchestrator AI]
-                    B2[Collision Detection]
-                    B3[Performance Predictor]
-                    B4[Global Coordinator]
-                    B5[AI Agent Persona Simulator]
-                    B6[Predictive Journey Modeler]
-                    B7[SEO Optimizer]
+                subgraph CORE["INTELLIGENCE CORE"]
+                    B1["Content Orchestrator AI"]
+                    B2["Collision Detection"]
+                    B3["Performance Predictor"]
+                    B4["Global Coordinator"]
+                    B5["AI Agent Simulator"]
+                    B6["Journey Modeler"]
+                    B7["SEO Optimizer"]
                 end
                 
-                subgraph "EXECUTION LAYER"
-                    C1[Production Pipeline]
-                    C2[Publishing Engine]
-                    C3[Distribution Network]
-                    C4[Analytics Loop]
-                    C5[Content Generator]
+                subgraph EXEC["EXECUTION LAYER"]
+                    C1["Production Pipeline"]
+                    C2["Publishing Engine"]
+                    C3["Distribution Network"]
+                    C4["Analytics Loop"]
+                    C5["Content Generator"]
                 end
                 
-                subgraph "OUTPUT CHANNELS"
-                    D1[YouTube Main]
-                    D2[YouTube Learn]
-                    D3[Shorts/Clips]
-                    D4[International]
-                    D5[Merchant SEO Content]
+                subgraph OUTPUT["OUTPUT CHANNELS"]
+                    D1["YouTube Main"]
+                    D2["YouTube Learn"]
+                    D3["Shorts/Clips"]
+                    D4["International"]
+                    D5["Merchant SEO"]
                 end
+                
+                INPUT --> CORE
+                CORE --> EXEC
+                EXEC --> OUTPUT
                 
                 A1 --> B1
                 A2 --> B1
@@ -315,22 +318,25 @@
                 A5 --> B5
                 A6 --> B7
                 
-                B1 --> B2
-                B1 --> B3
-                B1 --> B4
-                B5 --> B6
-                B6 --> B1
-                B7 --> B1
-                
+                B1 --> C1
                 B2 --> C1
-                B3 --> C2
-                B4 --> C3
-                B6 --> C5
-                C1 --> D1
+                B3 --> C1
+                B4 --> C1
+                B5 --> C1
+                B6 --> C1
+                B7 --> C1
+                
+                C1 --> C2
+                C2 --> C3
+                C3 --> C4
+                C4 --> C5
+                C5 --> C1
+                
+                C2 --> D1
                 C2 --> D2
-                C3 --> D3
-                C4 --> B1
-                C5 --> D5
+                C2 --> D3
+                C2 --> D4
+                C2 --> D5
           </div>
           <div class="component-section">
             <h2>Technical Stack</h2>
@@ -720,7 +726,6 @@ OPTIMIZATION SUGGESTIONS:
               </div>
               
               <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
                 <button onclick="startSeriesTracker()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Series Tracking</button>
                 <button onclick="resetSeriesTracker()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
               </div>
@@ -897,7 +902,6 @@ AI INTERVENTION:
               </div>
               
               <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
                 <button onclick="startLocalizationDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Localization</button>
                 <button onclick="resetLocalizationDemo()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
               </div>
@@ -993,7 +997,6 @@ AI INTERVENTION:
               </div>
               
               <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
                 <button onclick="startShortsDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Shorts Extraction</button>
                 <button onclick="resetShortsDemo()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
               </div>
@@ -1220,7 +1223,6 @@ AI Tutorial: 18,322 views (on track)
                 </div>
                 
                 <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                  <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
                   <button onclick="startQualityCheck()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Quality Check</button>
                   <button onclick="resetQualityCheck()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
                 </div>
@@ -2182,7 +2184,6 @@ PATTERN: I build systems that multiply human talent
               </div>
               
               <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                <div style="font-size:0.9rem; color:#666; margin-bottom:0.5rem;">✨ Auto-plays when scrolled into view</div>
                 <button onclick="startTransformationDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Replay Transformation</button>
                 <button onclick="resetTransformationDemo()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
               </div>
