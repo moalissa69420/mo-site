@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopify Content Intelligence Platform (SCIP) — AI-First Orchestration System</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <style>
         .cs-page { margin-bottom: 3rem; }
         .cs-num { font-size: 1.2rem; font-weight: 600; margin-right: 1rem; }
@@ -234,6 +235,27 @@
                     <h3>Preventing Content Cannibalization</h3>
                     <p><strong>The Problem:</strong> Mejuri dropped 4 videos same day → audience fatigue → poor performance</p>
                     <p><strong>The Solution:</strong> AI-Powered Collision Detection</p>
+                    
+                    <h4>Collision Detection Flow:</h4>
+                    <div class="architecture-diagram">
+                        <div class="mermaid">
+                            flowchart TB
+                                A[New Content Request] --> B{Collision Check}
+                                B -->|Topic Overlap| C[Alert & Alternatives]
+                                B -->|Timing Conflict| D[Reschedule]
+                                B -->|Audience Fatigue| E[Space Out]
+                                B -->|Clear| F[Approve]
+                                
+                                C --> G[AI Suggests Different Angle]
+                                D --> H[Find Optimal Slot]
+                                E --> I[Minimum 3-Day Gap]
+                                
+                                G --> J[Production Green Light]
+                                H --> J
+                                I --> J
+                                F --> J
+                        </div>
+                    </div>
                     
                     <h4>Implementation:</h4>
                     <div class="code-block">
@@ -1297,5 +1319,9 @@ class ShopifyContentOrchestrator:
             </div>
         </section>
     </div>
+    
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
 </body>
 </html>
