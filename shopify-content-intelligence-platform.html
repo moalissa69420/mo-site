@@ -7,41 +7,292 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <style>
-        .cs-page { margin-bottom: 3rem; }
-        .cs-num { font-size: 1.2rem; font-weight: 600; margin-right: 1rem; }
-        .cs-content h1 { font-size: 1.8rem; margin-bottom: 1rem; }
-        .cs-content h2 { font-size: 1.4rem; margin: 2rem 0 1rem 0; color: #333; }
-        .cs-content h3 { font-size: 1.2rem; margin: 1.5rem 0 0.8rem 0; color: #555; }
-        .cs-content h4 { font-size: 1.1rem; margin: 1rem 0 0.5rem 0; color: #666; }
-        .cs-content p { margin-bottom: 1rem; line-height: 1.6; }
-        .cs-content ul, .cs-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
-        .cs-content li { margin-bottom: 0.5rem; }
-        .code-block { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 4px; padding: 1rem; margin: 1rem 0; font-family: 'Monaco', 'Menlo', monospace; font-size: 0.9rem; overflow-x: auto; }
-        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-        .metric-card { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 1rem; text-align: center; }
-        .metric-value { font-size: 1.5rem; font-weight: bold; color: #007bff; }
-        .metric-label { font-size: 0.9rem; color: #666; margin-top: 0.5rem; }
-        .architecture-diagram { margin: 1.5rem 0; }
-        .mermaid { background: white; border-radius: 8px; padding: 1rem; }
-        .problem-solution { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
-        .problem-box, .solution-box { padding: 1.5rem; border-radius: 8px; }
-        .problem-box { background: #fff5f5; border: 1px solid #fed7d7; }
-        .solution-box { background: #f0fff4; border: 1px solid #9ae6b4; }
-        .workflow-step { background: #f8f9fa; border-left: 4px solid #007bff; padding: 1rem; margin: 1rem 0; }
-        .alert-box { background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
-        .success-box { background: #d4edda; border: 1px solid #c3e6cb; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
-        .tech-stack { background: #e3f2fd; border: 1px solid #bbdefb; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
-        .implementation-roadmap { background: #f3e5f5; border: 1px solid #ce93d8; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
-        .roi-calculation { background: #e8f5e8; border: 1px solid #a5d6a7; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
-        .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
-        .before, .after { padding: 1.5rem; border-radius: 8px; }
-        .before { background: #ffebee; border: 1px solid #ffcdd2; }
-        .after { background: #e8f5e8; border: 1px solid #c8e6c9; }
-        .component-section { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
-        .demo-output { background: #1e1e1e; color: #00ff00; border-radius: 8px; padding: 1rem; font-family: 'Monaco', 'Menlo', monospace; margin: 1rem 0; }
-        .slack-message { background: #f0f0f0; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin: 1rem 0; font-family: 'Monaco', 'Menlo', monospace; }
-        .persona-simulator { background: #fff3e0; border: 1px solid #ffcc02; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
-        .seo-optimizer { background: #e3f2fd; border: 1px solid #2196f3; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .cs-page {
+            margin-bottom: 4rem;
+            border: 1px solid #333;
+            padding: 2rem;
+            background: #111;
+        }
+        
+        .cs-num {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin-right: 1rem;
+            display: inline-block;
+            width: 2rem;
+        }
+        
+        .cs-content h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .cs-content h2 {
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem 0;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cs-content h3 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.8rem 0;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cs-content h4 {
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem 0;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cs-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .cs-content ul, .cs-content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .cs-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-block {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 0;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            color: #00ff00;
+        }
+        
+        .terminal-output {
+            background: #000;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #00ff00;
+            white-space: pre-wrap;
+        }
+        
+        .ascii-art {
+            background: #000;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #fff;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        
+        .dashboard-box {
+            background: #000;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #fff;
+            white-space: pre-wrap;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .metric-card {
+            background: #111;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ff00;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .problem-box, .solution-box {
+            padding: 1.5rem;
+            border: 1px solid #333;
+        }
+        
+        .problem-box {
+            background: #111;
+            border-left: 4px solid #ff0000;
+        }
+        
+        .solution-box {
+            background: #111;
+            border-left: 4px solid #00ff00;
+        }
+        
+        .workflow-step {
+            background: #111;
+            border: 1px solid #333;
+            border-left: 4px solid #00ff00;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .alert-box {
+            background: #111;
+            border: 1px solid #ff0000;
+            border-left: 4px solid #ff0000;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .success-box {
+            background: #111;
+            border: 1px solid #00ff00;
+            border-left: 4px solid #00ff00;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-stack {
+            background: #111;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .implementation-roadmap {
+            background: #111;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .roi-calculation {
+            background: #111;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .before, .after {
+            padding: 1.5rem;
+            border: 1px solid #333;
+        }
+        
+        .before {
+            background: #111;
+            border-left: 4px solid #ff0000;
+        }
+        
+        .after {
+            background: #111;
+            border-left: 4px solid #00ff00;
+        }
+        
+        .component-section {
+            background: #111;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .slack-message {
+            background: #000;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #00ff00;
+        }
+        
+        .persona-simulator {
+            background: #111;
+            border: 1px solid #333;
+            border-left: 4px solid #00ff00;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .seo-optimizer {
+            background: #111;
+            border: 1px solid #333;
+            border-left: 4px solid #00ff00;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .mermaid {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 0;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .ascii-divider {
+            text-align: center;
+            margin: 2rem 0;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -52,17 +303,22 @@
                 <h1>Shopify Content Intelligence Platform (SCIP)</h1>
                 <h2>The AI-First Orchestration System That Scales Content to 100+ Videos/Month</h2>
                 
+                <div class="ascii-divider">
+                    ═══════════════════════════════════════════════════════════════════════════════
+                </div>
+                
                 <div class="problem-solution">
                     <div class="problem-box">
                         <h3>🚨 THE CORE PROBLEM</h3>
                         <p><strong>Multi-Department Upload Chaos</strong></p>
                         <ul>
-                            <li>5+ teams uploading independently</li>
-                            <li>400x view variance (725 vs 291K views)</li>
-                            <li>No collision detection or coordination</li>
-                            <li>Series abandoned mid-flight</li>
-                            <li>Manual ideation bottleneck</li>
-                            <li>No SEO/AI search optimization</li>
+                            <li>No Central Intelligence — Teams upload whenever ready</li>
+                            <li>No Collision Detection — Multiple teams drop similar content</li>
+                            <li>No Momentum Tracking — Series abandoned mid-flight</li>
+                            <li>No Performance Learning — Each team reinvents the wheel</li>
+                            <li>No Global Coordination — US/Canada/UK teams work in silos</li>
+                            <li>Scaling Bottleneck — Limited by manual ideation</li>
+                            <li>SEO Integration Gap — Content not optimized for AI/web search</li>
                         </ul>
                     </div>
                     <div class="solution-box">
@@ -77,6 +333,26 @@
                             <li>SEO optimization integration</li>
                         </ul>
                     </div>
+                </div>
+
+                <div class="ascii-art">
+MONDAY          TUESDAY         WEDNESDAY       THURSDAY        FRIDAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Risk Takers ──┐                               
+              ├─► [COLLISION!]                 
+Product Team ─┘   4 videos                    
+                  same topic                   
+                     ↓                         
+                725 views                      
+                (disaster)                     
+
+                Editions ────────────────────► 5 videos burst
+                                                    ↓
+                                              Audience fatigue
+                                                    
+Learn Team ─────────────────────────────────► Consistent uploads
+                                              10-20K views steady
+Viewer Prediction Gap → Drop-offs after first video
                 </div>
 
                 <div class="metrics-grid">
@@ -105,68 +381,66 @@
             <div class="cs-content">
                 <h1>System Architecture Overview</h1>
                 
-                <div class="architecture-diagram">
-                    <div class="mermaid">
-                        graph LR
-                            subgraph "INPUT LAYER"
-                                A1[Slack Commands]
-                                A2[Calendar Events]
-                                A3[Brief Submissions]
-                                A4[Team Requests]
-                                A5[Viewer Analytics Data]
-                                A6[Merchant Site Scans]
-                            end
-                            
-                            subgraph "INTELLIGENCE CORE"
-                                B1[Content Orchestrator AI]
-                                B2[Collision Detection]
-                                B3[Performance Predictor]
-                                B4[Global Coordinator]
-                                B5[AI Agent Persona Simulator]
-                                B6[Predictive Journey Modeler]
-                                B7[SEO Optimizer]
-                            end
-                            
-                            subgraph "EXECUTION LAYER"
-                                C1[Production Pipeline]
-                                C2[Publishing Engine]
-                                C3[Distribution Network]
-                                C4[Analytics Loop]
-                                C5[Content Generator]
-                            end
-                            
-                            subgraph "OUTPUT CHANNELS"
-                                D1[YouTube Main]
-                                D2[YouTube Learn]
-                                D3[Shorts/Clips]
-                                D4[International]
-                                D5[Merchant SEO Content]
-                            end
-                            
-                            A1 --> B1
-                            A2 --> B1
-                            A3 --> B1
-                            A4 --> B1
-                            A5 --> B5
-                            A6 --> B7
-                            
-                            B1 --> B2
-                            B1 --> B3
-                            B1 --> B4
-                            B5 --> B6
-                            B6 --> B1
-                            B7 --> B1
-                            
-                            B2 --> C1
-                            B3 --> C2
-                            B4 --> C3
-                            B6 --> C5
-                            C1 --> D1
-                            C2 --> D2
-                            C3 --> D3
-                            C4 --> B1
-                            C5 --> D5
-                    </div>
+                <div class="mermaid">
+                    graph LR
+                        subgraph "INPUT LAYER"
+                            A1[Slack Commands]
+                            A2[Calendar Events]
+                            A3[Brief Submissions]
+                            A4[Team Requests]
+                            A5[Viewer Analytics Data]
+                            A6[Merchant Site Scans]
+                        end
+                        
+                        subgraph "INTELLIGENCE CORE"
+                            B1[Content Orchestrator AI]
+                            B2[Collision Detection]
+                            B3[Performance Predictor]
+                            B4[Global Coordinator]
+                            B5[AI Agent Persona Simulator]
+                            B6[Predictive Journey Modeler]
+                            B7[SEO Optimizer]
+                        end
+                        
+                        subgraph "EXECUTION LAYER"
+                            C1[Production Pipeline]
+                            C2[Publishing Engine]
+                            C3[Distribution Network]
+                            C4[Analytics Loop]
+                            C5[Content Generator]
+                        end
+                        
+                        subgraph "OUTPUT CHANNELS"
+                            D1[YouTube Main]
+                            D2[YouTube Learn]
+                            D3[Shorts/Clips]
+                            D4[International]
+                            D5[Merchant SEO Content]
+                        end
+                        
+                        A1 --> B1
+                        A2 --> B1
+                        A3 --> B1
+                        A4 --> B1
+                        A5 --> B5
+                        A6 --> B7
+                        
+                        B1 --> B2
+                        B1 --> B3
+                        B1 --> B4
+                        B5 --> B6
+                        B6 --> B1
+                        B7 --> B1
+                        
+                        B2 --> C1
+                        B3 --> C2
+                        B4 --> C3
+                        B6 --> C5
+                        C1 --> D1
+                        C2 --> D2
+                        C3 --> D3
+                        C4 --> B1
+                        C5 --> D5
                 </div>
 
                 <div class="tech-stack">
@@ -254,24 +528,22 @@ class ContentOrchestrator:
                     <p><strong>The Solution:</strong> AI-Powered Collision Detection</p>
                 </div>
                 
-                <div class="architecture-diagram">
-                    <div class="mermaid">
-                        flowchart TB
-                            A[New Content Request] --> B{Collision Check}
-                            B -->|Topic Overlap| C[Alert & Alternatives]
-                            B -->|Timing Conflict| D[Reschedule]
-                            B -->|Audience Fatigue| E[Space Out]
-                            B -->|Clear| F[Approve]
-                            
-                            C --> G[AI Suggests Different Angle]
-                            D --> H[Find Optimal Slot]
-                            E --> I[Minimum 3-Day Gap]
-                            
-                            G --> J[Production Green Light]
-                            H --> J
-                            I --> J
-                            F --> J
-                    </div>
+                <div class="mermaid">
+                    flowchart TB
+                        A[New Content Request] --> B{Collision Check}
+                        B -->|Topic Overlap| C[Alert & Alternatives]
+                        B -->|Timing Conflict| D[Reschedule]
+                        B -->|Audience Fatigue| E[Space Out]
+                        B -->|Clear| F[Approve]
+                        
+                        C --> G[AI Suggests Different Angle]
+                        D --> H[Find Optimal Slot]
+                        E --> I[Minimum 3-Day Gap]
+                        
+                        G --> J[Production Green Light]
+                        H --> J
+                        I --> J
+                        F --> J
                 </div>
                 
                 <div class="component-section">
@@ -312,7 +584,7 @@ class CollisionDetector:
 
                 <div class="slack-message">
                     <h4>Slack Integration Example</h4>
-                    <div class="demo-output">
+                    <div class="terminal-output">
 🚨 COLLISION DETECTED
 Team: Product Marketing
 Content: "AI Commerce Features"
@@ -337,20 +609,18 @@ Recommendation:
                     <p><strong>Solution:</strong> Pre-Publication Performance Prediction</p>
                 </div>
                 
-                <div class="architecture-diagram">
-                    <div class="mermaid">
-                        graph LR
-                            A[Content Brief] --> B[Historical Analysis]
-                            B --> C[Title Optimization]
-                            C --> D[Thumbnail Testing]
-                            D --> E[Timing Optimization]
-                            E --> F[Performance Score]
-                            
-                            F -->|Score < 7| G[Revise]
-                            F -->|Score >= 7| H[Publish]
-                            
-                            G --> A
-                    </div>
+                <div class="mermaid">
+                    graph LR
+                        A[Content Brief] --> B[Historical Analysis]
+                        B --> C[Title Optimization]
+                        C --> D[Thumbnail Testing]
+                        D --> E[Timing Optimization]
+                        E --> F[Performance Score]
+                        
+                        F -->|Score < 7| G[Revise]
+                        F -->|Score >= 7| H[Publish]
+                        
+                        G --> A
                 </div>
 
                 <div class="component-section">
@@ -420,20 +690,18 @@ class PerformancePredictor:
                     <p><strong>Solution:</strong> AI Series Tracker</p>
                 </div>
                 
-                <div class="architecture-diagram">
-                    <div class="mermaid">
-                        stateDiagram-v2
-                            [*] --> SeriesLaunch: New Series Started
-                            SeriesLaunch --> Monitoring: Track Performance
-                            Monitoring --> Growing: Views Increasing
-                            Monitoring --> Declining: Views Decreasing
-                            Growing --> NextEpisode: Schedule Next
-                            Declining --> Optimize: Adjust Strategy
-                            Optimize --> NextEpisode
-                            NextEpisode --> Monitoring
-                            Monitoring --> Complete: Series Goals Met
-                            Complete --> [*]
-                    </div>
+                <div class="mermaid">
+                    stateDiagram-v2
+                        [*] --> SeriesLaunch: New Series Started
+                        SeriesLaunch --> Monitoring: Track Performance
+                        Monitoring --> Growing: Views Increasing
+                        Monitoring --> Declining: Views Decreasing
+                        Growing --> NextEpisode: Schedule Next
+                        Declining --> Optimize: Adjust Strategy
+                        Optimize --> NextEpisode
+                        NextEpisode --> Monitoring
+                        Monitoring --> Complete: Series Goals Met
+                        Complete --> [*]
                 </div>
 
                 <div class="component-section">
@@ -483,23 +751,21 @@ class SeriesMomentumTracker:
                 
                 <p><strong>Vision:</strong> One video becomes 10 (languages) × 3 (formats) = 30 assets</p>
                 
-                <div class="architecture-diagram">
-                    <div class="mermaid">
-                        graph TB
-                            A[Original Content] --> B[AI Analysis]
-                            B --> C{Localization Decision}
-                            C -->|High Priority| D[Full Translation]
-                            C -->|Medium Priority| E[Subtitles Only]
-                            C -->|Low Priority| F[Skip]
-                            
-                            D --> G[Human Review]
-                            G --> H[Regional Thumbnails]
-                            H --> I[Local Platform Dist]
-                            
-                            D --> J[UK Version]
-                            D --> K[Canada Version]
-                            D --> L[Australia Version]
-                    </div>
+                <div class="mermaid">
+                    graph TB
+                        A[Original Content] --> B[AI Analysis]
+                        B --> C{Localization Decision}
+                        C -->|High Priority| D[Full Translation]
+                        C -->|Medium Priority| E[Subtitles Only]
+                        C -->|Low Priority| F[Skip]
+                        
+                        D --> G[Human Review]
+                        G --> H[Regional Thumbnails]
+                        H --> I[Local Platform Dist]
+                        
+                        D --> J[UK Version]
+                        D --> K[Canada Version]
+                        D --> L[Australia Version]
                 </div>
 
                 <div class="component-section">
@@ -620,7 +886,7 @@ class ShortFormGenerator:
 
                 <div class="slack-message">
                     <h4>Daily Slack Brief Example</h4>
-                    <div class="demo-output">
+                    <div class="terminal-output">
 🎬 CONTENT INTELLIGENCE BRIEF - Monday Jan 20
 
 📅 TODAY'S CALENDAR
@@ -666,18 +932,16 @@ class ShortFormGenerator:
                 
                 <p><strong>Ensure 8/10 Minimum Quality Score</strong></p>
                 
-                <div class="architecture-diagram">
-                    <div class="mermaid">
-                        graph LR
-                            A[Content Created] --> B{Brand Check}
-                            B -->|Fail| C[Revision Required]
-                            B -->|Pass| D{Quality Score}
-                            D -->|<8| C
-                            D -->|>=8| E{Performance Prediction}
-                            E -->|<7| C
-                            E -->|>=7| F[Ready to Publish]
-                            C --> A
-                    </div>
+                <div class="mermaid">
+                    graph LR
+                        A[Content Created] --> B{Brand Check}
+                        B -->|Fail| C[Revision Required]
+                        B -->|Pass| D{Quality Score}
+                        D -->|<8| C
+                        D -->|>=8| E{Performance Prediction}
+                        E -->|<7| C
+                        E -->|>=7| F[Ready to Publish]
+                        C --> A
                 </div>
 
                 <div class="component-section">
@@ -736,25 +1000,23 @@ class QualityGatekeeper:
                     <p>AI agents as "synthetic viewers" that simulate journeys, predict behaviors, and recommend content sequences. Based on research, similar to agentic AI in recommendation systems that provide real-time personalization and boost engagement by 30-50%.</p>
                 </div>
                 
-                <div class="architecture-diagram">
-                    <div class="mermaid">
-                        graph TD
-                            A[Viewer Analytics] --> B[Persona Builder AI]
-                            B --> C[Agent 1: New Entrepreneur]
-                            B --> D[Agent 2: Scaling Merchant]
-                            B --> E[Agent 3: Tech-Savvy Creator]
-                            
-                            C --> F[Simulate Journey: Watch 'Start a Store' → Predict Next: 'Funding Tips']
-                            D --> G[Simulate Journey: Watch 'SEO Basics' → Predict Next: 'AI Optimization']
-                            E --> H[Simulate Journey: Watch 'YouTube Growth' → Predict Next: 'Monetization Strategies']
-                            
-                            F --> I[Generate Content Ideas]
-                            G --> I
-                            H --> I
-                            
-                            I --> J[Feed to Orchestrator for Scheduling]
-                            J --> K[No Overlaps, Exponential Output]
-                    </div>
+                <div class="mermaid">
+                    graph TD
+                        A[Viewer Analytics] --> B[Persona Builder AI]
+                        B --> C[Agent 1: New Entrepreneur]
+                        B --> D[Agent 2: Scaling Merchant]
+                        B --> E[Agent 3: Tech-Savvy Creator]
+                        
+                        C --> F[Simulate Journey: Watch 'Start a Store' → Predict Next: 'Funding Tips']
+                        D --> G[Simulate Journey: Watch 'SEO Basics' → Predict Next: 'AI Optimization']
+                        E --> H[Simulate Journey: Watch 'YouTube Growth' → Predict Next: 'Monetization Strategies']
+                        
+                        F --> I[Generate Content Ideas]
+                        G --> I
+                        H --> I
+                        
+                        I --> J[Feed to Orchestrator for Scheduling]
+                        J --> K[No Overlaps, Exponential Output]
                 </div>
 
                 <div class="component-section">
@@ -808,7 +1070,7 @@ class PersonaAgentSimulator:
 
                 <div class="slack-message">
                     <h4>Alert System Example</h4>
-                    <div class="demo-output">
+                    <div class="terminal-output">
 🚀 AGENT PREDICTION ALERT
 Persona: New Entrepreneur
 After "Start a Store" video: Predicts need for "Funding Basics" (80% confidence, 50K views est.)
@@ -836,18 +1098,16 @@ Recommendation: Generate series branch—schedule for next week?
                     <p>AI scanner for site/AI optimization, generating recommendations that feed into content pipeline. Based on GEO best practices: Use schema markup, factual content, and tools like Mangools for monitoring rankings across AI engines.</p>
                 </div>
                 
-                <div class="architecture-diagram">
-                    <div class="mermaid">
-                        flowchart TB
-                            A[Merchant Site Scan] --> B[AI Engine Check]
-                            B --> C{Keyword Ranking}
-                            C -->|Low| D[Recommend: New Video/Blog]
-                            C -->|High| E[Maintain]
-                            
-                            D --> F[Generate Copy Suggestions]
-                            F --> G[Feed to Orchestrator]
-                            G --> H[Schedule YouTube Content]
-                    </div>
+                <div class="mermaid">
+                    flowchart TB
+                        A[Merchant Site Scan] --> B[AI Engine Check]
+                        B --> C{Keyword Ranking}
+                        C -->|Low| D[Recommend: New Video/Blog]
+                        C -->|High| E[Maintain]
+                        
+                        D --> F[Generate Copy Suggestions]
+                        F --> G[Feed to Orchestrator]
+                        G --> H[Schedule YouTube Content]
                 </div>
 
                 <div class="component-section">
@@ -882,31 +1142,29 @@ class SEOOptimizer:
                 <h1>The Complete Workflow</h1>
                 <h2>From Idea to Global Distribution</h2>
                 
-                <div class="architecture-diagram">
-                    <div class="mermaid">
-                        sequenceDiagram
-                            participant Team as Content Team
-                            participant AI as AI Orchestrator
-                            participant QC as Quality Control
-                            participant Pub as Publishing Engine
-                            participant Analytics as Analytics
-                            
-                            Team->>AI: Submit content idea
-                            AI->>AI: Check collisions
-                            AI->>AI: Predict performance
-                            AI->>Team: Approved with slot
-                            Team->>Team: Create content
-                            Team->>QC: Submit for review
-                            QC->>AI: Quality check
-                            AI->>Team: Score: 8.5/10
-                            Team->>Pub: Ready to publish
-                            Pub->>Pub: Optimize metadata
-                            Pub->>Pub: Schedule publication
-                            Pub->>Pub: Generate shorts
-                            Pub->>Pub: Create translations
-                            Pub->>Analytics: Monitor performance
-                            Analytics->>AI: Feed learning loop
-                    </div>
+                <div class="mermaid">
+                    sequenceDiagram
+                        participant Team as Content Team
+                        participant AI as AI Orchestrator
+                        participant QC as Quality Control
+                        participant Pub as Publishing Engine
+                        participant Analytics as Analytics
+                        
+                        Team->>AI: Submit content idea
+                        AI->>AI: Check collisions
+                        AI->>AI: Predict performance
+                        AI->>Team: Approved with slot
+                        Team->>Team: Create content
+                        Team->>QC: Submit for review
+                        QC->>AI: Quality check
+                        AI->>Team: Score: 8.5/10
+                        Team->>Pub: Ready to publish
+                        Pub->>Pub: Optimize metadata
+                        Pub->>Pub: Schedule publication
+                        Pub->>Pub: Generate shorts
+                        Pub->>Pub: Create translations
+                        Pub->>Analytics: Monitor performance
+                        Analytics->>AI: Feed learning loop
                 </div>
             </div>
         </section>
@@ -1056,6 +1314,14 @@ Infrastructure:
   
 Total Cost: ~$1,200/month
 ROI: 10,000%+ Year 1
+
+AI Agents:
+  - LangChain/CrewAI for multi-agent simulations
+  - Scikit-learn/TensorFlow for predictive modeling
+
+SEO Layer:
+  - Ahrefs/SEMrush API for rankings
+  - OpenAI for AI engine queries
                     </div>
                 </div>
             </div>
@@ -1254,10 +1520,7 @@ class ShopifyContentOrchestrator:
         proposed_date: datetime,
         content_type: str
     ) -> Dict:
-        """
-        Check if proposed content conflicts with existing schedule
-        """
-        
+        """Check if proposed content conflicts with existing schedule"""
         # Get embedding for semantic similarity
         embedding = self.get_embedding(f"{content_title} {content_description}")
         
@@ -1271,17 +1534,12 @@ class ShopifyContentOrchestrator:
         series_impact = self.check_series_impact(content_title)
         
         # Check audience fatigue
-        fatigue_risk = self.calculate_fatigue_risk(
-            content_type,
-            proposed_date
-        )
+        fatigue_risk = self.calculate_fatigue_risk(content_type, proposed_date)
         
         # Generate recommendations
         if semantic_conflicts or temporal_conflicts or fatigue_risk > 0.7:
             recommendations = self.generate_recommendations(
-                semantic_conflicts,
-                temporal_conflicts,
-                fatigue_risk
+                semantic_conflicts, temporal_conflicts, fatigue_risk
             )
         else:
             recommendations = {"status": "CLEAR", "optimal_slot": proposed_date}
@@ -1421,7 +1679,18 @@ class PersonaAgentSimulator:
     </div>
     
     <script>
-        mermaid.initialize({ startOnLoad: true });
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#00ff00',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#333333',
+                lineColor: '#00ff00',
+                secondaryColor: '#111111',
+                tertiaryColor: '#000000'
+            }
+        });
     </script>
 </body>
 </html>
