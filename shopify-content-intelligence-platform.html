@@ -2212,26 +2212,119 @@ PATTERN: I build systems that multiply human talent
 
     // Animation controls
     document.addEventListener('DOMContentLoaded', function() {
-      // Animate counters
-      const counters = document.querySelectorAll('.demo-counter');
-      counters.forEach(counter => {
-        const target = parseInt(counter.textContent.replace(/[^\d]/g, ''));
-        if (target) {
-          animateCounter(counter, target);
-        }
+      // Scroll-triggered counter animations
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const counter = entry.target;
+            const target = parseInt(counter.textContent.replace(/[^\d]/g, ''));
+            if (target) {
+              animateCounter(counter, target);
+            }
+            counterObserver.unobserve(counter); // Only animate once
+          }
+        });
+      }, { threshold: 0.5 }); // Trigger when 50% visible
+
+      // Observe all counters
+      document.querySelectorAll('.demo-counter').forEach(counter => {
+        counterObserver.observe(counter);
       });
 
-      // Add scroll-triggered animations
+      // Scroll-triggered general animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('demo-animated');
           }
         });
-      });
+      }, { threshold: 0.3 }); // Trigger when 30% visible
 
       document.querySelectorAll('.live-demo').forEach(demo => {
         observer.observe(demo);
+      });
+
+      // Scroll-triggered status indicators
+      const statusObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const statusIndicator = entry.target;
+            if (statusIndicator.classList.contains('active')) {
+              statusIndicator.style.animation = 'pulse 1s infinite';
+            }
+            statusObserver.unobserve(statusIndicator); // Only animate once
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.status-indicator').forEach(indicator => {
+        statusObserver.observe(indicator);
+      });
+
+      // Scroll-triggered demo sections
+      const demoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const demo = entry.target;
+            // Add a subtle entrance animation
+            demo.style.opacity = '0';
+            demo.style.transform = 'translateY(20px)';
+            demo.style.transition = 'opacity 0.5s, transform 0.5s';
+            
+            setTimeout(() => {
+              demo.style.opacity = '1';
+              demo.style.transform = 'translateY(0)';
+            }, 100);
+            
+            demoObserver.unobserve(demo); // Only animate once
+          }
+        });
+      }, { threshold: 0.2 });
+
+      document.querySelectorAll('.interactive-demo').forEach(demo => {
+        demoObserver.observe(demo);
+      });
+
+      // Scroll-triggered KPI cards
+      const kpiObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const kpiCard = entry.target;
+            const bigNumber = kpiCard.querySelector('.big');
+            if (bigNumber) {
+              const target = parseInt(bigNumber.textContent.replace(/[^\d]/g, ''));
+              if (target) {
+                animateCounter(bigNumber, target);
+              }
+            }
+            kpiObserver.unobserve(kpiCard);
+          }
+        });
+      }, { threshold: 0.6 });
+
+      document.querySelectorAll('.kpi-card').forEach(card => {
+        kpiObserver.observe(card);
+      });
+
+      // Scroll-triggered metric cards
+      const metricObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const metricCard = entry.target;
+            const metricValue = metricCard.querySelector('.metric-value');
+            if (metricValue) {
+              const target = parseInt(metricValue.textContent.replace(/[^\d]/g, ''));
+              if (target) {
+                animateCounter(metricValue, target);
+              }
+            }
+            metricObserver.unobserve(metricCard);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.metric-card').forEach(card => {
+        metricObserver.observe(card);
       });
     });
 
