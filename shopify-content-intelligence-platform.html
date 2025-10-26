@@ -38,6 +38,8 @@
     .kpi-card .big { font-size:1.25rem; font-weight:700; color:#000; }
     .mermaid { background:#fff; border:1px solid #000; padding:2rem; margin:1rem 0; overflow-x:auto; min-height:300px; }
     .mermaid svg { max-width:100%; height:auto; min-height:250px; }
+    .mermaid .nodeLabel { font-size:12px; word-wrap:break-word; }
+    .mermaid .edgeLabel { font-size:11px; word-wrap:break-word; }
     .component-section { background:#fff; border:1px solid #000; padding:0.9rem; margin:0.5rem 0; }
     .workflow-step { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; margin:0.5rem 0; }
     .metrics-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:0.75rem; margin:1rem 0; }
@@ -112,8 +114,7 @@
         <li><a href="#s19"><span class="num">19.</span> Vision 2025+</a></li>
         <li><a href="#s20"><span class="num">20.</span> Working Implementation</a></li>
         
-        <li><a href="#s23"><span class="num">23.</span> Track Record</a></li>
-        <li><a href="#s24"><span class="num">24.</span> Conclusion</a></li>
+        <li><a href="#s23"><span class="num">23.</span> Conclusion</a></li>
       </ol>
     </aside>
     <main class="cs-sections">
@@ -177,7 +178,7 @@
           <h1>Problem Diagnosis</h1>
           <div class="two-col">
             <div class="problem-box">
-              <h2>Current State: Multi-Department Upload Chaos</h2>
+              <h2>Current State: Multi-Department Upload Chaos (assumptions)</h2>
               <ul>
                 <li>No Central Intelligence — Teams upload whenever ready</li>
                 <li>No Collision Detection — Multiple teams drop similar content</li>
@@ -308,7 +309,7 @@
           
           <div class="alert-box">
             <p><strong>The Match:</strong><br>
-            You need someone who "thinks in systems" and has "YouTube mastery" plus "AI-first reflexes." This proposal demonstrates all three—with working prototypes showing exactly how it scales your 50% YoY growth trajectory.</p>
+            You need someone who "thinks in systems" and has "YouTube mastery" plus "AI-first reflexes." This proposal demonstrates all three.</p>
           </div>
         </div>
       </section>
@@ -818,7 +819,7 @@ AI INTERVENTION:
                 
                 D --> G[Human Review]
                 G --> H[Regional Thumbnails]
-                H --> I[Local Platform Dist]
+                H --> I[Local Distribution]
                 
                 D --> J[UK Version]
                 D --> K[Canada Version]
@@ -1309,16 +1310,16 @@ With improvements: 35,000 views
                 B --> D[Agent 2: Scaling Merchant]
                 B --> E[Agent 3: Tech-Savvy Creator]
                 
-                C --> F[Simulate Journey: Watch 'Start a Store' → Predict Next: 'Funding Tips']
-                D --> G[Simulate Journey: Watch 'SEO Basics' → Predict Next: 'AI Optimization']
-                E --> H[Simulate Journey: Watch 'YouTube Growth' → Predict Next: 'Monetization Strategies']
+                C --> F["Journey: Start Store → Funding Tips"]
+                D --> G["Journey: SEO Basics → AI Optimization"]
+                E --> H["Journey: YouTube Growth → Monetization"]
                 
                 F --> I[Generate Content Ideas]
                 G --> I
                 H --> I
                 
-                I --> J[Feed to Orchestrator for Scheduling]
-                J --> K[No Overlaps, Exponential Output]
+                I --> J[Feed to Orchestrator]
+                J --> K[No Overlaps, Scale Output]
           </div>
 
           <div class="component-section">
@@ -1440,7 +1441,7 @@ Recommendation: Generate series branch—schedule for next week?
             flowchart TB
                 A[Merchant Site Scan] --> B[AI Engine Check]
                 B --> C{Keyword Ranking}
-                C -->|Low| D[Recommend: New Video/Blog]
+                C -->|Low| D[Recommend Content]
                 C -->|High| E[Maintain]
                 
                 D --> F[Generate Copy Suggestions]
@@ -1973,38 +1974,6 @@ SEO Layer:
       <section id="s23" class="cs-page">
         <div class="cs-num">23.</div>
         <div class="cs-content">
-          <h1>Why This Approach Works: Proven Patterns from Similar Challenges</h1>
-          
-          <div class="component-section">
-            <h3><strong>FILM3D: 15 External Dev Teams → Central Coordination → 4M Users</strong></h3>
-            <p><strong>Pattern:</strong> Multiple autonomous teams, one platform requiring orchestration<br>
-            <strong>The Approach:</strong> Central coordination platform preventing collisions<br>
-            <strong>Result:</strong> #3 App Store globally</p>
-          </div>
-          
-          <div class="component-section">
-            <h3><strong>Canada Goose: 8 Markets Overnight → AI Multiplication → 378 Videos/24hrs</strong></h3>
-            <p><strong>Pattern:</strong> Rapid global scale requiring quality consistency<br>
-            <strong>The Approach:</strong> AI localization pipeline with automated workflows<br>
-            <strong>Result:</strong> 8 markets launched simultaneously with maintained standards</p>
-          </div>
-          
-          <div class="component-section">
-            <h3><strong>Amazon Prime Video: 200+ Countries → Cross-Functional Orchestration → 15M Views</strong></h3>
-            <p><strong>Pattern:</strong> Massive coordination with zero room for error<br>
-            <strong>The Approach:</strong> Cross-functional orchestration with real-time monitoring<br>
-            <strong>Result:</strong> 99.8% uptime, global coordination across legal/privacy/engineering</p>
-          </div>
-          
-          <div class="alert-box">
-            <p><strong>The Pattern:</strong> Systematic approaches that multiply creative talent without adding coordination overhead. The Learn channel's 10-20K steady views prove the content quality exists—the system just needs to unlock it at scale.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="s24" class="cs-page">
-        <div class="cs-num">24.</div>
-        <div class="cs-content">
           <h1>Conclusion: The Transformation</h1>
           <h2>From Chaos to Symphony</h2>
           
@@ -2098,13 +2067,52 @@ SEO Layer:
           </div>
 
           <div class="alert-box" style="margin-top: 2rem;">
-            <h3>Why This Proposal Exists</h3>
-            <p>You're hiring for someone who "thinks in systems" with "YouTube mastery" and "AI-first reflexes" to build "the production machine that multiplies content across multiple channels, multiple markets."</p>
-            <p>This proposal is that system—fully designed, with working prototypes, proven patterns, and a philosophy that starts small and scales from wins.</p>
-            <p><strong>Not a pitch deck. A blueprint.<br>
-            Not a resume. A demonstration.<br>
-            Not a promise. Proof of how I think about your exact challenge.</strong></p>
-            <p><strong>Ready to build the content engine that powers the next million entrepreneurs.</strong></p>
+            <p><strong>I hope this helps you show how I think.</strong></p>
+            
+            <div class="ascii-art" style="margin-top: 1rem; text-align: center;">
+              <div id="orchestrator-animation">
+                <pre id="orchestrator-frame-1" style="display: block;">
+    🎼  ← Conducting SCIP...
+    /|\
+   / | \
+  /  |  \
+ /   |   \
+/____|____\
+     |
+     👨‍💼
+                </pre>
+                <pre id="orchestrator-frame-2" style="display: none;">
+    🎼  ← Teams in harmony...
+    /|\
+   / | \
+  /  |  \
+ /   |   \
+/____|____\
+     |
+     👨‍💼 🎯
+                </pre>
+                <pre id="orchestrator-frame-3" style="display: none;">
+    🎼  ← Content symphony...
+    /|\
+   / | \
+  /  |  \
+ /   |   \
+/____|____\
+     |
+     👨‍💼 🎯📈
+                </pre>
+                <pre id="orchestrator-frame-4" style="display: none;">
+    🎼  ← Perfect rhythm!
+    /|\
+   / | \
+  /  |  \
+ /   |   \
+/____|____\
+     |
+     👨‍💼 🎵
+                </pre>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -2125,7 +2133,16 @@ SEO Layer:
         background: '#ffffff',
         mainBkg: '#ffffff',
         secondBkg: '#ffffff',
-        tertiaryBkg: '#ffffff'
+        tertiaryBkg: '#ffffff',
+        nodeTextColor: '#000000',
+        clusterTextColor: '#000000',
+        edgeLabelBackground: '#ffffff',
+        edgeLabelColor: '#000000'
+      },
+      flowchart: {
+        nodeSpacing: 50,
+        rankSpacing: 50,
+        curve: 'basis'
       }
     });
 
@@ -2281,6 +2298,9 @@ SEO Layer:
                 break;
               case 'seo-flow':
                 setTimeout(() => startSEODemo(), 500);
+                break;
+              case 'orchestrator-animation':
+                setTimeout(() => startOrchestratorAnimation(), 500);
                 break;
             }
             
@@ -2609,6 +2629,38 @@ SEO Layer:
       document.querySelectorAll('.metric-transform, #impact-summary').forEach(el => {
         el.style.opacity = '0';
       });
+    }
+
+    // Orchestrator animation
+    function startOrchestratorAnimation() {
+      const frames = ['orchestrator-frame-1', 'orchestrator-frame-2', 'orchestrator-frame-3', 'orchestrator-frame-4'];
+      let currentFrame = 0;
+      
+      const animate = () => {
+        // Hide all frames
+        frames.forEach(frameId => {
+          document.getElementById(frameId).style.display = 'none';
+        });
+        
+        // Show current frame
+        document.getElementById(frames[currentFrame]).style.display = 'block';
+        
+        // Move to next frame
+        currentFrame = (currentFrame + 1) % frames.length;
+        
+        // Continue animation
+        setTimeout(animate, 800);
+      };
+      
+      animate();
+    }
+    
+    function resetOrchestratorAnimation() {
+      const frames = ['orchestrator-frame-1', 'orchestrator-frame-2', 'orchestrator-frame-3', 'orchestrator-frame-4'];
+      frames.forEach(frameId => {
+        document.getElementById(frameId).style.display = 'none';
+      });
+      document.getElementById('orchestrator-frame-1').style.display = 'block';
     }
   </script>
 </body>
