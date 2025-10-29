@@ -112,9 +112,8 @@
         <li><a href="#s16"><span class="num">16.</span> Metrics & Success</a></li>
         <li><a href="#s17"><span class="num">17.</span> Technical Architecture</a></li>
         <li><a href="#s19"><span class="num">19.</span> Vision 2025+</a></li>
-        <li><a href="#s20"><span class="num">20.</span> Working Implementation</a></li>
         
-        <li><a href="#s23"><span class="num">23.</span> Conclusion</a></li>
+        <li><a href="#s21"><span class="num">21.</span> Conclusion</a></li>
       </ol>
     </aside>
     <main class="cs-sections">
@@ -1432,6 +1431,79 @@ With improvements: 35,000 views
           </div>
 
           <div class="component-section">
+            <h3>🤖 AI Persona Journey: Visual Prediction Flow</h3>
+            <div class="interactive-demo" id="persona-flow">
+              <div class="persona-visualization">
+                <svg viewBox="0 0 800 500" style="width:100%; height:500px; border:1px solid #000;">
+                  <!-- Starting video -->
+                  <rect x="50" y="200" width="150" height="80" fill="#000" stroke="#000"/>
+                  <text x="125" y="230" text-anchor="middle" fill="#fff" font-weight="bold">STARTING VIDEO</text>
+                  <text x="125" y="250" text-anchor="middle" fill="#fff" font-size="11">"Kendo Brands"</text>
+                  <text x="125" y="265" text-anchor="middle" fill="#fff" font-size="11">"$1B Success"</text>
+                  
+                  <!-- Persona paths -->
+                  <g id="persona-1" opacity="0">
+                    <text x="300" y="80" font-weight="bold">NEW ENTREPRENEUR</text>
+                    <rect x="300" y="90" width="140" height="60" fill="#fff" stroke="#000"/>
+                    <text x="370" y="110" text-anchor="middle" font-size="11">Next: "Funding"</text>
+                    <text x="370" y="130" text-anchor="middle" font-size="10">18K views</text>
+                    
+                    <rect x="470" y="90" width="140" height="60" fill="#fff" stroke="#000"/>
+                    <text x="540" y="110" text-anchor="middle" font-size="11">Then: "Legal"</text>
+                    <text x="540" y="130" text-anchor="middle" font-size="10">15K views</text>
+                    
+                    <rect x="640" y="90" width="140" height="60" fill="#fff" stroke="#000"/>
+                    <text x="710" y="110" text-anchor="middle" font-size="11">Next: "Product"</text>
+                    <text x="710" y="130" text-anchor="middle" font-size="10">22K views</text>
+                  </g>
+                  
+                  <g id="persona-2" opacity="0">
+                    <text x="300" y="230" font-weight="bold">SCALING MERCHANT</text>
+                    <rect x="300" y="240" width="140" height="60" fill="#fff" stroke="#000"/>
+                    <text x="370" y="260" text-anchor="middle" font-size="11">Next: "SEO"</text>
+                    <text x="370" y="280" text-anchor="middle" font-size="10">28K views</text>
+                    
+                    <rect x="470" y="240" width="140" height="60" fill="#fff" stroke="#000"/>
+                    <text x="540" y="260" text-anchor="middle" font-size="11">Then: "AI Tools"</text>
+                    <text x="540" y="280" text-anchor="middle" font-size="10">31K views</text>
+                    
+                    <rect x="640" y="240" width="140" height="60" fill="#fff" stroke="#000"/>
+                    <text x="710" y="260" text-anchor="middle" font-size="11">Next: "Global"</text>
+                    <text x="710" y="280" text-anchor="middle" font-size="10">26K views</text>
+                  </g>
+                  
+                  <g id="persona-3" opacity="0">
+                    <text x="300" y="380" font-weight="bold">TECH-SAVVY CREATOR</text>
+                    <rect x="300" y="390" width="140" height="60" fill="#fff" stroke="#000"/>
+                    <text x="370" y="410" text-anchor="middle" font-size="11">Next: "AI Auto"</text>
+                    <text x="370" y="430" text-anchor="middle" font-size="10">38K views</text>
+                    
+                    <rect x="470" y="390" width="140" height="60" fill="#fff" stroke="#000"/>
+                    <text x="540" y="410" text-anchor="middle" font-size="11">Then: "Revenue"</text>
+                    <text x="540" y="430" text-anchor="middle" font-size="10">42K views</text>
+                    
+                    <rect x="640" y="390" width="140" height="60" fill="#fff" stroke="#000"/>
+                    <text x="710" y="410" text-anchor="middle" font-size="11">Next: "APIs"</text>
+                    <text x="710" y="430" text-anchor="middle" font-size="10">35K views</text>
+                  </g>
+                  
+                  <!-- Flow arrows -->
+                  <g id="persona-arrows">
+                    <path d="M 200 240 L 300 120" stroke="#000" stroke-width="1" fill="none" marker-end="url(#arrowhead)" style="stroke-dasharray: 3,3;"/>
+                    <path d="M 200 240 L 300 270" stroke="#000" stroke-width="1" fill="none" marker-end="url(#arrowhead)" style="stroke-dasharray: 3,3;"/>
+                    <path d="M 200 240 L 300 420" stroke="#000" stroke-width="1" fill="none" marker-end="url(#arrowhead)" style="stroke-dasharray: 3,3;"/>
+                  </g>
+                </svg>
+              </div>
+              
+              <div class="control-panel" style="margin-top:1rem; text-align:center;">
+                <button onclick="startPersonaDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Simulate Journeys</button>
+                <button onclick="resetPersonaDemo()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section">
             <h3>Live AI Agent Persona Simulator Demo</h3>
             <div class="terminal-output live-demo demo-animated">
 🤖 AI AGENT PERSONA SIMULATION
@@ -1560,6 +1632,61 @@ Recommendation: Generate series branch—schedule for next week?
                 D --> F[Generate Copy Suggestions]
                 F --> G[Feed to Orchestrator]
                 G --> H[Schedule YouTube Content]
+          </div>
+
+          <div class="component-section">
+            <h3>🔍 SEO Scanner: Live Optimization Flow</h3>
+            <div class="interactive-demo" id="seo-flow">
+              <div class="seo-visualization">
+                <div class="scanner-interface" style="border:1px solid #000; padding:1rem; background:#fff;">
+                  <div class="scan-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                    <h4 style="margin:0;">SITE SCANNER</h4>
+                    <div class="scan-status" style="display:flex; align-items:center;">
+                      <div class="status-light" style="width:10px; height:10px; border-radius:50%; background:#ccc; margin-right:0.5rem;"></div>
+                      <span id="scan-status">Ready</span>
+                    </div>
+                  </div>
+                  
+                  <div class="scan-progress" style="height:20px; background:#f0f0f0; border:1px solid #000; margin-bottom:1rem; position:relative; overflow:hidden;">
+                    <div class="progress-bar" style="height:100%; width:0%; background:#000; transition:width 0.3s;"></div>
+                  </div>
+                  
+                  <div class="scan-results" style="display:none;">
+                    <div class="keyword-analysis" style="margin-bottom:1rem;">
+                      <h5>KEYWORD RANKINGS</h5>
+                      <div class="keyword-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.5rem; text-align:center;">
+                        <div class="ai-engine" style="border:1px solid #000; padding:0.5rem;">
+                          <strong>ChatGPT</strong>
+                          <div class="ranking-list" style="font-size:0.8rem; margin-top:0.5rem;"></div>
+                        </div>
+                        <div class="ai-engine" style="border:1px solid #000; padding:0.5rem;">
+                          <strong>Grok</strong>
+                          <div class="ranking-list" style="font-size:0.8rem; margin-top:0.5rem;"></div>
+                        </div>
+                        <div class="ai-engine" style="border:1px solid #000; padding:0.5rem;">
+                          <strong>Claude</strong>
+                          <div class="ranking-list" style="font-size:0.8rem; margin-top:0.5rem;"></div>
+                        </div>
+                        <div class="ai-engine" style="border:1px solid #000; padding:0.5rem;">
+                          <strong>Google</strong>
+                          <div class="ranking-list" style="font-size:0.8rem; margin-top:0.5rem;"></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="content-recommendations" style="border:1px solid #000; padding:1rem; background:#f9f9f9;">
+                      <h5>AI RECOMMENDATIONS</h5>
+                      <div class="rec-list"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="control-panel" style="margin-top:1rem; text-align:center;">
+                  <button onclick="startSEODemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Scan Site</button>
+                  <button onclick="resetSEODemo()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="component-section">
@@ -1923,146 +2050,8 @@ AUTOMATED CONTENT PIPELINE:
         </div>
       </section>
 
-      <section id="s20" class="cs-page">
-        <div class="cs-num">20.</div>
-        <div class="cs-content">
-          <h1>Working Implementation</h1>
-          <h2>Interactive System Demonstrations</h2>
-          
-          <div class="component-section">
-            <h3>🤖 AI Persona Journey: Visual Prediction Flow</h3>
-            <div class="interactive-demo" id="persona-flow">
-              <div class="persona-visualization">
-                <svg viewBox="0 0 800 500" style="width:100%; height:500px; border:1px solid #000;">
-                  <!-- Starting video -->
-                  <rect x="50" y="200" width="150" height="80" fill="#000" stroke="#000"/>
-                  <text x="125" y="230" text-anchor="middle" fill="#fff" font-weight="bold">STARTING VIDEO</text>
-                  <text x="125" y="250" text-anchor="middle" fill="#fff" font-size="11">"Kendo Brands"</text>
-                  <text x="125" y="265" text-anchor="middle" fill="#fff" font-size="11">"$1B Success"</text>
-                  
-                  <!-- Persona paths -->
-                  <g id="persona-1" opacity="0">
-                    <text x="300" y="80" font-weight="bold">NEW ENTREPRENEUR</text>
-                    <rect x="300" y="90" width="140" height="60" fill="#fff" stroke="#000"/>
-                    <text x="370" y="110" text-anchor="middle" font-size="11">Next: "Funding"</text>
-                    <text x="370" y="130" text-anchor="middle" font-size="10">18K views</text>
-                    
-                    <rect x="470" y="90" width="140" height="60" fill="#fff" stroke="#000"/>
-                    <text x="540" y="110" text-anchor="middle" font-size="11">Then: "Legal"</text>
-                    <text x="540" y="130" text-anchor="middle" font-size="10">15K views</text>
-                    
-                    <rect x="640" y="90" width="140" height="60" fill="#fff" stroke="#000"/>
-                    <text x="710" y="110" text-anchor="middle" font-size="11">Next: "Product"</text>
-                    <text x="710" y="130" text-anchor="middle" font-size="10">22K views</text>
-                  </g>
-                  
-                  <g id="persona-2" opacity="0">
-                    <text x="300" y="230" font-weight="bold">SCALING MERCHANT</text>
-                    <rect x="300" y="240" width="140" height="60" fill="#fff" stroke="#000"/>
-                    <text x="370" y="260" text-anchor="middle" font-size="11">Next: "SEO"</text>
-                    <text x="370" y="280" text-anchor="middle" font-size="10">28K views</text>
-                    
-                    <rect x="470" y="240" width="140" height="60" fill="#fff" stroke="#000"/>
-                    <text x="540" y="260" text-anchor="middle" font-size="11">Then: "AI Tools"</text>
-                    <text x="540" y="280" text-anchor="middle" font-size="10">31K views</text>
-                    
-                    <rect x="640" y="240" width="140" height="60" fill="#fff" stroke="#000"/>
-                    <text x="710" y="260" text-anchor="middle" font-size="11">Next: "Global"</text>
-                    <text x="710" y="280" text-anchor="middle" font-size="10">26K views</text>
-                  </g>
-                  
-                  <g id="persona-3" opacity="0">
-                    <text x="300" y="380" font-weight="bold">TECH-SAVVY CREATOR</text>
-                    <rect x="300" y="390" width="140" height="60" fill="#fff" stroke="#000"/>
-                    <text x="370" y="410" text-anchor="middle" font-size="11">Next: "AI Auto"</text>
-                    <text x="370" y="430" text-anchor="middle" font-size="10">38K views</text>
-                    
-                    <rect x="470" y="390" width="140" height="60" fill="#fff" stroke="#000"/>
-                    <text x="540" y="410" text-anchor="middle" font-size="11">Then: "Revenue"</text>
-                    <text x="540" y="430" text-anchor="middle" font-size="10">42K views</text>
-                    
-                    <rect x="640" y="390" width="140" height="60" fill="#fff" stroke="#000"/>
-                    <text x="710" y="410" text-anchor="middle" font-size="11">Next: "APIs"</text>
-                    <text x="710" y="430" text-anchor="middle" font-size="10">35K views</text>
-                  </g>
-                  
-                  <!-- Flow arrows -->
-                  <g id="persona-arrows">
-                    <path d="M 200 240 L 300 120" stroke="#000" stroke-width="1" fill="none" marker-end="url(#arrowhead)" style="stroke-dasharray: 3,3;"/>
-                    <path d="M 200 240 L 300 270" stroke="#000" stroke-width="1" fill="none" marker-end="url(#arrowhead)" style="stroke-dasharray: 3,3;"/>
-                    <path d="M 200 240 L 300 420" stroke="#000" stroke-width="1" fill="none" marker-end="url(#arrowhead)" style="stroke-dasharray: 3,3;"/>
-                  </g>
-                </svg>
-              </div>
-              
-              <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                <button onclick="startPersonaDemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Simulate Journeys</button>
-                <button onclick="resetPersonaDemo()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="component-section">
-            <h3>🔍 SEO Scanner: Live Optimization Flow</h3>
-            <div class="interactive-demo" id="seo-flow">
-              <div class="seo-visualization">
-                <div class="scanner-interface" style="border:1px solid #000; padding:1rem; background:#fff;">
-                  <div class="scan-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-                    <h4 style="margin:0;">SITE SCANNER</h4>
-                    <div class="scan-status" style="display:flex; align-items:center;">
-                      <div class="status-light" style="width:10px; height:10px; border-radius:50%; background:#ccc; margin-right:0.5rem;"></div>
-                      <span id="scan-status">Ready</span>
-                    </div>
-                  </div>
-                  
-                  <div class="scan-progress" style="height:20px; background:#f0f0f0; border:1px solid #000; margin-bottom:1rem; position:relative; overflow:hidden;">
-                    <div class="progress-bar" style="height:100%; width:0%; background:#000; transition:width 0.3s;"></div>
-                  </div>
-                  
-                  <div class="scan-results" style="display:none;">
-                    <div class="keyword-analysis" style="margin-bottom:1rem;">
-                      <h5>KEYWORD RANKINGS</h5>
-                      <div class="keyword-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.5rem; text-align:center;">
-                        <div class="ai-engine" style="border:1px solid #000; padding:0.5rem;">
-                          <strong>ChatGPT</strong>
-                          <div class="ranking-list" style="font-size:0.8rem; margin-top:0.5rem;"></div>
-                        </div>
-                        <div class="ai-engine" style="border:1px solid #000; padding:0.5rem;">
-                          <strong>Grok</strong>
-                          <div class="ranking-list" style="font-size:0.8rem; margin-top:0.5rem;"></div>
-                        </div>
-                        <div class="ai-engine" style="border:1px solid #000; padding:0.5rem;">
-                          <strong>Claude</strong>
-                          <div class="ranking-list" style="font-size:0.8rem; margin-top:0.5rem;"></div>
-                        </div>
-                        <div class="ai-engine" style="border:1px solid #000; padding:0.5rem;">
-                          <strong>Google</strong>
-                          <div class="ranking-list" style="font-size:0.8rem; margin-top:0.5rem;"></div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="content-recommendations" style="border:1px solid #000; padding:1rem; background:#f9f9f9;">
-                      <h5>AI RECOMMENDATIONS</h5>
-                      <div class="rec-list"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="control-panel" style="margin-top:1rem; text-align:center;">
-                  <button onclick="startSEODemo()" style="padding:0.5rem 1rem; background:#000; color:#fff; border:none; cursor:pointer;">▶ Scan Site</button>
-                  <button onclick="resetSEODemo()" style="padding:0.5rem 1rem; background:#fff; color:#000; border:1px solid #000; cursor:pointer; margin-left:1rem;">Reset</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-      <section id="s23" class="cs-page">
-        <div class="cs-num">23.</div>
+      <section id="s21" class="cs-page">
+        <div class="cs-num">21.</div>
         <div class="cs-content">
           <h1>Conclusion: The Transformation</h1>
           <h2>From Chaos to Symphony</h2>
