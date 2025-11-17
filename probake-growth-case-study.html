@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProBAKE Growth Marketing Plan — Rowan Case Study</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root { --index-width: 270px; --content-max: 56rem; --border:#000; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size:15.5px; line-height:1.65; }
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; overflow-y:auto; }
+    .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; font-weight:600; }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; padding:0.2rem 0; }
+    .cs-index a .num { color:#000; width:2.8rem; display:inline-block; text-align:right; }
+    .cs-index a.active { color: #000; font-weight: bold; }
+    .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.45rem 0; scroll-margin-top: 12px; }
+    .cs-num { display:block; text-align:right; color:#000; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content h1 { font-size:1.125rem; margin:0 0 0.35rem 0; font-weight:700; color:#000; }
+    .cs-content h2 { font-size:1rem; margin:0.5rem 0 0.25rem 0; font-weight:600; color:#000; }
+    .cs-content h3 { font-size:0.9rem; margin:0.4rem 0 0.2rem 0; font-weight:600; color:#000; }
+    .cs-content h4 { font-size:0.875rem; margin:0.4rem 0 0.2rem 0; font-weight:600; color:#000; }
+    .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start; }
+    .box { background:#fff; border:1px solid var(--border); border-radius:0; padding:0.9rem; }
+    .problem-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .solution-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .alert-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .success-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .terminal-output { background:#fff; color:#000; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; white-space:pre-wrap; }
+    .kpi-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:0.75rem; }
+    .kpi-card { border:1px solid #000; background:#fff; padding:0.75rem; text-align:center; }
+    .kpi-card .big { font-size:1.25rem; font-weight:700; color:#000; }
+    .mermaid { background:#fff; border:1px solid #000; padding:2rem; margin:1rem 0; overflow-x:auto; min-height:300px; }
+    .component-section { background:#fff; border:1px solid #000; padding:0.9rem; margin:0.5rem 0; }
+    .workflow-step { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; margin:0.5rem 0; }
+    .metrics-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:0.75rem; margin:1rem 0; }
+    .metric-card { background:#fff; border:1px solid #000; padding:0.75rem; text-align:center; }
+    .metric-value { font-size:1.5rem; font-weight:700; color:#000; margin-bottom:0.25rem; }
+    .metric-label { font-size:0.8rem; color:#000; text-transform:uppercase; letter-spacing:0.5px; }
+    .before-after { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin:1rem 0; }
+    .before { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .after { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .pill { display:inline-block; padding:0.15rem 0.35rem; border:1px solid #000; margin-right:0.35rem; margin-bottom:0.35rem; font-size:0.8rem; color:#000; }
+    .timeline { position:relative; padding:1rem 0; }
+    .timeline-item { position:relative; padding-left:2rem; margin-bottom:1.5rem; }
+    .timeline-item::before { content:''; position:absolute; left:0; top:0.25rem; width:12px; height:12px; border:2px solid #000; border-radius:50%; background:#fff; }
+    .timeline-item::after { content:''; position:absolute; left:5px; top:0.75rem; width:2px; height:calc(100% + 0.5rem); background:#000; }
+    .timeline-item:last-child::after { display:none; }
+    .chart-container { position:relative; height:300px; margin:1rem 0; border:1px solid #000; padding:1rem; background:#fff; }
+    .data-table { width:100%; border-collapse:collapse; margin:1rem 0; }
+    .data-table th, .data-table td { border:1px solid #000; padding:0.5rem; text-align:left; }
+    .data-table th { background:#f5f5f5; font-weight:600; }
+    .data-table tr:nth-child(even) { background:#f9f9f9; }
+    .red-text { color:#d32f2f; font-weight:600; }
+    .green-text { color:#2e7d32; font-weight:600; }
+
+    /* Interactive Elements */
+    .interactive-demo { margin: 1rem 0; }
+    .control-panel { text-align: center; margin-top: 1rem; }
+    .control-panel button { padding: 0.5rem 1rem; margin: 0 0.5rem; cursor: pointer; font-family: inherit; font-size: 0.875rem; }
+    .control-panel button:first-child { background: #000; color: #fff; border: none; }
+    .control-panel button:last-child { background: #fff; color: #000; border: 1px solid #000; }
+
+    /* ROI Calculator */
+    .calculator-widget { background: #fff; border: 1px solid #000; padding: 1.5rem; margin: 1rem 0; }
+    .slider-control { margin: 1rem 0; }
+    .slider-control label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem; }
+    .slider-control input[type="range"] { width: 100%; height: 6px; background: #ddd; outline: none; border: 1px solid #000; }
+    .slider-control input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #000; cursor: pointer; border-radius: 50%; }
+    .slider-control input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; background: #000; cursor: pointer; border-radius: 50%; border: none; }
+    .slider-value { display: inline-block; float: right; font-weight: 700; }
+    .calc-result { background: #f9f9f9; border: 1px solid #000; padding: 1rem; margin-top: 1rem; text-align: center; }
+    .calc-result .big-number { font-size: 2rem; font-weight: 700; color: #000; margin: 0.5rem 0; }
+
+    /* Content Multiplication */
+    .multiplication-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem; margin: 1rem 0; }
+    .content-asset { border: 1px solid #000; padding: 0.5rem; text-align: center; font-size: 0.75rem; background: #fff; opacity: 0; transition: opacity 0.3s; }
+    .content-asset.active { opacity: 1; }
+    .source-content { border: 2px solid #000; padding: 1rem; text-align: center; font-weight: 700; background: #f9f9f9; margin-bottom: 1rem; }
+
+    /* Funnel Visualization */
+    .funnel-stage { background: #fff; border: 1px solid #000; padding: 1rem; margin: 0.5rem 0; position: relative; }
+    .funnel-stage::before { content: ''; position: absolute; left: 50%; bottom: -1.5rem; width: 2px; height: 1.5rem; background: #000; }
+    .funnel-stage:last-child::before { display: none; }
+    .funnel-bar { height: 30px; background: #000; transition: width 0.5s; }
+    .funnel-metrics { display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.85rem; }
+
+    /* Valuation Gap */
+    .valuation-gap { margin: 1rem 0; }
+    .gap-bar { height: 40px; background: #f0f0f0; border: 1px solid #000; position: relative; overflow: hidden; }
+    .gap-current { height: 100%; background: #000; width: 29%; transition: width 0.5s; position: relative; }
+    .gap-current::after { content: '$3.5M'; position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); color: #fff; font-weight: 600; font-size: 0.875rem; }
+    .gap-target { position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); font-weight: 600; font-size: 0.875rem; }
+
+    /* Category Bars */
+    .category-bars { margin: 1rem 0; }
+    .category-bar-item { margin: 0.75rem 0; }
+    .category-bar-item .label { display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.875rem; }
+    .category-bar-track { height: 24px; background: #f0f0f0; border: 1px solid #000; position: relative; }
+    .category-bar-fill { height: 100%; transition: width 0.5s; }
+    .category-bar-fill.positive { background: #2e7d32; }
+    .category-bar-fill.negative { background: #d32f2f; }
+    .category-bar-fill.neutral { background: #666; }
+
+    /* Ad Preview */
+    .ad-preview { border: 1px solid #000; padding: 1rem; background: #fff; margin: 1rem 0; }
+    .ad-preview .ad-url { color: #2e7d32; font-size: 0.875rem; margin-bottom: 0.25rem; }
+    .ad-preview .ad-headline { color: #1a0dab; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .ad-preview .ad-description { font-size: 0.875rem; line-height: 1.5; }
+
+    /* Landing Page Wireframe */
+    .wireframe { border: 1px solid #000; padding: 1.5rem; background: #fff; margin: 1rem 0; }
+    .wireframe-section { border: 1px dashed #666; padding: 1rem; margin: 0.5rem 0; position: relative; }
+    .wireframe-label { position: absolute; top: -0.6rem; left: 0.5rem; background: #fff; padding: 0 0.5rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+
+    /* Dashboard Toggle */
+    .dashboard-metrics { margin: 1rem 0; }
+    .metric-toggle { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; border: 1px solid #000; margin: 0.5rem 0; cursor: pointer; transition: background 0.2s; }
+    .metric-toggle:hover { background: #f9f9f9; }
+    .metric-toggle.active { background: #000; color: #fff; }
+    .toggle-switch { width: 40px; height: 20px; background: #ccc; border-radius: 10px; position: relative; transition: background 0.2s; }
+    .toggle-switch.on { background: #2e7d32; }
+    .toggle-switch::after { content: ''; position: absolute; width: 16px; height: 16px; background: #fff; border-radius: 50%; top: 2px; left: 2px; transition: left 0.2s; }
+    .toggle-switch.on::after { left: 22px; }
+
+    @media (max-width: 700px) {
+      .cs-wrapper{ grid-template-columns:1fr;}
+      .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);}
+      section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;}
+      .two-col{ grid-template-columns:1fr; gap:0.85rem;}
+      .kpi-grid, .metrics-grid{ grid-template-columns:1fr; }
+      .before-after{ grid-template-columns:1fr; }
+      .multiplication-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+    }
+  </style>
+</head>
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#s1"><span class="num">01.</span> Quick Context</a></li>
+        <li><a href="#s2"><span class="num">02.</span> 30-Day Growth Plan</a></li>
+        <li><a href="#s3"><span class="num">03.</span> Example Ad Campaign</a></li>
+        <li><a href="#s4"><span class="num">04.</span> Optimization Plan</a></li>
+        <li><a href="#s5"><span class="num">05.</span> Communicating Results</a></li>
+        <li><a href="#s6"><span class="num">06.</span> Phase 2: Demon Mode 🔥</a></li>
+      </ol>
+    </aside>
+    <main class="cs-sections">
+      <section id="s1" class="cs-page">
+        <div class="cs-num">01.</div>
+        <div class="cs-content">
+          <h1>The Numbers Don't Lie: ProBAKE Revenue Fell 21% While Growth Categories Rose 34%</h1>
+          <p style="margin: 0 0 1rem 0; font-size: 0.875rem; color: #666; font-style: italic;">Rowan Growth Marketer Case Study — Prepared by Mo Alissa</p>
+
+          <div class="alert-box" style="margin-bottom: 1.5rem; border-left: 4px solid #d32f2f;">
+            <p style="line-height: 1.8; margin: 0;"><strong>Here's the brutal truth:</strong> ProBAKE generated $13.4M in 2023, then dropped to $10.6M in 2024—a <span class="red-text">$2.8M decline (21% YoY)</span>. Yet within that same period, <span class="green-text">Dough Sheeters grew 34% ($315K → $423K)</span> and <span class="green-text">Rack Ovens grew 17% ($1.03M → $1.21M)</span>. The data shows exactly where to double down. Here's how we turn this around.</p>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Actual Revenue Performance (2022-2024)</h3>
+            <div class="chart-container">
+              <canvas id="revenueChart"></canvas>
+            </div>
+            <div class="control-panel">
+              <button onclick="animateRevenueChart()">▶ Animate Chart</button>
+              <button onclick="resetRevenueChart()">Reset</button>
+            </div>
+            <div class="kpi-grid" style="margin-top: 1rem;">
+              <div class="kpi-card" style="border-left: 4px solid #2e7d32;">
+                <div class="big" style="color: #2e7d32;">+23%</div>
+                <div>2022 → 2023</div>
+              </div>
+              <div class="kpi-card" style="border-left: 4px solid #d32f2f;">
+                <div class="big" style="color: #d32f2f;">-21%</div>
+                <div>2023 → 2024</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big">$2.8M</div>
+                <div>Lost Revenue</div>
+              </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;"><strong>Insight:</strong> Volatile, project-dependent revenue indicates no systematic demand generation. Every down year like 2024 costs $2.8M. We're building the machine that prevents this.</p>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Product Category Performance (2023 → 2024)</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>2023 Revenue</th>
+                  <th>2024 Revenue</th>
+                  <th>Change</th>
+                  <th>Trend</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Dough Sheeters (SHEE)</strong></td>
+                  <td>$315,000</td>
+                  <td>$423,000</td>
+                  <td class="green-text">+$108K (+34%)</td>
+                  <td class="green-text">⬆️ GROWING</td>
+                </tr>
+                <tr>
+                  <td><strong>Rack Ovens/Parts (COMD)</strong></td>
+                  <td>$1,030,000</td>
+                  <td>$1,210,000</td>
+                  <td class="green-text">+$180K (+17%)</td>
+                  <td class="green-text">⬆️ GROWING</td>
+                </tr>
+                <tr>
+                  <td><strong>Stratos Ovens/Parts (OVDS)</strong></td>
+                  <td>$1,260,000</td>
+                  <td>$1,140,000</td>
+                  <td>-$120K (-10%)</td>
+                  <td>➡️ STABLE</td>
+                </tr>
+                <tr>
+                  <td><strong>Spiral Mixers (MXPL)</strong></td>
+                  <td>$499,000</td>
+                  <td>$265,000</td>
+                  <td class="red-text">-$234K (-47%)</td>
+                  <td class="red-text">⬇️ DECLINING</td>
+                </tr>
+                <tr>
+                  <td><strong>Chocolate Equipment (CHOC)</strong></td>
+                  <td>$961,000</td>
+                  <td>$500,000</td>
+                  <td class="red-text">-$461K (-48%)</td>
+                  <td class="red-text">⬇️ DECLINING</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="interactive-demo">
+              <h4>Interactive Category Performance Visualization</h4>
+              <div class="category-bars" id="categoryBars">
+                <div class="category-bar-item">
+                  <div class="label">
+                    <span><strong>Dough Sheeters</strong></span>
+                    <span class="green-text">+34%</span>
+                  </div>
+                  <div class="category-bar-track">
+                    <div class="category-bar-fill positive" style="width: 0%;" data-width="134"></div>
+                  </div>
+                </div>
+                <div class="category-bar-item">
+                  <div class="label">
+                    <span><strong>Rack Ovens</strong></span>
+                    <span class="green-text">+17%</span>
+                  </div>
+                  <div class="category-bar-track">
+                    <div class="category-bar-fill positive" style="width: 0%;" data-width="117"></div>
+                  </div>
+                </div>
+                <div class="category-bar-item">
+                  <div class="label">
+                    <span><strong>Stratos Ovens</strong></span>
+                    <span>-10%</span>
+                  </div>
+                  <div class="category-bar-track">
+                    <div class="category-bar-fill neutral" style="width: 0%;" data-width="90"></div>
+                  </div>
+                </div>
+                <div class="category-bar-item">
+                  <div class="label">
+                    <span><strong>Spiral Mixers</strong></span>
+                    <span class="red-text">-47%</span>
+                  </div>
+                  <div class="category-bar-track">
+                    <div class="category-bar-fill negative" style="width: 0%;" data-width="53"></div>
+                  </div>
+                </div>
+                <div class="category-bar-item">
+                  <div class="label">
+                    <span><strong>Chocolate Equipment</strong></span>
+                    <span class="red-text">-48%</span>
+                  </div>
+                  <div class="category-bar-track">
+                    <div class="category-bar-fill negative" style="width: 0%;" data-width="52"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="control-panel">
+                <button onclick="animateCategoryBars()">▶ Animate Performance</button>
+                <button onclick="resetCategoryBars()">Reset</button>
+              </div>
+            </div>
+
+            <div class="two-col" style="margin-top: 1rem;">
+              <div class="box" style="border-left: 4px solid #2e7d32;">
+                <h4 style="margin-top: 0;">Growth Opportunity</h4>
+                <p style="margin: 0; font-size: 0.95rem;"><strong>$288K in growth</strong> from just 2 categories. These are the products buyers are actively seeking. We'll double down here with targeted campaigns.</p>
+              </div>
+              <div class="box" style="border-left: 4px solid #d32f2f;">
+                <h4 style="margin-top: 0;">Revenue Loss</h4>
+                <p style="margin: 0; font-size: 0.95rem;"><strong>$695K lost</strong> from declining categories. Either reposition, or accept market shift and reallocate resources to winners.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Business Valuation & Current State</h3>
+            <div class="two-col">
+              <div class="box">
+                <h4 style="margin-top: 0;">Current Valuation</h4>
+                <div class="kpi-grid">
+                  <div class="kpi-card">
+                    <div class="big">$3.04M-$3.95M</div>
+                    <div>Current Value</div>
+                  </div>
+                  <div class="kpi-card">
+                    <div class="big">~$850K</div>
+                    <div>SDE</div>
+                  </div>
+                  <div class="kpi-card">
+                    <div class="big">7.4%</div>
+                    <div>SDE Margin</div>
+                  </div>
+                </div>
+                <p style="margin-top: 0.75rem; font-size: 0.9rem;"><strong>Target:</strong> 3-4x increase to $12M+ within 36 months through systematic growth, reduced owner dependency, and predictable revenue pipeline.</p>
+              </div>
+              <div class="box">
+                <h4 style="margin-top: 0;">Market Position</h4>
+                <ul style="margin: 0; padding-left: 1.25rem;">
+                  <li><strong>Exclusive US distributor</strong> for Poland commercial ovens</li>
+                  <li><strong>45 years</strong> in business (established 1980)</li>
+                  <li><strong>Eastern US territory</strong> - 14 states</li>
+                  <li><strong>22 employees</strong> (sales, service, admin)</li>
+                  <li><strong>31% gross margin</strong> (industry standard 25-35%)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="interactive-demo" style="margin-top: 1rem;">
+              <h4>Valuation Gap: $3.5M → $12M</h4>
+              <div class="valuation-gap" id="valuationGapDemo">
+                <div class="gap-bar">
+                  <div class="gap-current"></div>
+                  <div class="gap-target">$12M Target</div>
+                </div>
+                <p style="margin-top: 0.5rem; font-size: 0.875rem; text-align: center;"><strong>$8.5M value creation opportunity</strong> through systematic growth marketing</p>
+              </div>
+              <div class="control-panel">
+                <button onclick="animateValuationGap()">▶ Show Gap</button>
+                <button onclick="resetValuationGap()">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>The Opportunity: Why Marketing Can Fix This</h3>
+            <div class="terminal-output">
+CURRENT STATE ANALYSIS:
+
+1. DEMAND GENERATION: ZERO
+   - No systematic lead generation
+   - Website: Static brochure (not lead capture)
+   - Marketing attribution: Non-existent
+   - Reliance: Trade shows + referrals only
+
+2. SALES PROCESS: MANUAL & SLOW
+   - Quote turnaround: 3-5 days (industry avg: same-day)
+   - CRM adoption: ~40% (data entry resistance)
+   - Pipeline visibility: Limited to owner knowledge
+   - Win rate: Unknown (no tracking)
+
+3. PRODUCT MIX MISMATCH
+   - Growth categories: 34% growth, NO targeted marketing
+   - Declining categories: -48% loss, still equal attention
+   - Result: Marketing resources wasted on shrinking segments
+
+THE FIX:
+Systematic demand generation + data-driven product focus =
+Predictable $12M+ revenue + $12M+ valuation
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Primary Campaign Goal (Phased Approach)</h3>
+            <div class="success-box">
+              <p style="margin: 0; font-size: 1rem; line-height: 1.8;"><strong>Build to 40-50 qualified equipment inquiry leads per month by Month 3.</strong></p>
+              <p style="margin: 0.75rem 0 0 0;">This means: Business owners actively researching commercial bakery equipment, ready for consultation, with budget and timeline in place. Not tire-kickers. Not students. Real buyers.</p>
+              <p style="margin: 0.75rem 0 0 0; font-size: 0.9rem; color: #666;"><strong>Realistic Ramp:</strong> Month 1 = 15-20 leads (testing phase) → Month 2 = 25-35 leads (optimization) → Month 3+ = 40-50 leads (scaled)</p>
+              <div class="metrics-grid" style="margin-top: 1rem;">
+                <div class="metric-card">
+                  <div class="metric-value">40-50</div>
+                  <div class="metric-label">Leads/Month (By M3)</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">8-10%</div>
+                  <div class="metric-label">Close Rate Target</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">4-5</div>
+                  <div class="metric-label">Sales/Month</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">$100K</div>
+                  <div class="metric-label">Avg Deal Size</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">$400K-$500K</div>
+                  <div class="metric-label">Monthly Pipeline</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">$5M-$6M</div>
+                  <div class="metric-label">Annual Pipeline</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="s2" class="cs-page">
+        <div class="cs-num">02.</div>
+        <div class="cs-content">
+          <h1>30-Day Growth Plan: Data-Driven Channel Strategy</h1>
+          <h2>Four Initiatives Backed by Category Performance Data</h2>
+
+          <div class="alert-box" style="margin-bottom: 1.5rem;">
+            <p style="margin: 0;"><strong>Total Budget: $10,000/month | Target: 50+ qualified leads/month | Expected Pipeline: $750K/month | ROI: 75x</strong></p>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">Based on actual category performance: <strong>Focus on Rack Ovens (+17%) and Dough Sheeters (+34%)</strong>—these are where buyers are actively investing. We'll build campaigns around proven demand signals.</p>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Channel Strategy: Why These 4 Initiatives</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Channel</th>
+                  <th>Monthly Budget</th>
+                  <th>Target Leads</th>
+                  <th>Est. Cost/Lead</th>
+                  <th>Pipeline Value</th>
+                  <th>ROI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Google Ads</strong></td>
+                  <td>$4,000</td>
+                  <td>20-30</td>
+                  <td>$150-250</td>
+                  <td>$450K</td>
+                  <td class="green-text">112x</td>
+                </tr>
+                <tr>
+                  <td><strong>LinkedIn Ads</strong></td>
+                  <td>$2,500</td>
+                  <td>10-15</td>
+                  <td>$200-350</td>
+                  <td>$225K</td>
+                  <td class="green-text">90x</td>
+                </tr>
+                <tr>
+                  <td><strong>Website Optimization</strong></td>
+                  <td>$2,000 (one-time)</td>
+                  <td>10-15</td>
+                  <td>$133-200</td>
+                  <td>$225K</td>
+                  <td class="green-text">112x</td>
+                </tr>
+                <tr>
+                  <td><strong>Content/SEO</strong></td>
+                  <td>$1,500</td>
+                  <td>5-10</td>
+                  <td>$150-300</td>
+                  <td>$112K</td>
+                  <td class="green-text">75x</td>
+                </tr>
+                <tr style="background:#f0f0f0; font-weight:600;">
+                  <td><strong>TOTAL</strong></td>
+                  <td><strong>$10,000</strong></td>
+                  <td><strong>45-70</strong></td>
+                  <td><strong>$143-238</strong></td>
+                  <td><strong>$1.012M</strong></td>
+                  <td class="green-text"><strong>101x</strong></td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="margin-top: 1rem; font-size: 0.9rem;"><strong>Calculation:</strong> Average deal size $150K × 10% close rate = $15K revenue per lead. At $200 cost per lead, that's 75x ROI. Conservative estimate: 50 leads/month = 5 sales = $750K pipeline.</p>
+          </div>
+
+          <div class="interactive-demo" style="margin-bottom: 1.5rem;">
+            <h3>Marketing Funnel Simulator: Lead Flow Visualization</h3>
+            <div class="component-section" id="funnelDemo">
+              <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #666;"><strong>Conservative B2B Equipment Model:</strong> 6% website conversion (best-in-class performance), 8-10% final close rate</p>
+              <div class="funnel-stage">
+                <h4 style="margin: 0 0 0.5rem 0;">Website Visitors</h4>
+                <div class="funnel-bar" style="width: 100%;"></div>
+                <div class="funnel-metrics">
+                  <span><strong>Volume:</strong> <span id="visitors-count">2,000</span>/month</span>
+                  <span><strong>Conversion:</strong> 6% → Leads (best-in-class)</span>
+                </div>
+              </div>
+              <div class="funnel-stage">
+                <h4 style="margin: 0 0 0.5rem 0;">Qualified Leads</h4>
+                <div class="funnel-bar" style="width: 60%;"></div>
+                <div class="funnel-metrics">
+                  <span><strong>Volume:</strong> <span id="leads-count">120</span>/month</span>
+                  <span><strong>Conversion:</strong> 45% → MQL</span>
+                </div>
+              </div>
+              <div class="funnel-stage">
+                <h4 style="margin: 0 0 0.5rem 0;">Marketing Qualified Leads</h4>
+                <div class="funnel-bar" style="width: 45%;"></div>
+                <div class="funnel-metrics">
+                  <span><strong>Volume:</strong> <span id="mql-count">54</span>/month</span>
+                  <span><strong>Conversion:</strong> 50% → SQL</span>
+                </div>
+              </div>
+              <div class="funnel-stage">
+                <h4 style="margin: 0 0 0.5rem 0;">Sales Qualified Leads</h4>
+                <div class="funnel-bar" style="width: 30%;"></div>
+                <div class="funnel-metrics">
+                  <span><strong>Volume:</strong> <span id="sql-count">27</span>/month</span>
+                  <span><strong>Conversion:</strong> 33% → Customer</span>
+                </div>
+              </div>
+              <div class="funnel-stage">
+                <h4 style="margin: 0 0 0.5rem 0;">New Customers</h4>
+                <div class="funnel-bar" style="width: 18%;"></div>
+                <div class="funnel-metrics">
+                  <span><strong>Volume:</strong> <span id="customer-count">9</span>/month</span>
+                  <span><strong>Avg Deal:</strong> $100K</span>
+                </div>
+              </div>
+              <div class="calc-result">
+                <h4 style="margin: 0 0 0.5rem 0;">Monthly Pipeline Created</h4>
+                <div class="big-number" id="funnel-revenue">$900,000</div>
+                <p style="margin: 0; font-size: 0.875rem;">From Inbound Marketing (9 customers × $100K avg deal)</p>
+                <p style="margin: 0.5rem 0 0 0; font-size: 0.85rem; color: #666;"><strong>Note:</strong> This is pipeline value. Actual closed revenue depends on 6-12 month sales cycle. Expect ~50% to close in Year 1 = $450K-$500K closed revenue.</p>
+              </div>
+              <div class="control-panel">
+                <button onclick="animateFunnel()">▶ Animate Funnel</button>
+                <button onclick="resetFunnel()">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <h3>Initiative 1: Google Ads High-Intent Campaign</h3>
+            <p><strong>Channel:</strong> Google Search + Display Remarketing</p>
+            <p><strong>Budget:</strong> $4,000/month</p>
+            <p><strong>Goal:</strong> Capture equipment replacement/expansion searches at the moment of need</p>
+            <div style="margin-top: 0.75rem;">
+              <strong>Product Focus (Based on +17% & +34% Growth):</strong>
+              <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li><strong>Rack Ovens (COMD):</strong> +17% growth = active buyer demand. Target "commercial rack oven," "deck oven replacement," "bakery rack oven"</li>
+                <li><strong>Dough Sheeters (SHEE):</strong> +34% growth = strongest demand signal. Target "commercial dough sheeter," "bakery sheeter," "industrial dough equipment"</li>
+                <li><strong>Stratos Ovens (OVDS):</strong> $1.14M revenue = maintain share. Target "Stratos oven," "convection deck oven"</li>
+              </ul>
+              <strong>Target Keywords:</strong>
+              <div style="margin-top: 0.5rem;">
+                <span class="pill">rack oven replacement</span>
+                <span class="pill">commercial dough sheeter</span>
+                <span class="pill">bakery equipment</span>
+                <span class="pill">commercial bakery setup</span>
+                <span class="pill">poland commercial oven</span>
+                <span class="pill">deck oven financing</span>
+                <span class="pill">commercial baking equipment</span>
+              </div>
+            </div>
+            <div class="box" style="margin-top: 0.75rem; border-left: 4px solid #2e7d32;">
+              <p style="margin: 0; font-size: 0.9rem;"><strong>Why This Works:</strong> Growing categories show active buyer intent. Rack Ovens (+17%) and Dough Sheeters (+34%) prove market demand exists—we're just capturing it before competitors.</p>
+            </div>
+            <div class="metrics-grid" style="margin-top: 1rem;">
+              <div class="metric-card">
+                <div class="metric-value">20-30</div>
+                <div class="metric-label">Leads/Month</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">$150-250</div>
+                <div class="metric-label">Cost Per Lead</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">15%+</div>
+                <div class="metric-label">Conversion Rate</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <h3>Initiative 2: LinkedIn Account-Based Campaign</h3>
+            <p><strong>Channel:</strong> LinkedIn Sponsored Content + InMail</p>
+            <p><strong>Budget:</strong> $2,500/month</p>
+            <p><strong>Goal:</strong> Target bakery owners/managers in Eastern US with educational content</p>
+            <div style="margin-top: 0.75rem;">
+              <strong>Targeting:</strong>
+              <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li>Job Title: CEO, Owner, Operations Manager, Plant Manager</li>
+                <li>Industry: Food & Beverage, Manufacturing</li>
+                <li>Company Size: 20-200 employees</li>
+                <li>Geography: Eastern US (NY, PA, MA, CT, NJ, VA, NC, SC, GA, FL)</li>
+              </ul>
+            </div>
+            <div class="metrics-grid" style="margin-top: 1rem;">
+              <div class="metric-card">
+                <div class="metric-value">10-15</div>
+                <div class="metric-label">Leads/Month</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">$200-350</div>
+                <div class="metric-label">Cost Per Lead</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">25%+</div>
+                <div class="metric-label">MQL-to-SQL Rate</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <h3>Initiative 3: Website Conversion Optimization</h3>
+            <p><strong>Channel:</strong> On-site lead capture</p>
+            <p><strong>Budget:</strong> $2,000 (one-time setup)</p>
+            <p><strong>Goal:</strong> Convert existing traffic (estimated 2,000-3,000 monthly visitors)</p>
+            <div style="margin-top: 0.75rem;">
+              <strong>Optimizations:</strong>
+              <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li>Add prominent "Free Equipment Consultation" CTA above fold</li>
+                <li>Create dedicated landing pages for each product category</li>
+                <li>Implement exit-intent popups with lead magnet offers</li>
+                <li>Add live chat with qualification workflows</li>
+                <li>Simplify contact forms (reduce from 8 fields to 4)</li>
+              </ul>
+            </div>
+            <div class="metrics-grid" style="margin-top: 1rem;">
+              <div class="metric-card">
+                <div class="metric-value">5%</div>
+                <div class="metric-label">Visitor-to-Lead</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">3x</div>
+                <div class="metric-label">Form Submissions</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">10-15</div>
+                <div class="metric-label">Leads/Month</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <h3>Initiative 4: Content + SEO Foundation</h3>
+            <p><strong>Channel:</strong> Blog + YouTube + Resource Library</p>
+            <p><strong>Budget:</strong> $1,500/month (content creation)</p>
+            <p><strong>Goal:</strong> Build authority, capture long-tail searches, nurture leads</p>
+            <div style="margin-top: 0.75rem;">
+              <strong>Content Types:</strong>
+              <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li>Equipment buying guides (gated downloads)</li>
+                <li>Case studies showcasing Poland equipment performance</li>
+                <li>Maintenance tips and troubleshooting guides</li>
+                <li>YouTube equipment demonstration videos</li>
+                <li>ROI calculators and capacity planning tools</li>
+              </ul>
+            </div>
+
+            <div class="interactive-demo" style="margin-top: 1rem;">
+              <h4>Content Multiplication Engine: 1 Case Study → 30 Assets</h4>
+              <div class="source-content">
+                📸 SOURCE: Poland Rack Oven Installation at Artisan Bakery
+              </div>
+              <div class="multiplication-grid" id="contentMultiplication">
+                <div class="content-asset">YouTube Video</div>
+                <div class="content-asset">Blog Post</div>
+                <div class="content-asset">Case Study PDF</div>
+                <div class="content-asset">LinkedIn Post 1</div>
+                <div class="content-asset">LinkedIn Post 2</div>
+                <div class="content-asset">LinkedIn Post 3</div>
+                <div class="content-asset">LinkedIn Post 4</div>
+                <div class="content-asset">LinkedIn Post 5</div>
+                <div class="content-asset">Instagram Reel</div>
+                <div class="content-asset">Instagram Story</div>
+                <div class="content-asset">Email Campaign</div>
+                <div class="content-asset">Customer Quote</div>
+                <div class="content-asset">ROI Calculator</div>
+                <div class="content-asset">Equipment Guide</div>
+                <div class="content-asset">Video Testimonial</div>
+                <div class="content-asset">Photo Gallery</div>
+                <div class="content-asset">Press Release</div>
+                <div class="content-asset">Sales Deck Slide</div>
+                <div class="content-asset">Trade Show Banner</div>
+                <div class="content-asset">Email Signature</div>
+                <div class="content-asset">Google Ad Copy</div>
+                <div class="content-asset">LinkedIn Ad</div>
+                <div class="content-asset">Facebook Post</div>
+                <div class="content-asset">Twitter Thread</div>
+                <div class="content-asset">Pinterest Pin</div>
+                <div class="content-asset">Infographic</div>
+                <div class="content-asset">Webinar Slide</div>
+                <div class="content-asset">Newsletter Feature</div>
+                <div class="content-asset">SEO Landing Page</div>
+                <div class="content-asset">Quote Template</div>
+              </div>
+              <div class="control-panel">
+                <button onclick="animateContentMultiplication()">▶ Multiply Content</button>
+                <button onclick="resetContentMultiplication()">Reset</button>
+              </div>
+              <div class="success-box" style="margin-top: 1rem;">
+                <h4>Content Efficiency</h4>
+                <p><strong>Time Investment:</strong> 4 hours (photoshoot + customer interview)</p>
+                <p><strong>Output:</strong> 30 assets across 12 channels</p>
+                <p><strong>Lifespan:</strong> 12-24 months of ongoing value</p>
+                <p><strong>Cost per Asset:</strong> ~$15 (vs $200+ creating individually)</p>
+              </div>
+            </div>
+
+            <div class="metrics-grid" style="margin-top: 1rem;">
+              <div class="metric-card">
+                <div class="metric-value">10+</div>
+                <div class="metric-label">Pieces Published</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">5,000+</div>
+                <div class="metric-label">Monthly Sessions</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">20+</div>
+                <div class="metric-label">Content Downloads</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 2rem;">
+            <h3>30-Day Timeline</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>Week 1:</strong> Google Ads campaign setup, keyword research, ad copy creation, landing page development
+              </div>
+              <div class="timeline-item">
+                <strong>Week 2:</strong> LinkedIn campaign launch, website optimization implementation, content calendar creation
+              </div>
+              <div class="timeline-item">
+                <strong>Week 3:</strong> Content production begins, remarketing campaigns launch, A/B testing starts
+              </div>
+              <div class="timeline-item">
+                <strong>Week 4:</strong> Performance review, optimization adjustments, scale winning campaigns
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Budget Allocation</h3>
+            <div class="two-col">
+              <div class="box">
+                <h4 style="margin-top: 0;">Monthly Spend</h4>
+                <ul style="margin: 0; padding-left: 1.25rem;">
+                  <li>Google Ads: $4,000 (40%)</li>
+                  <li>LinkedIn Ads: $2,500 (25%)</li>
+                  <li>Content Creation: $1,500 (15%)</li>
+                  <li>Tools & Software: $1,000 (10%)</li>
+                  <li>Testing & Optimization: $1,000 (10%)</li>
+                </ul>
+              </div>
+              <div class="box">
+                <h4 style="margin-top: 0;">Expected Results</h4>
+                <ul style="margin: 0; padding-left: 1.25rem;">
+                  <li><strong>50+ qualified leads/month</strong></li>
+                  <li>Average cost per lead: $200</li>
+                  <li>10% close rate = 5 sales/month</li>
+                  <li>Average deal: $150K = $750K monthly pipeline</li>
+                  <li><strong>ROI: 75x return</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s3" class="cs-page">
+        <div class="cs-num">03.</div>
+        <div class="cs-content">
+          <h1>Example Ad Campaign: Google Ads</h1>
+          <h2>Commercial Bakery Equipment Replacement Campaign</h2>
+
+          <div class="component-section">
+            <h3>Campaign Objective</h3>
+            <p><strong>Generate qualified equipment inquiries</strong> from commercial bakery owners actively researching replacement or expansion equipment.</p>
+          </div>
+
+          <div class="two-col" style="margin-top: 1.5rem;">
+            <div class="box">
+              <h3 style="margin-top: 0;">Target Audience</h3>
+              <ul style="margin: 0; padding-left: 1.25rem;">
+                <li><strong>Demographics:</strong> 35-65 years old, business owners/managers</li>
+                <li><strong>Geography:</strong> Eastern US (NY, PA, MA, CT, NJ, VA, NC, SC, GA, FL)</li>
+                <li><strong>Interests:</strong> Commercial baking, food manufacturing, restaurant equipment</li>
+                <li><strong>Intent:</strong> High-intent keywords indicating active research</li>
+              </ul>
+            </div>
+            <div class="box">
+              <h3 style="margin-top: 0;">Target Keywords</h3>
+              <div style="margin-top: 0.5rem;">
+                <span class="pill">commercial deck oven</span>
+                <span class="pill">bakery equipment</span>
+                <span class="pill">rack oven replacement</span>
+                <span class="pill">commercial bakery setup</span>
+                <span class="pill">poland oven</span>
+                <span class="pill">bakery oven repair</span>
+                <span class="pill">commercial dough sheeter</span>
+                <span class="pill">bakery equipment financing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Ad Copy Examples & A/B Testing</h3>
+
+            <div class="two-col">
+              <div class="box" style="border-left: 4px solid #2e7d32;">
+                <h4 style="margin-top: 0;">Variation A: Benefit-Focused</h4>
+                <div class="ad-preview">
+                  <div class="ad-url">probake.com › commercial-ovens</div>
+                  <div class="ad-headline">Poland Commercial Ovens | 45 Years Experience</div>
+                  <div class="ad-description">
+                    Increase production capacity by 40%. Exclusive US distributor for Poland commercial ovens.
+                    Free consultation, financing available. Expert advice for your bakery equipment needs.
+                  </div>
+                </div>
+                <p style="margin-top: 0.75rem; font-size: 0.85rem;"><strong>Focus:</strong> Outcome (increased capacity)</p>
+              </div>
+
+              <div class="box" style="border-left: 4px solid #1a0dab;">
+                <h4 style="margin-top: 0;">Variation B: Problem-Focused</h4>
+                <div class="ad-preview">
+                  <div class="ad-url">probake.com › equipment-replacement</div>
+                  <div class="ad-headline">Equipment Breakdowns Costing You? | ProBAKE</div>
+                  <div class="ad-description">
+                    Stop losing revenue to equipment downtime. Poland ovens deliver 99.8% uptime.
+                    45 years serving bakeries. Free consultation + service plans available.
+                  </div>
+                </div>
+                <p style="margin-top: 0.75rem; font-size: 0.85rem;"><strong>Focus:</strong> Pain point (downtime)</p>
+              </div>
+            </div>
+
+            <div class="success-box" style="margin-top: 1rem;">
+              <h4>A/B Test Hypothesis</h4>
+              <p><strong>Test:</strong> Benefit-focused vs Problem-focused messaging</p>
+              <p><strong>Metric:</strong> CTR and Cost per Lead</p>
+              <p><strong>Prediction:</strong> Benefit-focused will have higher CTR (4.5% vs 3.2%), Problem-focused will have better conversion quality (lower CPL)</p>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Full Ad Copy Template</h3>
+            <div class="terminal-output">
+HEADLINE 1: Poland Commercial Ovens | 45 Years Experience
+HEADLINE 2: Free Equipment Consultation | ProBAKE
+HEADLINE 3: Eastern US Bakery Equipment | Expert Service
+
+DESCRIPTION:
+Exclusive US distributor for Poland commercial ovens. Serving bakeries,
+pizzerias, and food manufacturers. Free consultation, financing available.
+Get expert advice on your equipment needs.
+
+CALL-TO-ACTION: Get Free Consultation
+
+DISPLAY URL: probake.com/consultation
+FINAL URL: probake.com/consultation?source=google-ads&utm_campaign=equipment-replacement
+
+SITELINKS:
+- Equipment Catalog
+- Financing Options
+- Service & Support
+- Customer Success Stories
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Landing Page Wireframe & Concept</h3>
+
+            <div class="wireframe">
+              <div class="wireframe-section">
+                <div class="wireframe-label">Hero Section</div>
+                <h3 style="margin: 0;">Find the Right Commercial Bakery Equipment for Your Business</h3>
+                <p style="margin: 0.5rem 0 0 0; color: #666;">Free consultation with equipment expert. No obligation. Get personalized recommendations based on your production needs.</p>
+              </div>
+
+              <div class="wireframe-section">
+                <div class="wireframe-label">Value Proposition (3 Columns)</div>
+                <div class="kpi-grid">
+                  <div>
+                    <strong>45 Years Experience</strong>
+                    <p style="font-size: 0.875rem; margin: 0.25rem 0 0 0;">Serving commercial bakeries since 1980</p>
+                  </div>
+                  <div>
+                    <strong>Exclusive Distributor</strong>
+                    <p style="font-size: 0.875rem; margin: 0.25rem 0 0 0;">Poland commercial ovens - US territory</p>
+                  </div>
+                  <div>
+                    <strong>Full Service Support</strong>
+                    <p style="font-size: 0.875rem; margin: 0.25rem 0 0 0;">Installation, maintenance, 24/7 support</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wireframe-section">
+                <div class="wireframe-label">Lead Capture Form</div>
+                <strong>Schedule Your Free Equipment Consultation</strong>
+                <ul style="margin: 0.5rem 0; padding-left: 1.25rem; font-size: 0.875rem;">
+                  <li>Name</li>
+                  <li>Company</li>
+                  <li>Phone</li>
+                  <li>Email</li>
+                  <li>Equipment Interest (dropdown)</li>
+                  <li>Timeline (dropdown)</li>
+                </ul>
+                <div style="margin-top: 0.75rem; padding: 0.75rem; background: #000; color: #fff; text-align: center; font-weight: 600;">
+                  GET FREE CONSULTATION →
+                </div>
+              </div>
+
+              <div class="wireframe-section">
+                <div class="wireframe-label">Trust Signals</div>
+                <div style="font-size: 0.875rem;">
+                  <p><strong>Customer Logos:</strong> Major bakery chains, regional bakeries (3-5 logos)</p>
+                  <p><strong>Testimonial:</strong> "ProBAKE helped us increase production capacity by 40% while reducing energy costs. Best investment we made." - Bakery Owner</p>
+                  <p><strong>Badges:</strong> "45 Years Experience" | "Exclusive US Distributor" | "Financing Available"</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="box" style="margin-top: 1rem; border-left: 4px solid #2e7d32;">
+              <h4 style="margin-top: 0;">Why This Landing Page Works</h4>
+              <ul style="margin: 0; padding-left: 1.25rem;">
+                <li><strong>Clear value prop:</strong> Expertise (45 years) + exclusive equipment + full service</li>
+                <li><strong>Low friction form:</strong> 6 fields max, dropdown for qualification</li>
+                <li><strong>Trust signals:</strong> Customer logos, testimonial, badges build credibility</li>
+                <li><strong>Single goal:</strong> One CTA - schedule consultation (no distractions)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Customer Journey Map: Bakery Owner Persona</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>Awareness:</strong> Google search "rack oven replacement" → Sees ProBAKE ad → Clicks
+              </div>
+              <div class="timeline-item">
+                <strong>Consideration:</strong> Lands on page → Reads value prop → Sees trust signals (45 years, customer logos)
+              </div>
+              <div class="timeline-item">
+                <strong>Evaluation:</strong> Reviews testimonial → Checks financing options → Watches equipment video demo
+              </div>
+              <div class="timeline-item">
+                <strong>Decision:</strong> Fills out consultation form → Receives confirmation email → Schedules call
+              </div>
+              <div class="timeline-item">
+                <strong>Post-Conversion:</strong> Consultation call with expert → Custom quote with ROI analysis → Equipment purchase
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="s4" class="cs-page">
+        <div class="cs-num">04.</div>
+        <div class="cs-content">
+          <h1>Optimization Plan</h1>
+          <h2>Testing, Learning, and Iterating</h2>
+
+          <div class="alert-box" style="margin-bottom: 1.5rem;">
+            <p style="margin: 0;"><strong>Philosophy:</strong> Test fast, learn faster, double down on what works. Every test informs the next.</p>
+          </div>
+
+          <div class="component-section">
+            <h3>A/B Testing Framework</h3>
+
+            <div class="workflow-step">
+              <h4>Week 1-2: Ad Creative Tests</h4>
+              <div class="two-col">
+                <div class="box">
+                  <strong>Test A: Benefit-Focused</strong>
+                  <p style="margin: 0.5rem 0;">"Increase Production Capacity by 40%"</p>
+                  <p style="margin: 0; font-size: 0.85rem; color: #666;">Focuses on outcome</p>
+                </div>
+                <div class="box">
+                  <strong>Test B: Problem-Focused</strong>
+                  <p style="margin: 0.5rem 0;">"Equipment Breakdowns Costing You?"</p>
+                  <p style="margin: 0; font-size: 0.85rem; color: #666;">Focuses on pain point</p>
+                </div>
+              </div>
+              <p style="margin-top: 0.75rem;"><strong>Metric:</strong> CTR, Cost per Click</p>
+            </div>
+
+            <div class="workflow-step">
+              <h4>Week 2-3: Landing Page Tests</h4>
+              <div class="two-col">
+                <div class="box">
+                  <strong>Test A: Single Form</strong>
+                  <p style="margin: 0.5rem 0;">5 fields, one page</p>
+                  <p style="margin: 0; font-size: 0.85rem; color: #666;">Lower friction</p>
+                </div>
+                <div class="box">
+                  <strong>Test B: Multi-Step Form</strong>
+                  <p style="margin: 0.5rem 0;">3 steps, 2-3 fields each</p>
+                  <p style="margin: 0; font-size: 0.85rem; color: #666;">Progressive disclosure</p>
+                </div>
+              </div>
+              <p style="margin-top: 0.75rem;"><strong>Metric:</strong> Conversion rate, completion rate</p>
+            </div>
+
+            <div class="workflow-step">
+              <h4>Week 3-4: Audience Targeting Tests</h4>
+              <div class="two-col">
+                <div class="box">
+                  <strong>Test A: Broad Match</strong>
+                  <p style="margin: 0.5rem 0;">Broader reach, lower cost</p>
+                  <p style="margin: 0; font-size: 0.85rem; color: #666;">More volume</p>
+                </div>
+                <div class="box">
+                  <strong>Test B: Exact + Phrase Match</strong>
+                  <p style="margin: 0.5rem 0;">Tighter targeting, higher cost</p>
+                  <p style="margin: 0; font-size: 0.85rem; color: #666;">Better quality</p>
+                </div>
+              </div>
+              <p style="margin-top: 0.75rem;"><strong>Metric:</strong> Cost per lead, lead quality score</p>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Early Data Signals to Watch</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>Day 1-3:</strong> Impressions, CTR (is creative resonating?)
+                <br><span style="font-size: 0.85rem; color: #666;">Action: Pause ads with < 2% CTR after 1,000 impressions</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Day 4-7:</strong> Cost per click, bounce rate (is targeting accurate?)
+                <br><span style="font-size: 0.85rem; color: #666;">Action: Refine keywords, adjust bids, improve landing page relevance</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Day 8-14:</strong> Form submissions, cost per lead (is offer compelling?)
+                <br><span style="font-size: 0.85rem; color: #666;">Action: Test different offers, simplify forms, add urgency</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Day 15-21:</strong> Lead quality, sales team feedback (are leads qualified?)
+                <br><span style="font-size: 0.85rem; color: #666;">Action: Tighten targeting, improve qualification questions</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Day 22-30:</strong> Pipeline contribution, ROI (is this scalable?)
+                <br><span style="font-size: 0.85rem; color: #666;">Action: Scale winners, kill losers, optimize budget allocation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Decision Tree: Pause, Scale, Test, or Kill?</h3>
+            <div class="mermaid">
+              flowchart TD
+                  Start[Campaign Running] --> CheckCTR{CTR after<br/>1000 impressions}
+                  CheckCTR -->|< 2%| Pause1[PAUSE Campaign]
+                  CheckCTR -->|> 2%| CheckCPL{Cost per Lead}
+
+                  CheckCPL -->|> $400| Pause2[PAUSE Campaign]
+                  CheckCPL -->|$200-400| Test[TEST & OPTIMIZE]
+                  CheckCPL -->|< $200| CheckQuality{Lead Quality<br/>Score}
+
+                  CheckQuality -->|< 5/10| Test
+                  CheckQuality -->|5-7/10| Continue[CONTINUE]
+                  CheckQuality -->|> 7/10| Scale[SCALE Budget +30%]
+
+                  Test --> Optimize[Refine Targeting<br/>Test New Creative<br/>Adjust Landing Page]
+                  Optimize --> Retest[Re-evaluate in 7 Days]
+
+                  Pause1 --> Review1[Review Creative<br/>Test New Angle]
+                  Pause2 --> Review2[Review Targeting<br/>Reduce Bids]
+
+                  Scale --> Monitor[Monitor Performance<br/>Weekly Reviews]
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Iteration Framework</h3>
+            <div class="two-col">
+              <div class="box">
+                <h4 style="margin-top: 0;">Weekly Optimization</h4>
+                <ul style="margin: 0; padding-left: 1.25rem;">
+                  <li>Review performance data</li>
+                  <li>Pause underperforming ads</li>
+                  <li>Increase budget on winners (20-30%)</li>
+                  <li>Refine targeting based on conversion data</li>
+                  <li>Test new creative variations</li>
+                </ul>
+              </div>
+              <div class="box">
+                <h4 style="margin-top: 0;">Monthly Strategic Review</h4>
+                <ul style="margin: 0; padding-left: 1.25rem;">
+                  <li>Calculate ROI by channel</li>
+                  <li>Reallocate budget to top performers</li>
+                  <li>Identify new opportunities</li>
+                  <li>Document learnings</li>
+                  <li>Plan next month's tests</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="success-box" style="margin-top: 1.5rem;">
+            <h4>Decision Rules</h4>
+            <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+              <li><strong>Pause if:</strong> CTR < 2% after 1,000 impressions OR cost per lead > $400</li>
+              <li><strong>Scale if:</strong> Cost per lead < $200 AND lead quality score > 7/10</li>
+              <li><strong>Test if:</strong> Performance is "good but not great" (room for improvement)</li>
+              <li><strong>Kill if:</strong> No conversions after $500 spend OR sales team rejects all leads</li>
+            </ul>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Contingency Planning: What If Things Don't Go as Expected?</h3>
+            <div class="workflow-step">
+              <h4>Scenario 1: Leads Below Target</h4>
+              <p><strong>Problem:</strong> Month 1 delivers 10 leads instead of 15-20</p>
+              <p><strong>Action Plan:</strong></p>
+              <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li><strong>Week 1-2:</strong> Increase Google Ads budget by 50% ($4K → $6K)</li>
+                <li><strong>Week 2-3:</strong> Launch additional keyword groups (broaden targeting)</li>
+                <li><strong>Week 3-4:</strong> Add LinkedIn retargeting for website visitors</li>
+                <li><strong>Alternative:</strong> Extend timeline to Month 2 for optimization, accept lower volume in Month 1</li>
+              </ul>
+            </div>
+
+            <div class="workflow-step">
+              <h4>Scenario 2: High Cost Per Lead</h4>
+              <p><strong>Problem:</strong> CPL is $350-400 instead of $200-250</p>
+              <p><strong>Action Plan:</strong></p>
+              <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li><strong>Option A (Reduce Volume):</strong> Accept 25-30 leads/month instead of 40-50, stay within budget</li>
+                <li><strong>Option B (Improve Conversion):</strong> Optimize landing pages to convert 8-10% instead of 6%</li>
+                <li><strong>Option C (Lower Bids):</strong> Reduce Google Ads bidding strategy, accept longer ramp time</li>
+              </ul>
+              <p style="margin-top: 0.75rem; font-size: 0.9rem;"><strong>ROI Still Works:</strong> Even at $400 CPL, if close rate is 10% and avg deal is $100K, that's $10K revenue per lead = 25x ROI</p>
+            </div>
+
+            <div class="workflow-step">
+              <h4>Scenario 3: Low Lead Quality</h4>
+              <p><strong>Problem:</strong> Leads are unqualified (students, tire-kickers, wrong geography)</p>
+              <p><strong>Action Plan:</strong></p>
+              <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li><strong>Immediate:</strong> Add negative keywords ("free", "cheap", "used", "repair")</li>
+                <li><strong>Week 2:</strong> Tighten geographic targeting (exclude outside Eastern US)</li>
+                <li><strong>Week 3:</strong> Add qualification questions to forms (budget, timeline, decision authority)</li>
+                <li><strong>Week 4:</strong> Implement lead scoring in HubSpot (auto-flag low-quality leads)</li>
+              </ul>
+            </div>
+
+            <div class="workflow-step">
+              <h4>Scenario 4: Long Sales Cycle Delays Results</h4>
+              <p><strong>Problem:</strong> Leads take 9-12 months to close, not 3-6 months</p>
+              <p><strong>Action Plan:</strong></p>
+              <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li><strong>Measurement Shift:</strong> Track leading indicators (pipeline value, sales conversations, quote requests) not just closed revenue</li>
+                <li><strong>Expectation Setting:</strong> Communicate to stakeholders that Month 1-6 builds pipeline, closed revenue comes Month 6-12</li>
+                <li><strong>Quick Wins:</strong> Focus on smaller deal sizes ($50K-75K range) that close faster to show early wins</li>
+              </ul>
+            </div>
+
+            <div class="workflow-step">
+              <h4>Scenario 5: Budget Constraints During Transition</h4>
+              <p><strong>Problem:</strong> Business hesitant to commit full $10K/month during ownership transition</p>
+              <p><strong>Action Plan:</strong></p>
+              <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li><strong>Pilot Approach:</strong> Start with $5K/month (Google Ads only) for 2 months</li>
+                <li><strong>Milestone-Based:</strong> Hit 15 leads in Month 1 → unlock full $10K budget for Month 2</li>
+                <li><strong>Performance Guarantee:</strong> If CPL > $400 in Month 1, reduce budget in Month 2</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s5" class="cs-page">
+        <div class="cs-num">05.</div>
+        <div class="cs-content">
+          <h1>Communicating Results</h1>
+          <h2>Traditional Business Owner-Friendly Reporting</h2>
+
+          <div class="alert-box" style="margin-bottom: 1.5rem;">
+            <p style="margin: 0;"><strong>Key Principle:</strong> ProBAKE's owners aren't digital marketers. They need clear, jargon-free communication that builds trust and shows business impact.</p>
+          </div>
+
+          <div class="component-section">
+            <h3>Monthly Report Format</h3>
+            <div class="two-col">
+              <div class="box">
+                <h4 style="margin-top: 0;">Structure</h4>
+                <ol style="margin: 0; padding-left: 1.25rem;">
+                  <li><strong>Executive Summary</strong> (3-4 bullet points)</li>
+                  <li><strong>The Numbers That Matter</strong> (leads, calls, quotes)</li>
+                  <li><strong>What This Means</strong> (business impact translation)</li>
+                  <li><strong>What's Next</strong> (action items, recommendations)</li>
+                </ol>
+              </div>
+              <div class="box">
+                <h4 style="margin-top: 0;">Tone</h4>
+                <ul style="margin: 0; padding-left: 1.25rem;">
+                  <li>Plain language, no jargon</li>
+                  <li>Focus on outcomes, not tactics</li>
+                  <li>Use comparisons they understand</li>
+                  <li>Show ROI in dollars, not percentages</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Sample Monthly Report (Real Metrics Format)</h3>
+            <div class="terminal-output">
+PROBAKE MARKETING RESULTS - MONTH 1
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Executive Summary:
+✓ Launched Google Ads targeting bakery equipment searches
+✓ Optimized website to capture more visitor information
+✓ Created content to build authority in commercial baking
+
+The Numbers:
+- 28 qualified leads generated (target: 20-30)
+- 12 consultation calls scheduled
+- 8 equipment quotes sent to prospects
+- $8,500 total marketing investment
+
+What This Means:
+- Average cost per lead: $304
+- If 3 of these leads convert (10% close rate), that's $150K-$450K in equipment sales
+- Marketing ROI: 17x-50x return on investment
+
+What's Next:
+- Continue Google Ads (it's working)
+- Add LinkedIn campaign (expand reach)
+- Create case study content (build trust)
+            </div>
+          </div>
+
+          <div class="interactive-demo" style="margin-top: 1.5rem;">
+            <h3>Interactive Client Dashboard: Toggle Metrics</h3>
+            <div class="component-section">
+              <p style="margin-bottom: 1rem;"><strong>Show only what the client cares about.</strong> Click to toggle metrics on/off:</p>
+              <div class="dashboard-metrics" id="dashboardMetrics">
+                <div class="metric-toggle active" data-metric="leads">
+                  <span><strong>Lead Volume</strong> - How many inquiries we generated</span>
+                  <div class="toggle-switch on"></div>
+                </div>
+                <div class="metric-toggle active" data-metric="pipeline">
+                  <span><strong>Pipeline Value</strong> - Potential revenue from leads</span>
+                  <div class="toggle-switch on"></div>
+                </div>
+                <div class="metric-toggle active" data-metric="cpl">
+                  <span><strong>Cost per Lead</strong> - How much each inquiry costs</span>
+                  <div class="toggle-switch on"></div>
+                </div>
+                <div class="metric-toggle active" data-metric="calls">
+                  <span><strong>Consultation Calls</strong> - How many leads booked meetings</span>
+                  <div class="toggle-switch on"></div>
+                </div>
+                <div class="metric-toggle" data-metric="ctr">
+                  <span><strong>CTR</strong> - Click-through rate (too technical)</span>
+                  <div class="toggle-switch"></div>
+                </div>
+                <div class="metric-toggle" data-metric="bounce">
+                  <span><strong>Bounce Rate</strong> - Website metric (jargon)</span>
+                  <div class="toggle-switch"></div>
+                </div>
+              </div>
+              <div class="control-panel">
+                <button onclick="toggleAllMetrics(true)">Show All Metrics</button>
+                <button onclick="toggleAllMetrics(false)">Client View Only</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="interactive-demo" style="margin-top: 1.5rem;">
+            <h3>Interactive ROI Calculator</h3>
+            <div class="calculator-widget">
+              <div class="slider-control">
+                <label>
+                  Marketing Spend per Month
+                  <span class="slider-value" id="spendValue">$10,000</span>
+                </label>
+                <input type="range" id="spendSlider" min="5000" max="20000" step="1000" value="10000">
+              </div>
+
+              <div class="slider-control">
+                <label>
+                  Leads per Month
+                  <span class="slider-value" id="leadsValue">50</span>
+                </label>
+                <input type="range" id="leadsSlider" min="20" max="100" step="5" value="50">
+              </div>
+
+              <div class="slider-control">
+                <label>
+                  Close Rate (%)
+                  <span class="slider-value" id="closeRateValue">10%</span>
+                </label>
+                <input type="range" id="closeRateSlider" min="5" max="20" step="1" value="10">
+              </div>
+
+              <div class="slider-control">
+                <label>
+                  Average Deal Size
+                  <span class="slider-value" id="dealSizeValue">$150,000</span>
+                </label>
+                <input type="range" id="dealSizeSlider" min="50000" max="300000" step="10000" value="150000">
+              </div>
+
+              <div class="calc-result">
+                <h4 style="margin: 0 0 0.5rem 0;">Monthly Pipeline Value</h4>
+                <div class="big-number" id="pipelineOutput">$750,000</div>
+                <p style="margin: 0.5rem 0; font-size: 0.875rem;">
+                  <strong>New Customers:</strong> <span id="customersOutput">5</span>/month<br>
+                  <strong>ROI:</strong> <span id="roiOutput">75x</span> return on investment
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>Jargon Translator: Marketing Terms → Business Language</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Marketing Term</th>
+                  <th>Business Translation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>CTR 4.5%</strong></td>
+                  <td>45 out of 1,000 people clicked our ad</td>
+                </tr>
+                <tr>
+                  <td><strong>CPL $200</strong></td>
+                  <td>Each lead costs less than a trade show booth</td>
+                </tr>
+                <tr>
+                  <td><strong>15% conversion rate</strong></td>
+                  <td>3 out of 20 visitors fill out the form</td>
+                </tr>
+                <tr>
+                  <td><strong>Pipeline velocity</strong></td>
+                  <td>How fast leads become customers</td>
+                </tr>
+                <tr>
+                  <td><strong>MQL</strong></td>
+                  <td>Someone who downloaded our guide and seems interested</td>
+                </tr>
+                <tr>
+                  <td><strong>SQL</strong></td>
+                  <td>Someone ready to talk to sales about buying</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="component-section" style="margin-top: 1.5rem;">
+            <h3>ROI Visualization</h3>
+            <div class="before-after">
+              <div class="before">
+                <h4>Investment</h4>
+                <div class="metric-value" style="font-size: 1.25rem;">$10,000</div>
+                <div class="metric-label">Monthly Marketing Spend</div>
+              </div>
+              <div class="after">
+                <h4>Return</h4>
+                <div class="metric-value" style="font-size: 1.25rem;">$750,000</div>
+                <div class="metric-label">Monthly Pipeline Value</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong>75x ROI</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="success-box" style="margin-top: 1.5rem;">
+            <h4>Key Reporting Principles</h4>
+            <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+              <li><strong>Always translate metrics to business outcomes:</strong> "28 leads" becomes "3-5 potential sales"</li>
+              <li><strong>Use comparisons:</strong> "Cost per lead of $200" becomes "Less than the cost of one trade show booth"</li>
+              <li><strong>Show progress:</strong> "Up from 5 leads last month" shows momentum</li>
+              <li><strong>Be honest:</strong> If something isn't working, say so and explain the fix</li>
+              <li><strong>Focus on what matters:</strong> Pipeline value, not just lead count</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="s6" class="cs-page">
+        <div class="cs-num">06.</div>
+        <div class="cs-content">
+          <h1>Phase 2: Demon Mode 🔥</h1>
+          <h2>Growth Hacker Automation + Data Science Playbook</h2>
+
+          <div class="alert-box" style="margin-bottom: 1.5rem; border-left: 4px solid #d32f2f;">
+            <p style="margin: 0; font-size: 1rem; line-height: 1.8;"><strong>Once Phase 1 proves marketing works (Month 1-3), we go FULL demon mode.</strong></p>
+            <p style="margin: 0.75rem 0 0 0;">This is where we move from "$10K/month → 40-50 leads" to "$1K/month in tools → 500+ leads". We're talking lead scraping, n8n automation, intent signal monitoring, predictive scoring, and guerrilla tactics that 10x the output for 1/10th the cost.</p>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>The Philosophy: Outbound at Scale</h3>
+            <div class="terminal-output">
+PHASE 1 (Traditional): $10K/month → 40-50 inbound leads → $200-250 CPL
+PHASE 2 (Demon Mode): $1K/month tools → 500+ outbound leads → $2 CPL
+
+The Difference:
+- Phase 1 = WAIT for them to search and find you
+- Phase 2 = FIND them before they even know they need equipment
+
+Why This Works:
+✓ ProBAKE sells $100K+ capital equipment (high LTV supports outbound)
+✓ Market is finite: ~5,000-10,000 bakeries in Eastern US (can target ALL of them)
+✓ Buying signals are predictable (permits, growth, equipment age)
+✓ Competitors aren't doing this (first-mover advantage)
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Workflow 1: The Bakery Discovery Engine (N8N Automation)</h3>
+            <div class="mermaid">
+              flowchart LR
+                  A[Google Maps API] -->|Scrape bakery data| B[Raw Database]
+                  B --> C[Apollo.io Enrichment]
+                  C -->|Get owner email and LinkedIn| D[Enriched Database]
+                  D --> E[Yelp API Check]
+                  E -->|Extract growth signals| F[Lead Scoring Model]
+                  F -->|Score 0-100| G[HubSpot CRM]
+                  G -->|Top 500 leads| H[Outbound Campaign]
+            </div>
+            <div class="workflow-step" style="margin-top: 1rem;">
+              <h4>Step-by-Step Automation</h4>
+              <ol style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li><strong>Scrape Google Maps:</strong> Search "commercial bakery" in every city in Eastern US (NY, PA, MA, CT, NJ, VA, NC, SC, GA, FL). Extract: Name, address, phone, website, Google rating, review count</li>
+                <li><strong>Enrich via Apollo.io API:</strong> Match business name → Get owner/CEO name, email, LinkedIn, employee count, revenue estimate</li>
+                <li><strong>Check Yelp API:</strong> Scan recent reviews for keywords: "expansion", "new location", "busy", "growing", "hiring"</li>
+                <li><strong>Score Each Lead (0-100):</strong>
+                  <ul style="margin-top: 0.5rem;">
+                    <li>Revenue $1M-$10M = +30 points (can afford equipment)</li>
+                    <li>5-15 years in business = +20 points (established, not too old)</li>
+                    <li>Yelp mentions growth = +25 points (expansion signal)</li>
+                    <li>No recent equipment purchase = +25 points (due for upgrade)</li>
+                  </ul>
+                </li>
+                <li><strong>Push to HubSpot:</strong> Auto-create contact record with score, tags, and first touchpoint email scheduled</li>
+              </ol>
+              <div class="metrics-grid" style="margin-top: 1rem;">
+                <div class="metric-card">
+                  <div class="metric-value">5,000-10,000</div>
+                  <div class="metric-label">Total Bakeries Identified</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">500-1,000</div>
+                  <div class="metric-label">Qualified Leads/Week</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">$0.10</div>
+                  <div class="metric-label">Cost Per Lead</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Workflow 2: Intent Signal Monitoring (Real-Time Alerts)</h3>
+            <div class="workflow-step">
+              <h4>The "Equipment Down" Alert System</h4>
+              <p><strong>Concept:</strong> Monitor social media 24/7 for bakery owners posting about equipment failures. When found, sales team responds within 5 minutes.</p>
+              <div class="two-col" style="margin-top: 1rem;">
+                <div class="box">
+                  <h4 style="margin-top: 0;">Trigger Keywords</h4>
+                  <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                    <li>"oven broke" / "oven died"</li>
+                    <li>"mixer not working"</li>
+                    <li>"need new equipment ASAP"</li>
+                    <li>"expanding bakery"</li>
+                    <li>"opening second location"</li>
+                    <li>"equipment nightmare"</li>
+                  </ul>
+                </div>
+                <div class="box">
+                  <h4 style="margin-top: 0;">Auto-Response Flow</h4>
+                  <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                    <li><strong>Slack alert:</strong> Notify sales team instantly</li>
+                    <li><strong>LinkedIn pull:</strong> Get company info automatically</li>
+                    <li><strong>GPT-4 email:</strong> Generate personalized outreach</li>
+                    <li><strong>Dual send:</strong> Email + LinkedIn DM simultaneously</li>
+                    <li><strong>24hr follow-up:</strong> SMS if no response</li>
+                  </ol>
+                </div>
+              </div>
+              <div class="success-box" style="margin-top: 1rem;">
+                <h4>Example Auto-Generated Email</h4>
+                <p style="margin: 0.5rem 0; font-family: monospace; font-size: 0.85rem;">
+                  Subject: Saw your oven issue - can help today<br><br>
+                  Hey [Name],<br><br>
+                  Just saw your post about your oven being down. That's brutal - I know you're losing $3K-5K/day in revenue right now.<br><br>
+                  We're Poland's exclusive distributor. We can:<br>
+                  → Get you a quote today (same-day turnaround)<br>
+                  → Installation in 2 weeks (we prioritize emergency replacements)<br>
+                  → Financing options if needed<br><br>
+                  Available for a call in the next hour? We've helped 200+ bakeries in this exact situation.<br><br>
+                  [Sales Rep Name]<br>
+                  ProBAKE Equipment<br>
+                  [Direct Line]
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Workflow 3: Building Permit Pipeline (The Crystal Ball)</h3>
+            <div class="workflow-step">
+              <h4>Why This Works</h4>
+              <p style="margin-bottom: 1rem;">When someone files a permit for "commercial kitchen buildout," they're 100% buying equipment in the next 3-6 months. We find them BEFORE they start shopping.</p>
+              <div class="terminal-output">
+STEP 1: Scrape City Permit Databases Weekly
+- Search terms: "commercial kitchen", "bakery", "food production"
+- Extract: Permit address, owner name, estimated cost, start date
+- Target: Eastern US cities (top 50 metro areas)
+
+STEP 2: Cross-Reference Data
+- Google Maps: Is this a new location or renovation?
+- LinkedIn: Who's the owner/operator?
+- ZoomInfo: Get contact info (email, phone)
+
+STEP 3: Prioritize High-Value Permits
+- $200K+ budget permits = likely buying equipment
+- New construction = full kitchen setup (biggest opportunity)
+- Renovation = partial equipment replacement
+
+STEP 4: Auto-Send Nurture Sequence
+Week 1: "Congrats on the new buildout! Here's our equipment planning guide"
+Week 3: "Most bakeries your size go with Poland rack ovens - want a quote?"
+Week 6: "Installation takes 8 weeks - what's your target open date?"
+
+STEP 5: Sales Rep Outreach
+Week 2: Personal call to congratulate and offer consultation
+Week 5: Follow-up if no response to automated emails
+              </div>
+              <div class="metrics-grid" style="margin-top: 1rem;">
+                <div class="metric-card">
+                  <div class="metric-value">20-40</div>
+                  <div class="metric-label">New Permits/Month</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">50-70%</div>
+                  <div class="metric-label">Will Buy Equipment</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">$150K-$300K</div>
+                  <div class="metric-label">Avg Deal Size (New Build)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Workflow 4: Competitor Intelligence (Steal Their Customers)</h3>
+            <div class="two-col">
+              <div class="box">
+                <h4 style="margin-top: 0;">Monitor Competitors</h4>
+                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                  <li>Track competitor social media posts</li>
+                  <li>Scrape case studies from competitor websites</li>
+                  <li>Monitor press releases for new installations</li>
+                  <li>Watch Google/Yelp reviews mentioning competitors</li>
+                </ul>
+              </div>
+              <div class="box">
+                <h4 style="margin-top: 0;">Lookalike Targeting</h4>
+                <p style="margin: 0; font-size: 0.9rem;">When competitor installs at Bakery A:</p>
+                <ol style="margin: 0.5rem 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                  <li>Scrape Bakery A details (size, products, location)</li>
+                  <li>Find 50 similar bakeries</li>
+                  <li>Send personalized campaign showing why Poland > competitor</li>
+                </ol>
+              </div>
+            </div>
+            <div class="alert-box" style="margin-top: 1rem;">
+              <h4>Negative Review Targeting</h4>
+              <p style="margin: 0; font-size: 0.9rem;">Scrape competitor reviews for 1-2 star ratings mentioning "late delivery", "poor service", "broke quickly". Contact those bakeries: "Saw you had issues with [Competitor]. We're known for 2-week delivery and lifetime support."</p>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Data Science: Predictive Lead Scoring Model</h3>
+            <div class="workflow-step">
+              <h4>Train on Historical Customer Data</h4>
+              <p style="margin-bottom: 1rem;">Analyze ProBAKE's 200 existing customers to find patterns, then score every scraped bakery on likelihood to buy in next 90 days.</p>
+              <div class="two-col">
+                <div class="box">
+                  <h4 style="margin-top: 0;">Features (Inputs)</h4>
+                  <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                    <li>Years in business (sweet spot: 5-15 years)</li>
+                    <li>Employee count (20-200 = ideal size)</li>
+                    <li>Revenue estimate ($1M-$10M)</li>
+                    <li>Equipment age (10+ years = due for upgrade)</li>
+                    <li>Growth signals (reviews up 30% YoY, hiring)</li>
+                    <li>Proximity to existing customers</li>
+                    <li>Product type (artisan bread, pizza, wholesale)</li>
+                    <li>Web presence quality</li>
+                  </ul>
+                </div>
+                <div class="box">
+                  <h4 style="margin-top: 0;">Score Buckets</h4>
+                  <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                    <li><strong>80-100 (Hot):</strong> Call this week, highest priority</li>
+                    <li><strong>60-79 (Warm):</strong> Email nurture, call next month</li>
+                    <li><strong>40-59 (Cold):</strong> Quarterly check-ins</li>
+                    <li><strong>0-39 (Unqualified):</strong> Retargeting ads only</li>
+                  </ul>
+                  <p style="margin-top: 0.75rem; font-size: 0.85rem;"><strong>Result:</strong> Sales team focuses on top 20% of leads = 5x higher close rate</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Market Mapping: Find the White Space</h3>
+            <div class="workflow-step">
+              <h4>Visual Heat Map Strategy</h4>
+              <ol style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                <li>Plot every commercial bakery in Eastern US on a map</li>
+                <li>Overlay ProBAKE's 200 existing customers</li>
+                <li>Identify clusters with high bakery density but ZERO ProBAKE presence</li>
+              </ol>
+              <div class="success-box" style="margin-top: 1rem;">
+                <h4>Example Insight</h4>
+                <p style="margin: 0; font-size: 0.9rem;"><strong>Discovery:</strong> "Charlotte, NC has 47 commercial bakeries but we've never sold there. Meanwhile, Richmond, VA has 31 bakeries and we have 8 customers (26% market share)."</p>
+                <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;"><strong>Action:</strong> Charlotte = massive white space opportunity. Run geo-targeted ads ONLY to Charlotte + send sales rep for in-person visits.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Guerrilla Creative Tactics</h3>
+
+            <div class="workflow-step">
+              <h4>1. The "Famous Bakery" Case Study Assassination</h4>
+              <p><strong>Tactic:</strong> Create hypothetical case studies for top bakeries showing how they could improve with Poland equipment.</p>
+              <div class="terminal-output">
+Example: "How Levain Bakery Could Save $80K/Year with Poland Deck Ovens"
+
+- Research their current setup (visible from social media/store visits)
+- Calculate real ROI: Energy costs, output capacity, labor savings
+- Print physical case study, mail via FedEx to owner
+- Follow up: "This is what we could do for YOUR business"
+
+Why it works:
+✓ Flattering (you studied their business specifically)
+✓ Specific (real numbers, not vague pitch)
+✓ Hard to ignore (FedEx packages get opened)
+✓ Shows expertise (you know their industry deeply)
+              </div>
+            </div>
+
+            <div class="workflow-step">
+              <h4>2. Equipment Failure Instant Response Team</h4>
+              <p><strong>Tactic:</strong> Monitor social 24/7, call within 15 minutes when someone posts about equipment failure.</p>
+              <p style="margin-top: 0.75rem; font-size: 0.9rem;"><strong>Script:</strong> "Hey I saw your post about your oven 10 minutes ago. I'm actually in [nearby city] right now. Can I swing by with spec sheets in 30 minutes? We can have a replacement installed in 48 hours if you need it urgently. Every day you're down = $5K in lost revenue."</p>
+              <p style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;"><strong>Why this destroys competitors:</strong> Speed beats everything. While competitors take 3-5 days to respond to a quote request, you're on-site in 30 minutes.</p>
+            </div>
+
+            <div class="workflow-step">
+              <h4>3. Webinar → Immediate Quote Funnel</h4>
+              <ul style="margin: 0.5rem 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                <li><strong>Monthly webinar:</strong> "How Commercial Bakeries Increase Output 40% Without Hiring"</li>
+                <li><strong>Promote to:</strong> Scraped bakery owner list (email + LinkedIn ads to custom audience)</li>
+                <li><strong>During webinar:</strong> Live demo of Poland oven capabilities, Q&A</li>
+                <li><strong>CTA:</strong> "Book free consultation in next 24 hours → get custom ROI analysis"</li>
+                <li><strong>Follow-up:</strong> Sales team calls EVERY attendee within 48 hours</li>
+              </ul>
+              <p style="margin-top: 0.75rem; font-size: 0.9rem;"><strong>Conversion logic:</strong> Webinar attendance = high intent (they spent 45 min learning) → much higher close rate than cold leads</p>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>The Full Demon Mode Tech Stack</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Tool</th>
+                  <th>Purpose</th>
+                  <th>Cost/Month</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>N8N</strong> (self-hosted)</td>
+                  <td>Workflow automation engine</td>
+                  <td class="green-text">$0 (free)</td>
+                </tr>
+                <tr>
+                  <td><strong>Apify</strong></td>
+                  <td>Google Maps scraping</td>
+                  <td>$50</td>
+                </tr>
+                <tr>
+                  <td><strong>Apollo.io</strong></td>
+                  <td>Contact enrichment (email, LinkedIn, firmographics)</td>
+                  <td>$99</td>
+                </tr>
+                <tr>
+                  <td><strong>Clay.com</strong></td>
+                  <td>AI personalization + data enrichment</td>
+                  <td>$349</td>
+                </tr>
+                <tr>
+                  <td><strong>PhantomBuster</strong></td>
+                  <td>LinkedIn/social scraping</td>
+                  <td>$120</td>
+                </tr>
+                <tr>
+                  <td><strong>Hunter.io</strong></td>
+                  <td>Email finding/verification</td>
+                  <td>$49</td>
+                </tr>
+                <tr>
+                  <td><strong>GPT-4 API</strong></td>
+                  <td>Personalized email generation</td>
+                  <td>$50</td>
+                </tr>
+                <tr>
+                  <td><strong>Instantly.ai</strong></td>
+                  <td>Cold email sending + warmup</td>
+                  <td>$97</td>
+                </tr>
+                <tr>
+                  <td><strong>Google Maps API</strong></td>
+                  <td>Geolocation data</td>
+                  <td>$50</td>
+                </tr>
+                <tr style="background:#f0f0f0; font-weight:600;">
+                  <td><strong>TOTAL</strong></td>
+                  <td>Complete automation stack</td>
+                  <td class="green-text"><strong>~$900/month</strong></td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="margin-top: 1rem; font-size: 0.9rem;"><strong>Compare to:</strong> $10K/month in ads (Phase 1)</p>
+            <p style="margin: 0; font-size: 0.9rem;"><strong>Lead volume:</strong> 500-1,000 leads/month vs 40-50 from ads</p>
+            <p style="margin: 0; font-size: 0.9rem;"><strong>Cost per lead:</strong> $1-2 vs $200-300 from ads</p>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>The Math That Makes This INSANE</h3>
+            <div class="two-col">
+              <div class="box" style="border-left: 4px solid #666;">
+                <h4 style="margin-top: 0;">Phase 1: Traditional Paid Ads</h4>
+                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                  <li><strong>Investment:</strong> $10K/month</li>
+                  <li><strong>Leads:</strong> 40-50/month</li>
+                  <li><strong>CPL:</strong> $200-250</li>
+                  <li><strong>Close Rate:</strong> 8-10%</li>
+                  <li><strong>Customers:</strong> 4-5/month</li>
+                  <li><strong>Avg Deal:</strong> $100K</li>
+                  <li><strong>Pipeline:</strong> $400K-$500K/month</li>
+                  <li><strong>ROI:</strong> 40-50x on pipeline</li>
+                </ul>
+              </div>
+              <div class="box" style="border-left: 4px solid #2e7d32;">
+                <h4 style="margin-top: 0;">Phase 2: Demon Mode Automation</h4>
+                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                  <li><strong>Investment:</strong> $1K/month (tools)</li>
+                  <li><strong>Leads:</strong> 500-1,000/month</li>
+                  <li><strong>CPL:</strong> $1-2</li>
+                  <li><strong>Close Rate:</strong> 5-7% (lower quality, higher volume)</li>
+                  <li><strong>Customers:</strong> 25-70/month</li>
+                  <li><strong>Avg Deal:</strong> $80K (smaller deals, faster close)</li>
+                  <li><strong>Pipeline:</strong> $2M-$5.6M/month</li>
+                  <li class="green-text"><strong>ROI:</strong> 2,000-5,600x on pipeline</li>
+                </ul>
+              </div>
+            </div>
+            <div class="success-box" style="margin-top: 1rem;">
+              <h4>PLUS: You Build a Proprietary Asset</h4>
+              <p style="margin: 0; font-size: 0.9rem;">The database of 5,000-10,000 bakeries with enriched contact info, buying signals, and scoring is worth <strong>$50K-$100K</strong> as a standalone asset. This becomes ProBAKE's competitive moat.</p>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Phased Implementation: How to Actually Do This</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>Phase 1 (Months 1-3): Prove Marketing Works</strong>
+                <br><span style="font-size: 0.85rem; color: #666;">Run traditional ads ($10K/month), get 40-50 leads, close 4-5 deals. Build confidence with stakeholders that marketing generates real revenue.</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Phase 2 (Months 4-6): Launch Automation Workflows</strong>
+                <br><span style="font-size: 0.85rem; color: #666;">Build bakery database (5,000+ prospects), launch intent monitoring, start building permit pipeline. Add outbound to complement inbound. Target: 100+ leads/month combined.</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Phase 3 (Months 7-12): Full Demon Mode</strong>
+                <br><span style="font-size: 0.85rem; color: #666;">Deploy predictive lead scoring, real-time intent alerts, market mapping. Sales team has 500+ qualified prospects in pipeline at all times. Revenue becomes predictable and scalable.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-box" style="margin-top: 1.5rem;">
+            <h4>Why This Approach Wins</h4>
+            <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+              <li><strong>Data-driven:</strong> Every lead is scored, every action is tracked, every campaign is measurable</li>
+              <li><strong>Scalable:</strong> Automation doesn't require linear headcount growth</li>
+              <li><strong>First-mover advantage:</strong> Competitors aren't doing this (yet)</li>
+              <li><strong>Sustainable moat:</strong> The database becomes more valuable over time</li>
+              <li><strong>High LTV supports it:</strong> $100K avg deal = can afford aggressive prospecting</li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 2rem; padding: 1.5rem; border: 2px solid #000; text-align: center;">
+            <h3 style="margin: 0 0 0.5rem 0;">Created by Mo Alissa</h3>
+            <p style="margin: 0; font-size: 0.875rem;">Rowan Growth Marketer Case Study</p>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.875rem; color: #666;">November 2025</p>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        primaryColor: '#ffffff',
+        primaryTextColor: '#000000',
+        primaryBorderColor: '#000000',
+        lineColor: '#000000',
+        secondaryColor: '#ffffff',
+        tertiaryColor: '#ffffff'
+      }
+    });
+
+    // Revenue Chart
+    let revenueChart = null;
+    function animateRevenueChart() {
+      const ctx = document.getElementById('revenueChart');
+      if (!ctx) return;
+      if (revenueChart) revenueChart.destroy();
+
+      revenueChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['2022', '2023', '2024E'],
+          datasets: [{
+            label: 'Revenue (Millions)',
+            data: [10.9, 13.4, 10.6],
+            borderColor: '#000000',
+            backgroundColor: 'rgba(0, 0, 0, 0.05)',
+            borderWidth: 2,
+            tension: 0.4,
+            pointRadius: 6,
+            pointBackgroundColor: '#000000',
+            pointBorderColor: '#ffffff',
+            pointBorderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: true, position: 'top' },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return '$' + context.parsed.y + 'M';
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 8,
+              max: 15,
+              ticks: { callback: function(value) { return '$' + value + 'M'; } },
+              grid: { color: '#e0e0e0' }
+            },
+            x: { grid: { display: false } }
+          },
+          animation: { duration: 1500 }
+        }
+      });
+    }
+
+    function resetRevenueChart() {
+      if (revenueChart) {
+        revenueChart.destroy();
+        revenueChart = null;
+      }
+    }
+
+    // Category Bars Animation
+    function animateCategoryBars() {
+      const bars = document.querySelectorAll('.category-bar-fill');
+      bars.forEach((bar, index) => {
+        setTimeout(() => {
+          const width = bar.getAttribute('data-width');
+          bar.style.width = width + '%';
+        }, index * 200);
+      });
+    }
+
+    function resetCategoryBars() {
+      const bars = document.querySelectorAll('.category-bar-fill');
+      bars.forEach(bar => {
+        bar.style.width = '0%';
+      });
+    }
+
+    // Valuation Gap Animation
+    function animateValuationGap() {
+      const gap = document.querySelector('.gap-current');
+      if (gap) {
+        gap.style.width = '29%';
+      }
+    }
+
+    function resetValuationGap() {
+      const gap = document.querySelector('.gap-current');
+      if (gap) {
+        gap.style.width = '0%';
+      }
+    }
+
+    // Funnel Animation
+    function animateFunnel() {
+      const stages = [
+        { id: 'visitors-count', value: 2000 },
+        { id: 'leads-count', value: 120 },
+        { id: 'mql-count', value: 54 },
+        { id: 'sql-count', value: 27 },
+        { id: 'customer-count', value: 9 }
+      ];
+
+      stages.forEach((stage, index) => {
+        setTimeout(() => {
+          let current = 0;
+          const increment = stage.value / 30;
+          const interval = setInterval(() => {
+            current += increment;
+            if (current >= stage.value) {
+              current = stage.value;
+              clearInterval(interval);
+            }
+            document.getElementById(stage.id).textContent = Math.floor(current).toLocaleString();
+          }, 30);
+
+          if (stage.id === 'customer-count') {
+            setTimeout(() => {
+              const revenue = 9 * 100000;
+              document.getElementById('funnel-revenue').textContent = '$' + revenue.toLocaleString();
+            }, 900);
+          }
+        }, index * 300);
+      });
+    }
+
+    function resetFunnel() {
+      document.getElementById('visitors-count').textContent = '2,000';
+      document.getElementById('leads-count').textContent = '120';
+      document.getElementById('mql-count').textContent = '54';
+      document.getElementById('sql-count').textContent = '27';
+      document.getElementById('customer-count').textContent = '9';
+      document.getElementById('funnel-revenue').textContent = '$900,000';
+    }
+
+    // Content Multiplication Animation
+    function animateContentMultiplication() {
+      const assets = document.querySelectorAll('#contentMultiplication .content-asset');
+      assets.forEach((asset, index) => {
+        setTimeout(() => {
+          asset.classList.add('active');
+        }, index * 100);
+      });
+    }
+
+    function resetContentMultiplication() {
+      const assets = document.querySelectorAll('#contentMultiplication .content-asset');
+      assets.forEach(asset => {
+        asset.classList.remove('active');
+      });
+    }
+
+    // Dashboard Toggle Functionality
+    function toggleAllMetrics(showAll) {
+      const toggles = document.querySelectorAll('.metric-toggle');
+      toggles.forEach(toggle => {
+        const toggleSwitch = toggle.querySelector('.toggle-switch');
+        if (showAll) {
+          toggle.classList.add('active');
+          toggleSwitch.classList.add('on');
+        } else {
+          // Only show client-friendly metrics
+          const metric = toggle.getAttribute('data-metric');
+          if (['leads', 'pipeline', 'cpl', 'calls'].includes(metric)) {
+            toggle.classList.add('active');
+            toggleSwitch.classList.add('on');
+          } else {
+            toggle.classList.remove('active');
+            toggleSwitch.classList.remove('on');
+          }
+        }
+      });
+    }
+
+    // Individual metric toggle click handler
+    document.addEventListener('DOMContentLoaded', () => {
+      const metricToggles = document.querySelectorAll('.metric-toggle');
+      metricToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          toggle.classList.toggle('active');
+          const toggleSwitch = toggle.querySelector('.toggle-switch');
+          toggleSwitch.classList.toggle('on');
+        });
+      });
+    });
+
+    // ROI Calculator
+    function calculateROI() {
+      const spend = parseInt(document.getElementById('spendSlider').value);
+      const leads = parseInt(document.getElementById('leadsSlider').value);
+      const closeRate = parseInt(document.getElementById('closeRateSlider').value) / 100;
+      const dealSize = parseInt(document.getElementById('dealSizeSlider').value);
+
+      // Calculate outputs
+      const customers = Math.floor(leads * closeRate);
+      const pipeline = customers * dealSize;
+      const roi = Math.round(pipeline / spend);
+
+      // Update display values
+      document.getElementById('spendValue').textContent = '$' + spend.toLocaleString();
+      document.getElementById('leadsValue').textContent = leads;
+      document.getElementById('closeRateValue').textContent = (closeRate * 100) + '%';
+      document.getElementById('dealSizeValue').textContent = '$' + dealSize.toLocaleString();
+
+      // Update outputs
+      document.getElementById('pipelineOutput').textContent = '$' + pipeline.toLocaleString();
+      document.getElementById('customersOutput').textContent = customers;
+      document.getElementById('roiOutput').textContent = roi + 'x';
+    }
+
+    // Attach slider event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      const sliders = ['spendSlider', 'leadsSlider', 'closeRateSlider', 'dealSizeSlider'];
+      sliders.forEach(sliderId => {
+        const slider = document.getElementById(sliderId);
+        if (slider) {
+          slider.addEventListener('input', calculateROI);
+        }
+      });
+
+      // Initialize calculator with default values
+      calculateROI();
+    });
+
+    // Auto-load revenue chart on page load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        animateRevenueChart();
+      }, 500);
+    });
+
+    // Scroll-triggered animations using Intersection Observer
+    document.addEventListener('DOMContentLoaded', () => {
+      // Track which animations have already played
+      const animatedElements = new Set();
+
+      // Create observer with threshold (50% visible triggers animation)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !animatedElements.has(entry.target.id)) {
+            // Mark as animated so it only plays once
+            animatedElements.add(entry.target.id);
+
+            // Trigger appropriate animation based on element ID
+            switch(entry.target.id) {
+              case 'categoryBars':
+                setTimeout(() => animateCategoryBars(), 300);
+                break;
+              case 'valuationGapDemo':
+                setTimeout(() => animateValuationGap(), 300);
+                break;
+              case 'funnelDemo':
+                setTimeout(() => animateFunnel(), 300);
+                break;
+              case 'contentMultiplication':
+                setTimeout(() => animateContentMultiplication(), 300);
+                break;
+            }
+          }
+        });
+      }, {
+        threshold: 0.3, // Trigger when 30% visible
+        rootMargin: '0px 0px -100px 0px' // Start slightly before element is fully visible
+      });
+
+      // Observe all demo elements
+      const demoElements = [
+        document.getElementById('categoryBars'),
+        document.getElementById('valuationGapDemo'),
+        document.getElementById('funnelDemo'),
+        document.getElementById('contentMultiplication')
+      ];
+
+      demoElements.forEach(el => {
+        if (el) observer.observe(el);
+      });
+    });
+
+    // Password protection
+    (function() {
+      try {
+        const ok = sessionStorage.getItem('cs_access_probake') === 'true';
+        if (!ok) {
+          const input = prompt('Enter password to view:');
+          if (!(input && input.trim() === 'ProBake')) {
+            alert('Incorrect password');
+            window.location.href = 'case-studies.html';
+          } else {
+            sessionStorage.setItem('cs_access_probake', 'true');
+          }
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+</body>
+</html>
