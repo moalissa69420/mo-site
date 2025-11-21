@@ -48,6 +48,9 @@
         <li>
           <a href="#" id="probake-link">ProBAKE — Growth Marketing Plan</a>
         </li>
+        <li>
+          <a href="#" id="w57-link">W57</a>
+        </li>
       </ul>
     </div>
 
@@ -181,6 +184,19 @@
           const input = prompt('Enter password to view:');
           if (input && input.trim() === probakePassword) {
             grantProbakeAccess();
+            window.location.href = target;
+          } else if (input !== null) {
+            alert('Incorrect password');
+          }
+        });
+        // W57 Case Study
+        document.getElementById('w57-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = 'w57-market-analysis.html';
+          if (haveAccess()) { window.location.href = target; return; }
+          const input = prompt('Enter password to view:');
+          if (input && input.trim() === PASSWORD) {
+            grantAccess();
             window.location.href = target;
           } else if (input !== null) {
             alert('Incorrect password');
