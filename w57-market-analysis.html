@@ -679,5 +679,32 @@ proven pathways to growth.
       });
     });
   </script>
+  <script>
+    // Password protection for W57 case study
+    (function() {
+      const ACCESS_KEY = 'cs_access_w57';
+      const PASSWORD = 'w57';
+      
+      function haveAccess() {
+        try { return sessionStorage.getItem(ACCESS_KEY) === 'true'; } catch(e) { return false; }
+      }
+      
+      function grantAccess() {
+        try { sessionStorage.setItem(ACCESS_KEY, 'true'); } catch(e) {}
+      }
+      
+      if (!haveAccess()) {
+        const input = prompt('Enter password to view:');
+        if (input && input.trim() === PASSWORD) {
+          grantAccess();
+        } else {
+          if (input !== null) {
+            alert('Incorrect password');
+          }
+          window.location.href = 'case-studies.html';
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
