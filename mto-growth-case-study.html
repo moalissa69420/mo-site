@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MTO Growth Strategy — Scaling Solana's #1 Gambling Platform from Zero</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root { --index-width: 270px; --content-max: 56rem; --border:#000; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size:15.5px; line-height:1.65; }
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; overflow-y:auto; }
+    .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; font-weight:700; }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
+    .cs-index a .num { color:#000; width:2.8rem; display:inline-block; text-align:right; }
+    .cs-index a.active { color: #000; font-weight: bold; }
+    .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.45rem 0; scroll-margin-top: 12px; }
+    .cs-num { display:block; text-align:right; color:#000; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content h1 { font-size:1.125rem; margin:0 0 0.35rem 0; font-weight:700; color:#000; }
+    .cs-content h2 { font-size:1rem; margin:0.5rem 0 0.25rem 0; font-weight:600; color:#000; }
+    .cs-content h3 { font-size:0.9rem; margin:0.4rem 0 0.2rem 0; font-weight:600; color:#000; }
+    .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start; }
+    .box { background:#fff; border:1px solid var(--border); border-radius:0; padding:0.9rem; }
+    .problem-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .solution-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .alert-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .success-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .code-block { background:#fff; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; overflow-x:auto; color:#000; }
+    .terminal-output { background:#fff; color:#000; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; white-space:pre-wrap; }
+    .ascii-art { background:#fff; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.75rem; white-space:pre-wrap; overflow-x:auto; color:#000; }
+    .kpi-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:0.75rem; }
+    .kpi-card { border:1px solid #000; background:#fff; padding:0.75rem; text-align:center; }
+    .kpi-card .big { font-size:1.25rem; font-weight:700; color:#000; }
+    .mermaid { background:#fff; border:1px solid #000; padding:2rem; margin:1rem 0; overflow-x:auto; min-height:300px; }
+    .mermaid svg { max-width:100%; height:auto; min-height:250px; }
+    .component-section { background:#fff; border:1px solid #000; padding:0.9rem; margin:0.5rem 0; }
+    .workflow-step { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; margin:0.5rem 0; }
+    .metrics-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:0.75rem; margin:1rem 0; }
+    .metric-card { background:#fff; border:1px solid #000; padding:0.75rem; text-align:center; }
+    .metric-value { font-size:1.5rem; font-weight:700; color:#000; margin-bottom:0.25rem; }
+    .metric-label { font-size:0.8rem; color:#000; text-transform:uppercase; letter-spacing:0.5px; }
+    .before-after { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin:1rem 0; }
+    .before { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .after { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .pill { display:inline-block; padding:0.15rem 0.35rem; border:1px solid #000; margin-right:0.35rem; font-size:0.8rem; color:#000; }
+    .status-indicator { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #000; }
+    .status-indicator.active { background: #000; }
+    .status-indicator.processing { background: #666; }
+    .status-indicator.complete { background: #000; }
+    .demo-animated { animation: fadeInUp 0.3s ease-out; }
+    .demo-pulse { animation: pulse 1s infinite; }
+    .demo-counter { animation: countUp 0.5s ease-out; }
+    .chart-container { background:#fff; border:1px solid #000; padding:1rem; margin:1rem 0; position:relative; height:300px; }
+    .section-notes { background:#f9f9f9; border:1px solid #000; padding:0.75rem; margin:0.5rem 0; font-size:0.85rem; }
+    .section-notes ul { margin:0.25rem 0; padding-left:1.25rem; }
+    @keyframes fadeInUp {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.8; }
+    }
+    @keyframes countUp {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @media (max-width: 700px) { 
+      .cs-wrapper{ grid-template-columns:1fr;} 
+      .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);} 
+      section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;} 
+      .two-col{ grid-template-columns:1fr; gap:0.85rem;} 
+      .kpi-grid, .metrics-grid{ grid-template-columns:1fr; } 
+      .before-after{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#s1"><span class="num">01.</span> Executive Summary</a></li>
+        <li><a href="#s2"><span class="num">02.</span> Market Reality Check</a></li>
+        <li><a href="#s3"><span class="num">03.</span> How The Giants Scaled</a></li>
+        <li><a href="#s4"><span class="num">04.</span> Growth Strategy Framework</a></li>
+        <li><a href="#s5"><span class="num">05.</span> Acquisition Playbook</a></li>
+        <li><a href="#s6"><span class="num">06.</span> Community-Driven Growth</a></li>
+        <li><a href="#s7"><span class="num">07.</span> Retention & Monetization</a></li>
+        <li><a href="#s8"><span class="num">08.</span> Viral Mechanics</a></li>
+        <li><a href="#s9"><span class="num">09.</span> Solana Ecosystem Advantage</a></li>
+        <li><a href="#s10"><span class="num">10.</span> Channel Orchestration</a></li>
+        <li><a href="#s11"><span class="num">11.</span> 90-Day Launch Plan</a></li>
+        <li><a href="#s12"><span class="num">12.</span> Budget & Allocation</a></li>
+        <li><a href="#s13"><span class="num">13.</span> 12-Month Projections</a></li>
+        <li><a href="#s14"><span class="num">14.</span> Growth Command Center</a></li>
+        <li><a href="#s15"><span class="num">15.</span> Implementation Roadmap</a></li>
+      </ol>
+    </aside>
+    <main class="cs-sections">
+      
+      <section id="s1" class="cs-page">
+        <div class="cs-num">01.</div>
+        <div class="cs-content">
+          <h1>MTO Growth Strategy: Scaling from Zero to Market Leader</h1>
+          <p style="margin: 0 0 1rem 0; font-size: 0.875rem; color: #666; font-style: italic;">Created and written by Mo Alissa</p>
+          
+          <div class="alert-box" style="margin-bottom: 1.5rem;">
+            <p style="line-height: 1.8;"><strong>It's launch week for mto.bet. Zero users. Zero revenue. Your spreadsheet shows $3.50 CAC and $150 daily wagers. Industry reality: $125 CAC and $25-50 daily wagers. That's a 35x error in your core assumptions.</strong></p>
+            <p style="margin-top: 1rem; line-height: 1.8;"><strong>Stake.com went from $105M to $4.7B in 4 years. Rollbit processes $1M+ daily. BC.Game won "Best Affiliate Program" at SiGMA 2023. They didn't get there with $3.50 CAC. They got there with aggressive growth tactics, community-first engagement, and crypto-native advantages.</strong></p>
+          </div>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Corrected unit economics based on industry data</li>
+              <li>Growth strategy framework proven by Stake, Rollbit, BC.Game</li>
+              <li>90-day launch plan: zero to 10K users</li>
+              <li>12-month roadmap to market leadership</li>
+            </ul>
+          </div>
+          
+          <div class="two-col" style="margin-top: 1.5rem;">
+            <div class="box">
+              <h3 style="margin-top: 0; font-size: 1rem; margin-bottom: 0.75rem;">The Opportunity</h3>
+              <ul style="margin: 0;">
+                <li>$81.4B crypto casino market → $155-200B by 2033</li>
+                <li>Solana's speed advantage: 400ms vs 12+ sec Ethereum</li>
+                <li>Zero-to-scale playbook from industry leaders</li>
+                <li>Community-driven growth: 40-60% higher LTV</li>
+              </ul>
+            </div>
+            <div class="box">
+              <h3 style="margin-top: 0; font-size: 1rem; margin-bottom: 0.75rem;">Key Metrics</h3>
+              <div class="kpi-grid">
+                <div class="kpi-card">
+                  <div class="big">$100</div>
+                  <div>CAC Target</div>
+                </div>
+                <div class="kpi-card">
+                  <div class="big">5%</div>
+                  <div>Day 30 Retention</div>
+                </div>
+                <div class="kpi-card">
+                  <div class="big">10K</div>
+                  <div>Users in 90 Days</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s2" class="cs-page">
+        <div class="cs-num">02.</div>
+        <div class="cs-content">
+          <h1>Market Reality Check</h1>
+          <h2>Your Model vs. Industry Reality</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Critical unit economics corrections (CAC, LTV, churn)</li>
+              <li>Conversion funnel reality vs. assumptions</li>
+              <li>US market legal constraints</li>
+              <li>Player segmentation: the 5% whale rule</li>
+            </ul>
+          </div>
+          
+          <div class="problem-box">
+            <p><strong>The Critical Finding:</strong> Your spreadsheet assumptions are off by 10-35x. This isn't a rounding error—it's a fundamental misunderstanding of crypto casino economics.</p>
+          </div>
+          
+          <div class="component-section">
+            <h3>Unit Economics: The Real Numbers</h3>
+            <div class="chart-container">
+              <canvas id="cacComparison"></canvas>
+            </div>
+            <div class="terminal-output" style="margin-top: 1rem;">
+UNIT ECONOMICS ANALYSIS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+METRIC                    YOUR MODEL    INDUSTRY REALITY    ERROR
+─────────────────────────────────────────────────────────────────
+CAC                       $3.50         $125                35x
+Daily Wager               $150          $25-50 (avg)        3-6x
+Day 30 Churn              80%           97.6%               +17.6%
+LTV                       Unrealistic    $890 avg            N/A
+US Market Access          Assumed       Zero states         N/A
+
+CRITICAL INSIGHTS:
+├─ $3.50 CAC is impossible at scale
+│  └─ Even organic channels achieve $30-80 CAC after scale
+├─ $150 daily wager represents top 10-20% only
+│  └─ Average players bet $25-50 daily
+├─ 97.6% churn by Day 30 is industry standard
+│  └─ Only 2.4% remain active after 30 days
+└─ Zero US states license crypto casinos
+   └─ Requires international focus or full licensing
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Conversion Funnel Reality</h3>
+            <div class="chart-container">
+              <canvas id="funnelReality"></canvas>
+            </div>
+            <div class="alert-box" style="margin-top: 1rem;">
+              <p><strong>The Friction Point:</strong> Wallet connection + verification = 2-4% conversion. After KYC completion: 85% deposit rate. This reveals wallet connection as the major barrier, not payment processing.</p>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Player Segmentation: The 5% Rule</h3>
+            <div class="metrics-grid">
+              <div class="metric-card">
+                <div class="metric-value">70-80%</div>
+                <div class="metric-label">Casual Players<br/>LTV: $200-500</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">15-20%</div>
+                <div class="metric-label">Regular Players<br/>LTV: $800-2,000</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">1-5%</div>
+                <div class="metric-label">Whales<br/>LTV: $5,000-50,000+</div>
+              </div>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Critical Insight:</strong> 5% of players generate 50%+ of revenue. Your VIP program must identify and retain these whales.</p>
+          </div>
+          
+          <div class="component-section">
+            <h3>US Market Reality: The Legal Chasm</h3>
+            <div class="terminal-output">
+US REGULATORY ANALYSIS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CRITICAL FINDING:
+On-chain crypto casinos cannot legally operate in the United States.
+
+LEGAL STATUS:
+├─ Zero states license crypto-specific gambling platforms
+├─ Only 7 states permit online casinos (NJ, PA, MI, DE, CT, WV, RI)
+├─ Licensed operators do NOT accept cryptocurrency
+└─ August 2025: 50 state AGs demand federal crackdown
+
+THE ONLY LEGAL PATHS:
+1. Full Licensing (NJ/PA/MI)
+   ├─ Partner with land-based casino
+   ├─ $10-20M investment over 18-24 months
+   └─ Access massive legal market
+
+2. International Focus (Recommended for launch)
+   ├─ Curaçao/Malta licensing
+   ├─ Target non-US markets
+   ├─ $2-5M investment
+   └─ Avoid US legal minefield
+
+RECOMMENDATION:
+International focus for launch, evaluate licensing post-scale
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s3" class="cs-page">
+        <div class="cs-num">03.</div>
+        <div class="cs-content">
+          <h1>How The Giants Scaled</h1>
+          <h2>$105M to $4.7B in Four Years: The Stake.com Playbook</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Stake.com's growth trajectory: $105M → $4.7B</li>
+              <li>Rollbit's token economics innovation</li>
+              <li>BC.Game's affiliate army strategy</li>
+              <li>Shuffle's tournament marketing model</li>
+              <li>Key patterns: bootstrap funding, influencer deals, community-first</li>
+            </ul>
+          </div>
+          
+          <div class="component-section">
+            <h3>Stake.com: The $150M Marketing War</h3>
+            <p><strong>Revenue Growth:</strong> $105M (2020) → $1.2B (2021) → $2.6B (2022) → $4.7B (2024) = <strong>45x in 4 years, zero VC funding</strong></p>
+            <div class="chart-container">
+              <canvas id="stakeGrowth"></canvas>
+            </div>
+            <div class="two-col" style="margin-top: 1rem;">
+              <div>
+                <p><strong>Key Tactics:</strong></p>
+                <ul>
+                  <li>Drake partnership: $100M annually</li>
+                  <li>Owned Kick.com platform (95/5 creator split)</li>
+                  <li>UFC, F1, Premier League sponsorships</li>
+                  <li>$150-200M annual marketing spend</li>
+                  <li>43% market share</li>
+                </ul>
+              </div>
+              <div>
+                <p><strong>Results:</strong></p>
+                <ul>
+                  <li>$4.7B gross gaming revenue</li>
+                  <li>600K regular users from 5M registered</li>
+                  <li>xQc: $100M deal, $119M in deposits</li>
+                  <li>Trainwreckstv: $360M generated over 16 months</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Rollbit: Token Economics Innovation</h3>
+            <p><strong>The Model:</strong> 10% casino revenue + 20% sportsbook + 30% futures trading → buyback-and-burn RLB tokens</p>
+            <div class="terminal-output">
+ROLLBIT TOKEN ECONOMICS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TOKEN FLYWHEEL:
+Revenue → Buybacks → Burns → Scarcity → Price Appreciation → More Users → More Revenue
+
+RESULTS:
+├─ 36% of max supply burned
+├─ $60M annually in buybacks
+├─ $1M+ daily revenue by 2023
+├─ $500M+ estimated annual revenue
+├─ Monthly revenue peak: $42M
+└─ 10,000 Rollbot NFTs sold in 25 seconds ($500 each)
+
+THE FLYWHEEL WORKS:
+Users promote → Revenue increases → Buybacks → Token price rises → 
+More promotion → Compound growth
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>BC.Game: The Affiliate Army</h3>
+            <p><strong>SiGMA 2023 Winner:</strong> "Best Crypto Casino Affiliate Program"</p>
+            <ul>
+              <li>25% base RevShare, up to 60% for top performers</li>
+              <li>No negative carryover (each month starts fresh)</li>
+              <li>Daily cryptocurrency payouts, no minimum</li>
+              <li>Milestone bonuses: $10-$1,000 as players climb VIP levels</li>
+              <li>Top affiliates earn $10K-$50K+ monthly</li>
+              <li>90+ cryptocurrencies supported</li>
+              <li>9,000+ game library, 12+ languages</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>Community-First Approach:</strong> Active chat with rain systems, lottery systems, VIP quests, faucet bonuses. <strong>Result:</strong> 40% of traffic from affiliates.</p>
+          </div>
+          
+          <div class="component-section">
+            <h3>Shuffle: Tournament Marketing</h3>
+            <p><strong>The Model:</strong> Weekly $100K races with no wagering requirements</p>
+            <ul>
+              <li>$1.2B+ monthly wagering volume</li>
+              <li>Weekly lottery: 15% of revenues ($200-300K) to staked SHFL holders</li>
+              <li>~48% APR for token stakers</li>
+              <li>30% of gaming revenues burned (eliminated ~5% of supply)</li>
+              <li>Fisher8 Capital backing</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>Key Insight:</strong> Competitive gaming culture drives organic sharing. Deep payout structures (50-100 winners) = more shareable victories.</p>
+          </div>
+          
+          <div class="success-box" style="margin-top: 1.5rem;">
+            <p style="margin: 0;"><strong>The Pattern:</strong> Bootstrap funding, influencer mega-deals, token economics, community-first engagement, aggressive affiliate programs. These aren't theories—they're proven playbooks that scaled platforms to billions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s4" class="cs-page">
+        <div class="cs-num">04.</div>
+        <div class="cs-content">
+          <h1>Growth Strategy Framework</h1>
+          <h2>The Multi-Channel Approach That Scales</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Multi-channel acquisition strategy (affiliates, influencers, ads, community)</li>
+              <li>Channel performance benchmarks and CAC targets</li>
+              <li>Budget allocation framework across growth phases</li>
+              <li>Real-time optimization and channel mix strategy</li>
+              <li>Growth Orchestrator: The system that coordinates all channels</li>
+            </ul>
+          </div>
+          
+          <div class="alert-box">
+            <p><strong>The Story:</strong> First months, we execute manually across channels. As we scale, the Growth Orchestrator automates budget allocation, tracks CAC in real-time, and optimizes channel mix automatically.</p>
+          </div>
+          
+          <div class="mermaid">
+            graph LR
+                A[User Acquisition] --> B{Channel Mix}
+                B -->|40%| C[Affiliates<br/>CAC: $100-150]
+                B -->|25-35%| D[Influencers<br/>CAC: $75-300]
+                B -->|15-20%| E[Crypto Ads<br/>CAC: $125-200]
+                B -->|10-15%| F[Community<br/>CAC: $95]
+                
+                C --> G[Growth Orchestrator]
+                D --> G
+                E --> G
+                F --> G
+                
+                G --> H[Real-Time CAC Tracking]
+                G --> I[Auto Budget Allocation]
+                G --> J[Channel Optimization]
+                
+                H --> K[Target: $100 CAC]
+                I --> K
+                J --> K
+                K --> L[5-7:1 LTV:CAC]
+          </div>
+          
+          <div class="component-section">
+            <h3>Growth Orchestrator: Live Command Center</h3>
+            <div class="terminal-output live-demo demo-animated">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    GROWTH ORCHESTRATOR                              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  📊 CHANNEL PERFORMANCE (Real-Time)                                 │
+│  ├─ Affiliates: 42% traffic, CAC $118 ↓5% WoW ✓                      │
+│  ├─ Influencers: 28% traffic, CAC $142 ⚠ (optimizing)               │
+│  ├─ Crypto Ads: 18% traffic, CAC $165 ⚠ (shift budget)             │
+│  └─ Community: 12% traffic, CAC $95 ✓ (increase spend)              │
+│                                                                      │
+│  ⚡ AUTO-OPTIMIZATION ACTIONS                                       │
+│  ├─ Shift $20K: Crypto Ads → Affiliates (lower CAC)                 │
+│  ├─ Increase: Top 3 influencers by 20% (proven ROI)                 │
+│  ├─ Test: Telegram Mini App Ads (+$10K)                            │
+│  └─ Maintain: SEO investment (long-term play)                       │
+│                                                                      │
+│  📈 RETENTION PREDICTION                                            │
+│  ├─ Week 4 Cohort: 3.1% Day 30 (above 2.4% industry) ✓             │
+│  ├─ Target: 5% Day 30 retention                                    │
+│  ├─ Actions: VIP program earlier, engagement campaigns              │
+│  └─ Projected: 4.2% Day 30 with optimizations                      │
+│                                                                      │
+│  🎯 BUDGET ALLOCATION (Month 4-6)                                   │
+│  ├─ Affiliates: 45% ($202.5K) → Target: 40-45%                     │
+│  ├─ Influencers: 30% ($135K) → Target: 25-35%                      │
+│  ├─ Crypto Ads: 15% ($67.5K) → Target: 15-20%                      │
+│  └─ SEO: 10% ($45K) → Target: 10-15%                               │
+│                                                                      │
+│  [OPTIMIZE NOW] [REVIEW COHORT] [ANALYZE CHANNELS] [SCALE BEST]    │
+└─────────────────────────────────────────────────────────────────────┘
+            </div>
+            <div class="success-box demo-slide">
+              <h4>Orchestrator Status: <span class="status-indicator active"></span> OPTIMIZING</h4>
+              <p>✅ <span class="demo-counter">4</span> channels tracked | ✅ <span class="demo-counter">3</span> optimizations triggered | ✅ <span class="demo-counter">$118</span> average CAC (target: $100)</p>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Channel Performance Benchmarks</h3>
+            <div class="chart-container">
+              <canvas id="channelPerformance"></canvas>
+            </div>
+            <div class="two-col" style="margin-top: 1rem;">
+              <div>
+                <p><strong>Affiliate Programs:</strong></p>
+                <ul>
+                  <li>40% of casino user acquisition</li>
+                  <li>CAC: $100-150 per depositor</li>
+                  <li>25-60% RevShare (industry standard)</li>
+                  <li>No negative carryover = lower risk</li>
+                </ul>
+              </div>
+              <div>
+                <p><strong>Influencer Marketing:</strong></p>
+                <ul>
+                  <li>Micro (10K-100K): Best ROI, $1K-$10K</li>
+                  <li>Macro (100K-1M): $10K-$50K, 2-4x ROI</li>
+                  <li>Mega (1M+): Not viable for launch</li>
+                  <li>Focus: Twitch, YouTube, Twitter crypto KOLs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Budget Allocation by Phase</h3>
+            <div class="chart-container">
+              <canvas id="budgetAllocation"></canvas>
+            </div>
+            <div class="terminal-output" style="margin-top: 1rem;">
+BUDGET ALLOCATION FRAMEWORK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MONTH 1-3: Foundation ($300-400K/month)
+├─ Affiliates: 40% ($120-160K)
+├─ Community: 25% ($75-100K)
+├─ Crypto Ads: 20% ($60-80K)
+└─ SEO: 15% ($45-60K)
+
+MONTH 4-6: Acceleration ($400-500K/month)
+├─ Affiliates: 45% ($180-225K)
+├─ Influencers: 30% ($120-150K)
+├─ Crypto Ads: 15% ($60-75K)
+└─ SEO: 10% ($40-50K)
+
+MONTH 7-12: Scaling ($500-600K/month)
+├─ Affiliates: 40% ($200-240K)
+├─ Influencers: 35% ($175-210K)
+├─ Crypto Ads: 15% ($75-90K)
+└─ SEO: 10% ($50-60K)
+
+EXPECTED RESULTS:
+Month 1-3: 500-2,000 users, $125-150 CAC
+Month 4-6: 3,000-8,000 users, $110-135 CAC
+Month 7-12: 15,000-40,000 users, $100-125 CAC
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s5" class="cs-page">
+        <div class="cs-num">05.</div>
+        <div class="cs-content">
+          <h1>Acquisition Playbook</h1>
+          <h2>The Tactics That Actually Work</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Affiliate program structure and commission tiers</li>
+              <li>Influencer tier economics and deal structures</li>
+              <li>Crypto-native ad networks (Blockchain-Ads, Bitmedia)</li>
+              <li>Conversion funnel optimization</li>
+              <li>Channel-specific CAC targets</li>
+              <li>Acquisition Engine: System that tracks and optimizes all channels</li>
+            </ul>
+          </div>
+          
+          <div class="component-section">
+            <h3>Acquisition Engine: Live Channel Tracking</h3>
+            <div class="terminal-output live-demo demo-animated">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    ACQUISITION ENGINE                               │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  📊 CHANNEL PERFORMANCE (Week 4)                                    │
+│  ├─ Affiliates: 42% of traffic, CAC $118 ✓                         │
+│  │  └─ Top performer: @crypto_affiliate (47 FTDs, $95 CAC)        │
+│  ├─ Influencers: 28% of traffic, CAC $142 ⚠                       │
+│  │  └─ Best ROI: @solana_degen (5.2x ROAS)                         │
+│  ├─ Crypto Ads: 18% of traffic, CAC $165 ⚠                        │
+│  │  └─ Blockchain-Ads: 7.2x ROAS (optimizing)                      │
+│  └─ Community: 12% of traffic, CAC $95 ✓                           │
+│     └─ Telegram: 8.2% conversion (community → depositor)             │
+│                                                                      │
+│  ⚡ LIVE OPTIMIZATION                                                │
+│  ├─ Shift $20K from Crypto Ads → Affiliates                        │
+│  ├─ Increase @solana_degen budget by 20% (proven ROI)              │
+│  ├─ Community CAC lowest: increase Telegram spend by 30%           │
+│  └─ A/B test welcome bonus (400% vs 500%)                          │
+│                                                                      │
+│  📈 WEEKLY TRENDS                                                   │
+│  ├─ Total Users: 8,247 (↑12% WoW)                                 │
+│  ├─ FTD Rate: 28.5% (target: 25-35%) ✓                             │
+│  ├─ Average CAC: $118 (target: <$125) ✓                            │
+│  └─ Top Channel: Affiliates (42% of traffic)                        │
+│                                                                      │
+│  🎯 NEXT WEEK ACTIONS                                               │
+│  ├─ Onboard 15 new affiliates (target: 200 total)                  │
+│  ├─ Launch micro-influencer campaign (10 creators)                  │
+│  ├─ Increase Telegram ad spend by 30%                              │
+│  └─ Test new crypto ad network (RichAds)                           │
+│                                                                      │
+│  [OPTIMIZE BUDGET] [ONBOARD AFFILIATES] [ANALYZE CHANNELS]         │
+└─────────────────────────────────────────────────────────────────────┘
+            </div>
+            <div class="success-box demo-slide">
+              <h4>Acquisition Status: <span class="status-indicator active"></span> OPTIMIZING</h4>
+              <p>✅ <span class="demo-counter">8,247</span> users acquired | ✅ <span class="demo-counter">$118</span> average CAC | ✅ <span class="demo-counter">3</span> channels optimized</p>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Affiliate Program: The Scalable Channel</h3>
+            <div class="terminal-output">
+AFFILIATE PROGRAM STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COMMISSION TIERS (Based on FTDs):
+├─ 0-10 FTDs: 25% RevShare
+├─ 11-50 FTDs: 30% RevShare
+├─ 51-100 FTDs: 35% RevShare
+├─ 101-250 FTDs: 40% RevShare
+└─ 251+ FTDs: 45-50% RevShare
+
+KEY FEATURES:
+├─ No negative carryover (each month starts fresh)
+├─ Real-time dashboards
+├─ Marketing materials + API access
+├─ Dedicated managers for top performers
+└─ Daily cryptocurrency payouts
+
+EXPECTED FUNNEL:
+Click → Registration: 12-18%
+Registration → FTD: 25-40%
+Overall Click → FTD: 3-7%
+CAC: $100-150 per depositor
+
+BC.Game Model (SiGMA Winner):
+25% base + milestone bonuses ($10-$1,000)
+Top affiliates: $10K-$50K+ monthly
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Influencer Economics: The Real Numbers</h3>
+            <div class="chart-container">
+              <canvas id="influencerTiers"></canvas>
+            </div>
+            <div class="two-col" style="margin-top: 1rem;">
+              <div>
+                <p><strong>Micro Influencers (10K-100K):</strong></p>
+                <ul>
+                  <li>Cost: $1K-$10K per campaign</li>
+                  <li>Expected: 50-200 FTDs</li>
+                  <li>CAC: $50-200</li>
+                  <li>ROI: 3-6x over 3-6 months ✓</li>
+                  <li><strong>Best ROI for launch</strong></li>
+                </ul>
+              </div>
+              <div>
+                <p><strong>Macro Influencers (100K-1M):</strong></p>
+                <ul>
+                  <li>Cost: $10K-$50K per campaign</li>
+                  <li>Expected: 200-1,000 FTDs</li>
+                  <li>CAC: $50-250</li>
+                  <li>ROI: 2-4x over 6 months ⚠</li>
+                  <li>Mid-tier scaling phase</li>
+                </ul>
+              </div>
+            </div>
+            <div class="alert-box" style="margin-top: 1rem;">
+              <p><strong>Launch Strategy:</strong> Allocate 25-35% of budget to micro-influencer networks (5-10 partnerships monthly). Performance-based CPA deals ($75-300 per depositor) or hybrid models (base + revenue share). Focus: Twitch gambling streamers, YouTube casino creators, Twitter crypto KOLs.</p>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Crypto-Native Ad Networks</h3>
+            <div class="terminal-output">
+CRYPTO AD NETWORKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BLOCKCHAIN-ADS:
+├─ 5-10x ROAS proven
+├─ $10K monthly minimum ($60K average for betting)
+├─ Wallet-based targeting (4M+ crypto bettors)
+├─ Case study: Stake.com acquired 1,300 players at 7.67x ROAS
+└─ CPC: $0.50-$2.00
+
+BITMEDIA:
+├─ 1B+ monthly impressions
+├─ 3,000+ crypto/gaming websites
+├─ NO minimum deposit
+├─ CPM starting at $0.000025 BTC
+└─ Crypto-focused, 30M+ crypto users monthly
+
+PROPELLERADS:
+├─ Native push notifications: 158% ROI
+├─ Popunder ads: 286% ROI
+├─ Global GEO targeting
+└─ Minimum $100 deposit
+
+BUDGET ALLOCATION ($10K/month):
+├─ Blockchain-Ads: $3,000 (30%)
+├─ Push networks: $2,500 (25%)
+├─ Crypto-specific: $2,000 (20%)
+├─ Telegram Ads: $1,500 (15%)
+└─ Testing new: $1,000 (10%)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s6" class="cs-page">
+        <div class="cs-num">06.</div>
+        <div class="cs-content">
+          <h1>Community-Driven Growth</h1>
+          <h2>The Retention Multiplier</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Telegram and Discord community building</li>
+              <li>Rain bots and community incentives</li>
+              <li>VIP program economics and tiers</li>
+              <li>Community-acquired players: 40-60% higher LTV</li>
+              <li>Growth timeline: 0 to 50K members in 6 months</li>
+              <li>Community Orchestrator: System that schedules events, tracks engagement, triggers rain events</li>
+            </ul>
+          </div>
+          
+          <div class="alert-box">
+            <p><strong>The Problem:</strong> 97.6% churn by Day 30. Industry standard.</p>
+            <p><strong>The Solution:</strong> Community-acquired players show 40-60% higher LTV and 2-3x likelihood of becoming VIP.</p>
+          </div>
+          
+          <div class="component-section">
+            <h3>Community Orchestrator: Live Dashboard</h3>
+            <div class="terminal-output live-demo demo-animated">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    COMMUNITY ORCHESTRATOR                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  📱 TELEGRAM METRICS                                                │
+│  ├─ Total Members: 12,847 (↑15% WoW)                               │
+│  ├─ Daily Active: 1,847 (14.4% engagement)                         │
+│  ├─ Referrals This Week: 342 (↑28% WoW)                            │
+│  └─ Conversion Rate: 8.2% (community → depositor)                   │
+│                                                                      │
+│  💬 DISCORD METRICS                                                 │
+│  ├─ Total Members: 8,923 (↑22% WoW)                                │
+│  ├─ Daily Active: 1,245 (14.0% engagement)                          │
+│  ├─ VIP Members: 127 (↑8% MoM)                                     │
+│  └─ Rain Events: 47 this week ($2,340 distributed)                 │
+│                                                                      │
+│  🎯 SCHEDULED EVENTS                                                │
+│  ├─ Daily rain event: 6pm UTC (automated)                           │
+│  ├─ Weekly tournament: $10K prize pool (Friday 8pm UTC)              │
+│  ├─ Founder AMA: Friday 3pm UTC                                     │
+│  └─ Airdrop quest: 50M tokens (Zealy platform)                      │
+│                                                                      │
+│  ⚡ AUTO-ACTIONS                                                    │
+│  ├─ Rain event triggered: $50 split among 25 active users           │
+│  ├─ Engagement drop detected: Increase trivia frequency             │
+│  ├─ VIP milestone: @crypto_whale reached Gold tier                  │
+│  └─ Celebration rain: $200 distributed                              │
+│                                                                      │
+│  📊 RETENTION IMPACT                                                │
+│  ├─ Community-acquired: 5.2% Day 30 retention                       │
+│  ├─ Direct-acquired: 2.4% Day 30 retention                         │
+│  └─ LTV Premium: +45% vs direct                                    │
+│                                                                      │
+│  [SCHEDULE RAIN] [LAUNCH TOURNAMENT] [ANALYZE ENGAGEMENT]          │
+└─────────────────────────────────────────────────────────────────────┘
+            </div>
+            <div class="success-box demo-slide">
+              <h4>Community Status: <span class="status-indicator active"></span> GROWING</h4>
+              <p>✅ <span class="demo-counter">21,770</span> total members | ✅ <span class="demo-counter">14.2%</span> daily engagement | ✅ <span class="demo-counter">+45%</span> LTV premium</p>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Community Growth Timeline</h3>
+            <div class="chart-container">
+              <canvas id="communityGrowth"></canvas>
+            </div>
+            <div class="terminal-output" style="margin-top: 1rem;">
+COMMUNITY GROWTH METRICS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TELEGRAM:
+├─ Month 1: 1,000 members
+├─ Month 3: 10,000 members
+├─ Month 6: 50,000 members
+└─ Engagement: 10-15% daily active users
+
+DISCORD:
+├─ Month 1: 100 members (core team)
+├─ Month 2: 500-1,000 (influencer shoutouts)
+├─ Month 3: 2,000-5,000 (exclusive promotions)
+└─ Month 4-6: 10,000+ (organic growth)
+
+ENGAGEMENT TACTICS:
+├─ Daily trivia with rewards
+├─ Weekly tournaments ($10K-$50K prize pools)
+├─ Monthly AMAs with founders
+├─ Rain events (random crypto drops)
+├─ Milestone celebrations
+└─ Exclusive game previews
+
+RETENTION IMPACT:
+Community-acquired: 5.2% Day 30 retention
+Direct-acquired: 2.4% Day 30 retention
+LTV Premium: +45% vs direct
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Rain Bots and Community Incentives</h3>
+            <div class="two-col">
+              <div>
+                <p><strong>Rain Events:</strong></p>
+                <ul>
+                  <li>Small/regular: $10-50 split among 10-50 users</li>
+                  <li>Medium/daily: $100-500 split among 50-200 users</li>
+                  <li>Large/weekly: $1,000-5,000 among active members</li>
+                  <li>Mega/special: $10,000+ for major milestones</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>BC.Game Model:</strong> Coin Drops every 6 hours, selecting random 6 players.</p>
+              </div>
+              <div>
+                <p><strong>VIP Program Economics:</strong></p>
+                <ul>
+                  <li>Bronze ($500-1K wagered): 5% cashback</li>
+                  <li>Silver ($5-10K): 8% cashback</li>
+                  <li>Gold ($25-50K): 10% cashback</li>
+                  <li>Platinum ($100-250K): 15% cashback</li>
+                  <li>Diamond ($500K+): 20% cashback</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>BC.Game:</strong> 8-tier, 140-level structure with instant level-up bonuses.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s7" class="cs-page">
+        <div class="cs-num">07.</div>
+        <div class="cs-content">
+          <h1>Retention & Monetization</h1>
+          <h2>Fighting the 97.6% Day 30 Churn</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Churn crisis: 60% in 24 hours, 97.6% by Day 30</li>
+              <li>Retention strategies: rakeback, gamification, VIP programs</li>
+              <li>Target: 5% Day 30 retention (vs 2.4% industry)</li>
+              <li>Rakeback structures: 0.5-2% on all wagers</li>
+              <li>Gamification: achievements, badges, tournaments</li>
+              <li>Retention Engine: System that predicts churn and triggers interventions</li>
+            </ul>
+          </div>
+          
+          <div class="problem-box">
+            <h3>The Churn Crisis</h3>
+            <ul>
+              <li>60% churn within 24 hours</li>
+              <li>Day 7 retention: under 8%</li>
+              <li>Day 30 retention: 2.4% (97.6% disappear)</li>
+              <li>Only 40% make a second deposit</li>
+              <li>10-15% remain active beyond 6 months</li>
+            </ul>
+            <p><strong>Target:</strong> Achieving 5% Day 30 retention = massive competitive advantage</p>
+          </div>
+          
+          <div class="component-section">
+            <h3>Retention Engine: Live Cohort Analysis</h3>
+            <div class="terminal-output live-demo demo-animated">
+RETENTION ENGINE - COHORT ANALYSIS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COHORT: Week 4 Launch (1,247 users)
+─────────────────────────────────────────────────────────
+Day 1:  398 users (32%) ✓ Target: 30%+
+Day 7:   90 users (7.2%) ⚠ Target: 8%+
+Day 14:  52 users (4.2%) ⚠ Target: 5%+
+Day 30:  39 users (3.1%) ⚠ Target: 5%+
+
+INDUSTRY BENCHMARK:
+Day 1:  40% (we're below)
+Day 7:   8% (we're below)
+Day 30:  2.4% (we're above!) ✓
+
+RETENTION ACTIONS TRIGGERED:
+├─ Day 1 drop-off: Onboarding flow optimization ✓
+├─ Day 7 drop-off: Engagement campaigns increased ✓
+├─ Day 14 drop-off: VIP program launched earlier ✓
+└─ Day 30 target: Community-driven retention active ✓
+
+RAKEBACK IMPACT ANALYSIS:
+├─ Bronze tier: 5% cashback → 12% retention boost
+├─ Silver tier: 8% cashback → 18% retention boost
+└─ Gold tier: 10% cashback → 25% retention boost
+
+GAMIFICATION IMPACT:
+├─ Daily login rewards: +8% Day 7 retention
+├─ Achievement badges: +12% Day 30 retention
+└─ Tournament participation: +15% Day 30 retention
+
+PREDICTED RETENTION (With All Optimizations):
+Day 1:  35% (↑3% from current)
+Day 7:  10% (↑2.8% from current)
+Day 30: 5% (↑1.9% from current) ✓ TARGET ACHIEVED
+            </div>
+            <div class="success-box demo-slide">
+              <h4>Retention Status: <span class="status-indicator processing"></span> OPTIMIZING</h4>
+              <p>✅ <span class="demo-counter">3.1%</span> Day 30 (above 2.4% industry) | ⚠️ Target: <span class="demo-counter">5%</span> | ✅ <span class="demo-counter">4</span> optimizations active</p>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Retention Curve: Industry vs. Target</h3>
+            <div class="chart-container">
+              <canvas id="retentionCurve"></canvas>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Retention Strategies</h3>
+            <div class="two-col">
+              <div>
+                <p><strong>Rakeback Structures:</strong></p>
+                <ul>
+                  <li>Industry standard: 0.5-2% on all wagers</li>
+                  <li>BC.Game: up to 25% + milestone bonuses</li>
+                  <li>Shuffle: 10%+ lifetime commission</li>
+                  <li>BitStarz: 25-40% depending on referrals</li>
+                  <li>DestinyX: up to 60% revenue share</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Key Features:</strong> No negative carryover, instant crypto payouts, transparent tracking, tiered progression</p>
+              </div>
+              <div>
+                <p><strong>Gamification:</strong></p>
+                <ul>
+                  <li>Achievement badges for completing tasks</li>
+                  <li>Public leaderboards (competitive content)</li>
+                  <li>Time-limited challenges with rewards</li>
+                  <li>Daily login rewards (habit formation)</li>
+                  <li>Tournament participation (+15% Day 30 retention)</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Impact:</strong> Daily login rewards: +8% Day 7 retention. Achievement badges: +12% Day 30 retention.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s8" class="cs-page">
+        <div class="cs-num">08.</div>
+        <div class="cs-content">
+          <h1>Viral Mechanics</h1>
+          <h2>Why Crypto Gambling Spreads Faster</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Structural advantages: instant payouts, provably fair, anonymous</li>
+              <li>Referral programs: 25-60% lifetime NGR</li>
+              <li>Platform tokens: buyback-and-burn, staking yields</li>
+              <li>Social betting features: leaderboards, win notifications</li>
+              <li>Viral coefficient target: 1.5+ for exponential growth</li>
+            </ul>
+          </div>
+          
+          <div class="box" style="margin-top: 20px;">
+            <h3 style="margin-top: 0;">Structural Advantages</h3>
+            <ul>
+              <li><strong>Instant crypto payouts</strong> vs 3-5 day bank transfers</li>
+              <li><strong>Provably fair blockchain verification</strong> enabling shareability</li>
+              <li><strong>Anonymous play</strong> without KYC friction</li>
+              <li><strong>Global borderless access</strong> bypassing payment restrictions</li>
+            </ul>
+          </div>
+          
+          <div class="component-section">
+            <h3>Referral Program: Multi-Tier Pyramid</h3>
+            <div class="terminal-output">
+REFERRAL PROGRAM STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TIER STRUCTURE (Bety.com Model):
+├─ Direct referrals: 15% of NGR
+├─ Second level: 8% of NGR
+├─ Third level: 5% of NGR
+└─ Fourth level: 2% of NGR
+Total potential: 30% across pyramid
+
+STAKE MODEL:
+10% of house edge on every wager (not just losses)
+Lifetime commission: 25-60% of NGR
+
+PAYMENT:
+Instant via crypto (daily or real-time)
+Creates cash flow advantages vs weekly/monthly delays
+
+ROLLBIT "PROMISING AFFILIATE":
+Requires 100 signups + $100K wagered
+Unlocks 20% commission + deposit bonuses
+
+EXPECTED CONVERSION:
+Click → Signup: 18%
+Signup → Deposit: 32%
+Overall: 5.8% conversion rate
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Platform Tokens: The Deflationary Flywheel</h3>
+            <div class="mermaid">
+              graph LR
+                  A[GGR Revenue] --> B[10-30% Buyback]
+                  B --> C[Token Burn]
+                  C --> D[Scarcity Increases]
+                  D --> E[Price Appreciation]
+                  E --> F[Users Promote]
+                  F --> A
+                  
+                  G[Token Holders] --> H[Stake Tokens]
+                  H --> I[5-15% APY]
+                  I --> J[Governance Rights]
+                  J --> K[Revenue Share]
+            </div>
+            <div class="two-col" style="margin-top: 1rem;">
+              <div>
+                <p><strong>Rollbit Model:</strong></p>
+                <ul>
+                  <li>10% casino revenue → buyback</li>
+                  <li>20% sportsbook revenue → buyback</li>
+                  <li>30% futures trading revenue → buyback</li>
+                  <li>36% of max supply burned</li>
+                  <li>$60M annually in buybacks</li>
+                </ul>
+              </div>
+              <div>
+                <p><strong>Token Holders Become:</strong></p>
+                <ul>
+                  <li>Investor-promoters</li>
+                  <li>Stakers (5-15% APY)</li>
+                  <li>Governance participants</li>
+                  <li>Revenue share recipients</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s9" class="cs-page">
+        <div class="cs-num">09.</div>
+        <div class="cs-content">
+          <h1>Solana Ecosystem Advantage</h1>
+          <h2>Technical Superiority as Marketing</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Solana's speed: 400ms vs 12+ sec Ethereum</li>
+              <li>DeFi protocol integration: Kamino, Jupiter, Sanctum</li>
+              <li>NFT partnerships: Mad Lads, DeGods, SMB</li>
+              <li>Multi-token betting: SOL, USDC, BONK, JUP, LSTs</li>
+              <li>Marketing angles: "Bet settled in 400ms", "$0.002 withdrawal fee"</li>
+            </ul>
+          </div>
+          
+          <div class="box" style="margin-top: 20px;">
+            <h3 style="margin-top: 0;">Solana's Technical Advantages</h3>
+            <div class="metrics-grid">
+              <div class="metric-card">
+                <div class="metric-value">400ms</div>
+                <div class="metric-label">Transaction Speed<br/>(vs 12+ sec Ethereum)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">65K</div>
+                <div class="metric-label">TPS Throughput<br/>(handles tournament traffic)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">$0.00025</div>
+                <div class="metric-label">Deposit/Withdrawal Fee<br/>(vs $5-50 Ethereum)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">99.9%</div>
+                <div class="metric-label">Keep Your Winnings<br/>(only $0.002 withdrawal)</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>DeFi Protocol Integration</h3>
+            <div class="terminal-output">
+DEFI PROTOCOL PARTNERSHIPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+KAMINO FINANCE ($3.6B+ TVL):
+├─ Lending/borrowing for idle balances
+├─ Users earn yields on gambling balances
+└─ Yield-enhanced wallets auto-staking SOL
+
+JUPITER (95% of Solana DEX volume):
+├─ Swap functionality
+├─ Any-token betting enabled
+└─ Instant liquidity aggregator
+
+SANCTUM ($1B TVL in liquid staking):
+├─ LSTs accepted as betting collateral
+├─ Users earn 5-7% staking yields while gambling
+└─ "Lossless betting—earn while you play"
+
+IMPLEMENTATION:
+├─ Cross-protocol collateral (LP tokens, LSTs)
+├─ Referral programs with DeFi protocols
+└─ Revenue share for user acquisition
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>NFT Community Partnerships</h3>
+            <div class="two-col">
+              <div>
+                <p><strong>Blue-Chip Collections:</strong></p>
+                <ul>
+                  <li>Mad Lads (10K NFTs): Holder-exclusive tournaments</li>
+                  <li>DeGods (10K NFTs): Branded casino rooms</li>
+                  <li>Solana Monkey Business: MonkeDAO grants</li>
+                  <li>Okay Bears (10K NFTs): Co-branded tournaments</li>
+                </ul>
+              </div>
+              <div>
+                <p><strong>Tiered Holder Benefits:</strong></p>
+                <ul>
+                  <li>Bronze (any NFT): 2% rakeback</li>
+                  <li>Silver (major collections): 5% rakeback</li>
+                  <li>Gold (blue-chips): 10% rakeback + VIP support</li>
+                  <li>Platinum (multiple): Revenue share + governance</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s10" class="cs-page">
+        <div class="cs-num">10.</div>
+        <div class="cs-content">
+          <h1>Channel Orchestration System</h1>
+          <h2>Where $500K/Month Actually Goes + How We Optimize It</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Month-by-month budget allocation</li>
+              <li>Channel performance tracking and optimization</li>
+              <li>Real-time CAC monitoring by channel</li>
+              <li>Channel Orchestrator: Auto-optimization system</li>
+              <li>Expected results for each phase</li>
+            </ul>
+          </div>
+          
+          <div class="alert-box">
+            <p><strong>The Story:</strong> First months, we manually allocate budget and track performance. As we scale, the Channel Orchestrator automatically shifts budget to best-performing channels, tracks CAC in real-time, and optimizes the mix.</p>
+          </div>
+          
+          <div class="component-section">
+            <h3>Channel Orchestrator: Live Performance Dashboard</h3>
+            <div class="terminal-output live-demo demo-animated">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    CHANNEL ORCHESTRATOR                             │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  📊 CHANNEL PERFORMANCE (Real-Time)                                 │
+│  ├─ Affiliates: 45% budget, 42% traffic, CAC $112 ✓                │
+│  │  ├─ Active: 187 affiliates                                       │
+│  │  ├─ Top 23: earning 45-50% RevShare                             │
+│  │  └─ Status: EXCEEDING TARGET                                     │
+│  ├─ Influencers: 30% budget, 28% traffic, CAC $142 ⚠              │
+│  │  ├─ Mid-tier: 3 creators ($10-25K each)                         │
+│  │  ├─ Micro: 12 partnerships ($2-5K each)                         │
+│  │  └─ Action: Increase top 3 performers by 20%                    │
+│  ├─ Crypto Ads: 15% budget, 18% traffic, CAC $165 ⚠              │
+│  │  ├─ Blockchain-Ads: $30K (7.2x ROAS)                             │
+│  │  ├─ Bitmedia: $20K (1B+ impressions)                            │
+│  │  └─ Action: Shift $20K → Affiliates (lower CAC)                │
+│  └─ SEO: 10% budget, 12% traffic (long-term), CAC $30-80 projected │
+│     ├─ Link building: $25K                                          │
+│     ├─ Content: $15K                                               │
+│     └─ Timeline: 6-12 months for results                           │
+│                                                                      │
+│  ⚡ AUTO-OPTIMIZATION ENGINE                                        │
+│  ├─ Detected: Crypto Ads CAC 47% above Affiliates                  │
+│  ├─ Action: Shift $20K Crypto Ads → Affiliates                     │
+│  ├─ Detected: Top 3 influencers showing 5.2x ROAS                   │
+│  ├─ Action: Increase budget by 20% for next week                   │
+│  ├─ Detected: Community CAC lowest ($95)                           │
+│  └─ Action: Increase Telegram spend by 30%                        │
+│                                                                      │
+│  📈 PROJECTED IMPACT                                                │
+│  ├─ Average CAC: $118 → $110 (with optimizations)                  │
+│  ├─ Traffic share: Affiliates 42% → 48%                            │
+│  ├─ ROI improvement: +15% across all channels                      │
+│  └─ Expected: 300-400 additional FTDs/month                         │
+│                                                                      │
+│  [EXECUTE OPTIMIZATIONS] [REVIEW PROJECTIONS] [ANALYZE TRENDS]    │
+└─────────────────────────────────────────────────────────────────────┘
+            </div>
+            <div class="success-box demo-slide">
+              <h4>Orchestrator Status: <span class="status-indicator active"></span> OPTIMIZING</h4>
+              <p>✅ <span class="demo-counter">$450K</span> monthly budget | ✅ <span class="demo-counter">4</span> channels tracked | ✅ <span class="demo-counter">3</span> auto-optimizations triggered</p>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>How The Orchestrator Works</h3>
+            <div class="mermaid">
+              flowchart TB
+                  A[Channel Performance Data] --> B[Orchestrator Analyzes]
+                  B --> C{CAC Comparison}
+                  C -->|High CAC| D[Reduce Budget]
+                  C -->|Low CAC| E[Increase Budget]
+                  C -->|Optimal| F[Maintain]
+                  
+                  D --> G[Auto Reallocation]
+                  E --> G
+                  F --> H[Monitor Trends]
+                  
+                  G --> I[Real-Time Dashboard]
+                  H --> I
+                  
+                  I --> J[Target: $100 CAC]
+                  J --> K[5-7:1 LTV:CAC Ratio]
+            </div>
+            <p style="margin-top: 1rem;"><strong>The System:</strong> Every 24 hours, the orchestrator analyzes channel performance, compares CAC across channels, and automatically shifts budget to optimize the mix. You see the results in real-time, with recommended actions and projected impact.</p>
+          </div>
+          
+          <div class="component-section">
+            <h3>Budget Allocation by Phase</h3>
+            <div class="chart-container">
+              <canvas id="budgetPhases"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s11" class="cs-page">
+        <div class="cs-num">11.</div>
+        <div class="cs-content">
+          <h1>90-Day Launch Plan</h1>
+          <h2>From Zero to 10,000 Users</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Pre-launch (60 days): Community building, airdrop, influencers</li>
+              <li>Launch week: Welcome bonuses, affiliate activation, press releases</li>
+              <li>First 30 days: Giveaways, missions, AMAs, content marketing</li>
+              <li>Days 31-90: Scale influencers, multi-language, VIP program, tournaments</li>
+              <li>Launch Tracker: System that monitors progress and alerts on milestones</li>
+            </ul>
+          </div>
+          
+          <div class="component-section">
+            <h3>Launch Tracker: Real-Time Progress Monitoring</h3>
+            <div class="terminal-output live-demo demo-animated">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    LAUNCH TRACKER                                   │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  📅 CURRENT STATUS: Day 47 of 90                                    │
+│                                                                      │
+│  ✅ COMPLETED MILESTONES                                            │
+│  ├─ Pre-launch: Telegram 8,247 members ✓ (target: 5-10K)           │
+│  ├─ Launch week: Affiliate program active (187 affiliates) ✓       │
+│  ├─ Week 1: 1,000 users achieved ✓                                │
+│  └─ Week 4: 8,247 users (↑12% WoW) ✓                              │
+│                                                                      │
+│  🎯 UPCOMING MILESTONES                                            │
+│  ├─ Day 60: Multi-language Telegram groups                          │
+│  ├─ Day 75: VIP program launch                                      │
+│  ├─ Day 90: 10,000 users target                                    │
+│  └─ Day 90: $1M total wagered                                       │
+│                                                                      │
+│  ⚠️ ALERTS                                                          │
+│  ├─ FTD rate: 28.5% (target: 25-35%) ✓                             │
+│  ├─ CAC: $118 (target: <$125) ✓                                    │
+│  ├─ Day 7 retention: 7.2% (target: 8%+) ⚠                          │
+│  └─ Action: Increase engagement campaigns                           │
+│                                                                      │
+│  📊 PROJECTIONS                                                     │
+│  ├─ Day 60: 12,000-15,000 users (on track)                         │
+│  ├─ Day 90: 10,000-12,000 users (conservative)                    │
+│  └─ Day 90: $800K-$1.2M wagered                                    │
+│                                                                      │
+│  [VIEW DETAILS] [ADJUST STRATEGY] [REVIEW METRICS]                  │
+└─────────────────────────────────────────────────────────────────────┘
+            </div>
+            <div class="success-box demo-slide">
+              <h4>Launch Status: <span class="status-indicator active"></span> ON TRACK</h4>
+              <p>✅ <span class="demo-counter">8,247</span> users (Day 47) | ✅ <span class="demo-counter">4</span> milestones completed | ⚠️ <span class="demo-counter">1</span> alert to address</p>
+            </div>
+          </div>
+          
+          <div class="workflow-step">
+            <h3 style="margin-top: 0;">PRE-LAUNCH (60 Days Before)</h3>
+            <ul>
+              <li>Build Telegram community to 5,000-10,000 members</li>
+              <li>Announce 50-100M token airdrop via Zealy quest platform</li>
+              <li>Secure 5-10 micro-influencers ($1K-$5K each)</li>
+              <li>Set up technical infrastructure: Phantom wallet, Chainlink VRF, Helius RPC</li>
+              <li>Integrate Jupiter for multi-token betting</li>
+            </ul>
+          </div>
+          
+          <div class="workflow-step">
+            <h3 style="margin-top: 0;">LAUNCH WEEK</h3>
+            <ul>
+              <li>Deploy 400-500% welcome bonus (180% first, 240% second, 300% third, 360% fourth)</li>
+              <li>Activate affiliate program: 30-40% lifetime RevShare, no negative carryover</li>
+              <li>Distribute press releases: CoinTelegraph, Decrypt, CryptoSlate</li>
+              <li>Launch provably fair games: Dice, Crash, Plinko, Coin Flip</li>
+              <li>Enable instant SOL withdrawals under 60 seconds</li>
+            </ul>
+          </div>
+          
+          <div class="workflow-step">
+            <h3 style="margin-top: 0;">FIRST 30 DAYS</h3>
+            <ul>
+              <li>Giveaway campaigns: $10K-$50K prize pools</li>
+              <li>Daily missions and gamification: complete tasks for $CASINO token rewards</li>
+              <li>Weekly AMAs on Telegram with founders</li>
+              <li>Content marketing: 2-3 blog posts/week targeting long-tail keywords</li>
+              <li><strong>Target: 1,000 users, 25-35% FTD rate</strong></li>
+            </ul>
+          </div>
+          
+          <div class="workflow-step">
+            <h3 style="margin-top: 0;">DAYS 31-90</h3>
+            <ul>
+              <li>Scale influencer program: 15-20 active partners</li>
+              <li>Launch multi-language Telegram groups: Spanish (LATAM), Russian, Asian languages</li>
+              <li>Implement VIP program: 5 tiers, 2-15% rakeback</li>
+              <li>Tournament series: weekly $10K-$50K prize pools</li>
+              <li><strong>Target: 10,000 total users, $1M total wagered</strong></li>
+            </ul>
+          </div>
+          
+          <div class="component-section">
+            <h3>User Growth Projection</h3>
+            <div class="chart-container">
+              <canvas id="userGrowth"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s12" class="cs-page">
+        <div class="cs-num">12.</div>
+        <div class="cs-content">
+          <h1>Budget & Allocation</h1>
+          <h2>$500K/Month: Where Every Dollar Goes</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Month 1-3: Foundation phase ($300-400K/month)</li>
+              <li>Month 4-6: Acceleration phase ($400-500K/month)</li>
+              <li>Month 7-12: Scaling phase ($500-600K/month)</li>
+              <li>Expected results and CAC targets for each phase</li>
+              <li>Alternative budget scenarios (small/large)</li>
+            </ul>
+          </div>
+          
+          <div class="workflow-step">
+            <h3 style="margin-top: 0;">MONTH 1-3: Foundation Phase ($300-400K/month)</h3>
+            <ul>
+              <li><strong>40% ($120-160K):</strong> Affiliate program development (50-100 affiliates, 30-40% RevShare)</li>
+              <li><strong>25% ($75-100K):</strong> Community infrastructure (3-5 moderators, Discord/Telegram, rain bot wallet $5-10K, micro-influencers 5-10)</li>
+              <li><strong>20% ($60-80K):</strong> Crypto-native advertising (Blockchain-Ads $10-20K, Bitmedia/AADS $10-20K, push notifications $10-20K)</li>
+              <li><strong>15% ($45-60K):</strong> SEO foundation (specialized agency, long-tail keywords, initial link building $20-30K)</li>
+            </ul>
+            <p><strong>Expected Results:</strong> 500-2,000 registered users, 50-150 depositors, $125-150 CAC, negative ROI (expected)</p>
+          </div>
+          
+          <div class="workflow-step">
+            <h3 style="margin-top: 0;">MONTH 4-6: Acceleration Phase ($400-500K/month)</h3>
+            <ul>
+              <li><strong>45% ($180-225K):</strong> Affiliate scaling (100-200 active affiliates, hybrid CPA+RevShare deals)</li>
+              <li><strong>30% ($120-150K):</strong> Influencer program (mid-tier 2-3 at $10-25K each, micro 10-15 partnerships, first major giveaway $10-20K)</li>
+              <li><strong>15% ($60-75K):</strong> Advertising optimization (Blockchain-Ads campaigns, push notifications)</li>
+              <li><strong>10% ($40-50K):</strong> SEO acceleration (link building, content production, crypto casino keywords)</li>
+            </ul>
+            <p><strong>Expected Results:</strong> 3,000-8,000 registered users, 300-800 depositors, $110-135 CAC, positive cohort economics emerging</p>
+          </div>
+          
+          <div class="workflow-step">
+            <h3 style="margin-top: 0;">MONTH 7-12: Scaling Phase ($500-600K/month)</h3>
+            <ul>
+              <li><strong>40% ($200-240K):</strong> Affiliate optimization (150-300 active affiliates, automated systems, tiered commissions)</li>
+              <li><strong>35% ($175-210K):</strong> Influencer expansion (macro-tier 1-2 at $50-100K each if ROI proven, mid-tier stable 3-5, micro army 20-30, weekly giveaways $5-10K)</li>
+              <li><strong>15% ($75-90K):</strong> Proven advertising channels</li>
+              <li><strong>10% ($50-60K):</strong> SEO competitive keyword advancement</li>
+            </ul>
+            <p><strong>Expected Results:</strong> 15,000-40,000 registered users, 1,500-4,000 depositors, $100-125 CAC, LTV:CAC 5-7:1, positive unit economics</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s13" class="cs-page">
+        <div class="cs-num">13.</div>
+        <div class="cs-content">
+          <h1>12-Month Projections</h1>
+          <h2>Corrected Model: Realistic Expectations</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Month-by-month revenue projections</li>
+              <li>User growth trajectory: 0 to 40K users</li>
+              <li>CAC optimization: $125 → $100</li>
+              <li>GGR targets: $1M-$3M by Month 12</li>
+              <li>Comparison: Your model vs. corrected model</li>
+            </ul>
+          </div>
+          
+          <div class="component-section">
+            <h3>Revenue Projections</h3>
+            <div class="chart-container">
+              <canvas id="revenueProjection"></canvas>
+            </div>
+            <div class="terminal-output" style="margin-top: 1rem;">
+12-MONTH PROJECTIONS (CORRECTED MODEL)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MONTH 1-3: Foundation Phase
+├─ Registered Users: 500-2,000
+├─ Depositors: 50-150
+├─ Total Wagered: $50K-$200K
+├─ GGR: $500-$2,000 (1% house edge)
+├─ CAC: $125-150
+└─ ROI: Negative (expected in launch phase)
+
+MONTH 4-6: Acceleration Phase
+├─ Registered Users: 3,000-8,000 (cumulative)
+├─ Depositors: 300-800
+├─ Total Wagered: $1M-$5M
+├─ GGR: $10K-$50K
+├─ CAC: $110-135
+└─ ROI: Approaching breakeven
+
+MONTH 7-12: Scaling Phase
+├─ Registered Users: 15,000-40,000 (cumulative)
+├─ Depositors: 1,500-4,000
+├─ Total Wagered: $10M-$50M
+├─ GGR: $100K-$500K
+├─ CAC: $100-125
+└─ ROI: Positive unit economics
+
+YEAR 1 TOTALS:
+├─ Total Wagered: $100M+ (conservative)
+├─ Gross Gaming Revenue: $1M-$3M
+├─ Net Revenue: $500K-$1.5M (after costs)
+├─ Marketing Spend: $4.5M-$6M
+└─ Status: Approaching breakeven by month 12
+            </div>
+          </div>
+          
+          <div class="before-after">
+            <div class="before">
+              <h3>❌ YOUR MODEL</h3>
+              <ul>
+                <li>CAC: $3.50 (impossible)</li>
+                <li>Daily wager: $150 (top 10-20% only)</li>
+                <li>Churn: 80% (actually 97.6%)</li>
+                <li>Result: <strong>Unrealistic projections</strong></li>
+              </ul>
+            </div>
+            <div class="after">
+              <h3>✅ CORRECTED MODEL</h3>
+              <ul>
+                <li>CAC: $125 → $100 (optimized)</li>
+                <li>Daily wager: $25-50 average</li>
+                <li>Churn: 97.6% → 95% (5% Day 30 target)</li>
+                <li>Result: <strong>$5-15M GGR Year 1</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s14" class="cs-page">
+        <div class="cs-num">14.</div>
+        <div class="cs-content">
+          <h1>Growth Command Center</h1>
+          <h2>The Unified Dashboard That Orchestrates Everything</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Unified dashboard combining all systems</li>
+              <li>Real-time metrics: acquisition, retention, revenue</li>
+              <li>Automated alerts and optimization triggers</li>
+              <li>Projections and trend analysis</li>
+              <li>Your daily view: everything in one place</li>
+            </ul>
+          </div>
+          
+          <div class="component-section">
+            <h3>Growth Command Center: Your Daily View</h3>
+            <div class="terminal-output live-demo demo-animated">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    GROWTH COMMAND CENTER                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  📈 KEY METRICS (Last 24h)                                          │
+│  ├─ New Registrations: 1,245 (↑12% WoW)                             │
+│  ├─ First Time Depositors (FTD): 42 (↑8% WoW)                       │
+│  ├─ Average CAC: $118 (↓5% WoW)                                     │
+│  ├─ Day 7 Retention: 7.2% (↑0.5% WoW)                               │
+│  └─ Day 30 Retention: 3.1% (above 2.4% industry) ✓                  │
+│                                                                      │
+│  💰 REVENUE METRICS                                                 │
+│  ├─ GGR: $245K (↑18% MoM)                                           │
+│  ├─ NGR: $187K (promo costs: 23.7%)                                 │
+│  ├─ ARPU: $142/month (target: $100-200) ✓                           │
+│  └─ LTV:CAC: 6.2:1 (target: 5:1+) ✓                                │
+│                                                                      │
+│  ⚡ LIVE OPTIMIZATIONS                                               │
+│  ├─ Channel Orchestrator: Shifted $20K Crypto Ads → Affiliates     │
+│  ├─ Retention Engine: Triggered engagement campaigns                │
+│  ├─ Acquisition Engine: Increased top influencer budgets            │
+│  └─ Launch Tracker: Alerted on Day 7 retention target              │
+│                                                                      │
+│  ⚠️ ALERTS & OPPORTUNITIES                                          │
+│  ├─ High Churn Cohort: Week 3 (Day 30 retention 2.8%)               │
+│  │  └─ ACTION: Trigger win-back campaign for this cohort            │
+│  ├─ Influencer ROI: @solana_degen (5.2x ROAS)                       │
+│  │  └─ ACTION: Increase budget by 20% for next week                 │
+│  ├─ Affiliate Performance: Top 10 affiliates driving 60% FTDs       │
+│  │  └─ ACTION: Introduce tiered bonuses for top 20%                 │
+│  └─ Solana Ecosystem: New NFT collection "Solana Punks" trending    │
+│     └─ ACTION: Propose co-branded tournament                        │
+│                                                                      │
+│  📊 PROJECTIONS (Next 30 Days)                                      │
+│  ├─ Expected FTDs: 1,500 - 2,000                                    │
+│  ├─ Projected GGR: $50,000 - $80,000                                │
+│  ├─ Target CAC: $100                                                │
+│  └─ Day 30 Retention Target: 5%                                     │
+│                                                                      │
+│  [OPTIMIZE CAMPAIGN] [REVIEW COHORT] [SCALE PARTNERSHIP]            │
+└─────────────────────────────────────────────────────────────────────┘
+            </div>
+            <div class="success-box demo-slide">
+              <h4>System Status: <span class="status-indicator active"></span> OPERATIONAL</h4>
+              <p>✅ All systems connected | ✅ <span class="demo-counter">1,245</span> new registrations | ✅ <span class="demo-counter">4</span> optimizations triggered</p>
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>How The Systems Work Together</h3>
+            <div class="mermaid">
+              graph TB
+                  A[Growth Command Center] --> B[Acquisition Engine]
+                  A --> C[Retention Engine]
+                  A --> D[Channel Orchestrator]
+                  A --> E[Launch Tracker]
+                  
+                  B --> F[Real-Time CAC Tracking]
+                  B --> G[Channel Performance]
+                  B --> H[Auto Budget Allocation]
+                  
+                  C --> I[Cohort Analysis]
+                  C --> J[Churn Prediction]
+                  C --> K[Intervention Triggers]
+                  
+                  D --> L[Channel Mix Optimization]
+                  D --> M[Budget Reallocation]
+                  
+                  E --> N[Milestone Tracking]
+                  E --> O[Progress Alerts]
+                  
+                  F --> P[Unified Dashboard]
+                  G --> P
+                  I --> P
+                  L --> P
+                  N --> P
+                  
+                  P --> Q[Your Daily View]
+            </div>
+            <p style="margin-top: 1rem;"><strong>The System:</strong> All components feed into the Growth Command Center. You see everything in one place: real-time metrics, automated optimizations, alerts, and projections. The systems work together to scale growth while you focus on strategy.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s15" class="cs-page">
+        <div class="cs-num">15.</div>
+        <div class="cs-content">
+          <h1>Implementation Roadmap</h1>
+          <h2>The Path Forward</h2>
+          
+          <div class="section-notes">
+            <strong>What This Section Covers:</strong>
+            <ul>
+              <li>Week 1-2: Immediate technical and community actions</li>
+              <li>Month 1-3: Foundation building (SEO, content, partnerships)</li>
+              <li>Month 3-6: Growth acceleration (link building, influencer expansion)</li>
+              <li>Month 6-12: Market dominance (major deals, strategic partnerships)</li>
+            </ul>
+          </div>
+          
+          <div class="alert-box" style="margin-bottom: 1.5rem;">
+            <p style="margin: 0;"><strong>THE EVIDENCE IS CLEAR:</strong><br><br>
+            I've analyzed your projections and found 10-35x errors.<br>
+            I've corrected the assumptions with industry data.<br>
+            I've built a growth strategy that scales from zero.<br>
+            I've shown you exactly how Stake.com, Rollbit, BC.Game did it.<br><br>
+            <strong>This isn't theory. This is proven, repeatable, measurable.</strong></p>
+          </div>
+          
+          <div class="component-section">
+            <h3>Week 1-2: Immediate Actions</h3>
+            <div class="terminal-output">
+WEEK 1-2 IMMEDIATE ACTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TECHNICAL:
+├─ Set up Phantom wallet integration (testnet)
+├─ Deploy Gamba protocol fork or custom betting contracts
+├─ Integrate Helius RPC nodes
+└─ Implement first game (Coin Flip) with Chainlink VRF
+
+COMMUNITY:
+├─ Create Discord server with Solana theme
+├─ Launch Twitter account with content calendar
+├─ Establish Telegram group for announcements
+└─ Reach out to 5 Solana influencers for feedback
+
+PARTNERSHIPS:
+├─ Apply for Solana Foundation grant
+├─ Contact MonkeDAO about partnership
+├─ Reach out to DeGods and Mad Lads communities
+└─ Schedule calls with Kamino and Jupiter teams
+
+LEGAL:
+├─ Research Curaçao licensing
+├─ Draft responsible gambling policy
+├─ Create terms of service for decentralized casino
+└─ Consult crypto gaming lawyer
+            </div>
+          </div>
+          
+          <div class="component-section">
+            <h3>Month 1-3: Foundation</h3>
+            <ul>
+              <li>Technical SEO audit and fixes</li>
+              <li>Keyword research and content plan</li>
+              <li>E-E-A-T implementation (licenses, author bios, trust signals)</li>
+              <li>Initial high-quality content (10-15 pieces)</li>
+              <li>Social media profile setup</li>
+              <li>Guest posting campaign (5-10 posts)</li>
+              <li>Digital PR for newsworthy events</li>
+              <li>Blog content (2-3x per week)</li>
+              <li>Video content production start</li>
+              <li>Community engagement (Reddit, Telegram)</li>
+            </ul>
+          </div>
+          
+          <div class="component-section">
+            <h3>Month 3-6: Growth Acceleration</h3>
+            <ul>
+              <li>Link building acceleration (Serpzilla or similar platforms)</li>
+              <li>Influencer partnerships expansion</li>
+              <li>Affiliate program launch with competitive terms</li>
+              <li>A/B testing and conversion rate optimization</li>
+              <li>Video content distribution across platforms</li>
+              <li>Scale to 15-20 active influencer partners</li>
+              <li>Launch multi-language Telegram groups</li>
+              <li>Implement comprehensive VIP program</li>
+              <li>Begin tournament series with $10K-$50K prize pools</li>
+              <li>Target: 10,000 total users and $1M total wagered</li>
+            </ul>
+          </div>
+          
+          <div class="component-section">
+            <h3>Month 6-12: Market Dominance</h3>
+            <ul>
+              <li>Major influencer deals ($100,000+)</li>
+              <li>Esports team or streamer sponsorship</li>
+              <li>Strategic partnerships with other Solana projects</li>
+              <li>Token or NFT loyalty program launch</li>
+              <li>Consider acquisitions of smaller competitors</li>
+              <li>Optimize budget focusing on highest ROI channels</li>
+              <li>Expand international presence</li>
+              <li>Build brand moat through community loyalty</li>
+              <li>Continuous content and SEO expansion</li>
+              <li>Target: 50,000-100,000 users, $10M-$100M total wagered, top 10 Solana dApp</li>
+            </ul>
+          </div>
+          
+          <div class="success-box" style="margin-top: 1.5rem;">
+            <p style="margin: 0; font-size: 1.1em; line-height: 1.8;">
+              <strong>Let's Scale MTO.bet</strong><br><br>
+              Launch in 7 days with corrected assumptions.<br>
+              Scale from zero to market leader in 12 months.<br>
+              Build the #1 Solana gambling platform.<br><br>
+              <strong>The blueprint is ready. Execution starts now.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+  </div>
+  
+  <script>
+    mermaid.initialize({ 
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        primaryColor: '#ffffff',
+        primaryTextColor: '#000000',
+        primaryBorderColor: '#000000',
+        lineColor: '#000000',
+        secondaryColor: '#ffffff',
+        tertiaryColor: '#ffffff',
+        background: '#ffffff',
+        mainBkg: '#ffffff',
+        secondBkg: '#ffffff',
+        tertiaryBkg: '#ffffff',
+        nodeTextColor: '#000000',
+        clusterTextColor: '#000000',
+        edgeLabelBackground: '#ffffff',
+        edgeLabelColor: '#000000'
+      },
+      flowchart: {
+        nodeSpacing: 50,
+        rankSpacing: 50,
+        curve: 'basis'
+      }
+    });
+
+    // Active link highlighting
+    const sections = document.querySelectorAll('section.cs-page');
+    const navLinks = document.querySelectorAll('.cs-index a');
+
+    const observerNav = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+
+    sections.forEach(section => {
+      observerNav.observe(section);
+    });
+
+    // Chart configurations
+    const chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: true, position: 'top' }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    };
+
+    // CAC Comparison Chart
+    const cacCtx = document.getElementById('cacComparison');
+    if (cacCtx) {
+      new Chart(cacCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Your Model', 'Industry Avg', 'Month 1-3', 'Month 4-6', 'Month 7-12'],
+          datasets: [{
+            label: 'CAC ($)',
+            data: [3.50, 125, 125, 110, 100],
+            backgroundColor: '#000'
+          }]
+        },
+        options: chartOptions
+      });
+    }
+
+    // Funnel Reality Chart
+    const funnelCtx = document.getElementById('funnelReality');
+    if (funnelCtx) {
+      new Chart(funnelCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Landing→Reg', 'Reg→FTD', 'After KYC', '2nd Deposit', 'Monthly Active', '6+ Months'],
+          datasets: [{
+            label: 'Your Model (%)',
+            data: [50, 20, 90, 60, 50, 30],
+            backgroundColor: '#666'
+          }, {
+            label: 'Industry Reality (%)',
+            data: [30, 3, 85, 40, 27, 12],
+            backgroundColor: '#000'
+          }]
+        },
+        options: chartOptions
+      });
+    }
+
+    // Stake Growth Chart
+    const stakeCtx = document.getElementById('stakeGrowth');
+    if (stakeCtx) {
+      new Chart(stakeCtx, {
+        type: 'line',
+        data: {
+          labels: ['2020', '2021', '2022', '2023', '2024'],
+          datasets: [{
+            label: 'Revenue ($B)',
+            data: [0.105, 1.2, 2.6, 3.5, 4.7],
+            borderColor: '#000',
+            backgroundColor: 'rgba(0,0,0,0.1)',
+            tension: 0.4
+          }]
+        },
+        options: chartOptions
+      });
+    }
+
+    // Channel Performance Chart
+    const channelCtx = document.getElementById('channelPerformance');
+    if (channelCtx) {
+      new Chart(channelCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Affiliates', 'Influencers', 'Crypto Ads', 'Community', 'SEO'],
+          datasets: [{
+            data: [40, 30, 15, 10, 5],
+            backgroundColor: ['#000', '#333', '#666', '#999', '#ccc']
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: true, position: 'right' }
+          }
+        }
+      });
+    }
+
+    // Budget Allocation Chart
+    const budgetCtx = document.getElementById('budgetAllocation');
+    if (budgetCtx) {
+      new Chart(budgetCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Affiliates', 'Influencers', 'Crypto Ads', 'SEO', 'Community'],
+          datasets: [{
+            label: 'Month 1-3',
+            data: [40, 0, 20, 15, 25],
+            backgroundColor: '#999'
+          }, {
+            label: 'Month 4-6',
+            data: [45, 30, 15, 10, 0],
+            backgroundColor: '#666'
+          }, {
+            label: 'Month 7-12',
+            data: [40, 35, 15, 10, 0],
+            backgroundColor: '#000'
+          }]
+        },
+        options: chartOptions
+      });
+    }
+
+    // Influencer Tiers Chart
+    const influencerCtx = document.getElementById('influencerTiers');
+    if (influencerCtx) {
+      new Chart(influencerCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Micro', 'Macro', 'Mega'],
+          datasets: [{
+            label: 'Cost Range ($K)',
+            data: [5, 30, 100],
+            backgroundColor: '#000'
+          }, {
+            label: 'Expected FTDs',
+            data: [125, 600, 0],
+            backgroundColor: '#666'
+          }]
+        },
+        options: chartOptions
+      });
+    }
+
+    // Community Growth Chart
+    const communityCtx = document.getElementById('communityGrowth');
+    if (communityCtx) {
+      new Chart(communityCtx, {
+        type: 'line',
+        data: {
+          labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
+          datasets: [{
+            label: 'Telegram Members',
+            data: [1000, 3000, 10000, 20000, 35000, 50000],
+            borderColor: '#000',
+            tension: 0.4
+          }, {
+            label: 'Discord Members',
+            data: [100, 500, 2000, 5000, 8000, 10000],
+            borderColor: '#666',
+            tension: 0.4
+          }]
+        },
+        options: chartOptions
+      });
+    }
+
+    // Retention Curve Chart
+    const retentionCtx = document.getElementById('retentionCurve');
+    if (retentionCtx) {
+      new Chart(retentionCtx, {
+        type: 'line',
+        data: {
+          labels: ['Day 1', 'Day 7', 'Day 14', 'Day 30', 'Day 60', 'Day 90'],
+          datasets: [{
+            label: 'Industry Average',
+            data: [40, 8, 5, 2.4, 1.5, 1],
+            borderColor: '#666',
+            borderDash: [5, 5]
+          }, {
+            label: 'Target with Strategy',
+            data: [35, 10, 7, 5, 3.5, 2.5],
+            borderColor: '#000'
+          }]
+        },
+        options: chartOptions
+      });
+    }
+
+    // Budget Phases Chart
+    const budgetPhasesCtx = document.getElementById('budgetPhases');
+    if (budgetPhasesCtx) {
+      new Chart(budgetPhasesCtx, {
+        type: 'line',
+        data: {
+          labels: ['Month 1-3', 'Month 4-6', 'Month 7-12'],
+          datasets: [{
+            label: 'Monthly Budget ($K)',
+            data: [350, 450, 550],
+            borderColor: '#000',
+            tension: 0.4
+          }]
+        },
+        options: chartOptions
+      });
+    }
+
+    // User Growth Chart
+    const userGrowthCtx = document.getElementById('userGrowth');
+    if (userGrowthCtx) {
+      new Chart(userGrowthCtx, {
+        type: 'line',
+        data: {
+          labels: ['Launch', 'Week 1', 'Week 2', 'Week 3', 'Week 4', 'Month 2', 'Month 3'],
+          datasets: [{
+            label: 'Total Users',
+            data: [0, 150, 350, 600, 1000, 3000, 10000],
+            borderColor: '#000',
+            backgroundColor: 'rgba(0,0,0,0.1)',
+            tension: 0.4
+          }]
+        },
+        options: chartOptions
+      });
+    }
+
+    // Revenue Projection Chart
+    const revenueCtx = document.getElementById('revenueProjection');
+    if (revenueCtx) {
+      new Chart(revenueCtx, {
+        type: 'line',
+        data: {
+          labels: ['Month 1', 'Month 3', 'Month 6', 'Month 9', 'Month 12'],
+          datasets: [{
+            label: 'GGR ($)',
+            data: [1000, 20000, 200000, 800000, 2000000],
+            borderColor: '#000',
+            backgroundColor: 'rgba(0,0,0,0.1)',
+            tension: 0.4
+          }, {
+            label: 'Marketing Spend ($)',
+            data: [350000, 400000, 450000, 500000, 550000],
+            borderColor: '#666',
+            borderDash: [5, 5],
+            tension: 0.4
+          }]
+        },
+        options: chartOptions
+      });
+    }
+  </script>
+  <script>
+    // Password protection for MTO case study
+    (function() {
+      const ACCESS_KEY = 'cs_access_mto';
+      const PASSWORD = 'ccasino';
+      
+      function haveAccess() {
+        try { return sessionStorage.getItem(ACCESS_KEY) === 'true'; } catch(e) { return false; }
+      }
+      
+      function grantAccess() {
+        try { sessionStorage.setItem(ACCESS_KEY, 'true'); } catch(e) {}
+      }
+      
+      if (!haveAccess()) {
+        const input = prompt('Enter password to view:');
+        if (input && input.trim() === PASSWORD) {
+          grantAccess();
+        } else {
+          if (input !== null) {
+            alert('Incorrect password');
+          }
+          window.location.href = 'case-studies.html';
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -159,10 +159,18 @@
         document.getElementById('mto-link').addEventListener('click', function(e) {
           e.preventDefault();
           const target = 'mto-growth-case-study.html';
-          if (haveAccess()) { window.location.href = target; return; }
+          const mtoPassword = 'ccasino';
+          const mtoAccessKey = 'cs_access_mto';
+          function haveMTOAccess() {
+            try { return sessionStorage.getItem(mtoAccessKey) === 'true'; } catch(e) { return false; }
+          }
+          function grantMTOAccess() {
+            try { sessionStorage.setItem(mtoAccessKey, 'true'); } catch(e) {}
+          }
+          if (haveMTOAccess()) { window.location.href = target; return; }
           const input = prompt('Enter password to view:');
-          if (input && input.trim() === PASSWORD) {
-            grantAccess();
+          if (input && input.trim() === mtoPassword) {
+            grantMTOAccess();
             window.location.href = target;
           } else if (input !== null) {
             alert('Incorrect password');
