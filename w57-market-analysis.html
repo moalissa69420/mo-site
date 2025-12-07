@@ -25,8 +25,10 @@
     .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start; }
     .box { background:#fff; border:1px solid var(--border); border-radius:0; padding:0.9rem; }
     .kpi-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:0.75rem; }
+    .kpi-grid-4 { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:0.75rem; }
     .kpi-card { border:1px solid #000; background:#fff; padding:0.75rem; text-align:center; }
     .kpi-card .big { font-size:1.25rem; font-weight:700; color:#000; }
+    .kpi-card .big.green { color:#2e7d32; }
     .component-section { background:#fff; border:1px solid #000; padding:0.9rem; margin:0.5rem 0; }
     .metrics-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:0.75rem; margin:1rem 0; }
     .metric-card { background:#fff; border:1px solid #000; padding:0.75rem; text-align:center; }
@@ -37,6 +39,7 @@
     .data-table th { background:#f5f5f5; font-weight:600; }
     .data-table tr:nth-child(even) { background:#f9f9f9; }
     .green-text { color:#2e7d32; font-weight:600; }
+    .red-text { color:#d32f2f; font-weight:600; }
     .timeline { position:relative; padding:1rem 0; }
     .timeline-item { position:relative; padding-left:2rem; margin-bottom:1.5rem; }
     .timeline-item::before { content:''; position:absolute; left:0; top:0.25rem; width:12px; height:12px; border:2px solid #000; border-radius:50%; background:#fff; }
@@ -44,13 +47,16 @@
     .timeline-item:last-child::after { display:none; }
     .chart-container { position:relative; height:300px; margin:1rem 0; border:1px solid #000; padding:1rem; background:#fff; }
     .terminal-output { background:#fff; color:#000; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; white-space:pre-wrap; }
+    .highlight-box { background:#f0f8ff; border:2px solid #2e7d32; padding:1rem; margin:0.5rem 0; }
+    .source-note { font-size:0.75rem; color:#666; font-style:italic; margin-top:0.5rem; }
+    .exec-summary { background:#fafafa; border-left:4px solid #000; padding:1rem 1.25rem; margin:0.5rem 0; }
 
     @media (max-width: 700px) {
       .cs-wrapper{ grid-template-columns:1fr;}
       .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);}
       section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;}
       .two-col{ grid-template-columns:1fr; gap:0.85rem;}
-      .kpi-grid, .metrics-grid{ grid-template-columns:1fr; }
+      .kpi-grid, .kpi-grid-4, .metrics-grid{ grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -59,162 +65,444 @@
     <aside class="cs-index">
       <div class="cs-index-title">Index</div>
       <ol>
+        <li><a href="#s0"><span class="num">00.</span> Executive Summary</a></li>
         <li><a href="#s1"><span class="num">01.</span> Market Opportunity</a></li>
-        <li><a href="#s2"><span class="num">02.</span> Pricing Landscape</a></li>
-        <li><a href="#s3"><span class="num">03.</span> Competitive Positioning</a></li>
-        <li><a href="#s4"><span class="num">04.</span> Target Market</a></li>
-        <li><a href="#s5"><span class="num">05.</span> Go-to-Market Roadmap</a></li>
-        <li><a href="#s6"><span class="num">06.</span> Revenue Projections</a></li>
-        <li><a href="#s7"><span class="num">07.</span> Launch Capital Requirements</a></li>
-        <li><a href="#s8"><span class="num">08.</span> Success Metrics</a></li>
+        <li><a href="#s2"><span class="num">02.</span> Demand Signals</a></li>
+        <li><a href="#s3"><span class="num">03.</span> Pricing Landscape</a></li>
+        <li><a href="#s4"><span class="num">04.</span> Competitive Positioning</a></li>
+        <li><a href="#s5"><span class="num">05.</span> Target Market</a></li>
+        <li><a href="#s6"><span class="num">06.</span> Amazon Unit Economics</a></li>
+        <li><a href="#s7"><span class="num">07.</span> Go-to-Market Roadmap</a></li>
+        <li><a href="#s8"><span class="num">08.</span> Launch Investment</a></li>
+        <li><a href="#s9"><span class="num">09.</span> Success Metrics</a></li>
+        <li><a href="#s10"><span class="num">10.</span> Risk Analysis</a></li>
       </ol>
     </aside>
     <main class="cs-sections">
+
+      <!-- SECTION 0: EXECUTIVE SUMMARY -->
+      <section id="s0" class="cs-page">
+        <div class="cs-num">00.</div>
+        <div class="cs-content">
+          <h1>Executive Summary</h1>
+          <p style="margin: 0 0 1rem 0; font-size: 0.875rem; color: #666; font-style: italic;">W57 Coconut Coffee — Go to War Strategy Analysis</p>
+
+          <div class="exec-summary">
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0;">
+              Vietnamese coffee searches surged <strong>61% year-over-year</strong> in 2024. Specialty coffee consumption hit a record <strong>45% of American adults</strong>—surpassing traditional coffee for the first time in history. The premium instant segment is growing at <strong>9.19% CAGR</strong>, more than double the overall market rate. Meanwhile, the coconut-coffee intersection in premium instant remains dramatically underserved.
+            </p>
+            <p style="font-size: 1rem; line-height: 1.7; margin: 1rem 0 0 0;">
+              W57 Coconut Coffee is positioned to capture a validated <strong>$0.60-$0.90/serving white space</strong>—premium enough to signal quality, accessible enough for trial—in a <strong>$6.26 billion US instant coffee market</strong>. With 2.3 million Vietnamese Americans concentrated in 5 metros, manufacturing already established, and an Amazon-first launch path that successful bootstrapped brands have proven, the math supports a calculated market entry.
+            </p>
+          </div>
+
+          <div class="component-section" style="margin-top: 1rem;">
+            <h3>The Investment Thesis</h3>
+            <div class="kpi-grid-4">
+              <div class="kpi-card">
+                <div class="big">$6.26B</div>
+                <div>US Instant Coffee Market</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big green">9.19%</div>
+                <div>Premium Segment CAGR</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big">+61%</div>
+                <div>Vietnamese Coffee Search YoY</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big green">$5.2-11K</div>
+                <div>Launch Investment</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-output" style="margin-top: 1rem;">
+FIRST PRINCIPLES VALIDATION:
+
+✓ Demand exists: Vietnamese coffee +61% YoY, specialty at all-time high
+✓ White space confirmed: $0.60-0.90/serving gap between commodity & ultra-premium
+✓ Target market concentrated: 50%+ of 2.3M Vietnamese Americans in 5 metros
+✓ Unit economics viable: 24% gross margin after Amazon fees at $17 retail
+✓ Launch path proven: Waka, Alpine Start bootstrapped via Amazon-first strategy
+✓ Manufacturing solved: Production already established
+
+The battle is won before it's fought.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1: MARKET OPPORTUNITY -->
       <section id="s1" class="cs-page">
         <div class="cs-num">01.</div>
         <div class="cs-content">
           <h1>Market Opportunity</h1>
-          <p style="margin: 0 0 1rem 0; font-size: 0.875rem; color: #666; font-style: italic;">W57 Coconut Coffee — Market Analysis</p>
 
           <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Global Instant Coffee Market</h3>
+            <h3>US Instant Coffee Market</h3>
             <div class="kpi-grid">
               <div class="kpi-card">
-                <div class="big">$84.66B</div>
-                <div>Global Market (2025)</div>
+                <div class="big">$6.26B</div>
+                <div>US Market Size (2024)</div>
               </div>
               <div class="kpi-card">
-                <div class="big">5.5%</div>
-                <div>CAGR Growth</div>
+                <div class="big">$8.80B</div>
+                <div>Projected 2032</div>
               </div>
               <div class="kpi-card">
-                <div class="big">$16.7B</div>
-                <div>Premium Segment</div>
+                <div class="big green">4.38%</div>
+                <div>Overall CAGR</div>
               </div>
             </div>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;"><strong>Insight:</strong> Premium segment growing at 6.2% CAGR (faster than overall market at 5.5%), indicating strong demand for quality instant coffee.</p>
+            <p class="source-note">Source: Fortune Business Insights, Mordor Intelligence 2024</p>
           </div>
 
           <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Regional Growth Drivers</h3>
+            <h3>Premium Segment Outperformance</h3>
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>Region</th>
-                  <th>Market Size</th>
+                  <th>Segment</th>
                   <th>Growth Rate</th>
                   <th>Key Driver</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Asia Pacific</strong></td>
-                  <td>Largest Market</td>
-                  <td class="green-text">Fastest-growing</td>
-                  <td>Rising disposable incomes</td>
+                  <td><strong>Premium/Specialty Instant</strong></td>
+                  <td class="green-text">9.19% CAGR</td>
+                  <td>Quality-seeking millennials, convenience demand</td>
                 </tr>
                 <tr>
-                  <td><strong>US Market</strong></td>
-                  <td>$6.52B (2025)</td>
-                  <td class="green-text">+18%</td>
-                  <td>Specialty coffee adoption (since 2020)</td>
+                  <td><strong>Freeze-Dried (Premium Indicator)</strong></td>
+                  <td class="green-text">7.31% CAGR</td>
+                  <td>Taste quality preference over spray-dried</td>
                 </tr>
                 <tr>
-                  <td><strong>Europe</strong></td>
-                  <td>Established</td>
-                  <td>Stable</td>
-                  <td>Premiumization trend</td>
+                  <td><strong>Single-Serve Sachets</strong></td>
+                  <td class="green-text">6.1% CAGR</td>
+                  <td>40% of millennials prefer this format</td>
+                </tr>
+                <tr>
+                  <td><strong>Functional Coffee</strong></td>
+                  <td class="green-text">11.45% CAGR</td>
+                  <td>Health-conscious consumers, adaptogens</td>
+                </tr>
+                <tr>
+                  <td>Traditional Instant</td>
+                  <td>~4% CAGR</td>
+                  <td>Commodity, price-driven</td>
                 </tr>
               </tbody>
             </table>
+            <div class="highlight-box">
+              <strong>Key Insight:</strong> Premium instant is growing at <strong>2x+ the rate</strong> of traditional instant. The category is premiumizing—consumers are trading up.
+            </div>
           </div>
 
           <div class="component-section">
-            <h3>Market Opportunity Summary</h3>
-            <div class="terminal-output">
-Market Size:         $84.66B globally (2025)
-Premium Segment:     $16.7B (growing 6.2% CAGR)
-US Market:           $6.52B (specialty coffee +18% since 2020)
-Asia Pacific:        Fastest-growing region
-Key Trend:           Premiumization + convenience demand
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="s2" class="cs-page">
-        <div class="cs-num">02.</div>
-        <div class="cs-content">
-          <h1>Pricing Landscape</h1>
-
-          <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Instant Coffee Pricing Tiers</h3>
+            <h3>Category Legitimization Signals</h3>
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>Tier</th>
-                  <th>Price/Serving</th>
-                  <th>Examples</th>
-                  <th>Target Audience</th>
+                  <th>Event</th>
+                  <th>Date</th>
+                  <th>Significance</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Mass Market</strong></td>
-                  <td>$0.10-0.30</td>
-                  <td>Nescafe, Folgers</td>
-                  <td>Price-sensitive consumers</td>
+                  <td><strong>Blue Bottle launches craft instant</strong></td>
+                  <td>October 2024</td>
+                  <td>Premium specialty brand validates instant category</td>
                 </tr>
                 <tr>
-                  <td><strong>Vietnamese 3-in-1</strong></td>
-                  <td>$0.15-0.40</td>
-                  <td>G7, Vinacafe</td>
-                  <td>Vietnamese diaspora</td>
+                  <td><strong>Nestlé opens $675M facility</strong></td>
+                  <td>January 2025</td>
+                  <td>Major investment signals long-term category growth</td>
                 </tr>
                 <tr>
-                  <td><strong>Premium Instant</strong></td>
-                  <td>$0.22-1.50</td>
-                  <td>Waka, Alpine Start</td>
-                  <td>Quality-conscious, convenience-seeking</td>
+                  <td><strong>Highlands Coffee expands Coconut Series</strong></td>
+                  <td>February 2025</td>
+                  <td>Vietnamese market leader validates coconut-coffee pairing</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: DEMAND SIGNALS -->
+      <section id="s2" class="cs-page">
+        <div class="cs-num">02.</div>
+        <div class="cs-content">
+          <h1>Demand Signals</h1>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Vietnamese Coffee Momentum</h3>
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="big green">+61%</div>
+                <div>Vietnamese Coffee Search YoY (Aug 2024)</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big green">+30%</div>
+                <div>Vietnamese Coffee Maker Search YoY</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big">1.5-2M+</div>
+                <div>Views on Viral TikTok Vietnamese Coffee Videos</div>
+              </div>
+            </div>
+            <p class="source-note">Source: Google Trends, Modern Retail August 2024</p>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Specialty Coffee at All-Time High</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>2024 Data</th>
+                  <th>Trend</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Daily Specialty Coffee Consumption</strong></td>
+                  <td class="green-text">45% of US Adults</td>
+                  <td>Surpassed traditional coffee (44%) for first time ever</td>
                 </tr>
                 <tr>
-                  <td><strong>Ultra-Premium</strong></td>
-                  <td>$1.67-3.00+</td>
-                  <td>Cometeer, Swift Cup</td>
-                  <td>Premium specialty coffee drinkers</td>
+                  <td><strong>Growth Since 2011</strong></td>
+                  <td>+80%</td>
+                  <td>Sustained momentum, not temporary spike</td>
+                </tr>
+                <tr>
+                  <td><strong>Daily Coffee Consumption Overall</strong></td>
+                  <td>67% of Americans</td>
+                  <td>20-year high</td>
+                </tr>
+                <tr>
+                  <td><strong>At-Home Coffee Consumption</strong></td>
+                  <td>81-83%</td>
+                  <td>Permanently elevated post-pandemic (was 73%)</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="source-note">Source: National Coffee Association, Specialty Coffee Association 2024</p>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Generational Tailwinds</h3>
+            <div class="two-col">
+              <div class="box">
+                <h4>Gen Z & Millennials</h4>
+                <p><strong>54%</strong> prefer flavored coffee</p>
+                <p><strong>40%</strong> prefer single-serve sachets</p>
+                <p><strong>32.4%</strong> of specialty coffee market revenue from 18-24 demo</p>
+              </div>
+              <div class="box">
+                <h4>Health-Conscious Buyers</h4>
+                <p><strong>68%</strong> prefer plant-based ingredients</p>
+                <p>Organic coffee growing at <strong>8.5% CAGR</strong></p>
+                <p>Ingredient quality ranks above taste for functional products</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section">
+            <h3>Coconut Coffee Demand Assessment</h3>
+            <div class="terminal-output">
+DEMAND STATUS: WARM (Activation Required)
+
+Vietnamese coffee category:     SURGING (+61% YoY)
+"Coconut coffee" specific:      LIMITED established search volume
+Coconut as ingredient trend:    STRONG (plant-based, health halo)
+TikTok "cloud coffee" trend:    EMERGING (coffee + coconut water)
+
+STRATEGIC IMPLICATION:
+→ Ride the Vietnamese coffee wave
+→ Position as premium Vietnamese specialty, not standalone "coconut coffee"
+→ The broader category momentum creates the rising tide
+→ Coconut is the differentiator within Vietnamese coffee, not the category
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: PRICING LANDSCAPE -->
+      <section id="s3" class="cs-page">
+        <div class="cs-num">03.</div>
+        <div class="cs-content">
+          <h1>Pricing Landscape</h1>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Vietnamese Coffee Brands (Amazon US — Current Pricing)</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Brand</th>
+                  <th>Product</th>
+                  <th>Price/Serving</th>
+                  <th>Position</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>TNI King Coffee</strong></td>
+                  <td>3-in-1 (100 packets)</td>
+                  <td>$0.15-0.18</td>
+                  <td>Mass market Vietnamese</td>
+                </tr>
+                <tr>
+                  <td><strong>G7/Trung Nguyen</strong></td>
+                  <td>3-in-1 (50 sachets)</td>
+                  <td>$0.24-0.30</td>
+                  <td>Mass market Vietnamese</td>
+                </tr>
+                <tr>
+                  <td><strong>Vinacafe</strong></td>
+                  <td>3-in-1 Gold (40 sachets)</td>
+                  <td>$0.30-0.35</td>
+                  <td>Mass market Vietnamese</td>
+                </tr>
+                <tr>
+                  <td><strong>G7 Cappuccino</strong></td>
+                  <td>Hazelnut/Mocha (12 sticks)</td>
+                  <td>$0.67-0.83</td>
+                  <td>Flavored premium tier</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Premium Instant Brands (Amazon US — Current Pricing)</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Brand</th>
+                  <th>Product</th>
+                  <th>Price/Serving</th>
+                  <th>Position</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Waka Coffee</strong></td>
+                  <td>Bulk bag (35 servings)</td>
+                  <td>$0.43-0.51</td>
+                  <td>Value premium</td>
+                </tr>
+                <tr>
+                  <td><strong>Waka Coffee</strong></td>
+                  <td>Single packets (8-ct)</td>
+                  <td>$1.12-1.25</td>
+                  <td>Convenience premium</td>
+                </tr>
+                <tr>
+                  <td><strong>Alpine Start</strong></td>
+                  <td>Original Blend (30 servings)</td>
+                  <td>$0.67</td>
+                  <td>Outdoor/adventure</td>
+                </tr>
+                <tr>
+                  <td><strong>Starbucks VIA</strong></td>
+                  <td>Various (50-ct)</td>
+                  <td>$1.00-1.04</td>
+                  <td>Brand premium</td>
+                </tr>
+                <tr>
+                  <td><strong>Cusa Coffee</strong></td>
+                  <td>Cold brew packets (7-ct)</td>
+                  <td>$1.43</td>
+                  <td>Ultra-premium</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Current Coconut Coffee Products (Amazon US)</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Brand</th>
+                  <th>Product</th>
+                  <th>Price/Serving</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>CONG Ca Phe</strong></td>
+                  <td>Instant Coconut (12 sticks)</td>
+                  <td>$1.25-1.50</td>
+                  <td>Vietnamese import, limited distribution</td>
+                </tr>
+                <tr>
+                  <td><strong>Da Vien Coffee</strong></td>
+                  <td>Coconut Latte (10 packets)</td>
+                  <td>$1.40-1.60</td>
+                  <td>California-based, small scale</td>
+                </tr>
+                <tr>
+                  <td><strong>Alpine Start</strong></td>
+                  <td>Coconut Creamer Latte</td>
+                  <td>$1.50-1.75</td>
+                  <td>Outdoor positioning, not Vietnamese</td>
+                </tr>
+                <tr>
+                  <td><strong>Amazin Choices</strong></td>
+                  <td>Coconut 4-in-1 (15 sachets)</td>
+                  <td>$0.80-0.93</td>
+                  <td>Vietnamese-style, basic branding</td>
+                </tr>
+                <tr>
+                  <td><strong>CAcafe</strong></td>
+                  <td>Coconut Coffee jar</td>
+                  <td>$0.55-0.70</td>
+                  <td>Health positioning, jar format</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div class="component-section">
-            <h3>W57 Recommended Pricing</h3>
-            <div class="two-col">
-              <div class="box">
-                <h4>Price Point</h4>
-                <div class="metric-value" style="color: #2e7d32; margin: 1rem 0;">$0.75-1.25</div>
-                <p class="metric-label">per serving</p>
-                <p style="margin-top: 1rem; font-size: 0.9rem;"><strong>Positioning:</strong> Sweet spot between mass market and ultra-premium, offering authentic Vietnamese heritage at an accessible price.</p>
-              </div>
-              <div class="box">
-                <h4>Package Format</h4>
-                <p style="margin: 1rem 0;">6-10 pack box</p>
-                <div class="metric-value" style="color: #2e7d32; margin: 1rem 0;">$15-18</div>
-                <p class="metric-label">retail price</p>
-                <p style="margin-top: 1rem; font-size: 0.9rem;"><strong>Strategy:</strong> Bundle pricing to increase average order value and encourage trial.</p>
+            <h3>W57 Pricing Strategy</h3>
+            <div class="highlight-box">
+              <div class="two-col">
+                <div>
+                  <h4 style="margin-top:0;">Target Price Point</h4>
+                  <div class="metric-value" style="color: #2e7d32; margin: 0.5rem 0;">$0.60-0.90</div>
+                  <p class="metric-label">per serving</p>
+                  <p style="margin-top: 0.75rem; font-size: 0.9rem;"><strong>Package:</strong> 10-pack box @ $15-17 retail</p>
+                </div>
+                <div>
+                  <h4 style="margin-top:0;">White Space Position</h4>
+                  <p style="font-size: 0.9rem; margin: 0.5rem 0;">
+                    <strong>Above:</strong> Vietnamese commodity 3-in-1s ($0.15-0.35)<br>
+                    <strong>Below:</strong> Ultra-premium coconut options ($1.25-1.75)<br>
+                    <strong>Gap:</strong> Premium Vietnamese heritage at accessible price
+                  </p>
+                </div>
               </div>
             </div>
+            <p style="margin-top: 0.75rem; font-size: 0.875rem;"><strong>Notable:</strong> Nguyen Coffee Supply—the leading premium Vietnamese coffee brand—has NOT entered instant coffee, leaving white space for premium Vietnamese instant positioning.</p>
           </div>
         </div>
       </section>
 
-      <section id="s3" class="cs-page">
-        <div class="cs-num">03.</div>
+      <!-- SECTION 4: COMPETITIVE POSITIONING -->
+      <section id="s4" class="cs-page">
+        <div class="cs-num">04.</div>
         <div class="cs-content">
           <h1>Competitive Positioning</h1>
 
           <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Competitive Advantages</h3>
+            <h3>Competitive Advantages by Segment</h3>
             <table class="data-table">
               <thead>
                 <tr>
@@ -224,420 +512,718 @@ Key Trend:           Premiumization + convenience demand
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Mass Market</strong></td>
-                  <td>Premium ingredients (Himalayan salt, organic sugar) + freeze-dried quality</td>
+                  <td><strong>Vietnamese 3-in-1s</strong><br>(Vinacafe, G7, TNI)</td>
+                  <td>Premium ingredients (Himalayan salt, organic sugar) + freeze-dried quality vs. spray-dried commodity</td>
                 </tr>
                 <tr>
-                  <td><strong>Vietnamese Brands</strong></td>
-                  <td>Premium authenticity + freeze-dried processing superiority</td>
+                  <td><strong>Premium Instant</strong><br>(Waka, Alpine Start)</td>
+                  <td>Authentic Vietnamese heritage + unique coconut flavor profile they don't offer</td>
                 </tr>
                 <tr>
-                  <td><strong>Ultra-Premium</strong></td>
-                  <td>Authentic Vietnamese heritage at accessible price point</td>
+                  <td><strong>Existing Coconut Coffee</strong><br>(CONG, Da Vien)</td>
+                  <td>Better price point ($0.60-0.90 vs $1.25-1.60) + stronger brand story + US-based operations</td>
                 </tr>
                 <tr>
-                  <td><strong>Unique Story</strong></td>
-                  <td>NYC-born, Vietnam-crafted: heritage meets innovation</td>
+                  <td><strong>Ultra-Premium</strong><br>(Cometeer, specialty)</td>
+                  <td>3-4x more accessible price point for everyday consumption</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Direct Coconut Coffee Competitors</h3>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Brand</th>
-                  <th>Position</th>
-                  <th>Price/Serving</th>
-                  <th>Market Gap</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Vinacafe 3-in-1</strong></td>
-                  <td>Mass market Vietnamese</td>
-                  <td>$0.15-0.35</td>
-                  <td>Lower quality, basic ingredients</td>
-                </tr>
-                <tr>
-                  <td><strong>TNI King Coffee</strong></td>
-                  <td>Authentic coconut focus</td>
-                  <td>$0.25-0.50</td>
-                  <td>Limited premium positioning</td>
-                </tr>
-                <tr>
-                  <td><strong>Alpine Start Coconut</strong></td>
-                  <td>Premium outdoor niche</td>
-                  <td>~$1.12</td>
-                  <td>Higher price, different positioning</td>
-                </tr>
-                <tr style="background: #f0f8ff;">
-                  <td><strong>W57</strong></td>
-                  <td>Premium Vietnamese heritage</td>
-                  <td>$0.75-1.25</td>
-                  <td class="green-text">Optimal price-quality position</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="component-section">
             <h3>Bootstrap Success Benchmarks</h3>
             <div class="timeline">
               <div class="timeline-item">
-                <h4>Waka Coffee</h4>
-                <p>$0 → $7.6M in 3 years to profitability. Viral TikTok success drove initial growth.</p>
+                <h4>Waka Coffee (2018 → Present)</h4>
+                <p><strong>Path:</strong> Amazon-first for 3 years → Viral TikTok (whipped coffee trend) → Raised $725K after proving model → Now in Walmart</p>
+                <p><strong>Result:</strong> "Amazon's Choice" for instant coffee, 2,000-4,000+ reviews, 4-5x growth during pandemic</p>
               </div>
               <div class="timeline-item">
-                <h4>Swift Cup</h4>
-                <p>$0 → $3-7M in 3-5 years. Co-manufacturing + DTC model enabled rapid scale.</p>
+                <h4>Alpine Start (2015 → Present)</h4>
+                <p><strong>Path:</strong> $25K start → REI distribution within 7 months → Raised $1.01M seed from Slow Ventures</p>
+                <p><strong>Result:</strong> 1,500+ stores (Whole Foods, HEB, REI), outdoor/adventure niche ownership</p>
               </div>
               <div class="timeline-item">
-                <h4>Alpine Start</h4>
-                <p>$25K → $2-5M. Amazon launch strategy + REI partnership accelerated growth.</p>
+                <h4>Warning: Failed Premium Brands</h4>
+                <p><strong>Swift Cup, Voila, Sudden Coffee</strong> — VC-backed specialty instant brands that failed</p>
+                <p><strong>Lesson:</strong> Premium positioning alone doesn't guarantee success. Survivors share: lean ops, strong Amazon presence, clear positioning, patience</p>
               </div>
-              <div class="timeline-item">
-                <h4>Key Success Factor</h4>
-                <p><strong>All three launched on Amazon first, achieved profitability within 3-5 years.</strong></p>
-              </div>
+            </div>
+          </div>
+
+          <div class="component-section">
+            <h3>W57 Positioning Statement</h3>
+            <div class="terminal-output">
+FOR:        Vietnamese diaspora & specialty coffee drinkers seeking convenience
+WHO:        Want authentic Vietnamese coffee without brewing complexity
+W57 IS:     Premium instant coconut coffee
+THAT:       Delivers authentic ca phe cot dua with Himalayan salt & organic sugar
+UNLIKE:     Mass-market 3-in-1s (artificial) or ultra-premium options ($1.50+/serving)
+W57:        Offers heritage + quality at an accessible $0.60-0.90/serving price point
+
+BRAND STORY: NYC-born, Vietnam-crafted — heritage meets innovation
             </div>
           </div>
         </div>
       </section>
 
-      <section id="s4" class="cs-page">
-        <div class="cs-num">04.</div>
+      <!-- SECTION 5: TARGET MARKET -->
+      <section id="s5" class="cs-page">
+        <div class="cs-num">05.</div>
         <div class="cs-content">
           <h1>Target Market</h1>
 
           <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Primary Target</h3>
-            <div class="box">
-              <p style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">Vietnamese diaspora & Asian Americans</p>
-              <p><strong>Demographics:</strong> Ages 25-45, urban/suburban</p>
-              <p style="margin-top: 0.75rem;"><strong>Psychographics:</strong> Values authenticity, cultural connection, premium quality without extravagance</p>
-              <p style="margin-top: 0.75rem;"><strong>Behaviors:</strong> Active on social media, seeks convenience, willing to pay for heritage products</p>
+            <h3>Vietnamese-American Market (Primary)</h3>
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="big">2.3-2.4M</div>
+                <div>Vietnamese Americans</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big">$81-88K</div>
+                <div>Median Household Income</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big">78%</div>
+                <div>Naturalization Rate (Highest of Any Immigrant Group)</div>
+              </div>
             </div>
+            <p class="source-note">Source: US Census Bureau, Pew Research 2024</p>
           </div>
 
           <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Secondary Target</h3>
-            <div class="box">
-              <p style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">Specialty coffee drinkers seeking convenience</p>
-              <p><strong>Profile:</strong> Quality-conscious consumers who want premium instant coffee for on-the-go</p>
-              <p style="margin-top: 0.75rem;"><strong>Pain Points:</strong> Limited time, wants quality without brewing complexity</p>
-              <p style="margin-top: 0.75rem;"><strong>Opportunity:</strong> Growing segment (+18% specialty coffee adoption since 2020)</p>
-            </div>
-          </div>
-
-          <div class="component-section">
-            <h3>Key Insight</h3>
-            <div class="terminal-output">
-Authentic heritage + cultural connection = powerful differentiation
-
-The Vietnamese diaspora market is underserved in the premium instant coffee space.
-W57 combines:
-  • Cultural authenticity (Vietnamese recipe, heritage story)
-  • Premium quality (freeze-dried, Himalayan salt, organic sugar)
-  • Accessible pricing ($0.75-1.25 vs. $1.67-3.00+ ultra-premium)
-  • Convenience (instant, portable, no brewing needed)
-
-This positioning creates a unique market opportunity.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="s5" class="cs-page">
-        <div class="cs-num">05.</div>
-        <div class="cs-content">
-          <h1>Go-to-Market Roadmap</h1>
-
-          <div class="component-section">
-            <h3>5-Phase Launch Strategy</h3>
-            <div class="timeline">
-              <div class="timeline-item">
-                <h4>Phase 1: Amazon Launch (0-6 months)</h4>
-                <p><strong>Objective:</strong> Establish product-market fit, generate initial reviews</p>
-                <p><strong>Activities:</strong> Amazon FBA setup, product listing optimization, initial PPC campaigns, review generation strategy</p>
-                <p><strong>Success Metrics:</strong> 100-250 reviews, 35-40% gross margin, $10K-30K monthly revenue</p>
-              </div>
-              <div class="timeline-item">
-                <h4>Phase 2: DTC Website (6-12 months)</h4>
-                <p><strong>Objective:</strong> Capture higher margins, build brand, develop direct customer relationships</p>
-                <p><strong>Activities:</strong> Shopify store setup, SEO optimization, email marketing, social media presence</p>
-                <p><strong>Success Metrics:</strong> 55-65% gross margin, 20-30% repeat purchase rate, $30K-80K monthly revenue</p>
-              </div>
-              <div class="timeline-item">
-                <h4>Phase 3: Retail Expansion (12-24 months)</h4>
-                <p><strong>Objective:</strong> Increase distribution, brand awareness, volume</p>
-                <p><strong>Activities:</strong> Asian grocery stores, specialty food retailers, local cafes, farmer's markets</p>
-                <p><strong>Success Metrics:</strong> 10-20 retail accounts, 40-50% gross margin (wholesale), $100K-300K monthly revenue</p>
-              </div>
-              <div class="timeline-item">
-                <h4>Phase 4: Subscription Model (24+ months)</h4>
-                <p><strong>Objective:</strong> Predictable revenue, customer retention, lifetime value</p>
-                <p><strong>Activities:</strong> Monthly/quarterly subscription offering, loyalty programs, personalized bundles</p>
-                <p><strong>Success Metrics:</strong> 15-25% subscription rate, 70%+ retention, $200K-500K monthly revenue</p>
-              </div>
-              <div class="timeline-item">
-                <h4>Phase 5: Wholesale Partnerships (36+ months)</h4>
-                <p><strong>Objective:</strong> Scale through partnerships, maximize reach</p>
-                <p><strong>Activities:</strong> National retail chains, hospitality partnerships, corporate accounts</p>
-                <p><strong>Success Metrics:</strong> National distribution, $500K-1M+ monthly revenue</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="s6" class="cs-page">
-        <div class="cs-num">06.</div>
-        <div class="cs-content">
-          <h1>Revenue Projections</h1>
-
-          <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Realistic Revenue Targets (Based on Bootstrap Benchmarks)</h3>
-            <div class="metrics-grid">
-              <div class="metric-card">
-                <p class="metric-label">Year 1</p>
-                <div class="metric-value">$50K-150K</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">Amazon + early DTC</p>
-              </div>
-              <div class="metric-card">
-                <p class="metric-label">Year 2</p>
-                <div class="metric-value">$150K-600K</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">DTC scaling + retail</p>
-              </div>
-              <div class="metric-card">
-                <p class="metric-label">Year 3</p>
-                <div class="metric-value">$500K-1.5M</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">Retail + subscription</p>
-              </div>
-            </div>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: #666; font-style: italic;">Based on bootstrapped instant coffee brand trajectories (Waka, Swift Cup, Alpine Start)</p>
-          </div>
-
-          <div class="component-section">
-            <h3>Revenue Breakdown by Channel (Year 2 Example)</h3>
+            <h3>Geographic Concentration (Top Markets)</h3>
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>Channel</th>
-                  <th>Monthly Revenue</th>
-                  <th>Gross Margin</th>
-                  <th>% of Total</th>
+                  <th>Location</th>
+                  <th>Vietnamese Population</th>
+                  <th>% of Total US</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Amazon</strong></td>
-                  <td>$8K-15K</td>
-                  <td>35-40%</td>
-                  <td>30-40%</td>
+                  <td><strong>California</strong></td>
+                  <td>770,000-850,000</td>
+                  <td class="green-text">34-38%</td>
                 </tr>
                 <tr>
-                  <td><strong>DTC Website</strong></td>
-                  <td>$10K-25K</td>
-                  <td>55-65%</td>
-                  <td>40-50%</td>
+                  <td><strong>Texas</strong></td>
+                  <td>310,000</td>
+                  <td>13-14%</td>
                 </tr>
                 <tr>
-                  <td><strong>Retail</strong></td>
-                  <td>$3K-10K</td>
-                  <td>40-50%</td>
-                  <td>15-25%</td>
+                  <td><strong>Orange County, CA</strong> (Little Saigon)</td>
+                  <td>135,000-184,000</td>
+                  <td>Largest concentration outside Vietnam</td>
                 </tr>
                 <tr>
-                  <td><strong>Total</strong></td>
-                  <td>$21K-50K</td>
-                  <td>45-55%</td>
-                  <td>100%</td>
+                  <td><strong>Santa Clara County, CA</strong></td>
+                  <td>100,000</td>
+                  <td>Tech corridor</td>
+                </tr>
+                <tr>
+                  <td><strong>Harris County, TX</strong> (Houston)</td>
+                  <td>55,000</td>
+                  <td>Major hub</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="highlight-box">
+              <strong>Marketing Efficiency:</strong> 50%+ of target market concentrated in 5 metros (LA, San Jose, Houston, Dallas-Fort Worth, DC). Initial marketing spend can achieve disproportionate reach.
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Cultural Marketing Advantages</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Insight</th>
+                  <th>Data Point</th>
+                  <th>Implication</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>In-Language Preference</strong></td>
+                  <td class="green-text">50%+ prefer brands advertising in Vietnamese</td>
+                  <td>Vietnamese-language creative = competitive advantage</td>
+                </tr>
+                <tr>
+                  <td><strong>Digital Engagement</strong></td>
+                  <td>9+ hours/week online (1hr above US avg)</td>
+                  <td>Digital-first marketing highly effective</td>
+                </tr>
+                <tr>
+                  <td><strong>Social Ad Responsiveness</strong></td>
+                  <td class="green-text">43% click rate vs 36% general pop</td>
+                  <td>Lower CAC achievable via social</td>
+                </tr>
+                <tr>
+                  <td><strong>Brand Loyalty</strong></td>
+                  <td>25% more years of buying power (51.3 vs 40.2)</td>
+                  <td>Higher LTV for loyal customers</td>
+                </tr>
+                <tr>
+                  <td><strong>Authenticity Requirement</strong></td>
+                  <td class="red-text">64% stop buying from brands that devalue identity</td>
+                  <td>Cultural authenticity is non-negotiable</td>
                 </tr>
               </tbody>
             </table>
           </div>
+
+          <div class="component-section">
+            <h3>Secondary Market: Specialty Coffee Drinkers</h3>
+            <div class="box">
+              <p style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">45% of American adults drink specialty coffee daily</p>
+              <p><strong>Profile:</strong> Quality-conscious, convenience-seeking, open to premium instant</p>
+              <p style="margin-top: 0.75rem;"><strong>Growth:</strong> +80% since 2011, surpassed traditional coffee in 2024</p>
+              <p style="margin-top: 0.75rem;"><strong>Entry Point:</strong> Vietnamese coffee trend (+61% YoY) creates cultural curiosity bridge</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="s7" class="cs-page">
-        <div class="cs-num">07.</div>
+      <!-- SECTION 6: AMAZON UNIT ECONOMICS -->
+      <section id="s6" class="cs-page">
+        <div class="cs-num">06.</div>
         <div class="cs-content">
-          <h1>Launch Capital Requirements</h1>
+          <h1>Amazon Unit Economics</h1>
 
           <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Capital Investment Options</h3>
-            <div class="metrics-grid">
-              <div class="metric-card">
-                <p class="metric-label">Minimum</p>
-                <div class="metric-value">$7,500</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #d32f2f;">High risk, limited runway</p>
-                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #666;">• Initial inventory only<br>• Minimal marketing<br>• No buffer for issues</p>
-              </div>
-              <div class="metric-card" style="border: 2px solid #2e7d32;">
-                <p class="metric-label">Recommended</p>
-                <div class="metric-value" style="color: #2e7d32;">$17,000</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #2e7d32;">Balanced approach</p>
-                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #666;">• Initial inventory<br>• Basic Amazon setup<br>• Initial marketing budget<br>• 3-month buffer</p>
-              </div>
-              <div class="metric-card">
-                <p class="metric-label">Optimal</p>
-                <div class="metric-value">$25-30K</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">Growth buffer</p>
-                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #666;">• Full inventory stack<br>• Professional setup<br>• Aggressive marketing<br>• 6-month runway</p>
-              </div>
+            <h3>Unit Economics at $17 Retail (10-pack)</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Amount</th>
+                  <th>% of Sale</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Retail Price</strong></td>
+                  <td>$17.00</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>Amazon Referral Fee (15%)</td>
+                  <td>($2.55)</td>
+                  <td>15%</td>
+                </tr>
+                <tr>
+                  <td>FBA Fulfillment</td>
+                  <td>($3.50-4.00)</td>
+                  <td>21-24%</td>
+                </tr>
+                <tr>
+                  <td>Monthly Storage</td>
+                  <td>($0.05-0.15)</td>
+                  <td>&lt;1%</td>
+                </tr>
+                <tr style="background: #f5f5f5;">
+                  <td><strong>Total Amazon Fees</strong></td>
+                  <td><strong>($6.10-6.70)</strong></td>
+                  <td><strong>36-39%</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Net After Fees</strong></td>
+                  <td>$10.30-10.90</td>
+                  <td>61-64%</td>
+                </tr>
+                <tr>
+                  <td>COGS (estimated)</td>
+                  <td>($6.00-6.50)</td>
+                  <td>35-38%</td>
+                </tr>
+                <tr style="background: #e8f5e9;">
+                  <td><strong>Gross Profit</strong></td>
+                  <td class="green-text"><strong>$3.80-4.90</strong></td>
+                  <td class="green-text"><strong>22-29%</strong></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="source-note">Note: Products at $14.99 or below incur only 8% referral fee vs 15%. Budget 40% of retail for Amazon fees + fulfillment.</p>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Amazon PPC Economics</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Generic Coffee Terms</th>
+                  <th>Vietnamese/Coconut Terms</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Cost Per Click</strong></td>
+                  <td>$0.80-1.20</td>
+                  <td class="green-text">$0.30-0.60</td>
+                </tr>
+                <tr>
+                  <td><strong>Competition Level</strong></td>
+                  <td>Very High</td>
+                  <td>Moderate</td>
+                </tr>
+                <tr>
+                  <td><strong>Target CPC</strong></td>
+                  <td colspan="2">$0.38-0.50 max (2.5% of sale price at 10% CVR, 25% ACoS)</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="highlight-box">
+              <strong>Grocery Conversion Advantage:</strong> Amazon platform average is 9-10% conversion. Grocery/consumables achieve <strong>30-50% conversion</strong> (3-5x higher) due to low price points, repeat purchase behavior, and habitual consumption.
             </div>
           </div>
 
           <div class="component-section">
-            <h3>Capital Allocation Breakdown ($17,000 Recommended)</h3>
+            <h3>Launch Phase Economics</h3>
+            <div class="terminal-output">
+MONTH 1-3 REALITY (Launch Phase):
+─────────────────────────────────
+ACoS:              100-200% (expected, building ranking)
+Conversion Rate:   8-12% (pre-reviews)
+Profit/Unit:       NEGATIVE (investing in rank)
+
+MONTH 4-6 REALITY (Optimization Phase):
+─────────────────────────────────
+ACoS:              50-75% (improving)
+Conversion Rate:   15-25% (post-Vine reviews)
+Profit/Unit:       BREAKEVEN to slight positive
+
+MONTH 7+ REALITY (Profitability Phase):
+─────────────────────────────────
+ACoS:              25-35% (target)
+Conversion Rate:   25-40% (established)
+Profit/Unit:       $2.50-4.00 after ad spend
+
+KEY INSIGHT: Amazon launch is an INVESTMENT phase, not profit phase.
+Budget 3-6 months to profitability.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: GO-TO-MARKET ROADMAP -->
+      <section id="s7" class="cs-page">
+        <div class="cs-num">07.</div>
+        <div class="cs-content">
+          <h1>Go-to-Market Roadmap</h1>
+
+          <div class="component-section">
+            <h3>Phased Launch Strategy</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <h4>Phase 1: Amazon Foundation (Months 0-6)</h4>
+                <p><strong>Objective:</strong> Establish ranking, generate reviews, validate product-market fit</p>
+                <p><strong>Activities:</strong></p>
+                <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                  <li>Amazon FBA setup + optimized listing</li>
+                  <li>Vine program enrollment ($200 → 15-30 reviews in 3-4 weeks)</li>
+                  <li>PPC campaigns on long-tail Vietnamese/coconut terms</li>
+                  <li>Target page 1 ranking for 3-5 niche keywords</li>
+                </ul>
+                <p><strong>Success Metrics:</strong> 100+ reviews, page 1 for long-tail terms, $5K-15K monthly revenue</p>
+              </div>
+              <div class="timeline-item">
+                <h4>Phase 2: DTC + Community (Months 6-12)</h4>
+                <p><strong>Objective:</strong> Capture higher margins, build direct relationships, develop brand</p>
+                <p><strong>Activities:</strong></p>
+                <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                  <li>Shopify store launch (55-65% gross margin vs 24% Amazon)</li>
+                  <li>Vietnamese-language social media content</li>
+                  <li>Influencer partnerships in Vietnamese-American community</li>
+                  <li>Email list building + subscription soft launch</li>
+                </ul>
+                <p><strong>Success Metrics:</strong> 20-30% repeat purchase rate, $10K-30K monthly revenue</p>
+              </div>
+              <div class="timeline-item">
+                <h4>Phase 3: Local Retail (Months 12-24)</h4>
+                <p><strong>Objective:</strong> Physical presence in target markets, brand credibility</p>
+                <p><strong>Activities:</strong></p>
+                <ul style="margin: 0.5rem 0; padding-left: 1.25rem;">
+                  <li>Asian grocery stores in Little Saigon, San Jose, Houston</li>
+                  <li>Vietnamese cafes and restaurants</li>
+                  <li>Specialty food retailers (local Whole Foods, natural grocers)</li>
+                </ul>
+                <p><strong>Success Metrics:</strong> 10-25 retail accounts, $30K-80K monthly revenue</p>
+              </div>
+              <div class="timeline-item">
+                <h4>Phase 4: Scale (Months 24+)</h4>
+                <p><strong>Objective:</strong> Predictable revenue, national expansion</p>
+                <p><strong>Activities:</strong> Subscription model, regional retail chains, product line expansion (Brown Sugar Oat Latte, Black Sesame, Bac Xiu)</p>
+                <p><strong>Success Metrics:</strong> 15-25% subscription rate, $100K+ monthly revenue</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: LAUNCH INVESTMENT -->
+      <section id="s8" class="cs-page">
+        <div class="cs-num">08.</div>
+        <div class="cs-content">
+          <h1>Launch Investment</h1>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Investment Tiers</h3>
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="metric-label">Minimum Viable</div>
+                <div class="big">$5,200</div>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #d32f2f;">Proof of concept only</p>
+              </div>
+              <div class="kpi-card" style="border: 2px solid #2e7d32;">
+                <div class="metric-label">Recommended</div>
+                <div class="big green">$8,500-11,200</div>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #2e7d32;">Runway to 100+ reviews</p>
+              </div>
+              <div class="kpi-card">
+                <div class="metric-label">Growth Buffer</div>
+                <div class="big">$15,000-17,000</div>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #666;">6-month runway + contingency</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Recommended Investment Breakdown ($11,200)</h3>
             <table class="data-table">
               <thead>
                 <tr>
                   <th>Category</th>
                   <th>Amount</th>
-                  <th>% of Total</th>
-                  <th>Use Case</th>
+                  <th>Purpose</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><strong>Initial Inventory</strong></td>
-                  <td>$8,000-10,000</td>
-                  <td>47-59%</td>
-                  <td>First 500-1000 units (6-10 pack boxes)</td>
+                  <td>$4,000-5,000</td>
+                  <td>First 300-500 units for FBA + testing</td>
                 </tr>
                 <tr>
-                  <td><strong>Amazon Setup & Fees</strong></td>
-                  <td>$1,500-2,000</td>
-                  <td>9-12%</td>
-                  <td>Seller account, fulfillment, PPC initial budget</td>
+                  <td><strong>Amazon PPC (Months 1-3)</strong></td>
+                  <td>$3,000-4,500</td>
+                  <td>$1,000-1,500/month for ranking + data</td>
                 </tr>
                 <tr>
-                  <td><strong>Marketing & Branding</strong></td>
-                  <td>$2,000-3,000</td>
-                  <td>12-18%</td>
-                  <td>Photography, packaging design, initial ads</td>
+                  <td><strong>Amazon Vine Program</strong></td>
+                  <td>$200 + product</td>
+                  <td>15-30 reviews in 3-4 weeks</td>
                 </tr>
                 <tr>
-                  <td><strong>Operations</strong></td>
+                  <td><strong>Listing Optimization</strong></td>
+                  <td>$500-1,000</td>
+                  <td>Photography, A+ content, copywriting</td>
+                </tr>
+                <tr>
+                  <td><strong>Operations & Tools</strong></td>
+                  <td>$500-1,000</td>
+                  <td>Seller tools, business setup, software</td>
+                </tr>
+                <tr>
+                  <td><strong>Contingency Buffer</strong></td>
                   <td>$1,000-1,500</td>
-                  <td>6-9%</td>
-                  <td>Business setup, tools, software subscriptions</td>
+                  <td>Unexpected costs, restock buffer</td>
                 </tr>
-                <tr>
-                  <td><strong>Buffer</strong></td>
-                  <td>$2,500-3,000</td>
-                  <td>15-18%</td>
-                  <td>Unexpected costs, cash flow management</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section id="s8" class="cs-page">
-        <div class="cs-num">08.</div>
-        <div class="cs-content">
-          <h1>Success Metrics</h1>
-
-          <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Year 1 Critical Success Metrics</h3>
-            <div class="metrics-grid">
-              <div class="metric-card">
-                <p class="metric-label">Amazon Reviews</p>
-                <div class="metric-value">100-250</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">Social proof critical</p>
-              </div>
-              <div class="metric-card">
-                <p class="metric-label">Gross Margin DTC</p>
-                <div class="metric-value">55-65%</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">Website direct sales</p>
-              </div>
-              <div class="metric-card">
-                <p class="metric-label">Gross Margin Amazon</p>
-                <div class="metric-value">35-40%</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">After platform fees</p>
-              </div>
-              <div class="metric-card">
-                <p class="metric-label">Average Order Value</p>
-                <div class="metric-value">$45-60</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">Bundle pricing strategy</p>
-              </div>
-              <div class="metric-card">
-                <p class="metric-label">Repeat Purchase Rate</p>
-                <div class="metric-value">20-30%</div>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">Quality retention</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="component-section" style="margin-bottom: 1.5rem;">
-            <h3>Key Performance Indicators</h3>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Metric</th>
-                  <th>Year 1 Target</th>
-                  <th>Year 2 Target</th>
-                  <th>Year 3 Target</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Monthly Revenue</strong></td>
-                  <td>$4K-12K</td>
-                  <td>$12K-50K</td>
-                  <td>$40K-125K</td>
-                </tr>
-                <tr>
-                  <td><strong>Customer Acquisition Cost</strong></td>
-                  <td>$15-25</td>
-                  <td>$10-20</td>
-                  <td>$8-15</td>
-                </tr>
-                <tr>
-                  <td><strong>Customer Lifetime Value</strong></td>
-                  <td>$80-120</td>
-                  <td>$100-150</td>
-                  <td>$120-180</td>
-                </tr>
-                <tr>
-                  <td><strong>Retail Accounts</strong></td>
-                  <td>0-2</td>
-                  <td>10-20</td>
-                  <td>25-50</td>
-                </tr>
-                <tr>
-                  <td><strong>Monthly Active Customers</strong></td>
-                  <td>50-150</td>
-                  <td>200-500</td>
-                  <td>500-1,200</td>
+                <tr style="background: #e8f5e9;">
+                  <td><strong>Total</strong></td>
+                  <td class="green-text"><strong>$9,200-13,200</strong></td>
+                  <td>3-4 month runway to 100+ reviews</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div class="component-section">
-            <h3>Key Opportunities Summary</h3>
+            <h3>Milestone-Based Funding Approach</h3>
             <div class="terminal-output">
-✓ $84.66B global market, premium segment growing 6.2% CAGR
-✓ Coconut coffee niche underserved in premium segment
-✓ Proven bootstrap path: $0 → $1-7M in 3-5 years (Waka, Swift Cup, Alpine Start)
-✓ $0.75-1.25/serving = sweet spot between mass market & ultra-premium
-✓ Vietnamese diaspora market = strong cultural connection & loyalty
-✓ Amazon-first launch strategy = proven route to profitability
-✓ All benchmark brands launched on Amazon, profited within 3-5 years
+TRANCHE 1: $5,200 (Proof of Concept)
+─────────────────────────────────
+→ Initial inventory (200 units)
+→ Amazon listing + Vine enrollment
+→ 30 days PPC testing
+→ MILESTONE: First 30 reviews, initial sales data
 
-Ready to Scale: W57 Coconut Coffee has clear market positioning and 
-proven pathways to growth.
+TRANCHE 2: $6,000 (Scale to Viability)
+─────────────────────────────────
+→ Restock inventory (300 units)
+→ 60 days aggressive PPC
+→ Listing optimization based on data
+→ MILESTONE: 100+ reviews, page 1 ranking, positive unit economics
+
+TRANCHE 3: $5,000+ (Growth Phase)
+─────────────────────────────────
+→ DTC website development
+→ Expanded inventory
+→ Content marketing
+→ MILESTONE: Multi-channel revenue, 20%+ repeat rate
+
+This approach de-risks investment by validating each phase.
             </div>
           </div>
         </div>
       </section>
+
+      <!-- SECTION 9: SUCCESS METRICS -->
+      <section id="s9" class="cs-page">
+        <div class="cs-num">09.</div>
+        <div class="cs-content">
+          <h1>Success Metrics</h1>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Critical Milestones (First 12 Months)</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Milestone</th>
+                  <th>Target</th>
+                  <th>Timeline</th>
+                  <th>Why It Matters</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Vine Reviews</strong></td>
+                  <td>15-30 reviews</td>
+                  <td>Weeks 1-4</td>
+                  <td>Initial social proof for conversion</td>
+                </tr>
+                <tr>
+                  <td><strong>100+ Total Reviews</strong></td>
+                  <td>100 reviews, 4.0+ stars</td>
+                  <td>Month 3-4</td>
+                  <td>Credibility threshold for organic ranking</td>
+                </tr>
+                <tr>
+                  <td><strong>Page 1 Ranking</strong></td>
+                  <td>3-5 long-tail keywords</td>
+                  <td>Month 2-4</td>
+                  <td>Sustainable organic traffic</td>
+                </tr>
+                <tr>
+                  <td><strong>Profitable Unit Economics</strong></td>
+                  <td>ACoS &lt;35%</td>
+                  <td>Month 6-8</td>
+                  <td>Sustainable Amazon operations</td>
+                </tr>
+                <tr>
+                  <td><strong>Monthly Revenue</strong></td>
+                  <td>$10K-30K</td>
+                  <td>Month 12</td>
+                  <td>Validates market demand</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Key Performance Indicators</h3>
+            <div class="metrics-grid">
+              <div class="metric-card">
+                <p class="metric-label">Amazon Conversion Rate</p>
+                <div class="metric-value">15-30%</div>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #666;">Target (grocery avg: 30-50%)</p>
+              </div>
+              <div class="metric-card">
+                <p class="metric-label">Target ACoS</p>
+                <div class="metric-value">25-35%</div>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #666;">At maturity (100-200% at launch OK)</p>
+              </div>
+              <div class="metric-card">
+                <p class="metric-label">Review Velocity</p>
+                <div class="metric-value">1-5%</div>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #666;">Of purchases (post-Vine)</p>
+              </div>
+              <div class="metric-card">
+                <p class="metric-label">DTC Gross Margin</p>
+                <div class="metric-value">55-65%</div>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #666;">vs 22-29% Amazon</p>
+              </div>
+              <div class="metric-card">
+                <p class="metric-label">Repeat Purchase Rate</p>
+                <div class="metric-value">20-30%</div>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #666;">Validates product quality</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section">
+            <h3>Year 1-3 Revenue Trajectory (Conservative)</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Monthly Revenue</th>
+                  <th>Annual Revenue</th>
+                  <th>Primary Channel</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Year 1</strong></td>
+                  <td>$5K-15K (avg)</td>
+                  <td>$50K-150K</td>
+                  <td>Amazon (80%+)</td>
+                </tr>
+                <tr>
+                  <td><strong>Year 2</strong></td>
+                  <td>$15K-50K</td>
+                  <td>$150K-500K</td>
+                  <td>Amazon (50%) + DTC (35%) + Retail (15%)</td>
+                </tr>
+                <tr>
+                  <td><strong>Year 3</strong></td>
+                  <td>$40K-100K</td>
+                  <td>$400K-1M</td>
+                  <td>Diversified channels</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="source-note">Based on bootstrapped instant coffee brand trajectories (Waka, Alpine Start). Conservative estimates assume no viral moments.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: RISK ANALYSIS -->
+      <section id="s10" class="cs-page">
+        <div class="cs-num">10.</div>
+        <div class="cs-content">
+          <h1>Risk Analysis</h1>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>Key Risks & Mitigations</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Risk</th>
+                  <th>Likelihood</th>
+                  <th>Impact</th>
+                  <th>Mitigation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Amazon PPC costs exceed projections</strong></td>
+                  <td>Medium</td>
+                  <td>High</td>
+                  <td>Focus on long-tail Vietnamese/coconut terms ($0.30-0.60 CPC vs $0.80-1.20 generic). Start with $30-50/day budget cap.</td>
+                </tr>
+                <tr>
+                  <td><strong>Slow review velocity</strong></td>
+                  <td>Medium</td>
+                  <td>High</td>
+                  <td>Vine program guarantees 15-30 reviews in first month. Product inserts (compliant) encourage organic reviews.</td>
+                </tr>
+                <tr>
+                  <td><strong>Larger player enters coconut coffee</strong></td>
+                  <td>Low-Medium</td>
+                  <td>Medium</td>
+                  <td>Vietnamese heritage authenticity is defensible. Nguyen Coffee Supply hasn't entered instant—first-mover window exists.</td>
+                </tr>
+                <tr>
+                  <td><strong>Vietnamese 3-in-1 brands launch premium line</strong></td>
+                  <td>Low</td>
+                  <td>High</td>
+                  <td>TNI/G7/Vinacafe business model is volume-based commodity. Pivot to premium would cannibalize their core. W57's US-based operations and brand story differentiate.</td>
+                </tr>
+                <tr>
+                  <td><strong>Product quality issues</strong></td>
+                  <td>Low</td>
+                  <td>Very High</td>
+                  <td>Manufacturing already established. Initial small batch orders to validate before scaling.</td>
+                </tr>
+                <tr>
+                  <td><strong>Amazon account/listing issues</strong></td>
+                  <td>Low</td>
+                  <td>High</td>
+                  <td>Compliance-first approach. No black-hat tactics. DTC as parallel channel reduces platform dependency.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="component-section" style="margin-bottom: 1.5rem;">
+            <h3>What Could Go Wrong vs. What Could Go Right</h3>
+            <div class="two-col">
+              <div class="box" style="border-color: #d32f2f;">
+                <h4 style="color: #d32f2f; margin-top: 0;">Bear Case</h4>
+                <ul style="margin: 0.5rem 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                  <li>High CPCs eat into margins</li>
+                  <li>Slow to reach 100 reviews</li>
+                  <li>Product doesn't resonate</li>
+                  <li>~$5-10K loss, valuable learnings</li>
+                </ul>
+                <p style="font-size: 0.85rem; margin-top: 0.75rem;"><strong>Outcome:</strong> Controlled failure, exit after 6 months with data on why</p>
+              </div>
+              <div class="box" style="border-color: #2e7d32;">
+                <h4 style="color: #2e7d32; margin-top: 0;">Bull Case</h4>
+                <ul style="margin: 0.5rem 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                  <li>Vietnamese coffee trend continues (+61% YoY)</li>
+                  <li>TikTok/social virality (like Waka)</li>
+                  <li>Strong repeat purchase signals</li>
+                  <li>Nguyen Coffee Supply partnership interest</li>
+                </ul>
+                <p style="font-size: 0.85rem; margin-top: 0.75rem;"><strong>Outcome:</strong> $500K-1M+ Year 3, retail expansion, product line growth</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-section">
+            <h3>Investment Decision Framework</h3>
+            <div class="terminal-output">
+THE FIRST PRINCIPLES CASE FOR W57:
+══════════════════════════════════════════════════════════════
+
+DEMAND EXISTS:
+  ✓ Vietnamese coffee search +61% YoY
+  ✓ Specialty coffee at all-time high (45% of adults daily)
+  ✓ Premium instant growing 9.19% CAGR (2x+ overall market)
+
+WHITE SPACE IS REAL:
+  ✓ $0.60-0.90/serving gap confirmed via Amazon pricing analysis
+  ✓ No dominant premium Vietnamese instant player
+  ✓ Nguyen Coffee Supply notably absent from instant
+
+TARGET MARKET IS CONCENTRATED:
+  ✓ 2.3M Vietnamese Americans
+  ✓ $81-88K median household income
+  ✓ 50%+ in 5 metros enables efficient marketing
+  ✓ 50%+ prefer in-language advertising (competitive moat)
+
+UNIT ECONOMICS WORK:
+  ✓ 22-29% gross margin on Amazon at $17 retail
+  ✓ 55-65% gross margin on DTC
+  ✓ Grocery conversion rates (30-50%) offset higher CPCs
+
+LAUNCH PATH IS PROVEN:
+  ✓ Waka: Amazon-first → viral → Walmart
+  ✓ Alpine Start: Amazon → REI in 7 months
+  ✓ $5.2-11K gets to 100 reviews and validation
+
+MANUFACTURING IS SOLVED:
+  ✓ Production already established
+  ✓ No R&D or facility buildout required
+
+══════════════════════════════════════════════════════════════
+CONCLUSION: The data supports a calculated entry. This is not a 
+guaranteed win, but it's a validated opportunity with quantifiable 
+economics and a time-sensitive window for first-mover positioning.
+
+The battle can be won before it's fought.
+══════════════════════════════════════════════════════════════
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -650,7 +1236,6 @@ proven pathways to growth.
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
           targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // Update active state
           document.querySelectorAll('.cs-index a').forEach(a => a.classList.remove('active'));
           this.classList.add('active');
         }
