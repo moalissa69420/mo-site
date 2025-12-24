@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Plan Examiner — AI-Powered Plan Review for Florida Building Departments</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    :root { --index-width: 270px; --content-max: 56rem; --border:#000; }
+    body.cs-template { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; margin:0; padding:0 !important; color:#000; background:#fff; font-size:15.5px; line-height:1.65; }
+    .cs-wrapper { display:grid; grid-template-columns: var(--index-width) 1fr; min-height:100vh; }
+    .cs-index { position:sticky; top:0; align-self:start; height:100vh; padding:0.5rem 0.75rem; border-right:1px solid var(--border); background:#fff; overflow-y:auto; }
+    .cs-index-title { font-size:0.8125rem; margin-bottom:0.25rem; }
+    .cs-index ol { list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.4; }
+    .cs-index li { margin-bottom: 0.15rem; }
+    .cs-index a { color:#000; text-decoration:none; display:inline-flex; gap:0.5rem; align-items:baseline; }
+    .cs-index a .num { color:#000; width:2.8rem; display:inline-block; text-align:right; }
+    .cs-index a.active { color: #000; font-weight: bold; }
+    .cs-sections { padding:0 1.25rem; display:flex; flex-direction:column; align-items:flex-end; }
+    section.cs-page { width:min(100%, var(--content-max)); display:grid; grid-template-columns:4rem 1fr; gap:0.5rem; padding:0.45rem 0; scroll-margin-top: 12px; }
+    .cs-num { display:block; text-align:right; color:#000; font-size:0.875rem; padding-top:0.2rem; }
+    .cs-content h1 { font-size:1.125rem; margin:0 0 0.35rem 0; font-weight:700; color:#000; }
+    .cs-content h2 { font-size:1rem; margin:0.5rem 0 0.25rem 0; font-weight:600; color:#000; }
+    .cs-content h3 { font-size:0.9rem; margin:0.4rem 0 0.2rem 0; font-weight:600; color:#000; }
+    .cs-content p { margin: 0.5rem 0; }
+    .cs-content ul, .cs-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+    .cs-content li { margin-bottom: 0.25rem; }
+    .two-col { display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start; }
+    .box { background:#fff; border:1px solid var(--border); padding:0.9rem; margin: 0.5rem 0; }
+    .problem-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; margin: 0.5rem 0; }
+    .solution-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; margin: 0.5rem 0; }
+    .alert-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; margin: 0.5rem 0; }
+    .success-box { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; margin: 0.5rem 0; }
+    .code-block { background:#fff; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; overflow-x:auto; color:#000; white-space: pre-wrap; }
+    .terminal-output { background:#fff; color:#000; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.8rem; white-space:pre-wrap; }
+    .ascii-art { background:#fff; border:1px solid #000; padding:0.9rem; font-family: 'Monaco', 'Menlo', 'Courier New', monospace; font-size:0.75rem; white-space:pre-wrap; overflow-x:auto; color:#000; }
+    .kpi-grid { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:0.75rem; margin: 0.75rem 0; }
+    .kpi-card { border:1px solid #000; background:#fff; padding:0.75rem; text-align:center; }
+    .kpi-card .big { font-size:1.5rem; font-weight:700; color:#000; }
+    .kpi-card .label { font-size:0.8rem; color:#000; margin-top: 0.25rem; }
+    .mermaid { background:#fff; border:1px solid #000; padding:2rem; margin:1rem 0; overflow-x:auto; min-height:200px; overflow:visible; }
+    .mermaid svg { max-width:100%; height:auto; overflow:visible; }
+    .mermaid .node rect, .mermaid .node polygon { rx: 0; ry: 0; }
+    .mermaid .nodeLabel { white-space: normal !important; max-width: 150px; font-size: 11px; }
+    .mermaid .edgeLabel { font-size: 10px; }
+    .mermaid .cluster-label { font-size: 12px; font-weight: bold; }
+
+    /* Rule visualization */
+    .rule-visual { border: 1px solid #000; margin: 1rem 0; }
+    .rule-header { background: #f9f9f9; border-bottom: 1px solid #000; padding: 0.75rem 1rem; font-weight: bold; }
+    .rule-body { display: grid; grid-template-columns: 1fr 1fr; }
+    .rule-section { padding: 0.75rem 1rem; border-bottom: 1px solid #eee; }
+    .rule-section:nth-child(even) { border-left: 1px solid #eee; }
+    .rule-label { font-size: 0.75rem; text-transform: uppercase; color: #666; margin-bottom: 0.25rem; }
+    .rule-value { font-weight: 600; }
+    .rule-override { background: #f9f9f9; padding: 0.75rem 1rem; border-top: 1px solid #000; }
+    .override-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 0.5rem; }
+    .override-item { padding: 0.5rem; border: 1px solid #000; text-align: center; }
+    .override-jurisdiction { font-weight: bold; font-size: 0.85rem; }
+    .override-value { font-size: 1.25rem; font-weight: bold; }
+    .component-section { background:#fff; border:1px solid #000; padding:0.9rem; margin:0.5rem 0; }
+    .workflow-step { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; margin:0.5rem 0; }
+    .metrics-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:0.75rem; margin:1rem 0; }
+    .metric-card { background:#fff; border:1px solid #000; padding:0.75rem; text-align:center; }
+    .metric-value { font-size:1.5rem; font-weight:700; color:#000; margin-bottom:0.25rem; }
+    .metric-label { font-size:0.8rem; color:#000; text-transform:uppercase; letter-spacing:0.5px; }
+    .before-after { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin:1rem 0; }
+    .before { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .after { background:#fff; border:1px solid #000; border-left:4px solid #000; padding:0.9rem; }
+    .pill { display:inline-block; padding:0.15rem 0.35rem; border:1px solid #000; margin-right:0.35rem; font-size:0.8rem; color:#000; }
+    blockquote { margin: 1rem 0; padding: 1rem; border-left: 4px solid #000; background: #f9f9f9; font-style: italic; }
+    table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; }
+    th, td { padding: 0.5rem 0.75rem; text-align: left; border: 1px solid #000; }
+    th { background: #f9f9f9; font-weight: 600; }
+    .status-indicator { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #000; }
+
+    /* Interactive Demo Styles */
+    .demo-container { border: 1px solid #000; margin: 1rem 0; background: #fff; }
+    .demo-header { background: #f9f9f9; border-bottom: 1px solid #000; padding: 0.5rem 1rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+    .demo-body { padding: 1rem; min-height: 300px; position: relative; }
+    .demo-controls { display: flex; gap: 0.5rem; }
+    .demo-btn { padding: 0.35rem 0.75rem; background: #000; color: #fff; border: none; cursor: pointer; font-size: 0.8rem; }
+    .demo-btn:hover { background: #333; }
+    .demo-btn.secondary { background: #fff; color: #000; border: 1px solid #000; }
+
+    /* Plan Review Simulator */
+    .plan-sheet { width: 100%; height: 280px; border: 1px solid #000; background: #fafafa; position: relative; overflow: hidden; }
+    .plan-grid { position: absolute; inset: 0; background-image: linear-gradient(#ddd 1px, transparent 1px), linear-gradient(90deg, #ddd 1px, transparent 1px); background-size: 20px 20px; }
+    .plan-element { position: absolute; background: #fff; border: 1px solid #000; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+    .scan-line { position: absolute; left: 0; top: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, #000, transparent); opacity: 0; }
+    .violation-marker { position: absolute; width: 24px; height: 24px; border: 2px solid #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.7rem; opacity: 0; transform: scale(0); transition: all 0.3s; }
+    .violation-marker.show { opacity: 1; transform: scale(1); }
+    .violation-marker.high { background: #fff; }
+    .finding-list { margin-top: 1rem; }
+    .finding-item { padding: 0.5rem; border: 1px solid #000; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; opacity: 0; transform: translateX(-20px); transition: all 0.3s; }
+    .finding-item.show { opacity: 1; transform: translateX(0); }
+    .finding-severity { padding: 0.15rem 0.5rem; font-size: 0.7rem; font-weight: bold; border: 1px solid #000; }
+
+    /* Side by Side Timer */
+    .timer-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .timer-side { border: 1px solid #000; padding: 1rem; text-align: center; }
+    .timer-title { font-weight: bold; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eee; }
+    .timer-display { font-size: 2.5rem; font-weight: bold; font-family: monospace; margin: 1rem 0; }
+    .timer-bar { height: 20px; background: #eee; border: 1px solid #000; margin: 1rem 0; }
+    .timer-fill { height: 100%; background: #000; width: 0%; transition: width 0.1s linear; }
+    .timer-status { font-size: 0.9rem; min-height: 1.5rem; }
+    .timer-status.done { font-weight: bold; }
+
+    /* Florida Map */
+    .florida-map { width: 100%; height: 350px; position: relative; }
+    .florida-map svg { width: 100%; height: 100%; }
+    .map-tooltip { position: absolute; background: #000; color: #fff; padding: 0.5rem 0.75rem; font-size: 0.8rem; pointer-events: none; opacity: 0; transition: opacity 0.2s; z-index: 10; }
+    .map-tooltip.show { opacity: 1; }
+    .jurisdiction-dot { cursor: pointer; transition: transform 0.2s; }
+    .jurisdiction-dot:hover { transform: scale(1.3); }
+    .map-legend { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1rem; font-size: 0.8rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.35rem; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #000; }
+
+    /* Funding Chart */
+    .funding-chart { padding: 1rem 0; }
+    .funding-bar-row { display: grid; grid-template-columns: 100px 1fr 80px; gap: 1rem; align-items: center; margin-bottom: 0.75rem; }
+    .funding-company { font-size: 0.85rem; font-weight: 600; text-align: right; }
+    .funding-bar-container { height: 28px; background: #eee; border: 1px solid #000; position: relative; }
+    .funding-bar { height: 100%; background: #000; width: 0%; transition: width 1s ease-out; }
+    .funding-bar.us { background: repeating-linear-gradient(45deg, #000, #000 5px, #333 5px, #333 10px); }
+    .funding-amount { font-size: 0.85rem; font-weight: bold; }
+
+    /* Dashboard Preview */
+    .dashboard-preview { font-family: monospace; background: #fafafa; border: 1px solid #000; }
+    .dashboard-topbar { background: #000; color: #fff; padding: 0.5rem 1rem; display: flex; justify-content: space-between; }
+    .dashboard-content { padding: 1rem; }
+    .dashboard-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
+    .dashboard-stat { border: 1px solid #000; padding: 0.5rem; text-align: center; background: #fff; }
+    .dashboard-stat-value { font-size: 1.25rem; font-weight: bold; }
+    .dashboard-stat-label { font-size: 0.7rem; }
+    .dashboard-findings { border: 1px solid #000; background: #fff; }
+    .dashboard-findings-header { background: #f9f9f9; padding: 0.5rem; border-bottom: 1px solid #000; font-weight: bold; }
+    .dashboard-finding-row { display: grid; grid-template-columns: 30px 1fr 80px 80px; padding: 0.5rem; border-bottom: 1px solid #eee; align-items: center; font-size: 0.8rem; }
+    .dashboard-finding-row:hover { background: #f9f9f9; }
+    .finding-checkbox { width: 16px; height: 16px; border: 1px solid #000; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .finding-checkbox.checked::after { content: '✓'; font-weight: bold; }
+    .finding-actions { display: flex; gap: 0.25rem; }
+    .finding-action-btn { padding: 0.2rem 0.4rem; font-size: 0.7rem; border: 1px solid #000; background: #fff; cursor: pointer; }
+    .finding-action-btn:hover { background: #000; color: #fff; }
+
+    @media (max-width: 900px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } .timer-comparison { grid-template-columns: 1fr; } }
+    @media (max-width: 700px) {
+      .cs-wrapper{ grid-template-columns:1fr;}
+      .cs-index{ position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border);}
+      section.cs-page{ grid-template-columns:3rem 1fr; padding:0.25rem 0;}
+      .two-col{ grid-template-columns:1fr; gap:0.85rem;}
+      .kpi-grid{ grid-template-columns:1fr; }
+      .before-after{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body class="cs-template">
+  <div class="cs-wrapper">
+    <aside class="cs-index">
+      <div class="cs-index-title">Index</div>
+      <ol>
+        <li><a href="#s1"><span class="num">01.</span> Executive Summary</a></li>
+        <li><a href="#s2"><span class="num">02.</span> The Crisis</a></li>
+        <li><a href="#s3"><span class="num">03.</span> Florida HB 267</a></li>
+        <li><a href="#s4"><span class="num">04.</span> Market Opportunity</a></li>
+        <li><a href="#s5"><span class="num">05.</span> Competitive Landscape</a></li>
+        <li><a href="#s6"><span class="num">06.</span> The Solution</a></li>
+        <li><a href="#s7"><span class="num">07.</span> How It Works</a></li>
+        <li><a href="#s8"><span class="num">08.</span> What We Check</a></li>
+        <li><a href="#s9"><span class="num">09.</span> Technical Feasibility</a></li>
+        <li><a href="#s10"><span class="num">10.</span> AI Architecture</a></li>
+        <li><a href="#s11"><span class="num">11.</span> System Architecture</a></li>
+        <li><a href="#s12"><span class="num">12.</span> User Personas</a></li>
+        <li><a href="#s13"><span class="num">13.</span> Go-To-Market</a></li>
+        <li><a href="#s14"><span class="num">14.</span> Regulatory & Liability</a></li>
+        <li><a href="#s15"><span class="num">15.</span> Failure Patterns</a></li>
+        <li><a href="#s16"><span class="num">16.</span> Our Competitive Moat</a></li>
+        <li><a href="#s17"><span class="num">17.</span> The Team</a></li>
+        <li><a href="#s18"><span class="num">18.</span> Business Model</a></li>
+        <li><a href="#s19"><span class="num">19.</span> Financial Projections</a></li>
+        <li><a href="#s20"><span class="num">20.</span> Implementation Roadmap</a></li>
+        <li><a href="#s21"><span class="num">21.</span> The Investment Ask</a></li>
+        <li><a href="#s22"><span class="num">22.</span> Conclusion</a></li>
+      </ol>
+    </aside>
+
+    <main class="cs-sections">
+
+      <!-- SECTION 01: EXECUTIVE SUMMARY -->
+      <section id="s1" class="cs-page">
+        <div class="cs-num">01.</div>
+        <div class="cs-content">
+          <h1>AI Plan Examiner</h1>
+          <p style="margin: 0 0 1rem 0; font-size: 0.875rem; color: #666; font-style: italic;">AI-Powered Building Plan Review for Florida Municipalities</p>
+
+          <div class="alert-box" style="margin-bottom: 1.5rem;">
+            <p style="line-height: 1.8;"><strong>The opportunity is real but competitive.</strong> AI-powered building plan review represents a nascent but rapidly validating market with <strong>$86M+ already invested in direct competitors</strong>, active municipal RFIs including one from Tampa, and legislative tailwinds from Florida's HB 267 mandating permit timelines with financial penalties.</p>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="big">$6-8B</div>
+              <div class="label">Total Addressable Market</div>
+            </div>
+            <div class="kpi-card">
+              <div class="big">41%</div>
+              <div class="label">Workforce Retiring by 2031</div>
+            </div>
+            <div class="kpi-card">
+              <div class="big">4-6 mo</div>
+              <div class="label">Average Permit Delays</div>
+            </div>
+            <div class="kpi-card">
+              <div class="big">$86M+</div>
+              <div class="label">Competitor Funding</div>
+            </div>
+          </div>
+
+          <div class="two-col" style="margin-top: 1rem;">
+            <div class="box">
+              <h3 style="margin-top: 0;">The Solution</h3>
+              <p>A dual-use AI platform serving both private-sector design professionals and municipal building departments:</p>
+              <ul style="margin: 0;">
+                <li>Pre-submission compliance checks for architects/engineers</li>
+                <li>AI-assisted official review for building departments</li>
+                <li>60-80% faster review turnaround</li>
+                <li>Consistent code interpretation with full audit trail</li>
+              </ul>
+            </div>
+            <div class="box">
+              <h3 style="margin-top: 0;">Key Differentiators</h3>
+              <ul style="margin: 0;">
+                <li><strong>Municipality-focused</strong> (vs. GreenLite's Fortune 500 focus)</li>
+                <li><strong>Florida-first specialization</strong> with local code expertise</li>
+                <li><strong>Human-in-the-loop</strong> - decision support, not decision maker</li>
+                <li><strong>Two-sided network</strong> - A/E + municipal flywheel</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 02: THE CRISIS -->
+      <section id="s2" class="cs-page">
+        <div class="cs-num">02.</div>
+        <div class="cs-content">
+          <h1>Building Departments Are in Crisis</h1>
+
+          <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    BUILDING DEPARTMENT CRISIS                        │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  STAFF SHORTAGES                    PERMIT BACKLOGS                 │
+│  ├─ 41% workforce retiring 2031    ├─ 4-6 month delays             │
+│  ├─ $68-110K salaries (unfilled)   ├─ Developers frustrated        │
+│  └─ Knowledge walking out door     └─ Economic development stalls  │
+│                                                                      │
+│  INCONSISTENT REVIEWS               THE BREAKING POINT              │
+│  ├─ Different interpretations      ├─ Can't hire qualified staff   │
+│  ├─ Creates appeals/liability      ├─ Overtime burning teams out   │
+│  └─ Unpredictable for all          └─ HB 267 penalties imminent    │
+│                                                                      │
+│  2-3 MILLION permits requiring plan review annually in the US       │
+│  20,000-25,000 permit-issuing jurisdictions                         │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <div class="before-after">
+            <div class="before">
+              <h3>The Problem</h3>
+              <ul>
+                <li><strong>Staff Shortages:</strong> Cannot hire qualified plan reviewers at any price</li>
+                <li><strong>Permit Backlogs:</strong> 4-6 month delays frustrate developers, residents, and elected officials</li>
+                <li><strong>Inconsistent Reviews:</strong> Different reviewers interpret codes differently</li>
+                <li><strong>Knowledge Loss:</strong> Expertise walking out the door with retirees</li>
+              </ul>
+            </div>
+            <div class="after">
+              <h3>The Economics</h3>
+              <ul>
+                <li>Plan reviewers earn <strong>$68,000-$110,000</strong> annually</li>
+                <li>Fully-loaded costs reach <strong>$100,000-$150,000</strong> per reviewer</li>
+                <li>Third-party review services charge <strong>$140-170/hour</strong></li>
+                <li>Typical commercial reviews cost <strong>$1,500-5,000+</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <blockquote>
+            "The labor market can't solve this. You can't hire people who don't exist. Building departments need technology solutions."
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- SECTION 03: FLORIDA HB 267 -->
+      <section id="s3" class="cs-page">
+        <div class="cs-num">03.</div>
+        <div class="cs-content">
+          <h1>Florida HB 267 - The Forcing Function</h1>
+          <h2>Effective January 1, 2025: Mandated Timelines with Financial Penalties</h2>
+
+          <div class="ascii-art">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    FLORIDA HB 267 - DEADLINE MANDATE                │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  BUILDING TYPE              DEADLINE           PENALTY              │
+│  ─────────────────────────────────────────────────────────────────  │
+│  Under 7,500 sq ft          30 business days   10% fee/day over    │
+│  Larger structures          60 business days   10% fee/day over    │
+│                                                                      │
+│  ⚠️  EXAMPLE: Miss 30-day deadline by 10 days = 100% FEE GONE      │
+│                                                                      │
+│  Florida recorded ~105,600 new residential permits in 2024         │
+│  Southeast region: highest average construction values ($411,602)  │
+│  Miami-Dade: ~251 new residential permits monthly                  │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <div class="two-col">
+            <div class="box">
+              <h3>Market Signal</h3>
+              <p><strong>Tampa issued a direct RFI for AI-Based Plan Review Software</strong>, specifically seeking solutions that "assist in-house plan reviewers by evaluating various documents, including applications and plans, submitted for Building and Residential permits."</p>
+            </div>
+            <div class="box">
+              <h3>Federal Funding</h3>
+              <p><strong>HUD PRO Housing grants</strong> ($185M total) explicitly include "streamline and modernize local permit processing" as eligible activities. The program was <strong>13x oversubscribed</strong> in 2024, demonstrating demand.</p>
+            </div>
+          </div>
+
+          <div class="alert-box">
+            <p><strong>Bottom line:</strong> Miss deadlines = lose revenue. Building departments need efficiency solutions immediately. The legislation creates urgency that didn't exist before.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 04: MARKET OPPORTUNITY -->
+      <section id="s4" class="cs-page">
+        <div class="cs-num">04.</div>
+        <div class="cs-content">
+          <h1>Market Opportunity</h1>
+          <h2>A Venture-Scale Opportunity</h2>
+
+          <div class="ascii-art">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    MARKET OPPORTUNITY FUNNEL                         │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │              TOTAL ADDRESSABLE MARKET: $6-8B                 │    │
+│  │  Building Dept Labor $6B + Third-Party $1.5B + Software $0.5B│    │
+│  └───────────────────────────────┬─────────────────────────────┘    │
+│                                  │                                   │
+│                                  ▼                                   │
+│       ┌───────────────────────────────────────────────────┐         │
+│       │         SERVICEABLE MARKET: $700M-$1.2B            │         │
+│       │   ~5,000 mid-large municipalities @ $50K-$150K ACV │         │
+│       └────────────────────────┬──────────────────────────┘         │
+│                                │                                     │
+│                                ▼                                     │
+│            ┌───────────────────────────────────────┐                │
+│            │       5-YEAR SOM: $35M-$90M ARR        │                │
+│            │   500-1,000 municipalities @ $75K avg  │                │
+│            └───────────────────────────────────────┘                │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <table>
+            <tr>
+              <th>Segment</th>
+              <th>Size</th>
+              <th>Notes</th>
+            </tr>
+            <tr>
+              <td>U.S. Building Departments</td>
+              <td>~20,000-25,000 jurisdictions</td>
+              <td>2-3M permits requiring review annually</td>
+            </tr>
+            <tr>
+              <td>Florida Building Departments</td>
+              <td>~410 jurisdictions</td>
+              <td>$2.4B+ annual permit fees</td>
+            </tr>
+            <tr>
+              <td>Florida A/E Firms</td>
+              <td>~8,000 firms</td>
+              <td>$12B+ annual billings</td>
+            </tr>
+          </table>
+
+          <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="kpi-card">
+              <div class="big">$50M+</div>
+              <div class="label">Florida Municipal SAM</div>
+            </div>
+            <div class="kpi-card">
+              <div class="big">$30M+</div>
+              <div class="label">Florida A/E SAM</div>
+            </div>
+            <div class="kpi-card">
+              <div class="big">$80M+</div>
+              <div class="label">Total Florida Opportunity</div>
+            </div>
+          </div>
+
+          <div class="solution-box">
+            <h3>Why Florida First?</h3>
+            <ul>
+              <li><strong>HB 267 urgency:</strong> Mandated deadlines create immediate demand</li>
+              <li><strong>High construction volume:</strong> #3 state for construction activity</li>
+              <li><strong>Complex code environment:</strong> Wind, flood, coastal - if we can do Florida, we can do anywhere</li>
+              <li><strong>Gartner predicts:</strong> 50%+ of permit solutions will incorporate AI by 2025</li>
+            </ul>
+          </div>
+
+          <!-- Florida Market Map -->
+          <div class="demo-container" id="florida-map-demo">
+            <div class="demo-header">
+              <span>FLORIDA TARGET MARKETS</span>
+            </div>
+            <div class="demo-body" style="min-height: 380px; padding: 0;">
+              <div class="florida-map" id="florida-map">
+                <svg viewBox="0 0 400 400" style="background: #fafafa;">
+                  <!-- Simplified Florida outline -->
+                  <path d="M50,50 L200,30 L350,80 L360,150 L340,200 L300,280 L280,350 L250,380 L200,370 L180,320 L150,280 L100,260 L80,200 L60,150 L50,100 Z" fill="#fff" stroke="#000" stroke-width="2"/>
+
+                  <!-- Panhandle -->
+                  <path d="M50,50 L50,80 L20,90 L10,70 L30,50 Z" fill="#fff" stroke="#000" stroke-width="2"/>
+
+                  <!-- Target jurisdictions -->
+                  <g class="jurisdiction-dot" data-name="Tampa" data-permits="18,500" data-status="Active RFI">
+                    <circle cx="130" cy="200" r="18" fill="#000" stroke="#000" stroke-width="2"/>
+                    <text x="130" y="205" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">1</text>
+                  </g>
+
+                  <g class="jurisdiction-dot" data-name="Miami-Dade" data-permits="45,000" data-status="Target #1">
+                    <circle cx="290" cy="340" r="22" fill="#000" stroke="#000" stroke-width="2"/>
+                    <text x="290" y="345" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">2</text>
+                  </g>
+
+                  <g class="jurisdiction-dot" data-name="Broward" data-permits="28,000" data-status="E-Permitting Ready">
+                    <circle cx="300" cy="290" r="16" fill="#000" stroke="#000" stroke-width="2"/>
+                    <text x="300" y="295" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">3</text>
+                  </g>
+
+                  <g class="jurisdiction-dot" data-name="Palm Beach" data-permits="22,000" data-status="High Volume">
+                    <circle cx="320" cy="250" r="14" fill="#000" stroke="#000" stroke-width="2"/>
+                    <text x="320" y="255" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">4</text>
+                  </g>
+
+                  <g class="jurisdiction-dot" data-name="Orlando" data-permits="15,000" data-status="Phase 2">
+                    <circle cx="220" cy="180" r="12" fill="#666" stroke="#000" stroke-width="2"/>
+                    <text x="220" y="185" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">5</text>
+                  </g>
+
+                  <g class="jurisdiction-dot" data-name="Jacksonville" data-permits="12,000" data-status="Phase 2">
+                    <circle cx="280" cy="80" r="11" fill="#666" stroke="#000" stroke-width="2"/>
+                    <text x="280" y="85" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">6</text>
+                  </g>
+
+                  <!-- Labels -->
+                  <text x="130" y="175" text-anchor="middle" font-size="9" font-weight="bold">Tampa</text>
+                  <text x="330" y="340" text-anchor="start" font-size="9" font-weight="bold">Miami</text>
+                  <text x="330" y="290" text-anchor="start" font-size="9">Broward</text>
+                  <text x="340" y="250" text-anchor="start" font-size="9">Palm Beach</text>
+                  <text x="220" y="165" text-anchor="middle" font-size="9">Orlando</text>
+                  <text x="280" y="65" text-anchor="middle" font-size="9">Jacksonville</text>
+                </svg>
+                <div class="map-tooltip" id="map-tooltip"></div>
+              </div>
+              <div class="map-legend">
+                <div class="legend-item"><div class="legend-dot" style="background: #000;"></div> Phase 1 Target</div>
+                <div class="legend-item"><div class="legend-dot" style="background: #666;"></div> Phase 2 Target</div>
+                <div class="legend-item"><div class="legend-dot" style="background: #fff;"></div> Future</div>
+              </div>
+              <div style="padding: 1rem; border-top: 1px solid #eee; font-size: 0.85rem;">
+                <strong>Hover over cities for details.</strong> Circle size = permit volume. Phase 1 focuses on SE Florida + Tampa (active RFI).
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 05: COMPETITIVE LANDSCAPE -->
+      <section id="s5" class="cs-page">
+        <div class="cs-num">05.</div>
+        <div class="cs-content">
+          <h1>Competitive Landscape</h1>
+          <h2>Early Leaders Emerging with $86M+ Already Invested</h2>
+
+          <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    COMPETITIVE LANDSCAPE                             │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  COMPANY          FUNDING    FOCUS                WEAKNESS          │
+│  ─────────────────────────────────────────────────────────────────  │
+│  GreenLite        $86M       Fortune 500 retail   Not municipal     │
+│  PermitFlow       $54M       End-to-end workflow  No AI review      │
+│  UpCodes          $7.6M      Code database + Q&A  Not plan review   │
+│  CodeComply.AI    $2M        AEC professionals    Early stage       │
+│  AutoReview.AI    Undiscl.   Florida municipal    Direct competitor │
+│                                                                      │
+│  LEGACY INCUMBENTS:                                                 │
+│  Accela           ~$500M-1B  Workflow automation  No AI             │
+│  OpenGov          $1.8B exit Workflow automation  Limited AI        │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <div class="component-section">
+            <h3>GreenLite: The Funding Leader</h3>
+            <ul>
+              <li><strong>$86M total funding</strong> ($49.5M Series B led by Insight Partners, September 2025)</li>
+              <li>AI-powered drawing analysis via "LiteTable" tool + human plan reviewers</li>
+              <li>~100 Fortune 500 customers: Walgreens, TD Bank, O'Reilly Auto Parts</li>
+              <li><strong>Positioning:</strong> "Private Plan Review" for developers/retailers - NOT municipalities</li>
+            </ul>
+          </div>
+
+          <div class="component-section">
+            <h3>AutoReview.AI: Florida-Focused Competitor</h3>
+            <ul>
+              <li>University of Florida spinout built on entire 800+ page Florida Building Code</li>
+              <li>Active pilots in <strong>Pasco County</strong> and <strong>Altamonte Springs</strong></li>
+              <li>Reportedly reduced plan review from weeks to ~30 minutes</li>
+              <li><strong>Key risk:</strong> Existing Florida municipal relationships</li>
+            </ul>
+          </div>
+
+          <div class="alert-box">
+            <p><strong>White space exists:</strong> GreenLite focuses on enterprise/Fortune 500. Nobody is building deep jurisdiction-specific AI plan review optimized for municipal procurement and operations.</p>
+          </div>
+
+          <!-- Competitive Funding Chart -->
+          <div class="demo-container" id="funding-demo">
+            <div class="demo-header">
+              <span>COMPETITIVE FUNDING COMPARISON</span>
+              <div class="demo-controls">
+                <button class="demo-btn" onclick="animateFundingChart()">Animate</button>
+              </div>
+            </div>
+            <div class="demo-body" style="min-height: auto; padding: 1.5rem;">
+              <div class="funding-chart" id="funding-chart">
+                <div class="funding-bar-row">
+                  <div class="funding-company">GreenLite</div>
+                  <div class="funding-bar-container"><div class="funding-bar" id="bar-greenlight" data-width="100"></div></div>
+                  <div class="funding-amount">$86M</div>
+                </div>
+                <div class="funding-bar-row">
+                  <div class="funding-company">PermitFlow</div>
+                  <div class="funding-bar-container"><div class="funding-bar" id="bar-permitflow" data-width="63"></div></div>
+                  <div class="funding-amount">$54M</div>
+                </div>
+                <div class="funding-bar-row">
+                  <div class="funding-company">UpCodes</div>
+                  <div class="funding-bar-container"><div class="funding-bar" id="bar-upcodes" data-width="9"></div></div>
+                  <div class="funding-amount">$7.6M</div>
+                </div>
+                <div class="funding-bar-row">
+                  <div class="funding-company">CodeComply</div>
+                  <div class="funding-bar-container"><div class="funding-bar" id="bar-codecomply" data-width="2"></div></div>
+                  <div class="funding-amount">$2M</div>
+                </div>
+                <div class="funding-bar-row">
+                  <div class="funding-company" style="font-weight: bold;">AI Plan Examiner</div>
+                  <div class="funding-bar-container"><div class="funding-bar us" id="bar-us" data-width="2"></div></div>
+                  <div class="funding-amount" style="font-weight: bold;">$1.5M*</div>
+                </div>
+              </div>
+              <div style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">*Seeking seed funding</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 06: THE SOLUTION -->
+      <section id="s6" class="cs-page">
+        <div class="cs-num">06.</div>
+        <div class="cs-content">
+          <h1>The Solution: AI Plan Examiner</h1>
+          <h2>Decision Support, Not Decision Maker</h2>
+
+          <div class="alert-box" style="margin-bottom: 1rem;">
+            <p style="margin: 0;"><strong>Core Principle:</strong> AI handles the tedious checks so staff can focus on complex judgment calls. We augment human reviewers - we don't replace them.</p>
+          </div>
+
+          <div class="ascii-art">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    DUAL-USE PLATFORM FLOW                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  PRIVATE SECTOR              AI PLAN EXAMINER        BUILDING DEPT  │
+│  ─────────────────           ─────────────────       ─────────────  │
+│                                                                      │
+│  ┌──────────────┐           ┌───────────────┐      ┌─────────────┐ │
+│  │  Architects  │───┐       │               │      │   Staff     │ │
+│  └──────────────┘   │       │    Upload     │      │   Review    │ │
+│                     ├──────▶│    Plans      │      └──────┬──────┘ │
+│  ┌──────────────┐   │       │               │             │        │
+│  │  Engineers   │───┤       └───────┬───────┘             │        │
+│  └──────────────┘   │               │                     │        │
+│                     │               ▼                     │        │
+│  ┌──────────────┐   │       ┌───────────────┐             │        │
+│  │  Developers  │───┘       │  AI Analysis  │             │        │
+│  └──────────────┘           └───────┬───────┘             │        │
+│                                     │                     │        │
+│                                     ▼                     ▼        │
+│                             ┌───────────────┐      ┌─────────────┐ │
+│                             │   Violation   │─────▶│   Final     │ │
+│                             │    Report     │      │  Decision   │ │
+│                             └───────────────┘      └─────────────┘ │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <div class="before-after">
+            <div class="before">
+              <h3>For Architects & Engineers</h3>
+              <p><strong>Pre-submission compliance check</strong></p>
+              <ul>
+                <li>Catch violations before submitting</li>
+                <li>Reduce resubmittals by 50%+</li>
+                <li>Predictable approval timelines</li>
+                <li>Lower carrying costs</li>
+              </ul>
+            </div>
+            <div class="after">
+              <h3>For Building Departments</h3>
+              <p><strong>AI-assisted official review</strong></p>
+              <ul>
+                <li>60-80% faster reviews</li>
+                <li>Consistent code interpretation</li>
+                <li>Meet HB 267 deadlines</li>
+                <li>Full audit trail</li>
+              </ul>
+            </div>
+          </div>
+
+          <blockquote>
+            "A/E firms and municipalities are two sides of the same transaction. Win one, and you have leverage to win the other. Network effects compound."
+          </blockquote>
+
+          <!-- Manual vs AI Timer Demo -->
+          <div class="demo-container" id="timer-demo">
+            <div class="demo-header">
+              <span>REVIEW TIME COMPARISON</span>
+              <div class="demo-controls">
+                <button class="demo-btn" onclick="startTimerDemo()">Start Race</button>
+                <button class="demo-btn secondary" onclick="resetTimerDemo()">Reset</button>
+              </div>
+            </div>
+            <div class="demo-body" style="min-height: 200px;">
+              <div class="timer-comparison">
+                <div class="timer-side">
+                  <div class="timer-title">MANUAL REVIEW</div>
+                  <div class="timer-display" id="manual-timer">00:00:00</div>
+                  <div class="timer-bar"><div class="timer-fill" id="manual-bar"></div></div>
+                  <div class="timer-status" id="manual-status">Ready</div>
+                </div>
+                <div class="timer-side">
+                  <div class="timer-title">AI-ASSISTED REVIEW</div>
+                  <div class="timer-display" id="ai-timer">00:00:00</div>
+                  <div class="timer-bar"><div class="timer-fill" id="ai-bar"></div></div>
+                  <div class="timer-status" id="ai-status">Ready</div>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 1rem; font-size: 0.85rem;">
+                <span id="time-saved" style="font-weight: bold;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 07: HOW IT WORKS -->
+      <section id="s7" class="cs-page">
+        <div class="cs-num">07.</div>
+        <div class="cs-content">
+          <h1>How It Works</h1>
+          <h2>Simple 4-Step Process</h2>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="big">1</div>
+              <div class="label" style="font-weight: bold;">UPLOAD</div>
+              <p style="font-size: 0.75rem; margin-top: 0.5rem;">PDF, CAD, or BIM<br>Select jurisdiction</p>
+            </div>
+            <div class="kpi-card">
+              <div class="big">2</div>
+              <div class="label" style="font-weight: bold;">AI ANALYSIS</div>
+              <p style="font-size: 0.75rem; margin-top: 0.5rem;">Computer Vision<br>Rules Engine + LLM</p>
+            </div>
+            <div class="kpi-card">
+              <div class="big">3</div>
+              <div class="label" style="font-weight: bold;">VIOLATION REPORT</div>
+              <p style="font-size: 0.75rem; margin-top: 0.5rem;">Code citations<br>Sheet references</p>
+            </div>
+            <div class="kpi-card">
+              <div class="big">4</div>
+              <div class="label" style="font-weight: bold;">HUMAN REVIEW</div>
+              <p style="font-size: 0.75rem; margin-top: 0.5rem;">Validate findings<br>Final decision</p>
+            </div>
+          </div>
+
+          <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    SAMPLE VIOLATION REPORT                          │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  FINDING ID: VIO-2025-00847                                         │
+│  SEVERITY: HIGH                                                     │
+│                                                                      │
+│  VIOLATION: Corridor width non-compliant                            │
+│  CODE: Florida Building Code 2023, Section 1020.1                   │
+│  SHEET: A2.1 - Second Floor Plan                                    │
+│  LOCATION: Gridline C-4                                             │
+│                                                                      │
+│  REQUIREMENT: 44" minimum corridor width (R-2 occupancy, >10 load)  │
+│  MEASURED: 38" shown on drawing                                     │
+│  MIAMI-DADE OVERRIDE: 48" minimum (local amendment)                 │
+│                                                                      │
+│  RECOMMENDATION: Revise corridor width to 48" min per Miami-Dade    │
+│  amendment to FBC Section 1020.1                                    │
+│                                                                      │
+│  [CONFIRM] [DISMISS] [ADD NOTE] [OVERRIDE WITH REASON]              │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <div class="success-box">
+            <h4>Output Includes:</h4>
+            <ul style="margin: 0;">
+              <li>Line-item violations with code citations</li>
+              <li>Sheet references and graphic callouts</li>
+              <li>Severity scoring (High/Medium/Info)</li>
+              <li>Annotated plan overlays</li>
+              <li>Reviewer-ready correction comments</li>
+              <li>Complete audit trail</li>
+            </ul>
+          </div>
+
+          <!-- AI Review Simulator Demo -->
+          <div class="demo-container" id="review-simulator">
+            <div class="demo-header">
+              <span>AI REVIEW SIMULATOR</span>
+              <div class="demo-controls">
+                <button class="demo-btn" onclick="startReviewDemo()">Run Demo</button>
+                <button class="demo-btn secondary" onclick="resetReviewDemo()">Reset</button>
+              </div>
+            </div>
+            <div class="demo-body">
+              <div class="plan-sheet" id="plan-sheet">
+                <div class="plan-grid"></div>
+                <!-- Floor plan elements -->
+                <div class="plan-element" style="left: 20px; top: 20px; width: 180px; height: 100px;">UNIT 101<br>2BR/2BA</div>
+                <div class="plan-element" style="left: 220px; top: 20px; width: 180px; height: 100px;">UNIT 102<br>2BR/2BA</div>
+                <div class="plan-element" style="left: 420px; top: 20px; width: 140px; height: 100px;">UNIT 103<br>1BR/1BA</div>
+                <div class="plan-element" style="left: 20px; top: 140px; width: 80px; height: 120px; background: #eee;">STAIR<br>A</div>
+                <div class="plan-element" style="left: 120px; top: 140px; width: 280px; height: 30px; background: #f5f5f5;">CORRIDOR (38" SHOWN)</div>
+                <div class="plan-element" style="left: 420px; top: 140px; width: 80px; height: 120px; background: #eee;">ELEV</div>
+                <div class="plan-element" style="left: 520px; top: 140px; width: 40px; height: 120px; background: #eee;">STAIR B</div>
+                <!-- Violation markers (hidden initially) -->
+                <div class="violation-marker high" id="v1" style="left: 250px; top: 145px;">1</div>
+                <div class="violation-marker high" id="v2" style="left: 100px; top: 155px;">2</div>
+                <div class="violation-marker high" id="v3" style="left: 540px; top: 130px;">3</div>
+                <!-- Scan line -->
+                <div class="scan-line" id="scan-line"></div>
+              </div>
+              <div class="finding-list" id="finding-list">
+                <div class="finding-item" id="f1">
+                  <span><strong>1. Corridor Width</strong> — FBC 1020.1 — Sheet A2.1 — 38" shown, 44" required</span>
+                  <span class="finding-severity">HIGH</span>
+                </div>
+                <div class="finding-item" id="f2">
+                  <span><strong>2. Exit Signage</strong> — FBC 1013.1 — Sheet A2.1 — Not shown at stair entry</span>
+                  <span class="finding-severity">HIGH</span>
+                </div>
+                <div class="finding-item" id="f3">
+                  <span><strong>3. Stair Width</strong> — FBC 1011.2 — Sheet A2.1 — 36" shown, 44" required</span>
+                  <span class="finding-severity">HIGH</span>
+                </div>
+              </div>
+              <div id="demo-status" style="margin-top: 1rem; font-size: 0.85rem; text-align: center;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 08: WHAT WE CHECK -->
+      <section id="s8" class="cs-page">
+        <div class="cs-num">08.</div>
+        <div class="cs-content">
+          <h1>What We Check</h1>
+          <h2>Phase 1 Coverage</h2>
+
+          <table>
+            <tr>
+              <th>Category</th>
+              <th>Checks</th>
+            </tr>
+            <tr>
+              <td><strong>Zoning & Entitlement</strong></td>
+              <td>Setbacks, FAR, height limits, lot coverage, parking counts, flood zones</td>
+            </tr>
+            <tr>
+              <td><strong>Architectural</strong></td>
+              <td>Egress paths, travel distances, occupancy classification, fire separations, corridor widths, stair dimensions</td>
+            </tr>
+            <tr>
+              <td><strong>ADA / FHA</strong></td>
+              <td>Door clearances (32" min), turning radii (60" circles), bathroom layouts, reach ranges, accessible route continuity, FHA unit mix</td>
+            </tr>
+            <tr>
+              <td><strong>Fire / Life Safety</strong></td>
+              <td>Fire ratings, sprinkler coverage, fire command rooms, apparatus access, exit signage, emergency lighting</td>
+            </tr>
+          </table>
+
+          <div class="two-col">
+            <div class="box">
+              <h3>Phase 2: Coming Next</h3>
+              <ul>
+                <li>Structural checks (load path, foundations)</li>
+                <li>MEP (HVAC, plumbing, electrical)</li>
+                <li>Energy code compliance</li>
+              </ul>
+            </div>
+            <div class="box">
+              <h3>Key Differentiator</h3>
+              <p>Built on <strong>complete Florida Building Code</strong> with jurisdiction-specific local amendments. Not a generic solution - configured for your specific codes.</p>
+            </div>
+          </div>
+
+          <div class="rule-visual">
+            <div class="rule-header">RULE: FBC-2023-1020.1 — Corridor Width</div>
+            <div class="rule-body">
+              <div class="rule-section">
+                <div class="rule-label">Code</div>
+                <div class="rule-value">Florida Building Code 2023</div>
+              </div>
+              <div class="rule-section">
+                <div class="rule-label">Section</div>
+                <div class="rule-value">1020.1</div>
+              </div>
+              <div class="rule-section">
+                <div class="rule-label">Applies When</div>
+                <div class="rule-value">Occupancy R-2, R-3 with load > 10</div>
+              </div>
+              <div class="rule-section">
+                <div class="rule-label">Base Requirement</div>
+                <div class="rule-value">44" minimum width</div>
+              </div>
+            </div>
+            <div class="rule-override">
+              <div class="rule-label">Local Jurisdiction Overrides</div>
+              <div class="override-grid">
+                <div class="override-item">
+                  <div class="override-jurisdiction">Miami-Dade</div>
+                  <div class="override-value">48"</div>
+                </div>
+                <div class="override-item">
+                  <div class="override-jurisdiction">Broward</div>
+                  <div class="override-value">44"</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 09: TECHNICAL FEASIBILITY -->
+      <section id="s9" class="cs-page">
+        <div class="cs-num">09.</div>
+        <div class="cs-content">
+          <h1>Technical Feasibility</h1>
+          <h2>Proven for Augmentation, Not Full Automation</h2>
+
+          <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="kpi-card">
+              <div class="big">90%+</div>
+              <div class="label">CV accuracy on standardized drawings</div>
+            </div>
+            <div class="kpi-card">
+              <div class="big">79-80%</div>
+              <div class="label">LLM accuracy on factual queries</div>
+            </div>
+            <div class="kpi-card">
+              <div class="big">96%+</div>
+              <div class="label">BIM compliance checking accuracy</div>
+            </div>
+          </div>
+
+          <div class="component-section">
+            <h3>Production Systems Already Demonstrate These Capabilities</h3>
+            <ul>
+              <li><strong>Archistar eCheck:</strong> Deployed across 25+ cities (Austin, Los Angeles, Vancouver) using CV and ML for zoning/code assessment</li>
+              <li><strong>Hong Kong ArchSD:</strong> Validated automated openBIM compliance checking with 96%+ accuracy - won Grand Award 2024</li>
+              <li><strong>AutoReview.AI:</strong> Florida pilots reportedly reduced review from weeks to ~30 minutes</li>
+            </ul>
+          </div>
+
+          <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    DOCUMENT PARSING CAPABILITIES                    │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  FORMAT          SUPPORT    NOTES                                   │
+│  ─────────────────────────────────────────────────────────────────  │
+│  PDF             STRONG     Vector data, raster, text extraction   │
+│  CAD (DWG/DXF)   MODERATE   ODA converter + ezdxf for extraction   │
+│  BIM (Revit/IFC) STRONG     IFC-to-RDF enables semantic queries    │
+│                                                                      │
+│  RULE TYPES ACHIEVABLE:                                             │
+│  ├─ Quantitative: Dimensions, counts, ratios (6-12 months)        │
+│  ├─ Boolean: Present/absent checks (6-12 months)                  │
+│  ├─ Conditional: If-then requirements (12-18 months)              │
+│  └─ Interpretive: Engineering judgment (2-4 years, human needed)  │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <div class="alert-box">
+            <p><strong>Key Technical Risks:</strong></p>
+            <ul style="margin: 0.5rem 0 0 1.5rem;">
+              <li>Annotation data scarcity for training</li>
+              <li>Drawing style variability across firms</li>
+              <li>Code interpretation ambiguity ("reasonable", "adequate")</li>
+              <li>False negatives (missing real violations) vs. false positives</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: AI ARCHITECTURE -->
+      <section id="s10" class="cs-page">
+        <div class="cs-num">10.</div>
+        <div class="cs-content">
+          <h1>AI Architecture</h1>
+          <h2>Hybrid Approach - No Black Boxes</h2>
+
+          <div class="alert-box">
+            <p style="margin: 0;"><strong>Critical Constraint:</strong> LLM never makes final compliance decisions. Used only for interpretation and narrative generation. Every output must reference a rule ID and code section. Full transparency, full auditability.</p>
+          </div>
+
+          <div class="ascii-art">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    AI PROCESSING PIPELINE                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│   INPUT                 EXTRACTION             ANALYSIS              │
+│   ─────                 ──────────             ────────              │
+│                                                                      │
+│  ┌─────────┐           ┌─────────────┐       ┌─────────────┐        │
+│  │   PDF   │──┐        │  Computer   │       │   Rules     │        │
+│  └─────────┘  │        │   Vision    │──────▶│   Engine    │        │
+│               ├───────▶│             │       │             │        │
+│  ┌─────────┐  │        └──────┬──────┘       └──────┬──────┘        │
+│  │   CAD   │──┤               │                     │               │
+│  └─────────┘  │               ▼                     ▼               │
+│               │        ┌─────────────┐       ┌─────────────┐        │
+│  ┌─────────┐  │        │     OCR     │       │     LLM     │        │
+│  │   BIM   │──┘        │   Engine    │──────▶│  Reasoning  │        │
+│  └─────────┘           └─────────────┘       └──────┬──────┘        │
+│                                                     │               │
+│   OUTPUT                                            │               │
+│   ──────                                            ▼               │
+│                                                                      │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                 │
+│  │  Violation  │  │  Annotated  │  │   Audit     │                 │
+│  │   Report    │  │    Plans    │  │   Trail     │                 │
+│  └─────────────┘  └─────────────┘  └─────────────┘                 │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Technology</th>
+              <th>Purpose</th>
+            </tr>
+            <tr>
+              <td><strong>Computer Vision</strong></td>
+              <td>CNN-based (VGG, ResNet)</td>
+              <td>Sheet classification, symbol recognition, dimension extraction</td>
+            </tr>
+            <tr>
+              <td><strong>Rules Engine</strong></td>
+              <td>Parameterized logic (custom)</td>
+              <td>Hard code requirements, quantitative checks</td>
+            </tr>
+            <tr>
+              <td><strong>LLM Reasoning</strong></td>
+              <td>GPT-4 / Claude</td>
+              <td>Interpretation, comment generation, ambiguity flagging</td>
+            </tr>
+            <tr>
+              <td><strong>OCR</strong></td>
+              <td>Tesseract / Cloud Vision</td>
+              <td>Text extraction from plan sheets</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 11: SYSTEM ARCHITECTURE -->
+      <section id="s11" class="cs-page">
+        <div class="cs-num">11.</div>
+        <div class="cs-content">
+          <h1>System Architecture</h1>
+          <h2>Full Stack Overview</h2>
+
+          <div class="ascii-art">
+┌──────────────────────────────────────────────────────────────────────┐
+│                        USER INTERFACES                                │
+│                                                                       │
+│   ┌─────────────┐   ┌─────────────┐   ┌─────────────┐               │
+│   │  A/E Web    │   │  Municipal  │   │   Admin     │               │
+│   │    App      │   │  Reviewer   │   │   Console   │               │
+│   └─────────────┘   └─────────────┘   └─────────────┘               │
+│                                                                       │
+│   ┌─────────────────────────────────────────────────────┐           │
+│   │                REST API / GraphQL                    │           │
+│   └─────────────────────────────────────────────────────┘           │
+├───────────────────────────────────────────────────────────────────────┤
+│                      APPLICATION LAYER                                │
+│                                                                       │
+│   ┌─────────────┐   ┌─────────────┐   ┌─────────────┐               │
+│   │ Submission  │   │  Workflow   │   │    RBAC     │               │
+│   │  Manager    │   │   Engine    │   │   & Auth    │               │
+│   └─────────────┘   └─────────────┘   └─────────────┘               │
+├───────────────────────────────────────────────────────────────────────┤
+│                      AI ANALYSIS LAYER                                │
+│                                                                       │
+│   ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐       │
+│   │ Computer Vision │ │  Rules Engine   │ │  LLM Reasoning  │       │
+│   │    Engine       │ │  (Code Logic)   │ │    Engine       │       │
+│   └─────────────────┘ └─────────────────┘ └─────────────────┘       │
+│                                                                       │
+│   ┌─────────────────────────────────────────────────────────────┐   │
+│   │                Compliance & Reporting Engine                 │   │
+│   └─────────────────────────────────────────────────────────────┘   │
+├───────────────────────────────────────────────────────────────────────┤
+│                         DATA LAYER                                    │
+│                                                                       │
+│   ┌─────────────┐   ┌─────────────┐   ┌─────────────┐               │
+│   │    Code     │   │   Project   │   │   Review    │               │
+│   │ Repository  │   │  Database   │   │   History   │               │
+│   └─────────────┘   └─────────────┘   └─────────────┘               │
+│                                                                       │
+│   ┌─────────────┐   ┌─────────────┐                                  │
+│   │  GIS/Zoning │   │  Amendment  │                                  │
+│   │    Data     │   │   Records   │                                  │
+│   └─────────────┘   └─────────────┘                                  │
+├───────────────────────────────────────────────────────────────────────┤
+│                      INFRASTRUCTURE                                   │
+│                                                                       │
+│     AWS / Azure / GovCloud  │  Encrypted (AES-256)  │  SOC 2 Ready  │
+└───────────────────────────────────────────────────────────────────────┘
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 12: USER PERSONAS -->
+      <section id="s12" class="cs-page">
+        <div class="cs-num">12.</div>
+        <div class="cs-content">
+          <h1>User Personas</h1>
+          <h2>Understanding Our Users</h2>
+
+          <table>
+            <tr>
+              <th>Persona</th>
+              <th>Role</th>
+              <th>Goals</th>
+              <th>Pain Points</th>
+            </tr>
+            <tr>
+              <td><strong>Alex the Architect</strong></td>
+              <td>Project Architect at mid-size firm</td>
+              <td>Submit clean plans, reduce resubmittals, predictable timelines</td>
+              <td>Surprise corrections, inconsistent interpretations, 4-6 month delays</td>
+            </tr>
+            <tr>
+              <td><strong>Maria the Plan Reviewer</strong></td>
+              <td>Senior Plans Examiner at building department</td>
+              <td>Review plans faster, consistent decisions, reduce complaints</td>
+              <td>Overwhelming backlog, can't hire staff, HB 267 deadline pressure</td>
+            </tr>
+            <tr>
+              <td><strong>David the Developer</strong></td>
+              <td>Owner's Rep / Development Manager</td>
+              <td>Predictable permitting, reduce entitlement risk, faster approvals</td>
+              <td>Unpredictable timelines, carrying costs, lender pressure</td>
+            </tr>
+            <tr>
+              <td><strong>Chief Building Official</strong></td>
+              <td>Department Head</td>
+              <td>Meet HB 267 deadlines, defend decisions, staff efficiency</td>
+              <td>Political pressure, liability concerns, workforce shortages</td>
+            </tr>
+          </table>
+
+          <div class="component-section">
+            <h3>Unit Economics by Persona</h3>
+            <div class="two-col">
+              <div class="box">
+                <h4>A/E Firms</h4>
+                <p>Cost justified if it saves <strong>ONE resubmittal per month</strong></p>
+                <p>Typical rework cost: <strong>$2,000+</strong></p>
+              </div>
+              <div class="box">
+                <h4>Municipalities</h4>
+                <p>Cost justified if it saves <strong>ONE FTE</strong></p>
+                <p>Fully loaded cost: <strong>$100K+/year</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Preview -->
+          <div class="demo-container" id="dashboard-demo">
+            <div class="demo-header">
+              <span>REVIEWER DASHBOARD PREVIEW</span>
+            </div>
+            <div class="demo-body" style="padding: 0; min-height: auto;">
+              <div class="dashboard-preview">
+                <div class="dashboard-topbar">
+                  <span>AI PLAN EXAMINER</span>
+                  <span>Maria R. | Building Dept</span>
+                </div>
+                <div class="dashboard-content">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eee;">
+                    <div>
+                      <strong>PROJECT:</strong> 123 Main St Condos<br>
+                      <span style="font-size: 0.8rem;">Submitted: Dec 20, 2024 | Type: R-2 Multifamily</span>
+                    </div>
+                    <div style="text-align: right;">
+                      <strong>AI SCORE</strong><br>
+                      <span style="font-size: 1.5rem; font-weight: bold;">72/100</span>
+                    </div>
+                  </div>
+
+                  <div class="dashboard-stats">
+                    <div class="dashboard-stat">
+                      <div class="dashboard-stat-value">12</div>
+                      <div class="dashboard-stat-label">Total Findings</div>
+                    </div>
+                    <div class="dashboard-stat">
+                      <div class="dashboard-stat-value" style="color: #000; font-weight: bold;">3</div>
+                      <div class="dashboard-stat-label">High Priority</div>
+                    </div>
+                    <div class="dashboard-stat">
+                      <div class="dashboard-stat-value">5</div>
+                      <div class="dashboard-stat-label">Medium</div>
+                    </div>
+                    <div class="dashboard-stat">
+                      <div class="dashboard-stat-value">4</div>
+                      <div class="dashboard-stat-label">Info</div>
+                    </div>
+                  </div>
+
+                  <div class="dashboard-findings">
+                    <div class="dashboard-findings-header">FINDINGS</div>
+                    <div class="dashboard-finding-row">
+                      <div class="finding-checkbox checked" onclick="this.classList.toggle('checked')"></div>
+                      <div><strong>Corridor width</strong> — FBC 1020.1 — A2.1</div>
+                      <div><span class="finding-severity">HIGH</span></div>
+                      <div class="finding-actions">
+                        <button class="finding-action-btn">Confirm</button>
+                        <button class="finding-action-btn">Dismiss</button>
+                      </div>
+                    </div>
+                    <div class="dashboard-finding-row">
+                      <div class="finding-checkbox checked" onclick="this.classList.toggle('checked')"></div>
+                      <div><strong>Exit signage</strong> — FBC 1013.1 — A2.1</div>
+                      <div><span class="finding-severity">HIGH</span></div>
+                      <div class="finding-actions">
+                        <button class="finding-action-btn">Confirm</button>
+                        <button class="finding-action-btn">Dismiss</button>
+                      </div>
+                    </div>
+                    <div class="dashboard-finding-row">
+                      <div class="finding-checkbox" onclick="this.classList.toggle('checked')"></div>
+                      <div><strong>Stair width</strong> — FBC 1011.2 — A2.1</div>
+                      <div><span class="finding-severity">HIGH</span></div>
+                      <div class="finding-actions">
+                        <button class="finding-action-btn">Confirm</button>
+                        <button class="finding-action-btn">Dismiss</button>
+                      </div>
+                    </div>
+                    <div class="dashboard-finding-row">
+                      <div class="finding-checkbox" onclick="this.classList.toggle('checked')"></div>
+                      <div><strong>ADA clearance</strong> — FBC 1104.3 — A3.2</div>
+                      <div><span class="finding-severity" style="background: #eee;">MED</span></div>
+                      <div class="finding-actions">
+                        <button class="finding-action-btn">Confirm</button>
+                        <button class="finding-action-btn">Dismiss</button>
+                      </div>
+                    </div>
+                    <div class="dashboard-finding-row">
+                      <div class="finding-checkbox" onclick="this.classList.toggle('checked')"></div>
+                      <div><strong>Parking count</strong> — Zoning 12.4.2 — SITE-1</div>
+                      <div><span class="finding-severity" style="background: #eee;">MED</span></div>
+                      <div class="finding-actions">
+                        <button class="finding-action-btn">Confirm</button>
+                        <button class="finding-action-btn">Dismiss</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                    <button class="demo-btn" style="flex: 1;">Generate Report</button>
+                    <button class="demo-btn secondary" style="flex: 1;">View Annotated Plans</button>
+                    <button class="demo-btn secondary" style="flex: 1;">Export Audit Log</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 13: GO-TO-MARKET -->
+      <section id="s13" class="cs-page">
+        <div class="cs-num">13.</div>
+        <div class="cs-content">
+          <h1>Go-To-Market Strategy</h1>
+          <h2>Typical GovTech Challenges</h2>
+
+          <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    SALES CYCLE REALITY                               │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  JURISDICTION SIZE         SALES CYCLE                              │
+│  ─────────────────────────────────────────────────────────────────  │
+│  Smaller municipalities    ~90 days                                 │
+│  Large cities              12-18 months                             │
+│  State agencies            12-18 months                             │
+│                                                                      │
+│  DECISION MAKERS:                                                   │
+│  ├─ Building Official (operational champion)                       │
+│  ├─ IT Director/CIO (technical validation)                         │
+│  ├─ Community Development Director (strategic alignment)           │
+│  ├─ City/Town Manager (executive sponsor)                          │
+│  └─ City Council (final approval >$50K)                            │
+│                                                                      │
+│  Average B2B buying group: 5.4 people (government is higher)       │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <div class="component-section">
+            <h3>Successful GovTech GTM Strategies</h3>
+            <ul>
+              <li><strong>Below-threshold sales:</strong> Price at $4,950 vs $5,000 to avoid RFP requirements</li>
+              <li><strong>Cooperative purchasing:</strong> NASPO ValuePoint, state master agreements</li>
+              <li><strong>Land-and-expand:</strong> Start with building dept, expand to planning, code enforcement</li>
+              <li><strong>Paid pilots:</strong> 30-60 day pilots with pre-agreed success metrics</li>
+            </ul>
+          </div>
+
+          <div class="workflow-step">
+            <h3>Phase 1: Private Sector (Months 1-12)</h3>
+            <ul>
+              <li><strong>Target:</strong> Mid-size A/E firms, owner's reps, high-volume developers</li>
+              <li><strong>Geography:</strong> Miami-Dade, Broward, Palm Beach</li>
+              <li><strong>Building type:</strong> Mid-rise multifamily residential</li>
+              <li><strong>Motion:</strong> Direct outreach, free pilot for 2-3 flagship customers</li>
+            </ul>
+          </div>
+
+          <div class="workflow-step">
+            <h3>Phase 2: Municipal Pilots (Months 6-18)</h3>
+            <ul>
+              <li><strong>Approach:</strong> "Parallel review" alongside existing process - no risk</li>
+              <li><strong>Targets:</strong> Tampa (active RFI), Miami-Dade (volume), Broward (centralized e-permitting)</li>
+              <li><strong>Positioning:</strong> "Decision support, not replacement"</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 14: REGULATORY & LIABILITY -->
+      <section id="s14" class="cs-page">
+        <div class="cs-num">14.</div>
+        <div class="cs-content">
+          <h1>Regulatory & Liability</h1>
+          <h2>Careful Navigation Required</h2>
+
+          <div class="alert-box">
+            <p style="margin: 0;"><strong>Critical Constraint:</strong> AI cannot legally serve as final approval authority for building plans in any US jurisdiction. Building official authority derives from state statutes requiring a licensed human professional to sign off.</p>
+          </div>
+
+          <div class="component-section">
+            <h3>Key Regulatory Facts</h3>
+            <ul>
+              <li><strong>PE stamp requirements:</strong> Only licensed PEs can accept "full legal responsibility" for reviewed plans (NY Education Law §7209)</li>
+              <li><strong>Honolulu pilot positioning:</strong> Explicitly avoids "automating everything" or providing "yes-or-no answers"</li>
+              <li><strong>Practical implication:</strong> Must position as "decision support" not "decision maker"</li>
+            </ul>
+          </div>
+
+          <div class="problem-box">
+            <h3>Union Opposition Risk</h3>
+            <p><strong>AFSCME</strong> has documented resolutions opposing automation and privatization. Building department staff are typically union-represented in larger jurisdictions.</p>
+            <p><strong>Mitigation:</strong> Market as "making reviewers more productive" not "replacing plan reviewers"</p>
+          </div>
+
+          <div class="component-section">
+            <h3>Liability Allocation</h3>
+            <ul>
+              <li><strong>Municipalities:</strong> Substantial sovereign immunity for discretionary plan review (CA Gov Code §818.6)</li>
+              <li><strong>Design professionals:</strong> Remain primarily liable regardless of AI assistance</li>
+              <li><strong>Software vendors:</strong> Expect broad hold-harmless agreements and $5M-$10M professional liability minimums</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 15: FAILURE PATTERNS -->
+      <section id="s15" class="cs-page">
+        <div class="cs-num">15.</div>
+        <div class="cs-content">
+          <h1>Failure Patterns to Avoid</h1>
+          <h2>Learning from $2B+ in Mistakes</h2>
+
+          <div class="problem-box">
+            <h3>Katerra: The $2+ Billion Collapse</h3>
+            <p>The "Salesforce of construction" attempted vertical integration across software, manufacturing, and construction delivery. Cycled through 4 CEOs in 6 years.</p>
+            <ul>
+              <li>Leadership from electronics manufacturing without construction expertise</li>
+              <li>Attempting to revolutionize everything simultaneously</li>
+              <li>Massive SoftBank funding creating pressure for unrealistic growth</li>
+            </ul>
+            <p><strong>Post-mortem:</strong> "This isn't manufacturing adjacent - construction is its own thing."</p>
+          </div>
+
+          <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    MUNICIPAL IT PROJECT SUCCESS RATES               │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  Large government IT projects:    13% success rate (GSA 18F study)  │
+│                                                                      │
+│  SEATTLE ACCELA ($14M):                                             │
+│  ├─ Crashed immediately upon launch                                 │
+│  ├─ 75% drop in permit applications completing initial review       │
+│  └─ Staff: "Like having a nice hammer, then someone gives you a    │
+│     rock. And the rock costs more."                                 │
+│                                                                      │
+│  HONOLULU HNL BUILD (August 2025):                                  │
+│  ├─ Called a "complete failure"                                     │
+│  └─ "Almost universally negative feedback" from 150+ employees      │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <div class="solution-box">
+            <h3>Red Flags to Avoid</h3>
+            <ul>
+              <li>Leadership without construction/government experience</li>
+              <li>Attempting to "boil the ocean" across all code types/jurisdictions</li>
+              <li>Positioning as autonomous replacement rather than augmentation</li>
+              <li>Underestimating the 72% of construction firms still using paper-based processes</li>
+              <li>"Big bang" deployments versus phased rollouts</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 16: COMPETITIVE MOAT -->
+      <section id="s16" class="cs-page">
+        <div class="cs-num">16.</div>
+        <div class="cs-content">
+          <h1>Our Competitive Moat</h1>
+          <h2>Why We Win</h2>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="big" style="font-size: 1rem;">JURISDICTION DEPTH</div>
+              <div class="label">Florida Building Code + local amendments</div>
+            </div>
+            <div class="kpi-card">
+              <div class="big" style="font-size: 1rem;">DOMAIN EXPERTISE</div>
+              <div class="label">35+ years South Florida permitting</div>
+            </div>
+            <div class="kpi-card">
+              <div class="big" style="font-size: 1rem;">TRUST</div>
+              <div class="label">We speak building official language</div>
+            </div>
+            <div class="kpi-card">
+              <div class="big" style="font-size: 1rem;">TWO-SIDED</div>
+              <div class="label">A/E + municipal network effects</div>
+            </div>
+          </div>
+
+          <div class="component-section">
+            <h3>Competitive Differentiation Paths</h3>
+            <ul>
+              <li><strong>Municipality-focused positioning</strong> (vs. GreenLite's developer/retailer focus)</li>
+              <li><strong>Florida/regional specialization</strong> building on local code expertise</li>
+              <li><strong>Specific building types</strong> (residential, multifamily, ADUs) versus general-purpose</li>
+              <li><strong>Integration plays</strong> embedding into existing Accela/OpenGov workflows</li>
+              <li><strong>Free-to-government models</strong> (CivCheck approach) reducing procurement friction</li>
+            </ul>
+          </div>
+
+          <blockquote>
+            "This is not a generic AI startup. It succeeds only if it speaks the exact language of building departments and respects how permitting actually works. We have 35+ years of that expertise."
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- SECTION 17: THE TEAM -->
+      <section id="s17" class="cs-page">
+        <div class="cs-num">17.</div>
+        <div class="cs-content">
+          <h1>The Team</h1>
+          <h2>Deep Domain + Technical Expertise</h2>
+
+          <div class="two-col">
+            <div class="box">
+              <h3>CEO / Domain Expert</h3>
+              <p><strong>35+ years</strong> guiding construction and permitting in South Florida</p>
+              <ul>
+                <li>Managed projects with 16+ open permits simultaneously</li>
+                <li>Deep relationships with building officials, architects, developers</li>
+                <li>Lived the pain - knows exactly what building departments need</li>
+              </ul>
+            </div>
+            <div class="box">
+              <h3>CTO / Technical Lead</h3>
+              <p><strong>Consumer-scale product experience</strong></p>
+              <ul>
+                <li>Experience scaling products to millions of users</li>
+                <li>AI/ML expertise, computer vision</li>
+                <li>Cloud architecture, enterprise software</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="solution-box">
+            <h3>Critical Success Factors (We Have Them)</h3>
+            <ul>
+              <li><strong>Human-in-the-loop architecture</strong> with explainable AI</li>
+              <li><strong>Deep Florida Building Code expertise</strong> and jurisdiction customization</li>
+              <li><strong>Change management investment</strong> beyond just software</li>
+              <li><strong>Government sales experience</strong> on founding team</li>
+              <li><strong>Patient capital</strong> compatible with 90-day to 18-month cycles</li>
+              <li><strong>Augmentation positioning</strong> avoiding union/regulatory opposition</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 18: BUSINESS MODEL -->
+      <section id="s18" class="cs-page">
+        <div class="cs-num">18.</div>
+        <div class="cs-content">
+          <h1>Business Model</h1>
+          <h2>Revenue Streams</h2>
+
+          <table>
+            <tr>
+              <th>Revenue Stream</th>
+              <th>Model</th>
+              <th>Pricing</th>
+            </tr>
+            <tr>
+              <td><strong>A/E SaaS Subscriptions</strong></td>
+              <td>Monthly subscription by firm size</td>
+              <td>$500 - $2,000/month</td>
+            </tr>
+            <tr>
+              <td><strong>Per-Submission Fees</strong></td>
+              <td>Pay-per-review for occasional users</td>
+              <td>$50 - $200 per plan set</td>
+            </tr>
+            <tr>
+              <td><strong>Municipal Licenses</strong></td>
+              <td>Annual contract by jurisdiction size</td>
+              <td>$50K - $500K/year</td>
+            </tr>
+            <tr>
+              <td><strong>Premium Modules</strong></td>
+              <td>Add-on packages</td>
+              <td>Fire, Energy, Coastal, Structural</td>
+            </tr>
+          </table>
+
+          <div class="before-after">
+            <div class="before">
+              <h3>A/E Unit Economics</h3>
+              <p>Cost justified if it saves <strong>ONE resubmittal</strong> per month</p>
+              <p>Rework cost: ~$2,000+</p>
+            </div>
+            <div class="after">
+              <h3>Municipal Unit Economics</h3>
+              <p>Cost justified if it saves <strong>ONE FTE</strong></p>
+              <p>Fully loaded: ~$100K+/year</p>
+            </div>
+          </div>
+
+          <div class="alert-box">
+            <p><strong>Pricing models:</strong> Per-seat works for smaller jurisdictions seeking predictable budgets. Per-permit/transaction aligns cost with value for high-volume jurisdictions. Population-based tiers provide fairness across municipality sizes. Annual billing strongly preferred.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 19: FINANCIAL PROJECTIONS -->
+      <section id="s19" class="cs-page">
+        <div class="cs-num">19.</div>
+        <div class="cs-content">
+          <h1>Financial Projections</h1>
+          <h2>3-Year Summary</h2>
+
+          <table>
+            <tr>
+              <th></th>
+              <th>Year 1</th>
+              <th>Year 2</th>
+              <th>Year 3</th>
+            </tr>
+            <tr>
+              <td><strong>A/E Customers</strong></td>
+              <td>10 firms</td>
+              <td>40 firms</td>
+              <td>100 firms</td>
+            </tr>
+            <tr>
+              <td><strong>Municipal Contracts</strong></td>
+              <td>2 pilots</td>
+              <td>5 contracts</td>
+              <td>15 contracts</td>
+            </tr>
+            <tr>
+              <td><strong>ARR</strong></td>
+              <td>$250K</td>
+              <td>$1M</td>
+              <td>$3M</td>
+            </tr>
+            <tr>
+              <td><strong>Gross Margin</strong></td>
+              <td>60%</td>
+              <td>70%</td>
+              <td>75%</td>
+            </tr>
+            <tr>
+              <td><strong>Headcount</strong></td>
+              <td>5</td>
+              <td>12</td>
+              <td>25</td>
+            </tr>
+          </table>
+
+          <div class="component-section">
+            <h3>Use of Funds</h3>
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="big">50%</div>
+                <div class="label">Product Development</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big">25%</div>
+                <div class="label">Sales & Marketing</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big">15%</div>
+                <div class="label">Operations</div>
+              </div>
+              <div class="kpi-card">
+                <div class="big">10%</div>
+                <div class="label">G&A / Reserve</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 20: IMPLEMENTATION ROADMAP -->
+      <section id="s20" class="cs-page">
+        <div class="cs-num">20.</div>
+        <div class="cs-content">
+          <h1>Implementation Roadmap</h1>
+          <h2>From MVP to Market Leadership</h2>
+
+          <div class="ascii-art">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    IMPLEMENTATION TIMELINE                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│   2025                                           2026        2027   │
+│   Q1       Q2       Q3       Q4       Q1       Q2-Q4               │
+│   ─────────────────────────────────────────────────────────────     │
+│                                                                      │
+│   ┌────────────────┐                                                │
+│   │ MVP Development │                                                │
+│   └────────────────┘                                                │
+│            ┌────────────────┐                                       │
+│            │  A/E Pilots    │                                       │
+│            └────────────────┘                                       │
+│                     ┌────────────────┐                              │
+│                     │Municipal Pilot │                              │
+│                     └────────────────┘                              │
+│                              ┌────────────────┐                     │
+│                              │ First Revenue  │                     │
+│                              └────────────────┘                     │
+│                                       ┌────────────────────────┐    │
+│                                       │    Scale Florida       │    │
+│                                       └────────────────────────┘    │
+│                                                     ┌──────────┐    │
+│                                                     │Multi-State│    │
+│                                                     └──────────┘    │
+│                                                                      │
+│   MILESTONES:                                                       │
+│   Q1: MVP ready (Miami-Dade multifamily)                           │
+│   Q2: 2 A/E pilots live                                             │
+│   Q3: First municipal pilot                                         │
+│   Q4: $250K ARR, 10+ A/E customers                                 │
+│   2026: $1M+ ARR, 15+ municipal contracts                          │
+│   2027: $3M+ ARR, Series A, multi-state expansion                  │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <div class="workflow-step">
+            <h3>Q1 2025: MVP Complete</h3>
+            <p>Miami-Dade mid-rise multifamily. Zoning + Architectural + ADA modules.</p>
+          </div>
+
+          <div class="workflow-step">
+            <h3>Q2 2025: First Pilots</h3>
+            <p>2 A/E firm pilots live. First case studies. Fire/Life Safety module.</p>
+          </div>
+
+          <div class="workflow-step">
+            <h3>Q3 2025: Municipal Pilot</h3>
+            <p>First municipal pilot (parallel review). Broward County codes added.</p>
+          </div>
+
+          <div class="workflow-step">
+            <h3>Q4 2025: First Revenue</h3>
+            <p>First paying municipal contract. 10+ A/E customers. $250K ARR.</p>
+          </div>
+
+          <div class="workflow-step">
+            <h3>2026: Scale</h3>
+            <p>15+ municipal contracts. Structural + MEP. Gulf Coast expansion. $1M+ ARR.</p>
+          </div>
+
+          <div class="workflow-step">
+            <h3>2027: Expand</h3>
+            <p>Multi-state expansion. Series A. $3M+ ARR.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 21: THE INVESTMENT ASK -->
+      <section id="s21" class="cs-page">
+        <div class="cs-num">21.</div>
+        <div class="cs-content">
+          <h1>The Investment Ask</h1>
+          <h2>Seed Round</h2>
+
+          <div class="kpi-grid" style="grid-template-columns: 1fr;">
+            <div class="kpi-card" style="padding: 2rem;">
+              <div class="big" style="font-size: 3rem;">$1.5M</div>
+              <div class="label" style="font-size: 1rem;">Seed Round</div>
+            </div>
+          </div>
+
+          <div class="two-col">
+            <div class="box">
+              <h3>What We've Done</h3>
+              <ul>
+                <li>Validated demand with A/E firms</li>
+                <li>Mapped Florida Building Code structure</li>
+                <li>Built municipal relationships</li>
+                <li>Designed technical architecture</li>
+              </ul>
+            </div>
+            <div class="box">
+              <h3>What We'll Do</h3>
+              <ul>
+                <li>Build & deploy MVP</li>
+                <li>Hire 3 engineers</li>
+                <li>2-3 A/E pilots</li>
+                <li>1 municipal pilot</li>
+                <li>12-18 months runway</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="solution-box">
+            <h3>What We Need</h3>
+            <ul>
+              <li><strong>Capital to execute</strong> - Build MVP with Phase 1 code coverage</li>
+              <li><strong>GovTech/PropTech expertise</strong> - Navigate municipal procurement</li>
+              <li><strong>Construction industry connections</strong> - Accelerate pilot opportunities</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 22: CONCLUSION -->
+      <section id="s22" class="cs-page">
+        <div class="cs-num">22.</div>
+        <div class="cs-content">
+          <h1>Conclusion</h1>
+          <h2>Investment Assessment</h2>
+
+          <div class="alert-box">
+            <p style="margin: 0; line-height: 1.8;"><strong>The market opportunity is validated</strong> by GreenLite's $86M raise, PermitFlow's $54M Series B, OpenGov's $1.8B exit, Tampa's active RFI, and legislative tailwinds from HB 267. The technology is proven for augmentation use cases with 90%+ accuracy on drawing analysis.</p>
+          </div>
+
+          <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────────┐
+│                    BOTTOM LINE                                       │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  The "AI Plan Examiner" concept addresses a validated market need   │
+│  with achievable technology and clear Florida market entry points.  │
+│                                                                      │
+│  SUCCESS REQUIRES:                                                  │
+│  ├─ Positioning as augmentation rather than automation              │
+│  ├─ Deep domain expertise in Florida codes                          │
+│  └─ Go-to-market strategy accommodating government procurement      │
+│                                                                      │
+│  DUAL-USE MODEL PROVIDES:                                           │
+│  ├─ Multiple revenue paths (A/E + municipal)                        │
+│  ├─ Reduced single-customer-type risk                               │
+│  └─ Network effects as adoption grows                               │
+│                                                                      │
+│  IMMEDIATE OPPORTUNITY:                                             │
+│  Tampa's active RFI creates entry point for reference customer.     │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+          </div>
+
+          <div style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #eee;">
+            <p style="font-size: 0.9rem; color: #666;">Prepared by <strong>Mo Alissa</strong></p>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // Initialize Mermaid with neutral theme and better sizing
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      flowchart: {
+        curve: 'basis',
+        nodeSpacing: 50,
+        rankSpacing: 50,
+        padding: 15
+      },
+      themeVariables: {
+        fontSize: '12px',
+        fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif'
+      }
+    });
+
+    // Highlight active section in nav
+    const sections = document.querySelectorAll('section.cs-page');
+    const navLinks = document.querySelectorAll('.cs-index a');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          const activeLink = document.querySelector(`.cs-index a[href="#${entry.target.id}"]`);
+          if (activeLink) activeLink.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // ==========================================
+    // AI REVIEW SIMULATOR
+    // ==========================================
+    let reviewDemoRunning = false;
+
+    function startReviewDemo() {
+      if (reviewDemoRunning) return;
+      reviewDemoRunning = true;
+      resetReviewDemo();
+
+      const scanLine = document.getElementById('scan-line');
+      const status = document.getElementById('demo-status');
+      const violations = [
+        { marker: 'v1', finding: 'f1', delay: 1200 },
+        { marker: 'v2', finding: 'f2', delay: 2000 },
+        { marker: 'v3', finding: 'f3', delay: 2800 }
+      ];
+
+      // Start scan animation
+      status.textContent = 'Uploading plan set...';
+      setTimeout(() => {
+        status.textContent = 'AI scanning plan sheet A2.1...';
+        scanLine.style.opacity = '1';
+        scanLine.style.animation = 'scanDown 2s linear';
+      }, 500);
+
+      // Show violations one by one
+      violations.forEach(v => {
+        setTimeout(() => {
+          document.getElementById(v.marker).classList.add('show');
+          document.getElementById(v.finding).classList.add('show');
+        }, v.delay);
+      });
+
+      // Complete
+      setTimeout(() => {
+        status.innerHTML = '<strong>Analysis complete.</strong> 3 high-priority findings identified in 3.2 seconds.';
+        scanLine.style.opacity = '0';
+        reviewDemoRunning = false;
+      }, 3500);
+    }
+
+    function resetReviewDemo() {
+      ['v1', 'v2', 'v3'].forEach(id => document.getElementById(id).classList.remove('show'));
+      ['f1', 'f2', 'f3'].forEach(id => document.getElementById(id).classList.remove('show'));
+      document.getElementById('scan-line').style.opacity = '0';
+      document.getElementById('scan-line').style.animation = 'none';
+      document.getElementById('demo-status').textContent = 'Click "Run Demo" to see AI in action';
+      reviewDemoRunning = false;
+    }
+
+    // Add scan animation keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes scanDown {
+        0% { top: 0; }
+        100% { top: 280px; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // ==========================================
+    // MANUAL VS AI TIMER
+    // ==========================================
+    let timerDemoRunning = false;
+    let manualInterval, aiInterval;
+    const MANUAL_TIME = 20160; // 4 weeks in "demo seconds" (scaled: 1 week = 5 seconds)
+    const AI_TIME = 180; // 3 minutes in "demo seconds" (scaled: actual time)
+
+    function startTimerDemo() {
+      if (timerDemoRunning) return;
+      timerDemoRunning = true;
+      resetTimerDemo();
+
+      let manualSeconds = 0;
+      let aiSeconds = 0;
+      const manualTarget = 2016000; // 4 weeks in seconds
+      const aiTarget = 180; // 3 minutes in seconds
+
+      document.getElementById('manual-status').textContent = 'Reviewing...';
+      document.getElementById('ai-status').textContent = 'Processing...';
+
+      // AI timer (fast - completes in ~3 real seconds)
+      aiInterval = setInterval(() => {
+        aiSeconds += 60;
+        document.getElementById('ai-timer').textContent = formatTime(aiSeconds);
+        document.getElementById('ai-bar').style.width = Math.min(100, (aiSeconds / aiTarget) * 100) + '%';
+
+        if (aiSeconds >= aiTarget) {
+          clearInterval(aiInterval);
+          document.getElementById('ai-status').textContent = 'COMPLETE';
+          document.getElementById('ai-status').classList.add('done');
+          checkBothComplete();
+        }
+      }, 50);
+
+      // Manual timer (slow - shows progression over 8 seconds)
+      manualInterval = setInterval(() => {
+        manualSeconds += 86400; // 1 day per tick
+        document.getElementById('manual-timer').textContent = formatTimeWeeks(manualSeconds);
+        document.getElementById('manual-bar').style.width = Math.min(100, (manualSeconds / manualTarget) * 100) + '%';
+
+        if (manualSeconds >= manualTarget) {
+          clearInterval(manualInterval);
+          document.getElementById('manual-status').textContent = 'COMPLETE';
+          document.getElementById('manual-status').classList.add('done');
+          checkBothComplete();
+        }
+      }, 300);
+    }
+
+    function checkBothComplete() {
+      const manualDone = document.getElementById('manual-status').classList.contains('done');
+      const aiDone = document.getElementById('ai-status').classList.contains('done');
+
+      if (manualDone && aiDone) {
+        document.getElementById('time-saved').textContent = 'AI Review: 99.9% faster (4 weeks → 3 minutes)';
+        timerDemoRunning = false;
+      } else if (aiDone && !manualDone) {
+        document.getElementById('time-saved').textContent = 'AI finished! Manual review still in progress...';
+      }
+    }
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `00:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    function formatTimeWeeks(seconds) {
+      const weeks = Math.floor(seconds / 604800);
+      const days = Math.floor((seconds % 604800) / 86400);
+      if (weeks > 0) {
+        return `${weeks}w ${days}d`;
+      }
+      return `${days} days`;
+    }
+
+    function resetTimerDemo() {
+      clearInterval(manualInterval);
+      clearInterval(aiInterval);
+      document.getElementById('manual-timer').textContent = '00:00:00';
+      document.getElementById('ai-timer').textContent = '00:00:00';
+      document.getElementById('manual-bar').style.width = '0%';
+      document.getElementById('ai-bar').style.width = '0%';
+      document.getElementById('manual-status').textContent = 'Ready';
+      document.getElementById('manual-status').classList.remove('done');
+      document.getElementById('ai-status').textContent = 'Ready';
+      document.getElementById('ai-status').classList.remove('done');
+      document.getElementById('time-saved').textContent = '';
+      timerDemoRunning = false;
+    }
+
+    // ==========================================
+    // FLORIDA MAP TOOLTIPS
+    // ==========================================
+    document.querySelectorAll('.jurisdiction-dot').forEach(dot => {
+      dot.addEventListener('mouseenter', (e) => {
+        const tooltip = document.getElementById('map-tooltip');
+        const name = dot.dataset.name;
+        const permits = dot.dataset.permits;
+        const status = dot.dataset.status;
+        tooltip.innerHTML = `<strong>${name}</strong><br>${permits} permits/yr<br>${status}`;
+        tooltip.classList.add('show');
+
+        const rect = dot.getBoundingClientRect();
+        const mapRect = document.getElementById('florida-map').getBoundingClientRect();
+        tooltip.style.left = (rect.left - mapRect.left + 30) + 'px';
+        tooltip.style.top = (rect.top - mapRect.top - 10) + 'px';
+      });
+
+      dot.addEventListener('mouseleave', () => {
+        document.getElementById('map-tooltip').classList.remove('show');
+      });
+    });
+
+    // ==========================================
+    // FUNDING CHART ANIMATION
+    // ==========================================
+    function animateFundingChart() {
+      const bars = document.querySelectorAll('.funding-bar');
+      bars.forEach(bar => bar.style.width = '0%');
+
+      setTimeout(() => {
+        bars.forEach(bar => {
+          const width = bar.dataset.width;
+          bar.style.width = width + '%';
+        });
+      }, 100);
+    }
+
+    // Auto-animate funding chart when visible
+    const fundingObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateFundingChart();
+          fundingObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const fundingDemo = document.getElementById('funding-demo');
+    if (fundingDemo) fundingObserver.observe(fundingDemo);
+
+    // Initialize demos on load
+    document.addEventListener('DOMContentLoaded', () => {
+      resetReviewDemo();
+      resetTimerDemo();
+    });
+  </script>
+</body>
+</html>

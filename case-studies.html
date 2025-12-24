@@ -42,6 +42,9 @@
         <li>
           <a href="#" id="shopify-scip-link">Shopify Content Intelligence Platform (SCIP)</a>
         </li>
+        <li>
+          <a href="#" id="aiexaminer-link">AI Plan Examiner — Building Plan Review for Florida</a>
+        </li>
       </ul>
     </div>
 
@@ -146,64 +149,13 @@
             alert('Incorrect password');
           }
         });
-        // MTO Case Study
-        document.getElementById('mto-link').addEventListener('click', function(e) {
+        // AI Plan Examiner Case Study
+        document.getElementById('aiexaminer-link').addEventListener('click', function(e) {
           e.preventDefault();
-          const target = 'mto-growth-case-study.html';
-          const mtoPassword = 'ccasino';
-          const mtoAccessKey = 'cs_access_mto';
-          function haveMTOAccess() {
-            try { return sessionStorage.getItem(mtoAccessKey) === 'true'; } catch(e) { return false; }
-          }
-          function grantMTOAccess() {
-            try { sessionStorage.setItem(mtoAccessKey, 'true'); } catch(e) {}
-          }
-          if (haveMTOAccess()) { window.location.href = target; return; }
+          const target = 'aiexaminer-case-study.html';
+          const AIEXAMINER_PASSWORD = 'Donald';
           const input = prompt('Enter password to view:');
-          if (input && input.trim() === mtoPassword) {
-            grantMTOAccess();
-            window.location.href = target;
-          } else if (input !== null) {
-            alert('Incorrect password');
-          }
-        });
-        // ProBAKE Case Study
-        document.getElementById('probake-link').addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = 'probake-growth-case-study.html';
-          const probakePassword = 'ProBake';
-          const probakeAccessKey = 'cs_access_probake';
-          function haveProbakeAccess() {
-            try { return sessionStorage.getItem(probakeAccessKey) === 'true'; } catch(e) { return false; }
-          }
-          function grantProbakeAccess() {
-            try { sessionStorage.setItem(probakeAccessKey, 'true'); } catch(e) {}
-          }
-          if (haveProbakeAccess()) { window.location.href = target; return; }
-          const input = prompt('Enter password to view:');
-          if (input && input.trim() === probakePassword) {
-            grantProbakeAccess();
-            window.location.href = target;
-          } else if (input !== null) {
-            alert('Incorrect password');
-          }
-        });
-        // W57 Case Study
-        document.getElementById('w57-link').addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = 'w57-market-analysis.html';
-          const w57Password = 'w57';
-          const w57AccessKey = 'cs_access_w57';
-          function haveW57Access() {
-            try { return sessionStorage.getItem(w57AccessKey) === 'true'; } catch(e) { return false; }
-          }
-          function grantW57Access() {
-            try { sessionStorage.setItem(w57AccessKey, 'true'); } catch(e) {}
-          }
-          if (haveW57Access()) { window.location.href = target; return; }
-          const input = prompt('Enter password to view:');
-          if (input && input.trim() === w57Password) {
-            grantW57Access();
+          if (input && input.trim() === AIEXAMINER_PASSWORD) {
             window.location.href = target;
           } else if (input !== null) {
             alert('Incorrect password');
